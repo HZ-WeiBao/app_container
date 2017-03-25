@@ -106,7 +106,8 @@ class Curl extends Component {
         $this->cookies($response->cookies);
 
         if ($callback) $callback();
-
+        
+        print_r(curl_getinfo($ch));
         return $response;
     }
 }
