@@ -92,7 +92,7 @@ class Proxy extends Component {
     }
 
     public function autoLogin(){
-        for($i = 0, $check = false; $check !== true && $i < 7; $i++){
+        for($i = 0, $check = false; $check !== true && $i < 14; $i++){
             $captcha = $this->getCaptchaText();
             var_dump($captcha);
             if(strlen($captcha) == 4){
