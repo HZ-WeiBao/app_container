@@ -123,7 +123,7 @@ class Proxy extends Component {
 
     public function getCaptchaText(){
         $src = $this->getCaptcha();
-        var_dump($src);
+        // var_dump($src);
         $check = $this->DataMgr->Pub->direct->write('captcha','jpg',$src);
         var_dump($check);
         $captchaUrl = 'http://'.$_SERVER['HTTP_HOST'].'/data/captcha.jpg';
