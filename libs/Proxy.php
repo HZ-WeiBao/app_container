@@ -121,7 +121,7 @@ class Proxy extends Component {
     }
 
     public function getCaptchaText(){
-        $this->DataMgr->Pub->direct->write('captcha','jpg',$this->getCaptcha());
+        var_dump($this->DataMgr->Pub->direct->write('captcha','jpg',$this->getCaptcha()));
         $captchaUrl = 'http://'.$_SERVER['HTTP_HOST'].'/data/captcha.jpg';
         return $this->Curl->get()->url(self::$orcApi.$captchaUrl)
                     ->getResponse()->body;
