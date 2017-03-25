@@ -93,7 +93,6 @@ class Proxy extends Component {
 
     public function autoLogin(){
         for($i = 0, $check = false; $check !== true && $i < 1; $i++){
-            echo 'here';
             $captcha = $this->getCaptchaText();
             var_dump($captcha);
             if(strlen($captcha) == 4){
@@ -125,6 +124,7 @@ class Proxy extends Component {
     public function getCaptchaText(){
         $check = $this->DataMgr->Pub->direct->write('captcha','jpg',$this->getCaptcha());
         $captchaUrl = 'HTTP://'.$_SERVER['HTTP_HOST'].'/data/captcha.jpg';
+        echo $captchaUrl;
         return $this->Curl->get()->url(self::$orcApi.$captchaUrl)
                     ->getResponse()->body;
     }
