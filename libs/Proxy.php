@@ -74,7 +74,7 @@ class Proxy extends Component {
                                 'txt_pewerwedsdfsdff' => urlencode($pwd),
                                 'txt_sdertfgsadscxcadsads' => $captcha,
                                 'fgfggfdgtyuuyyuuckjg' => $_hash($_hash(strtoupper($captcha)) . self::$schoolCode),
-                                'dsdsdsdsdxcxdfgfg' => $_hash($sid . $_hash($pwd) . self::$schoolcode),
+                                'dsdsdsdsdxcxdfgfg' => $_hash($sid . $_hash($pwd) . self::$schoolCode),
                               ))
                         ->getResponse()->body;
 
@@ -93,11 +93,14 @@ class Proxy extends Component {
     }
 
     public function autoLogin(){
-        for($i = 0, $check; $check !== true || $i < 4; $i++){
+        for($i = 0, $check = false; $check !== true || $i < 4; $i++){
             $captcha = $this->getCaptchaText();
             $check = $this->login(self::$sid, self::$pwd, $captcha);
             if($check === true)
                 return true;
+            else{
+                echo $check.'<br>';
+            }
         }
         return $check;
     }
@@ -116,9 +119,9 @@ class Proxy extends Component {
     }
 
     public function getCaptchaText(){
-        $this->DataMgr->Pub->direct->write('captcha','jpg',$this->getCaptcha());
+        $check = $this->DataMgr->Pub->direct->write('captcha','jpg',$this->getCaptcha());
         $captchaUrl = 'HTTP://'.$_SERVER['HTTP_HOST'].']/img/captcha.jpg';
-        $this->Curl->get()->url(self::orcApi.$captchaUrl)
+        $this->Curl->get()->url(self::$orcApi.$captchaUrl)
                     ->getResponse()->body;
     }
 

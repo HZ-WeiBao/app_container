@@ -22,11 +22,12 @@ class Hook extends Component {//可以做函数代理来实现一些转发,委�
     return $this->_caller->{$variable} = $params;
   }
   public function get__($variable){
-    if($variable == 'direct'){
+    if($variable === 'direct'){
       $this->_direct = true;
       return $this;
     }else{
-      return $this->_caller->{$variable};
+      $this->_caller->{$variable};
+      return $this;
       //基本上可以说Hook也算是这个component的基础部件了,但是一般不太会在这里面使用上层的的component了
     }
   }

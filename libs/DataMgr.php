@@ -35,7 +35,7 @@ class DataMgr extends Component {
     return mkdir($this->_path.$uri, $mod, $recursive);
   }
 
-  public function write($uri,$extension,$conent){
+  public function write($uri,$extension,$content){
     //之后再去学习try catch是怎样使用的
     return file_put_contents($this->_path.'.'.$extension, $content);
   }

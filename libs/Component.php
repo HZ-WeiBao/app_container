@@ -11,8 +11,10 @@ class Component {
     //优先还是转发到上一层的__get处理机制
     //如果上层有get__的话优先调用
 
+    // echo "call :".$variable.'<br>';
     if(method_exists($this,'get__')){//这是调用有在这样可以避免一句parent::__get($variable);
-      if($result = call_user_func(array($this,'get__'),$variable))
+      $result = call_user_func(array($this,'get__'),$variable);
+      if($result !== null)
         return $result;
     }
     
