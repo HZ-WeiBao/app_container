@@ -138,7 +138,7 @@ class Curl_response {
         }
     }
     public function convert($from, $to){//autoConvert应该是可以的
-        $this->body = iconv($from, "$to.//ignore",$this->body);
+        $this->body = iconv($from, "{$to}//ignore", $this->body);
         return $this;
     }
     public function json() {
