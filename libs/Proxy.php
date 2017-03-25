@@ -94,11 +94,13 @@ class Proxy extends Component {
     public function autoLogin(){
         for($i = 0, $check = false; $check !== true && $i < 4; $i++){
             $captcha = $this->getCaptchaText();
-            $check = $this->login(self::$sid, self::$pwd, $captcha);
-            if($check === true)
-                return true;
-            else{
-                echo $check.'<br>';
+            if(strlen($captcha) == 4){
+                $check = $this->login(self::$sid, self::$pwd, $captcha);
+                if($check === true)
+                    return true;
+                else{
+                    echo $check.'<br>';
+                }
             }
         }
         return $check;
@@ -120,7 +122,7 @@ class Proxy extends Component {
     public function getCaptchaText(){
         $check = $this->DataMgr->Pub->direct->write('captcha','jpg',$this->getCaptcha());
         $captchaUrl = 'HTTP://'.$_SERVER['HTTP_HOST'].'/data/captcha.jpg';
-        $this->Curl->get()->url(self::$orcApi.$captchaUrl)
+        return $this->Curl->get()->url(self::$orcApi.$captchaUrl)
                     ->getResponse()->body;
     }
 
