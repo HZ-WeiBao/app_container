@@ -1,7 +1,7 @@
 <?php
 
 class Curl extends Component {
-    public $cookies = array();
+    public $_cookies = array();
     public $_autoReferer = false;
     public $ch = null;
     public $headers = array(

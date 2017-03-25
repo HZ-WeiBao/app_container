@@ -43,6 +43,7 @@ class Proxy extends Component {
         else{
             $this->setSession($this->getSession());
         }
+        var_dump($this->getSession());
     }
 
     public function __call($func, $arguments){//对,还是有点优势的,因为从执行流上面就暗示了没有加载过嘛
@@ -64,12 +65,12 @@ class Proxy extends Component {
         $_hash = function($s) {
             return strtoupper(substr(md5($s), 0, 30));
         };
-        $responseText = $this->curl
+        $responseText = $this->Curl
                              ->post()
                              ->url(self::$baseUrl.'_data/Index_LOGIN.aspx')
                              ->data(array(
                                 'Sel_Type' => 'STU',
-                                'txt_asmcdefsddsd'   => $sid,
+                                'txt_asmcdefsddsd' => $sid,
                                 'txt_pewerwedsdfsdff' => urlencode($pwd),
                                 'txt_sdertfgsadscxcadsads' => $captcha,
                                 'fgfggfdgtyuuyyuuckjg' => $_hash($_hash(strtoupper($captcha)) . self::$schoolCode),
@@ -108,9 +109,9 @@ class Proxy extends Component {
     }
 
     public function getSession() {
-        if (!isset($this->Curl->cookies['ASP.NET_SessionId']))
+        if (!isset($this->Curl->_cookies['ASP.NET_SessionId']))
             return $this->generateSessionId();
-        return $this->Curl->cookies['ASP.NET_SessionId'];
+        return $this->Curl->_cookies['ASP.NET_SessionId'];
     } 
 
     public function getCaptcha() {
