@@ -86,9 +86,9 @@ class Curl extends Component {
     }
 
     public function cookies($cookies) {
-        $this->cookies = array_merge($this->cookies, $cookies);
+        $this->_cookies = array_merge($this->_cookies, $cookies);
         $_cookies = array();
-        foreach ($this->cookies as $key => $value)
+        foreach ($this->_cookies as $key => $value)
             $_cookies[] = $key . '=' . $value;
 
         curl_setopt($this->ch, CURLOPT_COOKIE, join('; ', $_cookies));
@@ -102,7 +102,7 @@ class Curl extends Component {
         $response = new curl_response(
             $this->send(), curl_getInfo($this->ch));
 
-        $this->cookies($response->cookies);
+        $this->_cookies($response->cookies);
 
         if ($callback) $callback();
 
@@ -130,7 +130,7 @@ class Curl_response {
                 if ($key == 'set-cookie') {
                     $cookie = explode('; ', $value);
                     preg_match('/(.*?)=(.*)/', $cookie[0], $matches);
-                    $this->cookies[$matches[1]] = $matches[2];
+                    $this->_cookies[$matches[1]] = $matches[2];
                 } else {
                     $this->headers[$key] = $value;
                 }
