@@ -97,7 +97,6 @@ class Proxy extends Component {
             var_dump($captcha);
             if(strlen($captcha) == 4){
                 $check = $this->login(self::$sid, self::$pwd, $captcha);
-                var_dump($check);
                 if($check === true)
                     return true;
                 else{
@@ -122,10 +121,7 @@ class Proxy extends Component {
     }
 
     public function getCaptchaText(){
-        $src = $this->getCaptcha();
-        // var_dump($src);
-        $check = $this->DataMgr->Pub->direct->write('captcha','jpg',$src);
-        var_dump($check);
+        $this->DataMgr->Pub->direct->write('captcha','jpg',$this->getCaptcha());
         $captchaUrl = 'http://'.$_SERVER['HTTP_HOST'].'/data/captcha.jpg';
         return $this->Curl->get()->url(self::$orcApi.$captchaUrl)
                     ->getResponse()->body;
