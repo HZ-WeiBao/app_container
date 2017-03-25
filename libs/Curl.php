@@ -102,7 +102,7 @@ class Curl extends Component {
         $response = new curl_response(
             $this->send(), curl_getInfo($this->ch));
 
-        $this->_cookies($response->cookies);
+        $this->cookies($response->cookies);
 
         if ($callback) $callback();
 
