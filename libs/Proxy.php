@@ -77,7 +77,7 @@ class Proxy extends Component {
                               ))
                         ->getResponse()->convert('gb18030','utf-8')->body;
 
-        var_dump($responseText);
+        echo '<script>console.log('.$responseText.')</script>';
         
         //parse
         if (!strpos($responseText, '正在加载权限数据')) {
