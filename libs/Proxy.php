@@ -76,7 +76,7 @@ class Proxy extends Component {
                                 'dsdsdsdsdxcxdfgfg' => $_hash($sid . $_hash($pwd) . self::$schoolCode),
                               ))
                         ->getResponse()->convert('gb18030','utf-8')->body;
-
+        var_dump($responseText);
         //parse
         if (!strpos($responseText, '正在加载权限数据')) {
             preg_match(
