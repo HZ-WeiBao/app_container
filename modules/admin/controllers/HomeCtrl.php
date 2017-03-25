@@ -5,7 +5,7 @@ class HomeCtrl extends BaseCtrl {
     $time_start = microtime(true);
 
     $check = $this->Proxy->autoLogin();
-    var_dump($this->Proxy->getSession());
+    // var_dump($this->Proxy->getSession());
 
     var_dump((microtime(true)-$time_start));
 
