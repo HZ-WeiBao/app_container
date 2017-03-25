@@ -7,7 +7,7 @@ class BaseCtrl extends Component {
 
   public function actionIndex(){
     View::render('layoutF',[
-      'content' => View::render('home/index',[],true),
+      'content' => View::render('Home/Index',[],true),
       'config' => $this->ConfigMgr,
     ]);
   }
