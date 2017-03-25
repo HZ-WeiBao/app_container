@@ -95,6 +95,7 @@ class Curl extends Component {
     }
 
     public function send() {
+        curl_setopt($this->ch, CURLOPT_COOKIE, join('; ', $this->_cookies));
         return curl_exec($this->ch);
     }
 
