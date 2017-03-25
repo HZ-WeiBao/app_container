@@ -43,7 +43,6 @@ class Proxy extends Component {
         else{
             $this->setSession($this->getSession());
         }
-        var_dump($this->Curl->_cookies);
     }
 
     public function __call($func, $arguments){//对,还是有点优势的,因为从执行流上面就暗示了没有加载过嘛
@@ -115,7 +114,6 @@ class Proxy extends Component {
     } 
 
     public function getCaptcha() {
-        var_dump($this->Curl->_cookies);
         return $this->Curl->get()
                           ->url(self::$baseUrl.'sys/ValidateCode.aspx')
                           ->getResponse()
