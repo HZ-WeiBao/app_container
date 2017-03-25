@@ -4,8 +4,8 @@ class HomeCtrl extends BaseCtrl {
   public function actionTest(){
     $time_start = microtime(true);
 
-    // var_dump($this->Proxy->DataMgr);
     $check = $this->Proxy->autoLogin();
+    var_dump($this->Proxy->Curl->_cookies);
 
     var_dump((microtime(true)-$time_start));
 
