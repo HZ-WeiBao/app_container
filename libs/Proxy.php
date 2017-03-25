@@ -92,10 +92,11 @@ class Proxy extends Component {
     }
 
     public function autoLogin(){
-        for($i = 0, $check = false; $check !== true && $i < 4; $i++){
+        for($i = 0, $check = false; $check !== true && $i < 1; $i++){
             $captcha = $this->getCaptchaText();
             if(strlen($captcha) == 4){
                 $check = $this->login(self::$sid, self::$pwd, $captcha);
+                var_dump($check);
                 if($check === true)
                     return true;
                 else{
