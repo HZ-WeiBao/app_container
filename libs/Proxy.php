@@ -75,7 +75,7 @@ class Proxy extends Component {
                                 'fgfggfdgtyuuyyuuckjg' => $_hash($_hash(strtoupper($captcha)) . self::$schoolCode),
                                 'dsdsdsdsdxcxdfgfg' => $_hash($sid . $_hash($pwd) . self::$schoolCode),
                               ))
-                        ->getResponse()->body;
+                        ->getResponse()->convert('gb18030','utf-8')->body;
 
         //parse
         if (!strpos($responseText, '正在加载权限数据')) {
