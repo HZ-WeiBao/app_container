@@ -1,0 +1,54 @@
+.descriptionForForm {
+    height:50px;
+    /*background: lightpink;*/
+    line-height: 50px;
+    font-size:20px;
+    padding:0 5px;
+    clear: both;
+    text-align: center;
+    border-top:1px solid grey;
+    margin-top:5px;
+}
+
+.inputText{
+    margin:10px 0;
+    padding:0px 25px;
+}
+.inputText > div{
+    font-size:19px;
+}
+.inputText > input{
+    width:100%;
+    border:none;
+    font-size:19px;
+    border-bottom: 1px solid black;
+}
+.display_result {
+    min-height:320px;
+    /*background: limegreen;*/
+    margin-bottom:20px;
+    padding-top:12px;
+}
+
+.table{
+    height:30px;
+    line-height: 30px;
+    padding: 20px;
+    width:88%;
+    margin: 0 auto;
+    font-size: 18px;
+    border-bottom:1px solid #dcdcdc; 
+}
+.table > div {
+    display: inline-block;
+}
+.table > span {
+    float:right;
+}
+
+.selfie{
+    width:60%;
+    display: block;
+    margin: 0 auto;
+    margin-top:15px;
+}

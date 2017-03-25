@@ -1,0 +1,22 @@
+.statistics{
+    text-align: center;
+    padding: 8px 0 4px 0;
+}
+.statistics > span {
+    width:100px;
+    height:32px;
+    border-radius: 32px;
+    display: inline-block;
+    overflow: hidden;
+    /*border:1px solid lightcoral;*/
+    border-bottom: 1px solid black;
+    margin:0 10px;
+    line-height: 32px;
+}
+.statistics > span > img {
+    width:21px;
+    height:21px;
+    display: inline-block;
+    position: relative;
+    top:4px;
+}

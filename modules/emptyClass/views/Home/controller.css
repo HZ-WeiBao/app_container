@@ -1,0 +1,104 @@
+
+.selected {
+  background: black;
+  color:white;
+}
+
+.select_wd {
+    height:50px;
+    /*background: lightpink;*/
+    line-height: 50px;
+    font-size:20px;
+    padding:0 5px;
+    clear: both;
+    text-align: center;
+    border-bottom:1px solid grey;
+}
+.select_wd > span {
+    display: block;
+    float: left;
+}
+.select_wd > div {
+    margin-top:7.5px;
+    height:35px;
+    width:10%;
+    margin-left:2%;
+    text-align: center;
+    line-height: 35px;
+    float:left;
+    /*background: lightslategray;*/
+}
+
+.select_l {
+    height:50px;
+    line-height: 50px;
+    font-size: 20px;
+    /*background: lightgrey;*/
+    padding:0 5px;
+    border-bottom:1px solid grey;
+}
+.select_l select {
+    height:30px;
+    top:-3px;
+    position: relative;
+    display: inline-block;
+}
+.select_l > div:nth-child(1) {
+    float: left;
+    /*background: lightgreen;*/
+    margin-right:9px;
+}
+.select_l > div:nth-child(2) {
+    text-align: center;
+    /*background: lightslategrey;*/
+}
+
+.select_bd {
+    height:50px;
+    /*background: gold;*/
+    line-height: 50px;
+    font-size:20px;
+    padding:0 5px;
+    border-bottom:1px solid grey;
+}
+.select_bd > span {
+    display: block;
+    float: left;
+}
+.select_bd > span::nth-child(2) {
+    float:right;
+}
+.select_bd > div {
+    text-align: center;
+}
+.select_bd > div > div {
+    margin-top:7.5px;
+    height:35px;
+    width:9.5%;
+    margin-left:1.3%;
+    text-align: center;
+    line-height: 35px;
+    display: inline-block;
+    /*background: lightslategray;*/
+}
+
+.chunk > .column {
+    /*width:32.3%;*/
+    min-height:0px;
+    /*background: lightseagreen;*/
+    /*display: inline-block;*/
+    padding:0;
+    text-align: left;
+    margin-bottom:20px;
+}
+.chunk > .column:last-child {
+    margin-right:0;
+}
+.column > div {
+    width:33.3%;
+    font-size: 20px;
+    /*background: lightpink;*/
+    margin-bottom: 5px;
+    display: inline-block;
+    text-align: center;
+}

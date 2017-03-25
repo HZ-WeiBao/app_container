@@ -1,0 +1,27 @@
+
+GET http://query.5184.com/query/fxl/ncre_score_2016_b.jsp?name0=test&rand=2042&serChecked=on HTTP/1.1
+Host: query.5184.com
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.18 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+DNT: 1
+Referer: http://query.5184.com/query/fxl/ncre_score_2016_b.htm
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: zh-CN,zh;q=0.8
+Cookie: JSESSIONID=DCD8857D9123B7F1D29EF27C578B8D7E.tomcat220B
+
+'Host: query.5184.com',
+'Connection: keep-alive',
+'Pragma: no-cache',
+'Cache-Control: no-cache',
+'Upgrade-Insecure-Requests: 1',
+'User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko)Chrome/56.0.2924.18 Safari/537.36',
+'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+'DNT: 1',
+'Referer: http://query.5184.com/query/fxl/ncre_score_2016_b.htm',
+'Accept-Encoding: gzip, deflate, sdch',
+'Accept-Language: zh-CN,zh;q=0.8',
+'Cookie: JSESSIONID=DCD8857D9123B7F1D29EF27C578B8D7E.tomcat220B',

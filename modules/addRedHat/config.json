@@ -1,0 +1,16 @@
+{
+  "name": "圣诞帽",
+  "description": "ployfill",
+  "author": "DeepKolos",
+  "version": {
+    "v0.1": [
+      "没有在做什么功能更新，只是集成到在自己的小小框架~"
+    ]
+  },
+  "component":{
+    "Schedule":{
+      "lastTime":"timestamp"
+    }
+
+  }
+}
