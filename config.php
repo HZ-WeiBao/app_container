@@ -25,7 +25,7 @@ return array(
   'theme' => 'defalut',//框架的主题，包括控件，不过一般不会很大的风格修改只是增加饰物
   'params'=>array(
     'debug'=>true,
-    'curlDebug'=>false
+    'curlDebug'=>true
   )
 
 );

@@ -18,8 +18,7 @@ class Proxy extends Component {
 
     public function init(){//一些其他component的调用初始化需要放在这里
         //这里是包括component的runtime config
-        $this->Curl->timeout(4);
-        $this->Curl->baseUrl = self::$baseUrl;
+        $this->Curl->timeout(1);
         $this->Curl->autoReferer(true);
         __base__::$proxy = $this;
 
@@ -67,7 +66,7 @@ class Proxy extends Component {
         };
         $responseText = $this->curl
                              ->post()
-                             ->url('_data/Index_LOGIN.aspx')
+                             ->url(self::$baseUrl.'_data/Index_LOGIN.aspx')
                              ->data(array(
                                 'Sel_Type' => 'STU',
                                 'txt_asmcdefsddsd'   => $sid,
@@ -93,7 +92,7 @@ class Proxy extends Component {
     }
 
     public function autoLogin(){
-        for($i = 0, $check = false; $check !== true || $i < 4; $i++){
+        for($i = 0, $check = false; $check !== true && $i < 4; $i++){
             $captcha = $this->getCaptchaText();
             $check = $this->login(self::$sid, self::$pwd, $captcha);
             if($check === true)
@@ -113,14 +112,14 @@ class Proxy extends Component {
 
     public function getCaptcha() {
         return $this->Curl->get()
-                          ->url('sys/ValidateCode.aspx')
+                          ->url(self::$baseUrl.'sys/ValidateCode.aspx')
                           ->getResponse()
                           ->body;
     }
 
     public function getCaptchaText(){
         $check = $this->DataMgr->Pub->direct->write('captcha','jpg',$this->getCaptcha());
-        $captchaUrl = 'HTTP://'.$_SERVER['HTTP_HOST'].']/img/captcha.jpg';
+        $captchaUrl = 'HTTP://'.$_SERVER['HTTP_HOST'].'/data/captcha.jpg';
         $this->Curl->get()->url(self::$orcApi.$captchaUrl)
                     ->getResponse()->body;
     }

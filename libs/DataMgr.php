@@ -37,12 +37,12 @@ class DataMgr extends Component {
 
   public function write($uri,$extension,$content){
     //之后再去学习try catch是怎样使用的
-    return file_put_contents($this->_path.'.'.$extension, $content);
+    return file_put_contents($this->_path.$uri.'.'.$extension, $content);
   }
   public function get($uri,$extension){//这里要做一个自动资源格式化
-    return file_get_contents($this->_path.'.'.$extension);
+    return file_get_contents($this->_path.$uri.'.'.$extension);
   }
   public function append($uri,$extension,$conent){
-    return file_put_contents($this->_path.'.'.$extension, $content, FILE_APPEND);
+    return file_put_contents($this->_path.$uri.'.'.$extension, $content, FILE_APPEND);
   }
 }

@@ -1,7 +1,6 @@
 <?php
 
 class Curl extends Component {
-    public $baseUrl = null;
     public $cookies = array();
     public $_autoReferer = false;
     public $ch = null;
@@ -30,11 +29,11 @@ class Curl extends Component {
 
     public function url($url, $params=null) {
         if ($params) $url .= '?' . http_build_query($params);
-        curl_setopt($this->ch, CURLOPT_URL, $url);
+        curl_setopt($this->ch, CURLOPT_URL,  $url);
 
         if($this->_autoReferer){
             $this->headers(array(
-                'Referer' => $this->baseUrl . $url
+                'Referer' => $url
             ));
         }
         return $this;
