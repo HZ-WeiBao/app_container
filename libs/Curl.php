@@ -4,7 +4,7 @@ class Curl extends Component {
     public $_cookies = array();
     public $_autoReferer = false;
     public $ch = null;
-    public $headers = array(
+    public $_headers = array(
         'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36',
     );
 
@@ -54,6 +54,11 @@ class Curl extends Component {
 
     public function get(){
         curl_setopt($this->ch, CURLOPT_HTTPGET, true);
+        if(isset($this->_headers['Content-Length']) || isset($this->_headers['Content-Length'])){
+            unset($this->_headers['Content-Length']);
+            $this->headers(array());
+        }
+        
         return $this;
     }
     public function post(){
@@ -77,8 +82,8 @@ class Curl extends Component {
     }
 
     public function headers($headers) {
-        $this->headers = array_merge($this->headers, $headers);
-        foreach ($this->headers as $key => $value)
+        $this->_headers = array_merge($this->_headers, $headers);
+        foreach ($this->_headers as $key => $value)
             $_headers[] = $key . ': ' . $value;
 
         curl_setopt($this->ch, CURLOPT_HTTPHEADER, $_headers);

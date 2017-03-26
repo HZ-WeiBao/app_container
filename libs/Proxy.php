@@ -65,14 +65,11 @@ class Proxy extends Component {
         // echo 'login发送之前的cookies<br>';
         // var_dump($this->Curl->_cookies);
 
-        foreach($data as $key=>$value)
-            $datas[] = $key.'='.$value;
-
         $responseText = $this->Curl
                              ->post()
                              ->url(self::$baseUrl.'_data/home_login.aspx')
                              ->data(http_build_query(array(
-                                'typeName' => '%D1%A7%C9%FA',
+                                // 'typeName' => '%D1%A7%C9%FA',
                                 'Sel_Type' => 'STU',
                                 'txt_asmcdefsddsd' => $sid,
                                 'fgfggfdgtyuuyyuuckjg' => $_hash($_hash(strtoupper($captcha)) . self::$schoolCode),
@@ -81,11 +78,12 @@ class Proxy extends Component {
                                 'txt_sdertfgsadscxcadsads' => ''
                             )))
                         ->getResponse()->convert('gb2312','utf-8');
-        
+
         // echo 'login收到请求的cookies:<br>';
         // var_dump($responseText->cookies);
         $responseText = $responseText->body;
         // echo '<pre>'.htmlspecialchars($responseText).'</pre>';
+
         //parse
         if (!strpos($responseText, '正在加载权限数据')) {
             preg_match(
