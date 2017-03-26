@@ -79,7 +79,7 @@ class Proxy extends Component {
         echo 'login收到请求的cookies:<br>';
         var_dump($responseText->cookies);
         $responseText = $responseText->body;
-        echo '<pre>'.htmlspecialchars($responseText).'</pre>';
+        // echo '<pre>'.htmlspecialchars($responseText).'</pre>';
         //parse
         if (!strpos($responseText, '正在加载权限数据')) {
             preg_match(
