@@ -63,23 +63,31 @@ class Proxy extends Component {
         };
         echo 'login发送之前的cookies<br>';
         var_dump($this->Curl->_cookies);
+
+        $data = array(
+            'typeName' => '%D1%A7%C9%FA',
+            'Sel_Type' => 'STU',
+            'txt_asmcdefsddsd' => $sid,
+            'fgfggfdgtyuuyyuuckjg' => $_hash($_hash(strtoupper($captcha)) . self::$schoolCode),
+            'dsdsdsdsdxcxdfgfg' => $_hash($sid . $_hash($pwd) . self::$schoolCode),
+            'txt_pewerwedsdfsdff' => '',
+            'txt_sdertfgsadscxcadsads' => ''
+        );
+        $datas = array();
+        
+        foreach($data as $key=>$value)
+            $datas[] = $key.'='.$value;
+
         $responseText = $this->Curl
                              ->post()
-                             ->url(self::$baseUrl.'_data/Index_LOGIN.aspx')
-                             ->data(array(
-                                'Sel_Type' => 'STU',
-                                'txt_asmcdefsddsd' => $sid,
-                                'txt_pewerwedsdfsdff' => urlencode($pwd),
-                                'txt_sdertfgsadscxcadsads' => $captcha,
-                                'fgfggfdgtyuuyyuuckjg' => $_hash($_hash(strtoupper($captcha)) . self::$schoolCode),
-                                'dsdsdsdsdxcxdfgfg' => $_hash($sid . $_hash($pwd) . self::$schoolCode),
-                              ))
+                             ->url(self::$baseUrl.'_data/home_login.aspx')
+                             ->data(join('&',$datas))
                         ->getResponse()->convert('gb2312','utf-8');
         
         echo 'login收到请求的cookies:<br>';
         var_dump($responseText->cookies);
         $responseText = $responseText->body;
-        // echo '<pre>'.htmlspecialchars($responseText).'</pre>';
+        echo '<pre>'.htmlspecialchars($responseText).'</pre>';
         //parse
         if (!strpos($responseText, '正在加载权限数据')) {
             preg_match(
@@ -98,7 +106,7 @@ class Proxy extends Component {
         for($i = 0, $check = false; $check !== true && $i < 1; $i++){
             $captcha = $this->getCaptchaText();
             var_dump($captcha);
-            if(strlen($captcha) == 4){
+            if(strlen($captcha) > 0){
                 $check = $this->login(self::$sid, self::$pwd, $captcha);
                 if($check === true)
                     return true;

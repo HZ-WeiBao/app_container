@@ -7,3 +7,28 @@ Set-Cookie: ASP.NET_SessionId=5wptob45zmozmt2kr4sphomr; path=/
 Cache-Control: private
 Content-Type: text/html; charset=gb2312
 Content-Length: 9272"
+
+POST http://119.146.68.54/Jwweb/_data/home_login.aspx HTTP/1.1
+Host: 119.146.68.54
+Connection: keep-alive
+Content-Length: 5741
+Cache-Control: max-age=0
+Origin: http://119.146.68.54
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36
+Content-Type: application/x-www-form-urlencoded
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+DNT: 1
+Referer: http://119.146.68.54/Jwweb/_data/home_login.aspx
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.8
+Cookie: name=value; ASP.NET_SessionId=xty2nwi14g4xzdmz02jhwm45
+
+&typeName=%D1%A7%C9%FA
+&dsdsdsdsdxcxdfgfg=704060DBF96D8AE370920DBC822AA6
+&fgfggfdgtyuuyyuuckjg=FA21621DA54061F3E0A2BCC6E2763F
+&Sel_Type=STU
+&txt_asmcdefsddsd=1514080902121
+&txt_pewerwedsdfsdff=
+&txt_sdertfgsadscxcadsads=
+

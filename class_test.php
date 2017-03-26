@@ -92,6 +92,8 @@ class test extends base {
     var_dump($argument_result[count($argument_result)-1]);
   }
 }
+
+var_dump(urldecode('%D1%A7%C9%FA'));
 var_dump(array() == null);
 $name = 'ase_asd01q;';
 preg_match('/[\w_]+/i',$name,$match);
