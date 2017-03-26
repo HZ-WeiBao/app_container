@@ -93,12 +93,11 @@ class test extends base {
   }
 }
 
-var_dump(urldecode('%D1%A7%C9%FA'));
 var_dump(array() == null);
-$name = 'ase_asd01q;';
-preg_match('/[\w_]+/i',$name,$match);
+$name = 'color="White">验证码错误！<br>';
+preg_match('/color="White">(.+)</',$name,$match);
 
-var_dump($match == $name);
+var_dump($match);
 die();
 $time_start = microtime(true);
 header('TTFB : '.(microtime(true)-$time_start));
