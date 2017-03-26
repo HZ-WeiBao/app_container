@@ -87,11 +87,11 @@ class Proxy extends Component {
         echo 'login收到请求的cookies:<br>';
         var_dump($responseText->cookies);
         $responseText = $responseText->body;
-        echo '<pre>'.htmlspecialchars($responseText).'</pre>';
+        // echo '<pre>'.htmlspecialchars($responseText).'</pre>';
         //parse
         if (!strpos($responseText, '正在加载权限数据')) {
             preg_match(
-                '/color="White">(.*?)</', $responseText, $matches);
+                '/"color:White;">(.*?)<br>登录失败！/U', $responseText, $matches);
             if (isset($matches[1])) {
                 return $matches[1];//这里输出验证码错误还有密码错误信息
             } else {
