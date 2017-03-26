@@ -27,6 +27,14 @@ class HomeCtrl extends BaseCtrl {
     var_dump((microtime(true)-$time_start));
 
   }
+  public function actionAutoLogin(){
+    $time_start = microtime(true);
+
+    $check = $this->Proxy->autoLogin();
+    var_dump($check);
+
+    var_dump((microtime(true)-$time_start));
+  }
   public function actionTestOtheroption(){
     $time_start = microtime(true);
 
