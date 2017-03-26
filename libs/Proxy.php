@@ -21,17 +21,6 @@ class Proxy extends Component {
         $this->Curl->timeout(1);
         $this->Curl->autoReferer(true);
         $this->Curl->cookies(array('name'=>'value'));
-        $this->Curl->headers(array(
-            'DNT' => '1',
-            'Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-            'Accept-Encoding' => 'gzip, deflate',
-            'Accept-Language' => 'zh-CN,zh;q=0.8',
-            'Origin' => 'http://119.146.68.54',
-            'Upgrade-Insecure-Requests' => '1',
-            'Pragma' => 'no-cache',
-            'Cache-Control' => 'no-cache'
-
-        ));
         __base__::$proxy = $this;
 
         //write($uri,$extension,$conent)
@@ -92,21 +81,14 @@ class Proxy extends Component {
                                 'txt_sdertfgsadscxcadsads' => ''
                             )))
                             ->headers(array(
-// Host: 119.146.68.54
-// Connection: keep-alive
-// Content-Length: 5829
-// Pragma: no-cache
-// Cache-Control: no-cache
-// Origin: http://119.146.68.54
-// Upgrade-Insecure-Requests: 1
-// User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36
-// Content-Type: application/x-www-form-urlencoded
-// Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
-// DNT: 1
-// Referer: http://119.146.68.54/Jwweb/_data/home_login.aspx
-// Accept-Encoding: gzip, deflate
-// Accept-Language: zh-CN,zh;q=0.8
-// Cookie: name=value; ASP.NET_SessionId=xty2nwi14g4xzdmz02jhwm45
+                                'DNT' => '1',
+                                'Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                                'Accept-Encoding' => 'gzip, deflate',
+                                'Accept-Language' => 'zh-CN,zh;q=0.8',
+                                'Origin' => 'http://119.146.68.54',
+                                'Upgrade-Insecure-Requests' => '1',
+                                'Pragma' => 'no-cache',
+                                'Cache-Control' => 'no-cache'
                             ))
                         ->getResponse()->convert('gb2312','utf-8');
         
