@@ -3,7 +3,6 @@
 class Curl extends Component {
     public $_cookies = array();
     public $_autoReferer = false;
-    public $_verbose;
     public $ch = null;
     public $headers = array(
         'User-Agent' => 'Mozilla/5.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/6.0)',
@@ -96,8 +95,6 @@ class Curl extends Component {
     }
 
     public function send() {
-        $this->_verbose = fopen('php://temp', 'w+');
-        curl_setopt($this->ch, CURLOPT_STDERR, $this->_verbose);
         curl_setopt($this->ch, CURLOPT_COOKIE, join('; ', $this->_cookies));
         return curl_exec($this->ch);
     }
@@ -107,14 +104,6 @@ class Curl extends Component {
             $this->send(), curl_getInfo($this->ch));
 
         $this->cookies($response->cookies);
-
-        printf("cUrl error (#%d): %s<br>\n", curl_errno($this->ch),
-            htmlspecialchars(curl_error($this->ch)));
-
-        rewind($this->_verbose);
-        $verboseLog = stream_get_contents($this->_verbose);
-
-        echo "Verbose information:\n<pre>", htmlspecialchars($verboseLog), "</pre>\n";
 
         if ($callback) $callback();
 
