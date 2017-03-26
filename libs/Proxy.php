@@ -40,9 +40,6 @@ class Proxy extends Component {
         //component的基本workflow
         if($session != null)
             $this->setSession($session);
-        // else{
-        //     $this->setSession($this->getSession());
-        // }
     }
 
     public function __call($func, $arguments){//对,还是有点优势的,因为从执行流上面就暗示了没有加载过嘛
@@ -82,6 +79,7 @@ class Proxy extends Component {
         echo 'login收到请求的cookies:<br>';
         var_dump($responseText->cookies);
         $responseText = $responseText->body;
+        echo '<pre>'.htmlspecialchars($responseText).'</pre>';
         //parse
         if (!strpos($responseText, '正在加载权限数据')) {
             preg_match(
