@@ -6,6 +6,7 @@ class HomeCtrl extends BaseCtrl {
 
     $check = $this->Proxy->autoLogin();
     var_dump($check);
+    
     $page = $this->Proxy->Curl->get()
                  ->url(Proxy::$baseUrl.'znpk/Pri_StuSel.aspx')->getResponse()->convert('gb2312','utf-8')->body;
     echo "<pre>{$page}</pre>";
