@@ -87,7 +87,7 @@ class Proxy extends Component {
         //parse
         if (!strpos($responseText, '正在加载权限数据')) {
             preg_match(
-                '/"color:White;">(.*?)<br>登录失败！/U', $responseText, $matches);
+                '/color="White">(.*?)<br>登录失败！/U', $responseText, $matches);
             if (isset($matches[1])) {
                 return $matches[1];//这里输出验证码错误还有密码错误信息
             } else {
