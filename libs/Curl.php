@@ -86,7 +86,11 @@ class Curl extends Component {
     }
 
     public function cookies($cookies) {
+        echo '设置cookies前:<br>';
+        var_dump($cookie);
         $this->_cookies = array_merge($this->_cookies, $cookies);
+        echo '设置cookies后:<br>';
+        var_dump($this->_cookies);
         $_cookies = array();
         foreach ($this->_cookies as $key => $value)
             $_cookies[] = $key . '=' . $value;
