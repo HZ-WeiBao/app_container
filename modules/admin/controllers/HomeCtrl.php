@@ -4,13 +4,24 @@ class HomeCtrl extends BaseCtrl {
   public function actionTest(){
     $time_start = microtime(true);
 
+    // $this->Proxy->setSession($_GET['id']);
+    $src = $this->Proxy->getCaptcha();
+    var_dump($this->Proxy->Curl->_cookies);
+    $src_base64 = base64_encode($src);
+    echo "<img src='data:image/png;base64,{$src_base64}'>";
+
+    // echo '<pre>'.htmlspecialchars($home).'</pre>';
+    var_dump((microtime(true)-$time_start));
+
+  }
+  public function actionTest2(){
+    $time_start = microtime(true);
     $check = $this->Proxy->autoLogin();
     var_dump($check);
     
     $page = $this->Proxy->Curl->get()
                  ->url(Proxy::$baseUrl.'znpk/Pri_StuSel.aspx')->getResponse()->convert('gb2312','utf-8')->body;
     echo "<pre>{$page}</pre>";
-    var_dump((microtime(true)-$time_start));
   }
   public function actionLogin(){
     $time_start = microtime(true);
@@ -30,8 +41,8 @@ class HomeCtrl extends BaseCtrl {
 
     $check = $this->Proxy->autoLogin();
     var_dump($check);
-
     var_dump((microtime(true)-$time_start));
+
   }
   public function actionTestOtheroption(){
     $time_start = microtime(true);
