@@ -89,8 +89,9 @@ class Proxy extends Component {
     }
 
     public function autoLogin(){
-        for($i = 0, $check = false; $check !== true && $i < 4; $i++){
+        for($i = 0, $check = false; $check !== true && $i < 1; $i++){
             $captcha = $this->getCaptchaText();
+            var_dump($captcha);
             if(strlen($captcha) == 4){
                 $check = $this->login(self::$sid, self::$pwd, $captcha);
                 if($check === true)
