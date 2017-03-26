@@ -77,6 +77,16 @@ class Proxy extends Component {
                                 'txt_pewerwedsdfsdff' => '',
                                 'txt_sdertfgsadscxcadsads' => ''
                             )))
+                            ->headers(array(
+                                'DNT' => '1',
+                                'Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                                'Accept-Encoding' => 'gzip, deflate',
+                                'Accept-Language' => 'zh-CN,zh;q=0.8',
+                                'Origin' => 'http://119.146.68.54',
+                                'Upgrade-Insecure-Requests' => '1',
+                                'Pragma' => 'no-cache',
+                                'Cache-Control' => 'no-cache'
+                            ))
                         ->getResponse()->convert('gb2312','utf-8');
 
         // echo 'login收到请求的cookies:<br>';

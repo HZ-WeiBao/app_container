@@ -54,11 +54,6 @@ class Curl extends Component {
 
     public function get(){
         curl_setopt($this->ch, CURLOPT_HTTPGET, true);
-        if(isset($this->_headers['Content-Length']) || isset($this->_headers['Content-Length'])){
-            unset($this->_headers['Content-Length']);
-            $this->headers(array());
-        }
-        
         return $this;
     }
     public function post(){
@@ -87,6 +82,10 @@ class Curl extends Component {
             $_headers[] = $key . ': ' . $value;
 
         curl_setopt($this->ch, CURLOPT_HTTPHEADER, $_headers);
+        
+        foreach($headers as $key => $value){
+            unset($this->_headers[$key]);
+        }
         return $this;
     }
     public function referer($url){
