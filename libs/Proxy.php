@@ -125,7 +125,7 @@ class Proxy extends Component {
                           ->url(self::$baseUrl.'sys/ValidateCode.aspx')
                           ->getResponse();
         echo 'captcha发送之后的cookies<br>';
-        var_dump($this->Curl->_cookies);
+        var_dump($result->cookies);
         return $result->body;
     }
 
