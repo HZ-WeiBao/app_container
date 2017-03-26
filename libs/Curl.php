@@ -122,8 +122,10 @@ class Curl_response {
         $this->body = substr($response,  -$info['size_download']);
 
         $headers = explode("\r\n", $this->header);
+        var_dump($headers);
         foreach ($headers as $header) {
             preg_match('/(.*?): (.*)/', $header, $matches);
+            var_dump($matches);
             if (count($matches) == 3) {
                 $key = strtolower($matches[1]);
                 $value = $matches[2];

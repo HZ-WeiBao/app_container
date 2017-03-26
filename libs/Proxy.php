@@ -66,18 +66,6 @@ class Proxy extends Component {
         };
         $responseText = $this->Curl
                              ->post()
-                             ->url('htt://deepkolos.cn/test.php')
-                             ->data(array(
-                                'Sel_Type' => 'STU',
-                                'txt_asmcdefsddsd' => $sid,
-                                'txt_pewerwedsdfsdff' => urlencode($pwd),
-                                'txt_sdertfgsadscxcadsads' => $captcha,
-                                'fgfggfdgtyuuyyuuckjg' => $_hash($_hash(strtoupper($captcha)) . self::$schoolCode),
-                                'dsdsdsdsdxcxdfgfg' => $_hash($sid . $_hash($pwd) . self::$schoolCode),
-                              ))
-                        ->getResponse()->body;
-        $responseText = $this->Curl
-                             ->post()
                              ->url(self::$baseUrl.'_data/Index_LOGIN.aspx')
                              ->data(array(
                                 'Sel_Type' => 'STU',
@@ -87,7 +75,7 @@ class Proxy extends Component {
                                 'fgfggfdgtyuuyyuuckjg' => $_hash($_hash(strtoupper($captcha)) . self::$schoolCode),
                                 'dsdsdsdsdxcxdfgfg' => $_hash($sid . $_hash($pwd) . self::$schoolCode),
                               ))
-                        ->getResponse()->convert('gb18030','utf-8');
+                        ->getResponse()->convert('gb2312','utf-8');
         
         echo '收到请求的headers和cookies:<br>';
         var_dump($responseText->header);
