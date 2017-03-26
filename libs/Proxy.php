@@ -64,6 +64,8 @@ class Proxy extends Component {
         $_hash = function($s) {
             return strtoupper(substr(md5($s), 0, 30));
         };
+        echo '发送之前的cookies<br>';
+        var_dump($this->Curl->_cookies);
         $responseText = $this->Curl
                              ->post()
                              ->url(self::$baseUrl.'_data/Index_LOGIN.aspx')
