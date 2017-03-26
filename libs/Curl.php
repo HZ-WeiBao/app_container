@@ -93,6 +93,7 @@ class Curl extends Component {
         $this->headers(array(
             'Referer'=>$url
         ));
+        return $this;
     }
 
     public function cookies($cookies) {

@@ -4,7 +4,25 @@ class HomeCtrl extends BaseCtrl {
   public function actionTest(){
     $time_start = microtime(true);
 
-    $check = $this->Proxy->autoLogin();
+    // $this->Proxy->setSession($_GET['id']);
+    $src = $this->Proxy->getCaptcha();
+    var_dump($this->Proxy->Curl->_cookies);
+    $src_base64 = base64_encode($src);
+    echo "<img src='data:image/png;base64,{$src_base64}'>";
+
+    // echo '<pre>'.htmlspecialchars($home).'</pre>';
+    var_dump((microtime(true)-$time_start));
+
+  }
+  public function actionLogin(){
+    $time_start = microtime(true);
+
+    $this->Proxy->setSession($_GET['id']);
+    echo 'sessionid:';
+    var_dump($this->Proxy->Curl->_cookies);
+    $check = $this->Proxy->login('1514080902121','458200', $_GET['c']);
+
+    // $check = $this->Proxy->autoLogin();
     var_dump($check);
     var_dump((microtime(true)-$time_start));
 
