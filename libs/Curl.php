@@ -82,9 +82,10 @@ class Curl extends Component {
             $_headers[] = $key . ': ' . $value;
 
         curl_setopt($this->ch, CURLOPT_HTTPHEADER, $_headers);
-        
+
         foreach($headers as $key => $value){
-            unset($this->_headers[$key]);
+            if(!($this->_autoReferer && $key === 'Referer'))
+                unset($this->_headers[$key]);
         }
         return $this;
     }

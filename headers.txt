@@ -34,6 +34,16 @@ Cookie: name=value; ASP.NET_SessionId=xty2nwi14g4xzdmz02jhwm45
 
 704060DBF96D8AE370920DBC822AA6
 
+POST http://119.146.68.54/jwweb/_data/home_login.aspx HTTP/1.1
+Host: 119.146.68.54
+Accept: */*
+Connection: Keep-Alive
+Cookie: name=value; ASP.NET_SessionId=bs5zxp450lr4it4524shgb45
+User-Agent: Mozilla/5.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/6.0)
+Referer: http://119.146.68.54/jwweb/_data/home_login.aspx
+Content-Length: 221
+Content-Type: application/x-www-form-urlencoded
+
 POST http://119.146.68.54/Jwweb/_data/home_login.aspx HTTP/1.1
 Host: 119.146.68.54
 Connection: keep-alive
@@ -53,10 +63,16 @@ Cookie: name=value; ASP.NET_SessionId=xty2nwi14g4xzdmz02jhwm45
 
 POST http://119.146.68.54/jwweb/_data/home_login.aspx HTTP/1.1
 Host: 119.146.68.54
-Accept: */*
 Connection: Keep-Alive
-Cookie: name=value; ASP.NET_SessionId=bs5zxp450lr4it4524shgb45
-User-Agent: Mozilla/5.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/6.0)
-Referer: http://119.146.68.54/jwweb/_data/home_login.aspx
-Content-Length: 221
+Cookie: name=value; ASP.NET_SessionId=01ml0wvkpodv0mnhlcitmr2e
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36
+DNT: 1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.8
+Origin: http://119.146.68.54
+Upgrade-Insecure-Requests: 1
+Pragma: no-cache
+Cache-Control: no-cache
+Content-Length: 191
 Content-Type: application/x-www-form-urlencoded
