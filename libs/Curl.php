@@ -122,10 +122,9 @@ class Curl_response {
         $this->body = substr($response,  -$info['size_download']);
 
         $headers = explode("\r\n", $this->header);
-        var_dump($headers);
         foreach ($headers as $header) {
             preg_match('/(.*?): (.*)/', $header, $matches);
-            var_dump($matches);
+
             if (count($matches) == 3) {
                 $key = strtolower($matches[1]);
                 $value = $matches[2];
@@ -133,7 +132,7 @@ class Curl_response {
                 if ($key == 'set-cookie') {
                     $cookie = explode('; ', $value);
                     preg_match('/(.*?)=(.*)/', $cookie[0], $matches);
-                    $this->_cookies[$matches[1]] = $matches[2];
+                    $this->cookies[$matches[1]] = $matches[2];
                 } else {
                     $this->headers[$key] = $value;
                 }
