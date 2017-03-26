@@ -95,6 +95,9 @@ class Proxy extends Component {
                 $check = $this->login(self::$sid, self::$pwd, $captcha);
                 if($check === true)
                     return true;
+                else{
+                    echo $check;
+                }
             }
         }
         return $check;
