@@ -69,7 +69,7 @@ class Proxy extends Component {
                              ->post()
                              ->url(self::$baseUrl.'_data/home_login.aspx')
                              ->data(http_build_query(array(
-                                'typeName' => '%D1%A7%C9%FA',
+                                'typeName' => 'ѧ��',
                                 'Sel_Type' => 'STU',
                                 'txt_asmcdefsddsd' => $sid,
                                 'fgfggfdgtyuuyyuuckjg' => $_hash($_hash(strtoupper($captcha)) . self::$schoolCode),
