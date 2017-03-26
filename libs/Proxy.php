@@ -136,6 +136,7 @@ class Proxy extends Component {
     }
 
     public function setSession($session) {
+        echo '初始化cookies:<br>';
         $this->Curl->cookies(array('ASP.NET_SessionId' => $session));
     }
 
