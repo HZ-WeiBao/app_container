@@ -106,7 +106,7 @@ class Proxy extends Component {
         for($i = 0, $check = false; $check !== true && $i < 1; $i++){
             $captcha = $this->getCaptchaText();
             var_dump($captcha);
-            sleep(2);
+            sleep(5);
             if(strlen($captcha) > 0){
                 $check = $this->login(self::$sid, self::$pwd, $captcha);
                 if($check === true)
