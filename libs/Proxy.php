@@ -69,13 +69,14 @@ class Proxy extends Component {
                              ->post()
                              ->url(self::$baseUrl.'_data/home_login.aspx')
                              ->data(http_build_query(array(
-                                // 'typeName' => '%D1%A7%C9%FA',
+                                'typeName' => '%D1%A7%C9%FA',
                                 'Sel_Type' => 'STU',
                                 'txt_asmcdefsddsd' => $sid,
                                 'fgfggfdgtyuuyyuuckjg' => $_hash($_hash(strtoupper($captcha)) . self::$schoolCode),
                                 'dsdsdsdsdxcxdfgfg' => $_hash($sid . $_hash($pwd) . self::$schoolCode),
                                 'txt_pewerwedsdfsdff' => '',
-                                'txt_sdertfgsadscxcadsads' => ''
+                                'txt_sdertfgsadscxcadsads' => '',
+                                'pcInfo' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36undefined5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36 SN:NULL'
                             )))
                             ->headers(array(
                                 'DNT' => '1',
