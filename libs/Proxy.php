@@ -61,8 +61,8 @@ class Proxy extends Component {
         $_hash = function($s) {
             return strtoupper(substr(md5($s), 0, 30));
         };
-        echo 'login发送之前的cookies<br>';
-        var_dump($this->Curl->_cookies);
+        // echo 'login发送之前的cookies<br>';
+        // var_dump($this->Curl->_cookies);
 
         $data = array(
             'typeName' => '%D1%A7%C9%FA',
@@ -84,8 +84,8 @@ class Proxy extends Component {
                              ->data(join('&',$datas))
                         ->getResponse()->convert('gb2312','utf-8');
         
-        echo 'login收到请求的cookies:<br>';
-        var_dump($responseText->cookies);
+        // echo 'login收到请求的cookies:<br>';
+        // var_dump($responseText->cookies);
         $responseText = $responseText->body;
         // echo '<pre>'.htmlspecialchars($responseText).'</pre>';
         //parse
@@ -103,10 +103,10 @@ class Proxy extends Component {
     }
 
     public function autoLogin(){
-        for($i = 0, $check = false; $check !== true && $i < 1; $i++){
+        for($i = 0, $check = false; $check !== true && $i < 6; $i++){
             $captcha = $this->getCaptchaText();
             var_dump($captcha);
-            sleep(5);
+            // sleep(5);
             if(strlen($captcha) > 0){
                 $check = $this->login(self::$sid, self::$pwd, $captcha);
                 if($check === true)
@@ -126,13 +126,13 @@ class Proxy extends Component {
     } 
 
     public function getCaptcha() {
-        echo 'captcha发送之前的cookies<br>';
-        var_dump($this->Curl->_cookies);
+        // echo 'captcha发送之前的cookies<br>';
+        // var_dump($this->Curl->_cookies);
         $result = $this->Curl->get()
                           ->url(self::$baseUrl.'sys/ValidateCode.aspx')
                           ->getResponse();
-        echo 'captcha发送之后的cookies<br>';
-        var_dump($result->cookies);
+        // echo 'captcha发送之后的cookies<br>';
+        // var_dump($result->cookies);
         return $result->body;
     }
 
