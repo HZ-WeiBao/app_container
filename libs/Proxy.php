@@ -77,8 +77,7 @@ class Proxy extends Component {
                               ))
                         ->getResponse()->convert('gb2312','utf-8');
         
-        echo '收到请求的headers和cookies:<br>';
-        var_dump($responseText->header);
+        echo '收到请求的cookies:<br>';
         var_dump($responseText->cookies);
         $responseText = $responseText->body;
         //parse
@@ -96,7 +95,7 @@ class Proxy extends Component {
     }
 
     public function autoLogin(){
-        for($i = 0, $check = false; $check !== true && $i < 2; $i++){
+        for($i = 0, $check = false; $check !== true && $i < 1; $i++){
             $captcha = $this->getCaptchaText();
             var_dump($captcha);
             if(strlen($captcha) == 4){
@@ -125,7 +124,10 @@ class Proxy extends Component {
     }
 
     public function getCaptchaText(){
-        $this->DataMgr->Pub->direct->write('captcha','jpg',$this->getCaptcha());
+        $src = $this->getCaptcha();
+        $src_base64 = base64_encode($src);
+        echo "<img src='data:image/png;base64,{$src_base64}'>";
+        $this->DataMgr->Pub->direct->write('captcha','jpg',$src);
         $captchaUrl = 'http://'.$_SERVER['HTTP_HOST'].'/data/captcha.jpg';
         return $this->Curl->get()->url(self::$orcApi.$captchaUrl)
                     ->getResponse()->body;
