@@ -51,9 +51,6 @@ Accept-Encoding: gzip, deflate
 Accept-Language: zh-CN,zh;q=0.8
 Cookie: name=value; ASP.NET_SessionId=xty2nwi14g4xzdmz02jhwm45
 
-%25D1%25A7%25C9%25FA
-%D1%A7%C9%FA
-
 POST http://119.146.68.54/jwweb/_data/home_login.aspx HTTP/1.1
 Host: 119.146.68.54
 Accept: */*

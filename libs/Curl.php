@@ -5,7 +5,7 @@ class Curl extends Component {
     public $_autoReferer = false;
     public $ch = null;
     public $headers = array(
-        'User-Agent' => 'Mozilla/5.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/6.0)',
+        'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36',
     );
 
     public function __construct() {
