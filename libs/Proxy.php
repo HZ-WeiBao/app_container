@@ -74,7 +74,7 @@ class Proxy extends Component {
             'txt_sdertfgsadscxcadsads' => ''
         );
         $datas = array();
-        
+
         foreach($data as $key=>$value)
             $datas[] = $key.'='.$value;
 
@@ -91,7 +91,7 @@ class Proxy extends Component {
         //parse
         if (!strpos($responseText, '正在加载权限数据')) {
             preg_match(
-                '/color:Red;">(.*?)</', $responseText, $matches);
+                '/color="White">(.*?)</', $responseText, $matches);
             if (isset($matches[1])) {
                 return $matches[1];//这里输出验证码错误还有密码错误信息
             } else {
