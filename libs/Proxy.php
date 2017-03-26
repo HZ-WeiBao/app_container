@@ -90,7 +90,7 @@ class Proxy extends Component {
                         ->getResponse()->convert('gb18030','utf-8');
         
         echo '收到请求的headers和cookies:<br>';
-        var_dump($responseText->headers);
+        var_dump($responseText->header);
         var_dump($responseText->cookies);
         $responseText = $responseText->body;
         //parse
