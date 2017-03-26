@@ -64,7 +64,7 @@ class Proxy extends Component {
         $_hash = function($s) {
             return strtoupper(substr(md5($s), 0, 30));
         };
-        echo '发送之前的cookies<br>';
+        echo 'login发送之前的cookies<br>';
         var_dump($this->Curl->_cookies);
         $responseText = $this->Curl
                              ->post()
@@ -79,7 +79,7 @@ class Proxy extends Component {
                               ))
                         ->getResponse()->convert('gb2312','utf-8');
         
-        echo '收到请求的cookies:<br>';
+        echo 'login收到请求的cookies:<br>';
         var_dump($responseText->cookies);
         $responseText = $responseText->body;
         //parse
@@ -119,10 +119,14 @@ class Proxy extends Component {
     } 
 
     public function getCaptcha() {
-        return $this->Curl->get()
+        echo 'captcha发送之前的cookies<br>';
+        var_dump($this->Curl->_cookies);
+        $result = $this->Curl->get()
                           ->url(self::$baseUrl.'sys/ValidateCode.aspx')
-                          ->getResponse()
-                          ->body;
+                          ->getResponse();
+        echo 'captcha发送之后的cookies<br>';
+        var_dump($this->Curl->_cookies);
+        return $result->body;
     }
 
     public function getCaptchaText(){
