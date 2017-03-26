@@ -69,14 +69,15 @@ class Proxy extends Component {
                              ->post()
                              ->url(self::$baseUrl.'_data/home_login.aspx')
                              ->data(http_build_query(array(
+                                '__VIEWSTATE' => '',
+                                'pcInfo' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36undefined5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36 SN:NULL',
                                 'typeName' => 'ѧ��',
+                                'dsdsdsdsdxcxdfgfg' => $_hash($sid . $_hash($pwd) . self::$schoolCode),
+                                'fgfggfdgtyuuyyuuckjg' => $_hash($_hash(strtoupper($captcha)) . self::$schoolCode),
                                 'Sel_Type' => 'STU',
                                 'txt_asmcdefsddsd' => $sid,
-                                'fgfggfdgtyuuyyuuckjg' => $_hash($_hash(strtoupper($captcha)) . self::$schoolCode),
-                                'dsdsdsdsdxcxdfgfg' => $_hash($sid . $_hash($pwd) . self::$schoolCode),
                                 'txt_pewerwedsdfsdff' => '',
                                 'txt_sdertfgsadscxcadsads' => '',
-                                'pcInfo' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36undefined5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36 SN:NULL'
                             )))
                             ->headers(array(
                                 'DNT' => '1',
@@ -110,7 +111,7 @@ class Proxy extends Component {
     }
 
     public function autoLogin(){
-        for($i = 0, $check = false; $check !== true && $i < 2; $i++){
+        for($i = 0, $check = false; $check !== true && $i < 1; $i++){
             $captcha = $this->getCaptchaText();
             var_dump($captcha);
             // sleep(5);
