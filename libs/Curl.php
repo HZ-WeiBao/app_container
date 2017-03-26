@@ -63,6 +63,11 @@ class Curl extends Component {
 
     public function data($data) {
         curl_setopt($this->ch, CURLOPT_POSTFIELDS, $data);
+        if(is_string($data)){
+            $this->headers(array(
+                'Content-Length' => strlen($data)
+            ));
+        }
         return $this;
     }
 

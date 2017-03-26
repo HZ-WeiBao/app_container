@@ -20,6 +20,7 @@ class Proxy extends Component {
         //这里是包括component的runtime config
         $this->Curl->timeout(1);
         $this->Curl->autoReferer(true);
+        $this->Curl->cookies(array('name'=>'value'));
         __base__::$proxy = $this;
 
         //write($uri,$extension,$conent)
@@ -64,24 +65,38 @@ class Proxy extends Component {
         // echo 'login发送之前的cookies<br>';
         // var_dump($this->Curl->_cookies);
 
-        $data = array(
-            'typeName' => '%D1%A7%C9%FA',
-            'Sel_Type' => 'STU',
-            'txt_asmcdefsddsd' => $sid,
-            'fgfggfdgtyuuyyuuckjg' => $_hash($_hash(strtoupper($captcha)) . self::$schoolCode),
-            'dsdsdsdsdxcxdfgfg' => $_hash($sid . $_hash($pwd) . self::$schoolCode),
-            'txt_pewerwedsdfsdff' => '',
-            'txt_sdertfgsadscxcadsads' => ''
-        );
-        $datas = array();
-
         foreach($data as $key=>$value)
             $datas[] = $key.'='.$value;
 
         $responseText = $this->Curl
                              ->post()
                              ->url(self::$baseUrl.'_data/home_login.aspx')
-                             ->data(join('&',$datas))
+                             ->data(http_build_query(array(
+                                // 'typeName' => '%D1%A7%C9%FA',
+                                'Sel_Type' => 'STU',
+                                'txt_asmcdefsddsd' => $sid,
+                                'fgfggfdgtyuuyyuuckjg' => $_hash($_hash(strtoupper($captcha)) . self::$schoolCode),
+                                'dsdsdsdsdxcxdfgfg' => $_hash($sid . $_hash($pwd) . self::$schoolCode),
+                                'txt_pewerwedsdfsdff' => '',
+                                'txt_sdertfgsadscxcadsads' => ''
+                            )))
+                            ->headers(array(
+// Host: 119.146.68.54
+// Connection: keep-alive
+// Content-Length: 5829
+// Pragma: no-cache
+// Cache-Control: no-cache
+// Origin: http://119.146.68.54
+// Upgrade-Insecure-Requests: 1
+// User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36
+// Content-Type: application/x-www-form-urlencoded
+// Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+// DNT: 1
+// Referer: http://119.146.68.54/Jwweb/_data/home_login.aspx
+// Accept-Encoding: gzip, deflate
+// Accept-Language: zh-CN,zh;q=0.8
+// Cookie: name=value; ASP.NET_SessionId=xty2nwi14g4xzdmz02jhwm45
+                            ))
                         ->getResponse()->convert('gb2312','utf-8');
         
         // echo 'login收到请求的cookies:<br>';
@@ -103,7 +118,7 @@ class Proxy extends Component {
     }
 
     public function autoLogin(){
-        for($i = 0, $check = false; $check !== true && $i < 6; $i++){
+        for($i = 0, $check = false; $check !== true && $i < 3; $i++){
             $captcha = $this->getCaptchaText();
             var_dump($captcha);
             // sleep(5);

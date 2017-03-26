@@ -92,7 +92,13 @@ class test extends base {
     var_dump($argument_result[count($argument_result)-1]);
   }
 }
+$_hash = function($s) {
+    return strtoupper(substr(md5($s), 0, 30));
+};
+var_dump($_hash($_hash(strtoupper('k842')) . '10577'));
 
+var_dump(http_build_query(array('test'=>'sdf','test2'=>'2')));
+die();
 var_dump(array() == null);
 $name = 'color="White">验证码错误！<br>';
 preg_match('/color="White">(.+)</',$name,$match);
