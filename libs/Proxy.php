@@ -60,8 +60,6 @@ class Proxy extends Component {
         $_hash = function($s) {
             return strtoupper(substr(md5($s), 0, 30));
         };
-        // echo 'login发送之前的cookies<br>';
-        // var_dump($this->Curl->_cookies);
 
         $responseText = $this->Curl
                              ->post()
@@ -74,12 +72,7 @@ class Proxy extends Component {
                                 // 'txt_pewerwedsdfsdff' => '',
                                 // 'txt_sdertfgsadscxcadsads' => '',
                             )))
-                        ->getResponse()->convert('gb2312','utf-8');
-
-        // echo 'login收到请求的cookies:<br>';
-        // var_dump($responseText->cookies);
-        $responseText = $responseText->body;
-        // echo '<pre>'.htmlspecialchars($responseText).'</pre>';
+                        ->getResponse()->convert('gb2312','utf-8')->body;
 
         //parse
         if (!strpos($responseText, '正在加载权限数据')) {
@@ -96,17 +89,12 @@ class Proxy extends Component {
     }
 
     public function autoLogin(){
-        for($i = 0, $check = false; $check !== true && $i < 1; $i++){
+        for($i = 0, $check = false; $check !== true && $i < 4; $i++){
             $captcha = $this->getCaptchaText();
-            var_dump($captcha);
-            // sleep(5);
-            if(strlen($captcha) > 0){
+            if(strlen($captcha) == 4){
                 $check = $this->login(self::$sid, self::$pwd, $captcha);
                 if($check === true)
                     return true;
-                else{
-                    echo $check.'<br>';
-                }
             }
         }
         return $check;
@@ -119,18 +107,11 @@ class Proxy extends Component {
     } 
 
     public function getCaptcha() {
-        // echo 'captcha发送之前的cookies<br>';
-        // var_dump($this->Curl->_cookies);
-        $result = $this->Curl->get()
+        return $this->Curl->get()
                           ->url(self::$baseUrl.'sys/ValidateCode.aspx',array(
                               't' => rand(100,999)))
-                          ->headers(array(
-                              'Referer' => 'http://119.146.68.54/Jwweb/_data/home_login.aspx'
-                          ))
-                          ->getResponse();
-        // echo 'captcha发送之后的cookies<br>';
-        // var_dump($result->cookies);
-        return $result->body;
+                          ->referer('http://119.146.68.54/Jwweb/_data/home_login.aspx')
+                          ->getResponse()->body;
     }
 
     public function getCaptchaText(){
