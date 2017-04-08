@@ -3,7 +3,9 @@
 class Curl extends Component {
     public $_cookies = array();
     public $_autoReferer = false;
+    public $_autoConvertTo = false;
     public $ch = null;
+    public $_tempHeaders = array();
     public $_headers = array(
         'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36',
     );
@@ -20,6 +22,9 @@ class Curl extends Component {
 
     public function autoReferer(bool $set){
         $this->_autoReferer = $set;
+    }
+    public function autoConvertTo(string $set){
+        $this->_autoConvertTo = $set;
     }
 
     public function timeout($timeout) {
@@ -77,16 +82,21 @@ class Curl extends Component {
     }
 
     public function headers($headers) {
-        $this->_headers = array_merge($this->_headers, $headers);
+        $this->_tempHeaders = array_merge($this->_tempHeaders, $headers);
+        return $this;
+    }
+    protected function _headers() {//这是真实执行的
+        $this->_headers = array_merge($this->_headers, $this->_tempHeaders);
         foreach ($this->_headers as $key => $value)
             $_headers[] = $key . ': ' . $value;
 
         curl_setopt($this->ch, CURLOPT_HTTPHEADER, $_headers);
 
-        foreach($headers as $key => $value){
+        foreach($this->_tempHeaders as $key => $value){
             if(!($this->_autoReferer && $key === 'Referer'))
                 unset($this->_headers[$key]);
         }
+        $this->_tempHeaders = array();
         return $this;
     }
     public function referer($url){
@@ -110,8 +120,16 @@ class Curl extends Component {
     }
 
     public function getResponse($callback=null) {
+        $autoConvertTo = $this->_autoConvertTo;
+
+        if(isset($this->_tempHeaders['Accept']))
+            if(strpos($this->_tempHeaders['Accept'],'text') === false)
+                $autoConvertTo = false;
+
+        $this->_headers();//有点像打补丁啊~~
+
         $response = new curl_response(
-            $this->send(), curl_getInfo($this->ch));
+            $this->send(), curl_getInfo($this->ch), $autoConvertTo);
 
         $this->cookies($response->cookies);
 
@@ -127,7 +145,7 @@ class Curl_response {
     public $header = '';
     public $body = '';
 
-    public function __construct($response, $info) {
+    public function __construct($response, $info, $autoConevrtTo) {
         $this->header = substr($response, 0, $info['header_size'] - 4);
         $this->body = substr($response,  -$info['size_download']);
 
@@ -148,8 +166,16 @@ class Curl_response {
                 }
             }
         }
+
+        if($autoConevrtTo !== false){
+            if($this->charset){//有chaset的时候然后就是自动转换就可以咯,这个不行
+                $this->convert($this->charset,'utf-8');
+            }
+        }
     }
-    public function convert($from, $to){//autoConvert应该是可以的
+    public function convert($from, $to){//autoConvert应该是可以的,唉图片那些那会是给出错误的信息来
+    //一般服务端输出图片应该是通过请求头来确定类型的,虽然可以判断文件类型来去自动转换,但是感觉是有点那个
+    //判断太多,性能不太好,可能是遮掩的,不过这个是否传autoconvert可以在请求里面直接判断啊
         $this->body = iconv($from, "{$to}//ignore", $this->body);
         return $this;
     }
@@ -159,5 +185,19 @@ class Curl_response {
 
     public function __toString() {
         return $this->body;
+    }
+    //享用__get就用吧
+    public function __get($variable){
+        switch($variable){
+            case 'charset':
+                if(isset($this->headers['content-type'])){
+                    preg_match('/charset=([\w-]+)/',$this->headers['content-type'],$match);
+                    $this->charset = $match[1] ?? false;
+                }else{
+                    $this->charset = false;
+                }
+                return $this->charset;
+            break;
+        }
     }
 }

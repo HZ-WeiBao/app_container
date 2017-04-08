@@ -28,7 +28,10 @@ class Router extends Component {
       $this->{$ctrlName}->init();
       F::$C = $this->{$ctrlName};
 
-      $this->{$ctrlName}->{'action'.$this->action}();
+      if(method_exists($this->{$ctrlName},'action'.$this->action))
+        $this->{$ctrlName}->{'action'.$this->action}();
+      else
+        F::end(5,"找到对应的{$this->action}~");
       
     }else{
       echo '小小的应用框架~';

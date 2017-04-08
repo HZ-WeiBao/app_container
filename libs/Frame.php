@@ -19,7 +19,7 @@ class F {
       if(method_exists($key,'globalConfig'))
         $key::globalConfig($value);
 
-    if(self::$params['debug']){
+    if(self::$params['debug'] && false){
       $debug = json_encode($_SERVER);
       echo '<script>var $debug=';
       echo $debug.';</script>';

@@ -46,7 +46,7 @@ class AutoLoader {
       }
     
     if( !class_exists($class) ){
-      F::end(1,$class.'类加载失败,请查看文件名和类名是否一致~');
+      F::end(1,$class.'类加载失败,请查看文件名和类名是否一致~,或者检查上层的get__返回值是否漏了');
     }
   }
 

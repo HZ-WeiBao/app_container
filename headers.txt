@@ -99,3 +99,428 @@ Accept-Language: zh-CN,zh;q=0.8
 Cookie: ASP.NET_SessionId=3ds1kdmfupvggd5513ear2rn
 
 应该是get的请求头不合格吧
+
+array(7) {
+  ["date"]=&gt;
+  string(29) "Mon, 27 Mar 2017 09:30:56 GMT"
+  ["server"]=&gt;
+  string(17) "Microsoft-IIS/6.0"
+  ["x-powered-by"]=&gt;
+  string(7) "ASP.NET"
+  ["x-aspnet-version"]=&gt;
+  string(8) "1.1.4322"
+  ["cache-control"]=&gt;
+  string(7) "private"
+  ["content-type"]=&gt;
+  string(25) "text/html; charset=gb2312"
+  ["content-length"]=&gt;
+  string(5) "26514"
+}
+
+
+http://119.146.68.54/Jwweb/ZNPK/Private/List_JXL.aspx?w=150&id=1
+
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Encoding:gzip, deflate, sdch
+Accept-Language:zh-CN,zh;q=0.8
+Connection:keep-alive
+Cookie:ASP.NET_SessionId=3ds1kdmfupvggd5513ear2rn
+DNT:1
+Host:119.146.68.54
+Referer:http://119.146.68.54/Jwweb/ZNPK/KBFB_RoomSel.aspx
+Upgrade-Insecure-Requests:1
+User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36
+
+w:150
+id:1
+
+http://119.146.68.54/Jwweb/ZNPK/Private/List_ROOM.aspx?w=150&id=101
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Encoding:gzip, deflate, sdch
+Accept-Language:zh-CN,zh;q=0.8
+Connection:keep-alive
+Cookie:ASP.NET_SessionId=3ds1kdmfupvggd5513ear2rn
+DNT:1
+Host:119.146.68.54
+Referer:http://119.146.68.54/Jwweb/ZNPK/KBFB_RoomSel.aspx
+Upgrade-Insecure-Requests:1
+User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36
+
+http://119.146.68.54/Jwweb/ZNPK/KBFB_RoomSel_rpt.aspx
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Encoding:gzip, deflate
+Accept-Language:zh-CN,zh;q=0.8
+Cache-Control:max-age=0
+Connection:keep-alive
+Content-Length:70
+Content-Type:application/x-www-form-urlencoded
+Cookie:ASP.NET_SessionId=3ds1kdmfupvggd5513ear2rn
+DNT:1
+Host:119.146.68.54
+Origin:http://119.146.68.54
+Referer:http://119.146.68.54/Jwweb/ZNPK/KBFB_RoomSel.aspx
+Upgrade-Insecure-Requests:1
+User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36
+
+Sel_XNXQ:20161
+rad_gs:2
+txt_yzm:
+Sel_XQ:1
+Sel_JXL:108
+Sel_ROOM:1080002
+
+
+
+POST http://119.146.68.54/jwweb/ZNPK/KBFB_LessonSel_rpt.aspx HTTP/1.1
+Host: 119.146.68.54
+Connection: keep-alive
+Content-Length: 42
+Pragma: no-cache
+Cache-Control: no-cache
+Origin: http://119.146.68.54
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36
+Content-Type: application/x-www-form-urlencoded
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+DNT: 1
+Referer: http://119.146.68.54/jwweb/ZNPK/KBFB_LessonSel.aspx
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.8
+Cookie: ASP.NET_SessionId=3ds1kdmfupvggd5513ear2rn
+
+Sel_XNXQ=20161&Sel_KC=020088&gs=2&txt_yzm=
+
+POST http://119.146.68.54/Jwweb/ZNPK/KBFB_RoomSel_rpt.aspx HTTP/1.1
+Host: 119.146.68.54
+Accept: */*
+Connection: Keep-Alive
+Cookie: name=value; ASP.NET_SessionId=tj4wmgn1nx2q0j45f5atj1iy
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36
+Referer: Referer:http://119.146.68.54/Jwweb/ZNPK/KBFB_RoomSel.aspx
+Content-Length: 42
+Content-Type: application/x-www-form-urlencoded
+
+Sel_XNXQ=20161&gs=2&txt_yzm=&Sel_KC=020088
+
+GET http://www.chsi.com.cn/cet/query?zkzh=123123123123121&xm=%E6%AC%A7%E9%98%B3 HTTP/1.1
+Host: www.chsi.com.cn
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36 TheWorld 7
+Referer: http://www.chsi.com.cn/cet/
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: zh-CN,zh;q=0.8
+Cookie: JSESSIONID=0DB94141B5C4693F9B23BA8EB9A6C5ED; acw_tc=AQAAAEc4+C9w/A4AC0SSd2EABeQhtV4w; JSESSIONID=C4DF8F3C4FC7C903BD91B30D9A15E8EB; _ga=GA1.3.1577514142.1490774075; __utmt=1; __utma=65168252.1577514142.1490774075.1490774225.1490793759.2; __utmb=65168252.5.10.1490793759; __utmc=65168252; __utmz=65168252.1490774225.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)
+
+
+
+$posfield = "__VIEWSTATE=&txtStuID={$studentID}&txtName={$studentName}&txtIDCard={$studentIDCard}&btnLogin==%E6%9F%A5++%E8%AF%A2&txtCertificateNO=&txtCardNO=";
+
+http://jx.cltt.org/Web/Login/PSCP01001.aspx
+http://gd.cltt.org/Web/Login/PSCP01001.aspx
+
+http://chaxun.neea.edu.cn/examcenter/myimage.jsp
+
+GET http://chaxun.neea.edu.cn/examcenter/querydata.cn?op=doQuerySF&examid=4723&date=Thu%20Mar%2030%202017%2009:43:23%20GMT+0800%20(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4) HTTP/1.1
+Host: chaxun.neea.edu.cn
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Accept: application/json, text/javascript, */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36
+DNT: 1
+Referer: http://chaxun.neea.edu.cn/examcenter/query.cn?op=doQueryCond&sid=300&pram=results
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: zh-CN,zh;q=0.8
+Cookie: JSESSIONID=61B8D63413997697C2108B5D355F22E7; BIGipServercet46-chaxun-pool=386312384.20480.0000
+
+GET http://weixin.sogou.com/weixin?type=2&query=%E5%A5%B3%E9%9D%92%E5%B9%B4&ie=utf8&s_from=input&_sug_=y&_sug_type_=&w=01019900&sut=1929&sst0=1490854586745&lkt=1%2C1490854586642%2C1490854586642 HTTP/1.1
+Host: weixin.sogou.com
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+DNT: 1
+Referer: http://weixin.sogou.com/
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: zh-CN,zh;q=0.8
+Cookie: IPLOC=CN4413; SUID=104492773320910A0000000058DCA2B1; SUV=1490854577960358; pgv_pvi=9540603904; pgv_si=s8999638016; ABTEST=0|1490854581|v1; SNUID=5105D035424709ADE3FC71F142D13E49; weixinIndexVisited=1; sct=2; JSESSIONID=aaaHX0DJaJ3hu_8L4YtSv
+
+http://weixin.sogou.com/weixin?type=2&query=%E5%A5%B3%E9%9D%92%E5%B9%B4
+
+GET http://weixin.sogou.com/weixin?type=2&s_from=input&query=%E5%A5%B3%E9%9D%92%E5%B9%B4&ie=utf8&_sug_=y&_sug_type_=&w=01019900&sut=868&sst0=1490858456557&lkt=1%2C1490858456454%2C1490858456454 HTTP/1.1
+Host: weixin.sogou.com
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+DNT: 1
+Referer: http://weixin.sogou.com/weixin?type=2&s_from=input&query=%E3%80%90%E5%A5%B3%E9%9D%92%E5%B9%B4&ie=utf8&_sug_=n&_sug_type_=&w=01019900&sut=1356&sst0=1490858449807&lkt=1%2C1490858449705%2C1490858449705
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: zh-CN,zh;q=0.8
+Cookie: 
+ABTEST=0|1490855869|v1; 
+SNUID=0457866313165FFFFA939AFA14BFB287; 
+IPLOC=CN4413; 
+SUID=10449277771A910A0000000058DCA7BD; 
+JSESSIONID=aaacPGQrzHmFjcIG80tSv; 
+SUV=00947A5E7792441058DCA7BDC05A8841; 
+sct=4
+
+Cookie: 
+ABTEST=0|1490860063|v1; 
+SNUID=84D701E49391DF797BE4FA6E940A876D; 
+IPLOC=CN4413; 
+SUID=10449277771A910A0000000058DCB81F; 
+SUID=104492773320910A0000000058DCB81F; 
+JSESSIONID=aaaptJyY5wELt9stdYtSv; 
+SUV=00D773517792441058DCB81FEE0CD280; 
+weixinIndexVisited=1; 
+
+ppinf=5|1490860081|1492069681|dHJ1c3Q6MToxfGNsaWVudGlkOjQ6MjAxN3x1bmlxbmFtZTo5OkRlZXBLb2xvc3xjcnQ6MTA6MTQ5MDg2MDA4MXxyZWZuaWNrOjk6RGVlcEtvbG9zfHVzZXJpZDo0NDpvOXQybHVHRXlTall6NldCaEtzT3NqTW5uSHA0QHdlaXhpbi5zb2h1LmNvbXw; 
+pprdig=cUgZNIrqhK_GR1k43C4lfxgKsLjj1CkH1MLbvihzmfFMzZLkcccl7VrI7bI-RyNievnHAPJuMhw72XugVRlqeIwBzYYKuwGtxQhD8VywM464tDtp76TbVYRyAehBEEXvESAjHP3SCofqONIzAFPxqWoXKIqteeV6D-vhKwlcfRo; sgid=; 
+ppmdig=14908600810000003f356a2c416067863641b0553b8b97cb
+
+
+Cookie: 
+
+'ABTEST'=>'0|1490860063|v1',
+'SNUID'=>'84D701E49391DF797BE4FA6E940A876D', 
+'IPLOC'=>'CN4413', 
+'SUID'=>'10449277771A910A0000000058DCB81F', 
+'SUID'=>'104492773320910A0000000058DCB81F', 
+'JSESSIONID'=>'aaaptJyY5wELt9stdYtSv', 
+'SUV'=>'00D773517792441058DCB81FEE0CD280', 
+'weixinIndexVisited'=>'1', 
+'ppinf'=>'5|1490860081|1492069681|dHJ1c3Q6MToxfGNsaWVudGlkOjQ6MjAxN3x1bmlxbmFtZTo5OkRlZXBLb2xvc3xjcnQ6MTA6MTQ5MDg2MDA4MXxyZWZuaWNrOjk6RGVlcEtvbG9zfHVzZXJpZDo0NDpvOXQybHVHRXlTall6NldCaEtzT3NqTW5uSHA0QHdlaXhpbi5zb2h1LmNvbXw', 
+'pprdig'=>'cUgZNIrqhK_GR1k43C4lfxgKsLjj1CkH1MLbvihzmfFMzZLkcccl7VrI7bI-RyNievnHAPJuMhw72XugVRlqeIwBzYYKuwGtxQhD8VywM464tDtp76TbVYRyAehBEEXvESAjHP3SCofqONIzAFPxqWoXKIqteeV6D-vhKwlcfRo', 'sgid'=>'', 
+'ppmdig'=>'14908600810000003f356a2c416067863641b0553b8b97cb'
+
+http://weixin.sogou.com/weixin?type=2&ie=utf8&query=%E5%A5%B3%E9%9D%92%E5%B9%B4&tsn=5&ft=2017-02-28&et=2017-03-30&interation=null&wxid=oIWsFtx7ZigNXPYHxgruIJb2Cx_E&usip=lovenqn&from=tool
+
+http://weixin.sogou.com/weixin?type=2&ie=utf8&query=%E5%A5%B3%E9%9D%92%E5%B9%B4&tsn=5&ft=2017-02-01&et=2017-03-01&interation=null&wxid=&usip=lovenqn&from=tool
+
+Cookie: 
+
+'ABTEST'=>'0|1490855869|v1',
+'SNUID'=>'0457866313165FFFFA939AFA14BFB287',
+'IPLOC'=>'CN4413',
+'SUID'=>'10449277771A910A0000000058DCA7BD',
+'SUID'=>'104492773320910A0000000058DCA7BD',
+'JSESSIONID'=>'aaacPGQrzHmFjcIG80tSv',
+'SUV'=>'00947A5E7792441058DCA7BDC05A8841',
+'sct'=>'4'
+
+http://weixin.sogou.com/weixin
+?type=2&ie=utf8
+&query=%E5%A5%B3%E9%9D%92%E5%B9%B4
+&tsn=5
+&ft=2017-03-02
+&et=2017-04-01
+&interation=null
+&wxid=oIWsFtx7ZigNXPYHxgruIJb2Cx_E
+&usip=lovenqn
+&from=tool
+
+Cookie: 
+ABTEST=0|1490855869|v1; 
+SNUID=0457866313165FFFFA939AFA14BFB287; 
+IPLOC=CN4413; 
+SUID=10449277771A910A0000000058DCA7BD; 
+SUID=104492773320910A0000000058DCA7BD; 
+JSESSIONID=aaacPGQrzHmFjcIG80tSv; 
+SUV=00947A5E7792441058DCA7BDC05A8841; 
+sct=4; 
+PHPSESSID=1s3b8afldcnvs54k44s0ph8bu7; 
+SUIR=0457866313165FFFFA939AFA14BFB287; 
+seccodeRight=success; 
+successCount=1|Thu, 30 Mar 2017 13:29:24 GMT; 
+refresh=1
+
+
+Cookie: 
+ABTEST=0|1490860063|v1; 
+SNUID=84D701E49391DF797BE4FA6E940A876D; 
+IPLOC=CN4413; SUID=10449277771A910A0000000058DCB81F; SUID=104492773320910A0000000058DCB81F; 
+JSESSIONID=aaaptJyY5wELt9stdYtSv; 
+SUV=00D773517792441058DCB81FEE0CD280; 
+weixinIndexVisited=1; 
+PHPSESSID=mjiutfabtb262fu9khiee6qs24; 
+SUIR=84D701E49391DF797BE4FA6E940A876D; 
+seccodeErrorCount=1|Thu, 30 Mar 2017 14:00:35 GMT; 
+seccodeRight=success; 
+successCount=1|Thu, 30 Mar 2017 14:00:43 GMT
+
+
+「1」无水印图片「2」好TM尴尬真理！间歇性踌躇满志，持续性混吃等死。说的是你吗？用意何在？「3」点餐辞职「4」男朋友动力一个道理「5」这衣服好神奇「6」自寻死路盲文「7」看什么看，这就是你的未来「8」巴黎唐人街春节游行重温了一下「9」有被陈乔恩这句话触到：别人的看法，真的不用在意。别总因为迁就别人就委屈自己，这个世界没几个人值得你总弯腰。 ????“如果老去关心别人怎么想，那你什么事都做不成。「10」终于知道这位大妈的长相了没毛病「11」世界上最没用的东西是什么？「12」能否谈上恋爱更多的还是凭运气。「13」因为是像梦境一样的人，所以才会像梦一样消失。「14」boys/girls ROOM 「15」你见过什么搞笑的过度解读的例子？「16」恋爱三天VS三年的区别，是这样嘛「17」没人会因为你整天说情话而喜欢你。 ????「18」你们小时候的零花钱主要都花在哪了「19」一张照片胜过千言万语，人世百态，总有些照片，让人心有戚戚焉。 ????「20」人称“一美”，主演过《X战警》等一系列卖座电影的苏格兰演员James McAvoy，前几天给一名患癌少女捐赠了五万英镑约合43万人民币的善款。跳伞、踢球、捐钱、去当地做志愿者，人美心善的“一美”，一直这样，用自己的行动力，低调做着善事，回馈这个世界。 「21」最近一趟从西雅图飞往旧金山的航班上，一名空服凭着敏锐的观察力，机智果敢地救出了一个被人贩子拐卖的女孩，挽救了这名女孩的人生. ????「22」风景「23」动漫「24」福利「25」想要一条这样的咸鱼改行，当教练当香蕉与大肠相遇~~~~神奇的脑洞料理就这么产生了「26」【看相遇】对面走过来一个人，撞上了叫做爱情；对面开过来一辆车，撞上了叫做车祸。可惜车与车总是撞，人与人却总是让。「27」【看虚拟】虚拟关系是不能解决任何问题的 你们建立的好感或者偏见 会在面对现实之后变得一文不值 也就是说这之前的沟通都是无效的 要和一个人建立关系 就见面后再说吧 别再网上说一堆虚无缥缈的了。「28」【看艺术】艺术 为什么不容易过时？因为它从来没有流行过。「29」【看距离】有钱 有权的人 不断地在主动制造与穷人产生距离的机会 他们会先给你一些甜点 然后把门关了「30」【看奋斗】喜欢 不一样的起床模式 但前提真的依然是要用自己喜欢的方式赚刚好够用的钱 不然 就只有一种起床模式私房菜：糖渍桂花的做法标题：不对亲近的人发脾气是教养 。
+
+「1」无水印图片盼我疯魔 还盼我孑孓不独活 想我冷艳 还想我轻佻又下贱「2」天青色等烟雨 而你们是不是在等我更新？木雕黑背，足以乱真亮点自寻「3」来！各位壮士，趁热干了这杯“反鸡汤”「4」真正的好朋友。高考和大学考试的对比，无法反驳！希望人人都有自知之明我本来不喜欢化妆的针不扎在你身上，你永远不知道疼。「5」好有道理「6」没毛病「7」没有性基础好神奇一句话解决情侣间90％的矛盾。你是个好男孩好像哪里不对「8」当你觉得自己胖的时候，你可能不知道，那只是刚刚开始「9」憋屈「10」来玩一个辨识度的小游戏【初级版】：以下是小猪罗志祥的女朋友周扬清，请记住她的脸再来，号称“天王嫂”的郭富城新女友方媛，请记住她的脸林更新前绯闻女友王柳雯，请记住她的脸“国民老公”王思聪前女友雪梨，请记住她的脸接下来厉害了！提问：请从下方的图中找出天王嫂方媛哈？？？？【进阶版】：天王嫂方媛的照片请大家再看一眼！题来了！请在以上照片中找出方媛！怎么办，我感觉自己似乎是瞎了一言不合逼死脸盲之【终极版】：天下网红一张脸，同脸同鼻同医生，我选择狗带......整容脸不漂亮吗？当然不是她们的眼睛、脸型、鼻子......都有经过精心的设计欧式大眼、锥子脸、高鼻梁因为想要追求美的定义大同小异所以张张脸才会像流水线下生产出来的产品毫无辨识度美，却并不能让人记住。丑得别具一格又如何？宋X宝？罗X凤？王X强？X渤？特色虽有，却不能让人觉得赏心悦目美和特色不可兼得？也不见得「11」女子和“男友”交往一年被骗走一百多万 完全不知对方居然是个女的。被害人雯雯说，自己和“男朋友”交往一年被骗了一百多万并欠下了高利贷。当民警将雯雯“男友”的信息输入户籍系统进行查询时，却发现身份信息显示这个“男朋友”性别竟然是女。据雯雯说，她从来没有怀疑过“男友”的性别。由于“男友”人胖，有点胸部雯雯也觉得正常。刘某的妻子长相漂亮，刘某便用妻子的照片当头像，假装“妹子”到处诈骗“痴情男”，总共骗了7万多。而骗来的钱，都被刘某打赏给了女主播。刘某被抓后还感慨：什么样的傻子都有啊！刘某获刑3年7个月。「12」两百平米的供暖设施「13」这绝对是只色猫「14」深深的伤害了我「15」人是可以貌相的「16」岛国一小姑娘想要个娃娃屋，央求爷爷给做一个，爷爷说我也不懂洋玩意，给你做个和式的吧...然后就诞生出了这个「17」有故事的买家「18」你是怎么知道的？骗你我是小狗！喜欢吃榴莲么？「19」没有任何特长是种什么体验？「20」如果妈妈比女儿漂亮，那么两个人分别会有怎样的心理体验？「21」家里的狗突然冲到爸爸面前狂吠，咬裤腿咬鞋子，把他拽到家附近的水坝边。令人震惊的一幕出现，两岁的儿子面朝下地浮在水面上，毫无知觉。「22」荷兰耗资700万欧元，专门给翘首以盼15年的大熊猫修了一座超豪华的中式熊猫宫殿“Pandasia”！。。熊猫真的不是你想借就能借。。。待遇太好了「23」动漫「24」福利「25」功夫死神来了人与人之间的信任呢妈的，智障...「26」【看时间】有时候我们不得不承认，我们害怕时间的到来，更害怕时间说实话。「27」【看力量】真正的力量是：当所有的人都希望你崩溃的时候，你还可以聚精会神。「28」【看背叛】 这个世界上谁都有可能背叛你，除了你的知识和财富。「29」【看懦弱】柔弱不是你的错，但是懦弱你会一错再错。
+
+GET http://www.nvqingnian.net/new/ HTTP/1.1
+Host: www.nvqingnian.net
+Connection: keep-alive
+Cache-Control: max-age=0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36 TheWorld 7
+Referer: http://cn.bing.com/search?q=%E5%A5%B3%E9%9D%92%E5%B9%B4&go=%E6%90%9C%E7%B4%A2&qs=n&form=QBRE&sp=-1&pq=%E5%A5%B3%E9%9D%92%E5%B9%B4&sc=8-0&sk=&cvid=5782EA8C47354D99BCDE382DE883546A
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: zh-CN,zh;q=0.8
+Cookie: Yggw_2132_saltkey=ywHWp3qh; Yggw_2132_lastvisit=1490918614; Yggw_2132_sid=h6hKSP; Hm_lvt_47553862722398302f00d4a981a85e84=1490922216; Hm_lpvt_47553862722398302f00d4a981a85e84=1490922216; Yggw_2132_lastact=1490922217%09home.php%09misc; Yggw_2132_sendmail=1
+
+GET http://www.nvqingnian.net/new/index.php?page=2 HTTP/1.1
+Host: www.nvqingnian.net
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36 TheWorld 7
+Referer: http://www.nvqingnian.net/new/
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: zh-CN,zh;q=0.8
+Cookie: Yggw_2132_saltkey=ywHWp3qh; Yggw_2132_lastvisit=1490918614; Yggw_2132_sendmail=1; Yggw_2132_lastact=1490922247%09index.php%09list; Yggw_2132_sid=h6hKSP; Hm_lvt_47553862722398302f00d4a981a85e84=1490922216,1490922248; Hm_lpvt_47553862722398302f00d4a981a85e84=1490922248
+
+xld
+
+GET http://www.nvqingnian.net/portal.php?mod=view&aid=863 HTTP/1.1
+Host: www.nvqingnian.net
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.19 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+DNT: 1
+Referer: http://www.nvqingnian.net/new/index.php?page=2
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: zh-CN,zh;q=0.8
+Cookie: Yggw_2132_saltkey=bFvD1V4F; Yggw_2132_lastvisit=1490919032; Yggw_2132_sid=Fsv79u; Yggw_2132_lastact=1490922633%09home.php%09misc; pgv_pvi=9089432744; pgv_info=ssi=s364469059; Hm_lvt_47553862722398302f00d4a981a85e84=1490922634; Hm_lpvt_47553862722398302f00d4a981a85e84=1490922634; Yggw_2132_adclose_27=1
+
+td article_content
+
+_dsign=3cb42fa1
+_dsign=3cb42fa1
+portal.php?mod=view&aid=872&_dsign=3cb42fa1
+  
+portal.php?mod=view&aid=632&_dsign=7d59603f
+
+function getglobal($key, $group = null) {
+	global $_G;
+	$key = explode('/', $group === null ? $key : $group.'/'.$key);
+	$v = &$_G;
+	foreach ($key as $k) {
+		if (!isset($v[$k])) {
+			return null;
+		}
+		$v = &$v[$k];
+	}
+	return $v;
+}
+
+protected static function make_js($url){
+		$js = '<script type="text/javascript">';
+		$varname = array();
+		$codes = array();
+		$window = '_'.random(5);
+		$location = '_'.random(5);
+		$href = '_'.random(5);
+		$replace = '_'.random(5);
+		$assign = '_'.random(5);
+		$codes[$window] = "$window = window;";
+		$codes[$location] = "$location = location;";
+		$codes[$href] = "$href = 'href';";
+		$codes[$replace] = "$replace = 'replace';";
+		$codes[$assign] = "$assign = 'assign';";
+		$codes['getname'] = 'function getName(){var caller=getName.caller;if(caller.name){return caller.name} var str=caller.toString().replace(/[\s]*/g,"");var name=str.match(/^function([^\(]+?)\(/);if(name && name[1]){return name[1];} else {return \'\';}}';
+		$jskeywords = array('for' => '', 'case' => '', 'if' => '', 'else' => '', 'try'  => '', 'new' => '', 'eval' => '', 'var' => ''); //js關鍵字
+		$methods = array(1,2,3,4,5,6,7);
+		$lenths = array(2,2,3,4);
+		for($i = 0, $l = strlen($url); $i < $l; $i++) {
+			$len = $lenths[array_rand($lenths)];
+			$cflag = $len % 2;
+			$var = random($len);
+			if(ctype_digit($var[0])) {
+				$var = '_'.$var;
+			}
+			while(isset($varname[$var])) {
+				$var = random(3);
+				if(ctype_digit($var[0])) {
+					$var = '_'.$var;
+				}
+			}
+			$val = substr($url, $i, $len-1);
+			$i = $i + $len - 2;
+			switch ($methods[array_rand($methods)]) {
+				case 1:
+					if($cflag) {
+						$varname[$var] = "'$val'";
+					} else {
+						$codes[] = "$var='$val';";
+						$varname[$var] = $var;
+					}
+					break;
+				case 2:
+					if(!isset($jskeywords[$val]) && ctype_alnum($val) && !ctype_digit($val[0])) {
+						$codes[] = "function $var({$var}_){function $val(){return getName();};return $val();return '{$var}'}";
+						$varname[$var] = "$var('".random($len)."')";
+					} else {
+						$codes[] = "function $var(){'return $var';return '$val'}";
+						$varname[$var] = $var.'()';
+					}
+					break;
+				case 3:
+					if($cflag) {
+						$codes[] = "$var=function({$var}_){'return $var';return {$var}_;};";
+						$varname[$var] = "$var('$val')";
+					} else {
+						$codes[] = "$var=function(){'return $var';return '$val';};";
+						$varname[$var] = "$var()";
+					}
+					break;
+				case 4:
+					if($cflag) {
+						$varname[$var] = "(function({$var}_){'return $var';return {$var}_})('$val')";
+					} else {
+						$varname[$var] = "(function(){'return $var';return '$val'})()";
+					}
+					break;
+				case 5:
+					if(!isset($jskeywords[$val]) && ctype_alnum($val) && !ctype_digit($val[0])) {
+						$codes[] = "function $var({$var}_){function _{$var[0]}({$var}_){function $val(){return getName();}function {$var}_(){}return $val();return {$var}_}; return _{$var[0]}({$var}_);}";
+						$varname[$var] = "$var('".random($len)."')";
+					} else {
+						$codes[] = "function $var(){'$var';function _{$var[0]}(){return '$val'}; return _{$var[0]}();}";
+						$varname[$var] = $var.'()';
+					}
+					break;
+				case 6:
+					if($cflag) {
+						$codes[] = "$var=function({$var}_){var _{$var[0]}=function({$var}_){'return $var';return {$var}_;}; return _{$var[0]}({$var}_);};";
+						$varname[$var] = "$var('$val')";
+					} else {
+						$codes[] = "$var=function(){'$var';var _{$var[0]}=function(){return '$val'}; return _{$var[0]}();};";
+						$varname[$var] = $var.'()';
+					}
+					break;
+				case 7:
+					if($cflag) {
+						$varname[$var] = "(function({$var}_){return (function({$var}_){return {$var}_;})({$var}_);})('$val')";
+					} else {
+						$varname[$var] = "(function(){'return $var';return (function(){return '$val';})();})()";
+					}
+					break;
+			}
+		}
+		shuffle($codes);
+		$js .= implode('', $codes);
+		$hrefheader = array('location.href=', 'location=', "{$location}[$href]=", "location[$href]=",
+					'location.replace(', 'location.assign(', "location[$assign](", "location[$replace](");
+		$hreffooter = array('','','','',')',')',')',')');
+		$index = array_rand($hrefheader);
+		$js .= $hrefheader[$index]. implode('+', $varname).$hreffooter[$index].';';
+		$fix = array("{$window}[$href]=", "{$window}['href']=", "{$window}.href=");
+		$js .= $fix[array_rand($fix)].implode('+', array_slice($varname, 0, 8)).';';
+		$js .= '</script>';
+		return $js;
+	}

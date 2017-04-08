@@ -15,12 +15,16 @@ class ConfigMgr extends Component {//module config manager
   }
 
   public function save(){
-    $_config_from_class = (array) $this;
-    foreach($this->_config_from_class as $key=> $value){
-      $this->_config[$key] = $_config_from_class[$key];
+    foreach($this as $key=>$value){
+      if(strpos($key,'_') !== 0){
+        $this->_config->$key = $value;
+      }
     }
     try{
-      file_put_contents($this->_path, json_encode($this->_config));
+      $json = preg_replace_callback("#\\\u([0-9a-f]{4})#i",function($match){
+        return iconv('UCS-2BE', 'UTF-8', pack('H4',$match[1]));
+      } , json_encode($this->_config));
+      file_put_contents($this->_path, $json);
     }catch(Exception $e){
       F::end(3,$e->getMessage());
     }
@@ -34,7 +38,7 @@ class ConfigMgr extends Component {//module config manager
     if(file_exists($this->_path)){
       $str = file_get_contents($this->_path);
       $this->_config = json_decode($str, false);//当然是使用->方式访问啦~
-      
+
       foreach($this->_config as $key=> $value){
         $this->{$key} = $value;
       }//用哪个好捏,通过__get转发,还是复制捏??还是要改为转发的

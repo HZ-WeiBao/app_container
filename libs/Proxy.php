@@ -20,7 +20,13 @@ class Proxy extends Component {
         //这里是包括component的runtime config
         $this->Curl->timeout(1);
         $this->Curl->autoReferer(true);
+        $this->Curl->autoConvertTo('utf-8');
         $this->Curl->cookies(array('name'=>'value'));
+        //Url自动补全
+        $this->Curl->Hook->before('url',function(&$uri,$args=array()){
+            $uri = Proxy::$baseUrl . $uri;
+        });
+        //环境工具配置复用
         __base__::$proxy = $this;
 
         //write($uri,$extension,$conent)
@@ -41,10 +47,13 @@ class Proxy extends Component {
         
     // }
 
-    public function __call($func, $arguments){//对,还是有点优势的,因为从执行流上面就暗示了没有加载过嘛
-      include 'functions/' . $func . '.php';
-      $this->{$func} = new $func;
-      return call_user_func_array(array($this,$func), $arguments);
+    public function get__($variable){
+        $func = dirname(__FILE__).'/functions/' . $variable . '.php';
+        if(file_exists($func)){
+            include $func;
+            $this->{$variable} = new $variable;
+            return $this->{$variable};
+        }
     }
 
     public function updateFields(array $fields, bool $newTerm){
@@ -63,7 +72,7 @@ class Proxy extends Component {
 
         $responseText = $this->Curl
                              ->post()
-                             ->url(self::$baseUrl.'_data/home_login.aspx')
+                             ->url('_data/home_login.aspx')
                              ->data(http_build_query(array(
                                 'dsdsdsdsdxcxdfgfg' => $_hash($sid . $_hash($pwd) . self::$schoolCode),
                                 'fgfggfdgtyuuyyuuckjg' => $_hash($_hash(strtoupper($captcha)) . self::$schoolCode),
@@ -72,7 +81,7 @@ class Proxy extends Component {
                                 // 'txt_pewerwedsdfsdff' => '',
                                 // 'txt_sdertfgsadscxcadsads' => '',
                             )))
-                        ->getResponse()->convert('gb2312','utf-8')->body;
+                        ->getResponse()->body;
 
         //parse
         if (!strpos($responseText, '正在加载权限数据')) {
@@ -108,9 +117,11 @@ class Proxy extends Component {
 
     public function getCaptcha() {
         return $this->Curl->get()
-                          ->url(self::$baseUrl.'sys/ValidateCode.aspx',array(
+                          ->url('sys/ValidateCode.aspx',array(
                               't' => rand(100,999)))
-                          ->referer('http://119.146.68.54/Jwweb/_data/home_login.aspx')
+                          ->headers(array(
+                              'Accept' => 'image/webp,image/*,*/*;q=0.8',
+                              'Referer' => 'http://119.146.68.54/Jwweb/_data/home_login.aspx' ))
                           ->getResponse()->body;
     }
 
@@ -125,10 +136,10 @@ class Proxy extends Component {
         $this->Curl->cookies(array('ASP.NET_SessionId' => $session));
     }
 
-    public function generateSessionId() {
+    public function generateSessionId($len = 24) {
         $str = '012345abcdefghijklmnopqrstuvwxyz';
         $result = '';
-        for ($i=0; $i < 24; $i++) {
+        for ($i=0; $i < $len; $i++) {
             $result .= $str[rand(0, strlen($str)-1)];
         }
         return $result;
@@ -161,5 +172,45 @@ class Proxy extends Component {
         $month = (int) date('m');
         return ($month < 2 || $month > 7 ? '0' : '1');
     }
-    
+    public function weekToNum($week_str){
+        //星期好判断数字比较好判断,所以星期使用数字储存表示0~6
+        $week_arr = ['一','二','三','四','五','六','日'];
+        foreach($week_arr as $i=>$value){
+            if($week_str == $value){
+                return $i;
+            }
+        }
+        return -1;
+    }
+
+    public function weeklyToNum($weekly_str){//单双周转换
+        $weekly_arr = ['','单','双'];
+        foreach($weekly_arr as $i=>$value){
+            if($weekly_str == $value){
+                return $i;
+            }
+        }
+        return -1;
+    }
+    public function explodeSections($sections){
+        preg_match('/(.+)\[(\d+)-?(\d+)?节\](.*)/i',trim($sections),$result);
+        return $result;
+    }
+    public function explodeWeek($weeks){
+        $week_array = explode(',',$weeks);
+        $week_result = [];
+        foreach($week_array as $value_){
+            $temp_arr = explode('-',$value_);
+            $temp_arr[0] = intval($temp_arr[0]);
+            if(count($temp_arr) == 2){
+                $temp_arr[1] = intval($temp_arr[1]);
+                for($i_ = $temp_arr[0] ; $i_ <= $temp_arr[1] ;$i_++){
+                    array_push($week_result,$i_);
+                }
+            }else{//就是等于1的时候
+                array_push($week_result,$temp_arr[0]);
+            }
+        }
+        return $week_result;
+    }
 }

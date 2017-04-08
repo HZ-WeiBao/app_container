@@ -17,7 +17,6 @@ class DataMgr extends Component {
     //也说明一个问题,当程序运行结果不符合预期的时候你会怀疑是不是语言的bug啊哈哈~~
     //注意只有命中的时候才Return
   }
-
   
   //module 接口
   public function rename($fromName,$fromExtension,$toName,$toExtension){//约定是这样的弄的通过一个过滤器之后的尾部处理,把一行不想复制的代码变成加上前面_

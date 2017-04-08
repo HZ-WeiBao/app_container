@@ -11,7 +11,7 @@ class Sql extends Component {
   protected $_where_value = null;
   protected $_limit = null;
   protected $_groupBy = null;
-  protected $_orderpBy = null;
+  protected $_orderBy = null;
   protected $_distinct = null;
   protected $_resultOrder = null;
   protected $_table = null;
@@ -38,6 +38,10 @@ class Sql extends Component {
     $this->_lastStatment = self::$dblink->prepare($queryStr);
     $this->_lastStatment->execute($this->toValueArr($params));
     return $this->_lastStatment->fetchAll(PDO::FETCH_CLASS);
+  }
+  public function exec($queryStr, $params=array()){
+    $this->_lastStatment = self::$dblink->prepare($queryStr);
+    return $this->_lastStatment->execute($this->toValueArr($params));
   }
   public function insert($params){
     $marks = array();
@@ -166,6 +170,7 @@ class Sql extends Component {
     $this->_where = $where;
     if($where_value != null && is_string($where))
       $this->_where_value = $where_value;
+    $this->_fetch();
     return $this;
   }
 
@@ -205,6 +210,16 @@ class Sql extends Component {
     $this->_resultOrder = 'ASC';
     return $this;
   }
+
+  //表级操作
+  public function truncate(){
+    $table = $this->getTable();
+    $this->checkFieldNames(array($table));
+    if(!$this->exec('TRUNCATE '.$table))
+      $this->error();
+    return true;
+  }
+
   public function __set($variable, $value){
     $this->{$variable} = $value;
   }
@@ -285,5 +300,8 @@ class Sql extends Component {
     // $this->_lastStatment->debugDumpParams();
 
     F::end(4,$errorMessage);
+  }
+  public function success(){
+    return $this->_lastStatment->rowCount();
   }
 }

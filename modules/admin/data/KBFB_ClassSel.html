@@ -1,0 +1,198 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+	<HEAD>
+		<title>行政班级课表</title>
+		<meta name="vs_snapToGrid" content="False">
+		<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+		<meta name="GENERATOR" Content="Microsoft Visual Studio .NET 7.1">
+		<meta name="CODE_LANGUAGE" Content="C#">
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<link rel="stylesheet" href="../_style/styles_Qry.css" type="text/css">
+		<script language="JavaScript" src='../include/scr/ind_HTML_hr.js'></script>
+		<script language="javascript" src='../XSCJ/Private/ind_PrintSet.js'></script>
+
+		<script language="javascript">
+			function ChkValue()
+			{
+				var vXZBJ;
+				var d='';
+				var schoolcode="10577";
+				try{
+					if(schoolcode == "10533" || schoolcode == "10842" || schoolcode == "10691")//中南大学、三门峡职业技术学院、云南民族大学
+					   vXZBJ=document.all.Sel_BJ.value;
+					else
+					  vXZBJ=document.all.Sel_XZBJ.value;
+					if((vXZBJ=="")||(vXZBJ=="Nothing")){
+						alert('需选定行政班级！');
+						if(schoolcode == "10533" || schoolcode == "10842" || schoolcode == "10691")//中南大学、三门峡职业技术学院、云南民族大学
+						   document.all.Sel_BJ.focus();
+					    else
+					       document.all.Sel_XZBJ.focus();
+						return false;
+					}
+					else if(document.all.txt_yzm.value=="" && d=="")
+					{
+					    alert("须录入验证码！");
+					    document.all.txt_yzm.focus();
+					    return false;
+					}
+					else{
+						form.method='post';
+						form.action='KBFB_ClassSel_rpt.aspx';
+						form.target='frmRpt';
+						form.submit();
+						return true;
+					}
+				}catch(e){}
+			}
+			
+			function ShowListValue(theID,vP)
+			{
+				var vNJ,vYX,vZY,vXZBJ,theURL;
+				
+				try{
+					if(vP=="NJYXZY"){
+						vYX=document.all.Sel_YX.value;
+						vNJ=document.all.Sel_NJ.value;
+						theURL="../XSXJ/Private/List_"+vP+".aspx?yx="+vYX+"&nj="+vNJ;
+					}else if(vP=="ZYBJ"){
+						vZY=document.all.Sel_ZY.value;
+						vNJ=document.all.Sel_NJ.value;
+						theURL="../XSXJ/Private/List_"+vP+".aspx?zy="+vZY+"&nj="+vNJ;
+					}else if(vP=="XNXQ_NJ"){
+						vXNXQ=document.all.Sel_XNXQ.value;
+						theURL="../XSXJ/Private/List_"+vP+".aspx?xnxq="+vXNXQ+"&str=shownj";
+						document.getElementById("Sel_YX").value="";
+						document.getElementById("Sel_ZY").value="";
+						document.getElementById("Sel_BJ").value="";						
+					}
+					window.vfrmRpt.location.href=theURL;
+				}
+				catch(e){}
+			}
+			function changexnxq(obj)
+			{
+			    if(obj.value!="")
+			    {
+			       window.vfrmRpt.location.href="Private/List_XZBJ.aspx?flag=1&xnxq="+obj.value+"&xzbj="+document.all.txtxzbj.value;
+			    }
+			}
+			function ShowListValue2()
+			{
+				var vXNXQ,theURL,bj;
+				var dt = new Date();
+				try{
+					vXNXQ=document.all.Sel_XNXQ.value;
+					bj = document.all.txtxzbj.value;
+					if(vXNXQ!="")
+					{
+						theURL="./Private/List_XZBJ.aspx?xnxq="+vXNXQ+"&xzbj="+bj+"&t="+dt.getMilliseconds();
+						window.vfrmRpt.location.href=theURL;
+					}
+				}
+				catch(e){}
+			}
+			
+			function chkRad(type){
+				if(type=="type1"){
+					document.all.span_area.style.display='none';
+				}else if(type=="type2"){
+					document.all.span_area.style.display='';
+				}
+			}
+			
+			function doPrint(){
+			    var note=window.navigator.userAgent;
+			    var IE=window.navigator.userAgent.indexOf('MSIE');
+				//alert(note);
+				if(note.indexOf('MSIE 6.0')>0 || note.indexOf('MSIE 7.0')>0 || note.indexOf('MSIE 10.0')>0 || (/rv:11.0/g.test(note)))
+				{
+					alert("请使用IE8、IE9、火狐(Firefox)或谷歌(Chrome)等浏览器打印！");
+				}
+				else if(IE>0)
+				{
+				    window.frames["frmRpt"].document.execCommand("Print",true);
+				}
+				else
+				{
+				    window.frames["frmRpt"].print();
+				}
+
+			}
+
+			function changeValidateCode(){document.getElementById("imgCode").src="../sys/ValidateCode.aspx?t="+new Date().getMilliseconds();}
+			//function doExport(){
+				//frmRpt.document.execCommand("Export",true);
+			//	Export();
+			//}
+			
+			//
+		</script>
+	</HEAD>
+	<body oncontextmenu="window.event.returnValue=false" ondragstart="window.event.returnValue=false" onsource="window.event.returnValue=false"  leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+		<form name="form" method="post" >
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%">
+				<tr>
+					<td valign="top" align="center">
+						<table width="660" border="0" cellspacing="0" cellpadding="0" align="center" height="26">
+							<tr>
+								<td valign="bottom" align="center"><b>行政班级课表</b></td>
+							</tr>
+							<tr>
+								<td valign="bottom" align="center"><script language="JavaScript">Draw_HR('99.5%')</script>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td height="52px">
+						<table width="660" border="0" align="center" cellpadding="0" cellspacing="0">
+						<tr><td colspan=2 align=left height=28px><table border=0><tr><td >学年学期&ensp;<select name='Sel_XNXQ'  style='WIDTH:165px' onchange=changexnxq(this)><option value='20161'>2016-2017学年第二学期</option><option value='20160'>2016-2017学年第一学期</option></select></td><td >行政班级&ensp;<Input type=text name=txtxzbj maxlength=10 onchange=ShowListValue2(this,'XNXQXZBJ') style='width:80'></td><td id=theXZBJ ><select name=Sel_XZBJ style="width:200"><option value=04031301>13财务管理1班</option><option value=04031302>13财务管理2班</option><option value=04031303>13财务管理3班</option><option value=04031304>13财务管理4班</option><option value=24091301>13产品设计1班</option><option value=12011301>13地理科学1班</option><option value=12011302>13地理科学2班</option><option value=07011301>13电气工程1班</option><option value=07011302>13电气工程2班</option><option value=07011303>13电气工程3班</option><option value=07011304>13电气工程4班</option><option value=07031301>13电信工程1班</option><option value=07031302>13电信工程2班</option><option value=07021301>13电信科技1班</option><option value=07021302>13电信科技2班</option><option value=03031301>13法学1班</option><option value=03031302>13法学2班</option><option value=09011301>13服装1班</option><option value=09011302>13服装2班</option><option value=09011303>13服装3班</option><option value=09011304>13服装4班</option><option value=09011305>13服装5班</option><option value=09081301>13服装与服饰设计1班</option><option value=09081302>13服装与服饰设计2班</option><option value=09081303>13服装与服饰设计3班</option><option value=08021301>13工程管理1班</option><option value=08021302>13工程管理2班</option><option value=01041301>13广播电视学1班</option><option value=01041302>13广播电视学2班</option><option value=04011301>13国际贸易1班</option><option value=04011302>13国际贸易2班</option><option value=04011303>13国际贸易3班</option><option value=01051301>13汉语国际教育1班</option><option value=06021301>13化工1班</option><option value=06021302>13化工2班</option><option value=06031301>13化学1班</option><option value=24081301>13环境设计1班</option><option value=14011301>13计算机1班</option><option value=14051302>13计算机2班</option><option value=14041301>13计算机教育1班</option><option value=08011301>13建筑学1班</option><option value=08011302>13建筑学2班</option><option value=03051301>13历史学1班</option><option value=03051302>13历史学2班</option><option value=12071301>13旅游管理1班</option><option value=12071302>13旅游管理2班</option><option value=12071303>13旅游管理3班</option><option value=2013220201>13美术教育1班</option><option value=24051301>13美术学1班</option><option value=24051302>13美术学2班</option><option value=02041301>13日语1班</option><option value=02041302>13日语2班</option><option value=14031301>13软件工程1班</option><option value=14031302>13软件工程2班</option><option value=03081301>13社会工作1班</option><option value=10041301>13社会体育1班</option><option value=04081301>13审计学1班</option><option value=04081302>13审计学2班</option><option value=13031301>13生物技术1班</option><option value=13011301>13生物科学1班</option><option value=13011302>13生物科学2班</option><option value=24071301>13视觉传达1班</option><option value=05011301>13数学1班</option><option value=05011302>13数学2班</option><option value=05011303>13数学3班</option><option value=05011304>13数学4班</option><option value=03011301>13思政教育1班</option><option value=03011302>13思政教育2班</option><option value=10011301>13体育教育1班</option><option value=10011302>13体育教育2班</option><option value=10011303>13体育教育3班</option><option value=10011304>13体育教育4班</option><option value=08041301>13土木工程1班</option><option value=08041302>13土木工程2班</option><option value=14021301>13网络工程1班</option><option value=14021302>13网络工程2班</option><option value=07041301>13物理学1班</option><option value=07041302>13物理学2班</option><option value=04041301>13物流管理1班</option><option value=04041302>13物流管理2班</option><option value=05021301>13信息管理1班</option><option value=03021301>13行政管理1班</option><option value=03021302>13行政管理2班</option><option value=26021301>13学前教育本1班</option><option value=26011301>13学前教育专1班</option><option value=23011301>13音乐表演1班</option><option value=23011302>13音乐表演2班</option><option value=23021301>13音乐教育1班</option><option value=23031301>13音乐学1班</option><option value=23031302>13音乐学2班</option><option value=06011301>13应用化学1班</option><option value=06011302>13应用化学2班</option><option value=05031301>13应用统计学1班</option><option value=02061301>13英语1班</option><option value=02061302>13英语2班</option><option value=02061303>13英语3班</option><option value=02061304>13英语4班</option><option value=02051301>13英语教育1班</option><option value=02051302>13英语教育2班</option><option value=04021301>13营销1班</option><option value=04021302>13营销2班</option><option value=04021303>13营销3班</option><option value=13021301>13园林1班</option><option value=13021302>13园林2班</option><option value=01011301>13中文1班</option><option value=01011302>13中文2班</option><option value=01011303>13中文3班</option><option value=01011304>13中文4班</option><option value=01011305>13中文5班</option><option value=04031401>14财务管理1班</option><option value=04031402>14财务管理2班</option><option value=04031403>14财务管理3班</option><option value=24091401>14产品设计1班</option><option value=12011401>14地理科学1班</option><option value=12011402>14地理科学2班</option><option value=07011401>14电气工程1班</option><option value=07011402>14电气工程2班</option><option value=07011403>14电气工程3班</option><option value=07011404>14电气工程4班</option><option value=07031401>14电信工程1班</option><option value=07031402>14电信工程2班</option><option value=07021401>14电信科技1班</option><option value=07021402>14电信科技2班</option><option value=03031401>14法学1班</option><option value=03031402>14法学2班</option><option value=09011401>14服装1班</option><option value=09011402>14服装2班</option><option value=09011403>14服装3班</option><option value=09011404>14服装4班</option><option value=09011405>14服装5班</option><option value=09011406>14服装6班</option><option value=09081401>14服装与服饰设计1班</option><option value=09081402>14服装与服饰设计2班</option><option value=09081403>14服装与服饰设计3班</option><option value=08021401>14工程管理1班</option><option value=01041401>14广播电视学1班</option><option value=01041402>14广播电视学2班</option><option value=04011401>14国际贸易1班</option><option value=04011402>14国际贸易2班</option><option value=04011403>14国际贸易3班</option><option value=01051401>14汉语国际教育1班</option><option value=06021401>14化工1班</option><option value=06021402>14化工2班</option><option value=06031401>14化学1班</option><option value=24081401>14环境设计1班</option><option value=14011401>14计算机1班</option><option value=14011402>14计算机2班</option><option value=08011401>14建筑学1班</option><option value=08011402>14建筑学2班</option><option value=03051401>14历史学1班</option><option value=03051402>14历史学2班</option><option value=24051401>14美术学1班</option><option value=24051402>14美术学2班</option><option value=02041401>14日语1班</option><option value=14031401>14软件工程1班</option><option value=14031402>14软件工程2班</option><option value=03081401>14社会工作1班</option><option value=10041401>14社会体育1班</option><option value=04081401>14审计学1班</option><option value=04081402>14审计学2班</option><option value=04081403>14审计学3班</option><option value=13031401>14生物技术1班</option><option value=13011401>14生物科学1班</option><option value=13011402>14生物科学2班</option><option value=24071401>14视觉传达1班</option><option value=05011401>14数学1班</option><option value=05011402>14数学2班</option><option value=05011403>14数学3班</option><option value=05011404>14数学4班</option><option value=03011401>14思政教育1班</option><option value=03011402>14思政教育2班</option><option value=10011401>14体育教育1班</option><option value=10011402>14体育教育2班</option><option value=10011403>14体育教育3班</option><option value=10011404>14体育教育4班</option><option value=08041401>14土木工程1班</option><option value=08041402>14土木工程2班</option><option value=14021401>14网络工程1班</option><option value=14021402>14网络工程2班</option><option value=07041401>14物理学1班</option><option value=04041401>14物流管理1班</option><option value=04041402>14物流管理2班</option><option value=05021401>14信息管理1班</option><option value=03021401>14行政管理1班</option><option value=03021402>14行政管理2班</option><option value=26021401>14学前教育1班</option><option value=26021402>14学前教育2班</option><option value=23011401>14音乐表演1班</option><option value=23011402>14音乐表演2班</option><option value=23031401>14音乐学1班</option><option value=23031402>14音乐学2班</option><option value=06011401>14应用化学1班</option><option value=06011402>14应用化学2班</option><option value=05031401>14应用统计学1班</option><option value=02011401>14英语1班</option><option value=02011402>14英语2班</option><option value=02061401>14英语师范1班</option><option value=02061402>14英语师范2班</option><option value=02061403>14英语师范3班</option><option value=04021401>14营销1班</option><option value=04021402>14营销2班</option><option value=13021401>14园林1班</option><option value=13021402>14园林2班</option><option value=01011401>14中文1班</option><option value=01011402>14中文2班</option><option value=01011403>14中文3班</option><option value=01011404>14中文4班</option><option value=01011405>14中文5班</option><option value=04031501>15财务管理1班</option><option value=04031502>15财务管理2班</option><option value=04031503>15财务管理3班</option><option value=04031504>15财务管理4班</option><option value=24091501>15产品设计1班</option><option value=12011501>15地理科学1班</option><option value=12011502>15地理科学2班</option><option value=07011501>15电气工程1班</option><option value=07011502>15电气工程2班</option><option value=07011503>15电气工程3班</option><option value=07011504>15电气工程4班</option><option value=07031501>15电信工程1班</option><option value=07031502>15电信工程2班</option><option value=07031503>15电信工程3班</option><option value=07031504>15电信工程4班</option><option value=07021501>15电信科技1班</option><option value=07021502>15电信科技2班</option><option value=07021503>15电信科技3班</option><option value=03031501>15法学1班</option><option value=03031502>15法学2班</option><option value=09011501>15服装1班</option><option value=09011502>15服装2班</option><option value=09011503>15服装3班</option><option value=09011504>15服装4班</option><option value=09011505>15服装5班</option><option value=09011506>15服装6班</option><option value=09081501>15服装与服饰设计1班</option><option value=09081502>15服装与服饰设计2班</option><option value=09081503>15服装与服饰设计3班</option><option value=08021501>15工程管理1班</option><option value=01041501>15广播电视学1班</option><option value=01041502>15广播电视学2班</option><option value=04011501>15国际贸易1班</option><option value=04011502>15国际贸易2班</option><option value=04011503>15国际贸易3班</option><option value=04011504>15国际贸易4班</option><option value=01051501>15汉语国际教育1班</option><option value=06021501>15化工1班</option><option value=06021502>15化工2班</option><option value=06031501>15化学1班</option><option value=24081501>15环境设计1班</option><option value=14011501>15计算机1班</option><option value=14011502>15计算机2班</option><option value=08011501>15建筑学1班</option><option value=08011502>15建筑学2班</option><option value=03051501>15历史学1班</option><option value=03051502>15历史学2班</option><option value=12071501>15旅游管理1班</option><option value=12071502>15旅游管理2班</option><option value=12071503>15旅游管理3班</option><option value=12071504>15旅游管理4班</option><option value=24051501>15美术学1班</option><option value=24051502>15美术学2班</option><option value=02041501>15日语1班</option><option value=02041502>15日语2班</option><option value=14031501>15软件工程1班</option><option value=14031502>15软件工程2班</option><option value=03081501>15社会工作1班</option><option value=10041501>15社会体育1班</option><option value=04081501>15审计学1班</option><option value=04081502>15审计学2班</option><option value=04081503>15审计学3班</option><option value=13031501>15生物技术1班</option><option value=13031502>15生物技术2班</option><option value=13011501>15生物科学1班</option><option value=13011502>15生物科学2班</option><option value=24071501>15视觉传达1班</option><option value=05011501>15数学1班</option><option value=05011502>15数学2班</option><option value=05011503>15数学3班</option><option value=05011504>15数学4班</option><option value=03011501>15思政教育1班</option><option value=10011501>15体育教育1班</option><option value=10011502>15体育教育2班</option><option value=10011503>15体育教育3班</option><option value=10011504>15体育教育4班</option><option value=08041501>15土木工程1班</option><option value=08041502>15土木工程2班</option><option value=14021501>15网络工程1班</option><option value=14021502>15网络工程2班</option><option value=07041501>15物理学1班</option><option value=07041502>15物理学2班</option><option value=04041501>15物流管理1班</option><option value=04041502>15物流管理2班</option><option value=05021501>15信息管理1班</option><option value=03021501>15行政管理1班</option><option value=03021502>15行政管理2班</option><option value=26021501>15学前教育1班</option><option value=26021502>15学前教育2班</option><option value=23011501>15音乐表演1班</option><option value=23011502>15音乐表演2班</option><option value=23031501>15音乐学1班</option><option value=23031502>15音乐学2班</option><option value=23031503>15音乐学3班</option><option value=23031504>15音乐学4班</option><option value=06011501>15应用化学1班</option><option value=06011502>15应用化学2班</option><option value=05031501>15应用统计学1班</option><option value=05031502>15应用统计学2班</option><option value=02011504>15英语4班</option><option value=02011505>15英语5班</option><option value=02011506>15英语6班</option><option value=2015020601>15英语师范1班</option><option value=2015020602>15英语师范2班</option><option value=2015020603>15英语师范3班</option><option value=04021501>15营销1班</option><option value=04021502>15营销2班</option><option value=13021501>15园林1班</option><option value=13021502>15园林2班</option><option value=01011501>15中文1班</option><option value=01011502>15中文2班</option><option value=01011503>15中文3班</option><option value=01011504>15中文4班</option><option value=01011505>15中文5班</option><option value=2016090801>16表演1班</option><option value=2016040301>16财务管理1班</option><option value=2016040302>16财务管理2班</option><option value=2016040303>16财务管理3班</option><option value=2016040304>16财务管理4班</option><option value=2016220801>16产品设计1班</option><option value=2016120101>16地理科学1班</option><option value=2016120102>16地理科学2班</option><option value=2016120103>16地理科学3班</option><option value=2016070101>16电气工程1班</option><option value=2016070102>16电气工程2班</option><option value=2016070103>16电气工程3班</option><option value=2016070104>16电气工程4班</option><option value=2016070301>16电信工程1班</option><option value=2016070302>16电信工程2班</option><option value=2016070303>16电信工程3班</option><option value=2016070304>16电信工程4班</option><option value=2016070201>16电信科技1班</option><option value=2016070202>16电信科技2班</option><option value=2016070203>16电信科技3班</option><option value=2016030301>16法学1班</option><option value=2016030302>16法学2班</option><option value=2016090101>16服装1班</option><option value=2016090102>16服装2班</option><option value=2016090103>16服装3班</option><option value=2016090104>16服装4班</option><option value=2016090105>16服装5班</option><option value=2016090106>16服装6班</option><option value=2016090701>16服装与服饰1班</option><option value=2016090702>16服装与服饰2班</option><option value=2016080201>16工程管理1班</option><option value=2016080202>16工程管理2班</option><option value=2016010401>16广播电视学1班</option><option value=2016040101>16国际贸易1班</option><option value=2016040102>16国际贸易2班</option><option value=2016010501>16汉语国际教育1班</option><option value=2016060201>16化工1班</option><option value=2016060202>16化工2班</option><option value=2016060203>16化工3班</option><option value=2016060301>16化学1班</option><option value=2016220701>16环境设计1班</option><option value=2016140101>16计算机1班</option><option value=2016140102>16计算机2班</option><option value=2016080101>16建筑学1班</option><option value=2016080102>16建筑学2班</option><option value=2016080103>16建筑学3班</option><option value=2016080104>16建筑学4班</option><option value=2016030501>16历史学1班</option><option value=2016120301>16旅游管理1班</option><option value=2016120302>16旅游管理2班</option><option value=2016220401>16美术学1班</option><option value=2016020401>16日语1班</option><option value=2016020402>16日语2班</option><option value=2016140301>16软件工程1班</option><option value=2016140302>16软件工程2班</option><option value=2016140303>16软件工程3班</option><option value=2016140304>16软件工程4班</option><option value=2016020901>16商务英语1班</option><option value=2016020902>16商务英语2班</option><option value=2016030801>16社会工作1班</option><option value=2016100401>16社会体育1班</option><option value=2016040601>16审计学1班</option><option value=2016040602>16审计学2班</option><option value=2016040603>16审计学3班</option><option value=2016130301>16生物技术1班</option><option value=2016130302>16生物技术2班</option><option value=2016130101>16生物科学1班</option><option value=2016130102>16生物科学2班</option><option value=2016040201>16市场营销1班</option><option value=2016040202>16市场营销2班</option><option value=2016220601>16视觉传达1班</option><option value=2016050101>16数学1班</option><option value=2016050102>16数学2班</option><option value=2016050103>16数学3班</option><option value=2016030101>16思政教育1班</option><option value=2016100101>16体育教育1班</option><option value=2016100102>16体育教育2班</option><option value=2016100103>16体育教育3班</option><option value=2016080401>16土木工程1班</option><option value=2016080402>16土木工程2班</option><option value=2016140201>16网络工程1班</option><option value=2016140202>16网络工程2班</option><option value=2016070401>16物理学1班</option><option value=2016040401>16物流管理1班</option><option value=2016040402>16物流管理2班</option><option value=2016050201>16信息管理1班</option><option value=2016030201>16行政管理1班</option><option value=2016240201>16学前教育1班</option><option value=2016240202>16学前教育2班</option><option value=2016210101>16音乐表演1班</option><option value=2016210102>16音乐表演2班</option><option value=2016210301>16音乐学1班</option><option value=2016210302>16音乐学2班</option><option value=2016210303>16音乐学3班</option><option value=2016060101>16应用化学1班</option><option value=2016060102>16应用化学2班</option><option value=2016060103>16应用化学3班</option><option value=2016050301>16应用统计学1班</option><option value=2016050302>16应用统计学2班</option><option value=2016020601>16英语师范1班</option><option value=2016020602>16英语师范2班</option><option value=2016130201>16园林1班</option><option value=2016130202>16园林2班</option><option value=2016010101>16中文1班</option><option value=2016010102>16中文2班</option><option value=2016010103>16中文3班</option><option value=2016010104>16中文4班</option></select></td></tr></table>
+								
+								</td>
+							</tr>
+							<tr>
+								<td align="left" id="span_area1">
+									<input type="radio" checked name="type" value="1" onclick="chkRad('type1')" id="gs1">&nbsp;<label for="gs1">格式一</label>
+									<input type="radio" name="type" value="2" onclick="chkRad('type2')" id="gs2">&nbsp;<label for="gs2">格式二</label> 
+									<span id="span_area" style="display:none;color:#000">
+										<input type="checkbox" name="chkrxkc" value="1" id="rxkc">&nbsp;<label for="rxkc">不含公共任选课程</label>
+									</span>
+									<label >验证码&nbsp;<input type="text" name="txt_yzm" id="txt_yzm" maxlength="4" style="width:40px">
+									<img id="imgCode" src="../sys/ValidateCode.aspx" onclick="changeValidateCode()" alt="单击可更换图片！" style="CURSOR: pointer;width:70px;height:24px"></label>
+								</td>
+								<td width="30%" align="right">
+									<input name="btnSearch" type="button" value="检索" class="button" onclick="ChkValue()">
+									<input type="button" name="btn_dy" id="print" value="打印" class="but20" onclick='doPrint()'>
+									<!--%if(schoolcode == "10533"){%fg>
+									<input type="button" name="button" id="Export"  value="导出" class="but20" onclick="doExport()" >
+									<g%g}g%g-->
+								</td>
+							</tr>
+							<tr>
+								
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" align="center" height="100%">
+						<iframe name="vfrmRpt" src="" style="DISPLAY:none" width="0" height="0" frameborder="0">
+						</iframe><iframe name="frmRpt" src="KBFB_ClassSel_rpt.aspx" width="99%" height="98%" frameborder="1">
+						</iframe>
+					</td>
+				</tr>
+			</table>
+			<script language="javascript">
+			if("10577"=="10255")
+			{
+				document.getElementById("span_area1").style.display='none';
+			}
+			
+			</script>
+		</form>
+	</body>
+</HTML>
