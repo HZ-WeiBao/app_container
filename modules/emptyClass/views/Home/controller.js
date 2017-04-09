@@ -22,7 +22,7 @@ exports.actionIndex = function() {
     setTimeout(function() {
         document.querySelector('.module_body').classList.remove('noneAnimation');
         document.querySelector('.module_body').style.opacity = 1;
-    }, 0);
+    }, 35);
     console.log('首页加载成功~~send from 小小框架~~');
     week_selection.init();
     building_selection.init();
@@ -64,7 +64,7 @@ exports.actionQuery = function() {
                     result[i]['floor'] = result[i]['room'].match(/-\w*?(\d)/i)[1];
                 }
             }
-            console.log(result);
+            // console.log(result);
             for (var i = 0; i < result.length; i++) {
                 if (!checkIn(result[i]['floor'], floor)) {
                     floor.push(result[i]['floor']);
@@ -171,8 +171,11 @@ widget.add('singleSelect', function(getDom, initialStatus) {
 
 });
 
+var weekDay = (new Date()).getDay() - 1;
+weekDay = (weekDay == -1) ? 6 : weekDay;
+
 var week_selection = new widget.singleSelect(
-    function() { return document.querySelector('.select_wd') });
+    function() { return document.querySelector('.select_wd') }, weekDay);
 
 var building_selection = new widget.singleSelect(
     function() { return document.querySelector('.select_bd') });

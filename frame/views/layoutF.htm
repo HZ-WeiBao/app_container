@@ -33,14 +33,23 @@
     <script src="frame/views/frame.js" type="text/javascript"></script>
     <!--body start-->
     <div id="mask-blur">
-        <div class="baner">
+        <!--<div class="baner">
             <span class="title"><img src='img/wa-1.png'><?php echo $config->name;?></span>
             <div class="logo"><span>微报</span><img id="contactMe" src='img/hello-3.png'></div>
+        </div>-->
+        <div class="menu">
+            <span>三</span>
+            <span><?php echo $config->name;?></span>
+            <ul>
+                <li><img src="./img/statistics - white.png" alt="">1107</li>
+                <li><img src="./img/statistics - white.png" alt="">1107</li>
+                <li><img src="./img/unhearted - white.png" alt="">1107</li>
+            </ul>
         </div>
         <div class="module_body noneAnimation" style="opacity: 0;">
             <?php echo $content; ?>
         </div>
-        <div class="statistics">
+        <!--<div class="statistics">
             <span class="bt_like">
                 <img src="./img/unhearted.png" alt="">
                 <span class="num_of_like">1107</span>
@@ -49,11 +58,12 @@
                 <img src="./img/statistics.png" alt="">
                 <span class="num_of_use">1107</span>
             </span>
-        </div>
-        <div class="me">
+        </div>-->
+        <!--<div class="me">
             @技术部
-            <?php echo $config->author; ?><img src='img/wa-2.jpg'>
-        </div>
+            <?php echo $config->author; ?>
+            <img src='img/wa-2.jpg'>
+        </div>-->
     </div>
     <div id="mask"></div>
     <div id="report">
