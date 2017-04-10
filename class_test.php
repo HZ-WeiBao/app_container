@@ -94,6 +94,8 @@ class test extends base {
   }
   function testinner(){echo 'testinner ok';}
 }
+
+echo time();
 var_dump(iconv('UCS-2BE', 'UTF-8', pack('H4','6709')));
 
 die();
