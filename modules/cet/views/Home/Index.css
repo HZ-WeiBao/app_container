@@ -1,0 +1,44 @@
+.module_body>div {
+    display: block;
+    background: white;
+    float: none;
+}
+
+.module_body>div>span {
+    display: block;
+}
+
+.module_body>div:nth-child(1)>span,
+.module_body>div:nth-child(2)>span {
+    width: 60px;
+    text-align: right;
+    margin-bottom: 2px;
+    padding: 5px 10px 5px 0;
+    float: left;
+}
+
+.module_body>div:nth-child(1)>input,
+.module_body>div:nth-child(2)>input {
+    width: 240px;
+    display: block;
+    position: relative;
+    margin-left: 60px;
+    margin-bottom: 2px;
+    padding: 5px 0;
+    /*outline: none;*/
+    /*border: 1px;*/
+}
+
+.module_body .button {
+    width: 100;
+    padding: 8px;
+    display: block;
+    background: lightblue;
+    text-align: center;
+    margin: 5px 5%;
+}
+
+.module_body .hit {
+    clear: both;
+    padding: 5px 15px;
+}

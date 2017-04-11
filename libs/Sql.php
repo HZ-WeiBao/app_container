@@ -163,13 +163,12 @@ class Sql extends Component {
       //这个之后再去考虑是否使用吧
     }
   }
-  public function findOne(string $where, array $where_value){//像这些就是默认限定为返回数据唯一的
+  public function findOne(string $where, array $where_value=array()){//像这些就是默认限定为返回数据唯一的
     //接口学习一下Yii的,这里是不需要填写tableName的,这部分交给了model的className所绑定,但是是否需要这个呢
     //之后再去拓展where的表示方式吧
     $this->_limit = 1;
     $this->_where = $where;
-    if($where_value != null && is_string($where))
-      $this->_where_value = $where_value;
+    $this->_where_value = $where_value;
     $this->_fetch();
     return $this;
   }
@@ -180,10 +179,13 @@ class Sql extends Component {
     $this->_where_value = $where_value;
     $this->_return_array = true;
     $this->_fetch();
+    if($this->_lastStatment->rowCount() < 0){
+      
+    }
     return $this->_rows;
   }
-  public function limit(int $num){
-    $this->_limit = $num;
+  public function limit(int $num,int $offset=0){
+    $this->_limit = join(array($offset,$num),',');
     return $this;
   }
   public function useTable(string $tableName){//不过现在只是单张表的model,暂时是不涉及多表的处理

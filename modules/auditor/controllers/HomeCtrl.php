@@ -5,7 +5,7 @@ class HomeCtrl extends BaseCtrl {
     if(isset($_GET['keyWord'])){
       $keyword = $_GET['keyWord'];
       echo json_encode(
-        $this->edu_major_listModel->findAll('`major_name` LIKE ?',
+        $this->edu_major_listModel->findAll('`name` LIKE ?',
           array("%{$keyword}%"))
       );
     }
@@ -15,7 +15,7 @@ class HomeCtrl extends BaseCtrl {
       // $courseInfo = urldecode($_GET['courseInfo']);
       $courseInfo = $_GET['courseInfo'];
       echo json_encode(
-        $this->edu_major_infoModel->findAll('`major_name` = ?',
+        $this->edu_major_infoModel->findAll('`name` = ?',
           array($courseInfo))
       );
     }

@@ -5,19 +5,19 @@ include($path.'/../libs/ClassLoader.php');
 class F {
   public static $params = null;
   // public static $moduleList = null;
-  public static $componentList = null;
+  public static $componentConfig = null;
   public static $C = null;
   public static $R = null;
   public static $loader = null;
 
   public static function init(&$config){
     // self::$moduleList = $config['modules'];
-    self::$componentList = $config['components'];
+    self::$componentConfig = $config['components'];
     self::$params = $config['params'];
 
-    foreach($config['components'] as $key => $value)
-      if(method_exists($key,'globalConfig'))
-        $key::globalConfig($value);
+    // foreach($config['components'] as $key => $value)
+    //   if(method_exists($key,'globalConfig'))
+    //     $key::globalConfig($value);
 
     if(self::$params['debug'] && false){
       $debug = json_encode($_SERVER);

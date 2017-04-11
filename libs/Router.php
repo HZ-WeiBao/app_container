@@ -10,6 +10,14 @@ class Router extends Component {
     self::$basePath = $config['basePath'];
   }
   public function run(){
+    //处理post数据格式化
+    global $_JSON;
+    try{
+      $_JSON = json_decode(file_get_contents('php://input'));
+    }catch(Error $e){
+      $_JSON = null;
+    }
+
     //解析
 
     $url = $this->analysisUrl($_SERVER['REQUEST_URI']);

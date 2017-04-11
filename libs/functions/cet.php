@@ -36,9 +36,8 @@ class cet extends __base__ {
     //如果同时涉及同一个作用域里面读和写操作是一致的话,那么只能手动new model了
     $entry = new edu_cetModel;
     $entry->findOne('id = ? and name = ?',array($id,$name));
-    if($entry->success()){
-      // return $entry;//现在发现可能会有安全隐患的哦//只要还是权限泄漏咯
-      return $entry;
+    if($entry->success() && $entry->total !== null){
+      return $entry->{0};
     }else{
       $this->id = $id;
       $this->name = $name;

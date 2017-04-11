@@ -22,8 +22,13 @@ class test extends base {
     parent::__construct();
     // echo self::$baseusrl;
     // $this->callstatic();
-    testinner();
+    // testinner();
     
+  }
+  public function getself(){
+    $newer = new self;
+    $newer->name = '是新的';
+    return $newer;
   }
   public function runtoo(){
     var_dump($this);
@@ -93,8 +98,32 @@ class test extends base {
     var_dump($argument_result[count($argument_result)-1]);
   }
   function testinner(){echo 'testinner ok';}
+  public function getXN() {
+        $month = (int) date('m');
+        $year = (int) date('Y');
+        if ($month <= 7)
+            $year -= 1;
+        return '2017';
+        return $year;
+    }
+    public function getXQ() {
+        $month = (int) date('m');
+        return '0';
+        return ($month < 2 || $month > 7 ? '0' : '1');
+    }
+    public function lastXN(){
+        return (!$this->lastXQ())? $this->getXN() : $this->getXN() -1;
+    }
+    public function lastXQ(){
+        return ($this->getXQ())?0:1;
+    }
 }
+$test = new test;
+echo $test->getXN().$test->getXQ()."\n";
+echo $test->lastXN().$test->lastXQ();
 
+
+die();
 echo time();
 var_dump(iconv('UCS-2BE', 'UTF-8', pack('H4','6709')));
 
