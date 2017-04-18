@@ -5,7 +5,7 @@ class edu_major_listModel extends Sql {
     $this->truncate();
     foreach($majors as $major){
       $name = explode('|',$major['name']);
-      $this->id = $major['id'];
+      $this->id = $name[0];
       $this->name = $name[1];
       $this->save();
     }

@@ -184,7 +184,11 @@ class Curl_response {
     }
 
     public function __toString() {
-        return $this->body;
+        // if(is_string($this->body))
+            return $this->body;
+        // else{
+        //     return '';
+        // }
     }
     //享用__get就用吧
     public function __get($variable){

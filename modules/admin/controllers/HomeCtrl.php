@@ -81,7 +81,7 @@ class HomeCtrl extends BaseCtrl {
   }
   public function actionLogin(){
     $time_start = microtime(true);
-
+    set_time_limit(0);
     $this->Proxy->setSession($_GET['id']);
     // echo 'sessionid:';
     // var_dump($this->Proxy->Curl->_cookies);
@@ -92,10 +92,10 @@ class HomeCtrl extends BaseCtrl {
     // $data = $this->Proxy->classRoomList->data;
     // $data = $this->Proxy->majorInfo->data;
     // var_dump($data);
-    // $this->Proxy->majorInfo->store();
+    $this->Proxy->majorInfo->store();
     // var_dump($this->Proxy->getXNXQ());
 
-    $this->Proxy->classRoomInfo->store();
+    // $this->Proxy->classRoomInfo->store();
     
     // $check = $this->Proxy->autoLogin();
     var_dump((microtime(true)-$time_start));

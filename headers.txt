@@ -524,3 +524,56 @@ protected static function make_js($url){
 		$js .= '</script>';
 		return $js;
 	}
+
+
+POST http://search.neea.edu.cn/QueryMarkUpAction.do?act=doQueryResults HTTP/1.1
+Host: search.neea.edu.cn
+Connection: keep-alive
+Content-Length: 298
+Cache-Control: max-age=0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Origin: http://search.neea.edu.cn
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36 TheWorld 7
+Content-Type: application/x-www-form-urlencoded
+Referer: http://search.neea.edu.cn/QueryMarkUpAction.do?act=doQueryCond&sid=300&pram=results
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.8
+Cookie: BIGipServersearchtest.neea.edu.cn_search.neea.cn_pool=178309130.37407.0000; UM_distinctid=15b775b7fb57d-0beda4663-1f586215-15f900-15b775b7fb63f9; n15080113_hits=3002721; esessionid=E68B98E3FAC9F8BBA42189568162426B; Hm_lvt_dc1d69ab90346d48ee02f18510292577=1492356137; Hm_lpvt_dc1d69ab90346d48ee02f18510292577=1492405603; n15080206_hits=335581; verify=enc|286739e0b5fd0ca2d810277ffcd694c67448125234cebaa26a6cb2e02cf9a69c
+
+'pram'=>'results'
+'ksxm'=>'300',
+'sf'=>'',
+'zkzh'=>'',
+'nexturl'=>'',
+'ksnf'=>'4723',
+'bkjb'=>'14',
+'sfzh'=>'445381199306086030',
+'name'=>'%E9%99%88%E4%B8%96%E6%9D%B0',
+'verify'=>'yn8n',
+
+/QueryMarkUpAction.do?act=doQueryCond&sid=300&pram=results
+&ksnf=4723&sf=&bkjb=14&sfzh=445381199306086030&name=陈世杰
+&ksnf=4723&bkjb=14&sfzh=445381199306086030&name=陈世杰&verify=yn8n
+
+Cookie: esessionid=4FA673127312FBFE886207D5AD7EDA91; 
+BIGipServersearchtest.neea.edu.cn_search.neea.cn_pool=362858506.37407.0000; 
+verify=enc|c40d98b698ba0186a7647c7cd0cf731b47cdc2996794038f886992815b77144d
+
+
+Cookie: esessionid=4FA673127312FBFE886207D5AD7EDA91; BIGipServersearchtest.neea.edu.cn_search.neea.cn_pool=362858506.37407.0000; verify=enc|8042639639a7b5f43bb45bcec4d270486a3b1f6ac3e3f35ecafcdb4d0e6ab45a
+
+Cookie: esessionid=4FA673127312FBFE886207D5AD7EDA91; BIGipServersearchtest.neea.edu.cn_search.neea.cn_pool=362858506.37407.0000; verify=enc|a96f53eef76c1cb432bf24ca5d40172f151ead02da2497487b7f15bb7511f6a5
+
+neea.verifys=function(){
+	var imgs=document.getElementById('img_verifys');
+			imgs.style.visibility = "visible";
+	imgs.src=imgs.src.replace(/=[.\d]+/,'='+Math.random());
+	form1.verify.value='';
+	form1.verify.focus();
+};
+
+enc|3e5606078e380ea5ec3809a15270a09f053d6846e86c63a66ecbd6cf206a547a
+enc|e711a99307ee29a4dea814d0cc25e3d05003c39a67d060360d8ec7948f4eb1b5
+
+#bgDiv{ opacity: 1;background-image:url(/az/hprichbg/rb/EuropeanRabbitGreeting_ZH-CN10625718769_1920x1080.jpg); }.

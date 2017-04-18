@@ -5,25 +5,13 @@ class module_statisticsModel extends Sql {
     if($this->findOne('moduleName = "'.$moduleName.'"')->success()){
       return $this;
     }else{
-      $log = new self;
+      $class = __CLASS__;
+      $log = new $class;
       $log->moduleName = F::$R->module;
-      $this->_caller->{self} = $log;
+      $log->likeNum = 0;
+      $log->useNum = 0;
+      $this->_caller->{__CLASS__} = $log;
       return $log;
     }
-  }
-
-  public function inc($columnName){
-    $this->{$columnName} = intval($this->{$columnName}) + 1;
-    return $this;
-  }
-
-  public function dec($columnName){
-    if($this->{$columnName} != '0'){
-      $i = intval($this->{$columnName}) - 1;
-      $this->{$columnName} = $i;
-    }else{
-      $this->{$columnName} = 0;
-    }
-    return $this;
   }
 }

@@ -1,34 +1,39 @@
 <input id="avatar_upload" type="file" name="avatar" value="" accept="image/*">
-<div class="display_result">
-    <!--<div class="updateLog">
-        <h3 style="text-align:center;">12/20</h3>
-        1.给头像添加圣诞帽~<br>
-        2.练习canvas操作,同时<br>
-        3.也是复制去年的热点~<br>
-        4.可以添加多个,但是<br>
-        &nbsp;&nbsp;之后就不能编辑前者<br>
-        5.优化手势调整图片
-    </div>-->
-    <img id="avatar_orignal" width="250" height="250" src="" alt="1.请上传头像~按钮在最底部">
-    <canvas id="avatar_edit" width="600" height="600">你的手机浏览器不支持canvas~</canvas>
-    <div class="ctrl_bar">
-        <span onmousedown="avatar_editor.moveX(-5);">左移</span>
-        <span onmousedown="avatar_editor.moveX(5);">右移</span>
-        <span onmousedown="avatar_editor.moveY(-5);">上移</span>
-        <span onmousedown="avatar_editor.moveY(5);">下移</span><br>
-        <span onmousedown="avatar_editor.zoom(0.1);">放大</span>
-        <span onmousedown="avatar_editor.zoom(-0.1);">缩小</span>
-        <span onmousedown="avatar_editor.rotate(-1);">左旋</span>
-        <span onmousedown="avatar_editor.rotate(1);">右旋</span>
-    </div>
-    <div>双指缩放旋转,一共有99个装饰可选</div>
-    <div class="changeImg">
-        
-    </div>
-    <div class="bt_generate"><a href="#home/newAvatar?multiClick=true">~生成头像~</a></div>
-    <div class="bt_generate"><a href="#home/addAnother?multiClick=true">~再添加一个~</a></div>
+<div style="height:1px;"></div>
+<!--<div class="updateLog">
+    <h3 style="text-align:center;">12/20</h3>
+    1.给头像添加圣诞帽~<br>
+    2.练习canvas操作,同时<br>
+    3.也是复制去年的热点~<br>
+    4.可以添加多个,但是<br>
+    &nbsp;&nbsp;之后就不能编辑前者<br>
+    5.优化手势调整图片
+</div>-->
+<img id="avatar_orignal" width="250" height="250" src="" alt="1.请上传头像~按钮在最底部">
+<canvas id="avatar_edit" width="600" height="600">你的手机浏览器不支持canvas~</canvas>
+<!--<div class="ctrl_bar">
+    <span onmousedown="avatar_editor.moveX(-5);">左移</span>
+    <span onmousedown="avatar_editor.moveX(5);">右移</span>
+    <span onmousedown="avatar_editor.moveY(-5);">上移</span>
+    <span onmousedown="avatar_editor.moveY(5);">下移</span><br>
+    <span onmousedown="avatar_editor.zoom(0.1);">放大</span>
+    <span onmousedown="avatar_editor.zoom(-0.1);">缩小</span>
+    <span onmousedown="avatar_editor.rotate(-1);">左旋</span>
+    <span onmousedown="avatar_editor.rotate(1);">右旋</span>
+</div>-->
+<div style="padding:10px;">双指缩放旋转,一共有99个装饰可选</div>
+<div class="changeImg">
+    
 </div>
-<div class="buttom_submit"><a href="#home/upload?multiClick=true">上传<img src='img/hitme_mini.gif'>头像</a></div>
+<div class="btnOneLineContainer">
+    <div>
+        <a href="#home/newAvatar"><div class="btnOneLine">生成头像</div></a></div><div>
+        <a href="#home/upload?viewUpdate=true"><div class="btnOneLine">上传头像</div></a>
+    </div>
+</div>
+
+<a href="#home/addAnother?viewUpdate=true"><div class="btnOneLine btnWhite">再添加一个</div></a>
+
 <div id="output">
     <img src="" id="output_img" width="200" height="200" alt="生成的头像"><br>
     <span>~请长按保存~</span>

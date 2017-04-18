@@ -3,9 +3,10 @@
   "description": "ployfill",
   "author": "DeepKolos",
   "version": {
-    "v0.1": [
-      "没有在做什么功能更新，只是集成到在自己的小小框架~"
-    ]
+    "v0.1": {
+      "time": "2017-4-17",
+      "updateLog": ["更新~"]
+    }
   },
   "component":{
     "Schedule":{

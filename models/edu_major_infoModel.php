@@ -5,6 +5,7 @@ class edu_major_infoModel extends Sql {
     $this->truncate();
 
     foreach($majors as $major){
+      if(isset($major['course']))
       foreach($major['course'] as $course){
         $name = explode('|',$major['name']);
         $course['room'] = str_replace('(金)','',$course['room']);

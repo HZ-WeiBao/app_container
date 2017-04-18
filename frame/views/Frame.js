@@ -2,7 +2,7 @@ var F = {
     error: function(code, event) {
         var codeToMeans = [
             '初始化失败',
-            '我也不知道是什么错误~~',
+            '我也不知道是什么错误~~',//前端的错误处理还没有统一想好
         ];
         if (code > 0) {
             console.log(codeToMeans[code] + ' => ' + event);
@@ -24,10 +24,19 @@ var F = {
     }
 };
 
+window.AjaxCache = {}; //感觉是Ajax的设计不够长远啊~
+
 //Loader
 F.addComponent('Loader', {
     multiAsyncLoader: new MultiAsyncLoader,
     debug: false,
+
+    //time
+    status:'loaded',//loading loaded
+    loadStart:null,
+    loadEnd:null,
+    afterAction:function(){},
+    beforeAction:function(){},
 
     //dom
     $controllerCss: document.querySelector('#_cssContainer_ ._controller_'),
@@ -42,18 +51,49 @@ F.addComponent('Loader', {
     cssSwitchFunc: [],
 
     init: function() {
-        this.multiAsyncLoader.setAllLoadedFunc(function() {
+        var loadedFunc = function() {
+            this.status = 'loaded';
+            this.loadEnd = (new Date).getTime();
+
+            this.beforeAction();
+            if (this.debug)
+                console.log('load use time:'+(this.loadEnd - this.loadStart));
+            
             this.addComponent('controller', this.controllersCache[this.Router.controllerName], this.__proto__);
-            if (this.controller.hasOwnProperty('action' + this.Router.actionName))
-                this.controller['action' + this.Router.actionName].call(this.__proto__);
+
+            if (this.controller.hasOwnProperty('action' + this.Router.actionName) && !this.Router.isBack)
+                this.controller['action' + this.Router.actionName].call(this.__proto__,this.Router.actionConfig);
+            
+            if (this.controller.hasOwnProperty('viewUpdate' + this.Router.actionName))
+                this.controller['viewUpdate' + this.Router.actionName].call(this.__proto__,this.Router.actionConfig);
+
             if (this.debug)
                 console.log('load done~');
+            
+            this.afterAction();
             this.Router.afterAction();
+        }.bind(this);
+        
+        this.multiAsyncLoader.setAllLoadedFunc(function(){
+            //执行的页面初始化的init公用的initfunc,这个initfunc应该放在哪里好捏?
+            //这个其实基本上不会再去复用的东西,我就直接卸载这里好了
+            this.Loader.cssSwitch();
+            setTimeout(function() {
+                document.querySelector('.pageContainer').classList.remove('noneAnimation');
+                document.querySelector('.pageContainer').style.opacity = 1;
+            }, 35);
+            console.log('首页加载成功~~send from 小小框架~~');
+
+            loadedFunc();
+            
+            this.multiAsyncLoader.setAllLoadedFunc(loadedFunc);
         }.bind(this));
 
         window.addEventListener('DOMContentLoaded', this.multiAsyncLoader.loadPointAdd());
     },
     run: function() {
+        this.status = 'loading';
+        this.loadStart = (new Date).getTime();
         //加载css
         var viewPath = this.Router.moduleName + '/views/' + this.Router.controllerName,
 
@@ -159,27 +199,27 @@ F.addComponent('Loader', {
                 var style = document.createElement('style');
                 style.setAttribute('type', 'text/css');
                 style.setAttribute('name', unique[i]);
-
-                var args = {
-                    method: 'get',
-                    url: unique[i],
-                    func: this.multiAsyncLoader.loadPointAdd(function(rep) {
-                        this.cssSwitchFunc.push(function() {
-                            style.innerHTML = rep;
-                            style.setAttribute('name', unique[i]);
-                        }.bind(this));
-                        if (this.debug)
-                            console.log('one css loaded');
-                    }.bind(this)),
-                    error: function(errorCode) {
-                        if (this.debug)
-                            console.log(errorCode + ' when loading :' + args.url);
-                        args.func('');
-                    }.bind(this)
-                };
-
+                !function(i){
+                    var args = {
+                        method: 'get',
+                        url: unique[i],
+                        func: this.multiAsyncLoader.loadPointAdd(function(rep) {
+                            this.cssSwitchFunc.push(function() {
+                                style.innerHTML = rep;
+                                style.setAttribute('name', unique[i]);
+                            }.bind(this));
+                            if (this.debug)
+                                console.log('one css loaded');
+                        }.bind(this)),
+                        error: function(errorCode) {
+                            if (this.debug)
+                                console.log(errorCode + ' when loading :' + args.url);
+                            args.func('');
+                        }.bind(this)
+                    };
                 var xhr = Ajax(args);
                 container.appendChild(style);
+                }.bind(this)(i);
             }
         }
     },
@@ -195,10 +235,11 @@ F.addComponent('Loader', {
 //class Router
 F.addComponent('Router', {
     moduleName: null, //string
-    moduleName: null, //string
     actionName: null, //string
     actionConfig: {},
     preHash: null,
+    history:[],
+    isBack:false,
 
     afterAction: function() {
         if (this.preHash) {
@@ -211,10 +252,40 @@ F.addComponent('Router', {
         }
     },
     hashProcesser: function() {
-        if (location.hash.search(/\[reseted\]/) == -1) { //反正这真的是不适合这个拓展的方式|| this.preHash
-            //解析url
-            this.analysisUrl();
-            this.Loader.run();
+        if(location.hash == '#back'){
+            hash = this.pageIdDecode(this.history[this.history.length-2]);
+            hash = '#'+hash[1]+'/'+hash[2];
+            history.replaceState({},'',hash);
+        }
+
+        this.analysisUrl();
+        if (location.hash.search(/\[reseted\]/) == -1 && this.pageId() != this.history[this.history.length-1]) { //反正这真的是不适合这个拓展的方式|| this.preHash
+            var fromPage = null;
+            if(this.actionConfig.viewUpdate != 'true'){
+                if(this.pageId() == this.history[this.history.length-2]){
+                    //返回
+                    fromPage = this.history.pop();
+                    this.isBack = true;
+                }else{
+                    //前进
+                    fromPage = this.history[this.history.length-1];
+                    this.isBack = false;
+                    this.history.push(this.pageId());
+                }
+                
+                this.Loader.run();
+
+                this.pageSwitch(
+                    fromPage,
+                    this.pageId());
+            }else{
+                this.isBack = true;
+                this.Loader.run();
+                //hash的还原
+                hash = this.pageIdDecode(this.history[this.history.length-1]);
+                hash = '#'+hash[1]+'/'+hash[2];
+                history.replaceState({},'',hash);
+            }
         }
     },
     init: function() {
@@ -223,14 +294,23 @@ F.addComponent('Router', {
         //但是最后触发的action只是当前的action,相当于action切换等于终止取消前一个action的执行~~~~~
         //如果这时候是在actionReset的时候初始化的,默认重置去首页
         this.analysisUrl();
-        if (this.actionName != 'Index') {
+        if (this.actionName != 'Index' || this.controllerName != 'Home') {
             this.preHash = location.hash;
-            location.hash = this.controllerName + '/Index';
+            location.hash = '';
+            this.actionName = 'Index';
+            this.controllerName = 'Home';
         }
+        this.history.push(this.pageId());
 
-        window.addEventListener('hashchange', this.hashProcesser.bind(this));
+        window.addEventListener('DOMContentLoaded',function(){
+            document.querySelector('.pageContainer .page').setAttribute('id',this.history[0]);
+        }.bind(this));
 
-        this.hashProcesser();
+        setTimeout(function(){//再次脱离本执行流之后执行
+            window.addEventListener('popstate', this.hashProcesser.bind(this));
+        }.bind(this),0);
+
+        this.Loader.run();
     },
     analysisUrl: function() {
         var temp = location.href
@@ -259,17 +339,131 @@ F.addComponent('Router', {
         this.actionName = uri[2];
 
         //处理queryString,这里不是发送给服务器 而是action的setting
+        this.actionConfig = {};
         if (temp[2]) {
-            this.actionConfig = {};
             temp[2].slice(1).split('&').forEach(function(i) {
                 var config = i.split('=');
                 this.actionConfig[config[0]] = config[1];
             }.bind(this));
         }
     },
-    url: function() {
-        return [this.moduleName, this.controllerName, this.actionName].join('/');
+    url: function(controllerName, actionName) {
+        controllerName = controllerName || this.controllerName;
+        actionName = actionName || this.actionName;
+        return [this.moduleName, controllerName, actionName].join('/');
     },
+    pageId: function(){
+        return 'module://'+[this.moduleName,this.controllerName,this.actionName].join('/');
+    },
+    pageIdDecode:function(id){
+        id = id.replace('module://','');
+        return id.split('/');
+    },
+    pageSwitch: function (fromPage, toPage){
+        var $fromPage = document.getElementById(fromPage),
+            $toPage   = document.getElementById(toPage),
+            outAnimation = 'out',
+            inAnimation = 'in',
+            fromPageOutFunc = this.Page.outViewUpdateFunc;//转存
+
+        if(!$toPage){
+            $toPage = document.createElement('div');
+            $toPage.setAttribute('id',toPage);
+            document.querySelector('.pageContainer').appendChild($toPage);
+        }
+        $fromPage.classList.add(outAnimation);
+
+        var t = setTimeout(function(){
+            $fromPage.classList.add('pageCache');
+            $fromPage.classList.remove('page',outAnimation);
+
+            this.Loader.beforeAction = function(){
+                if(this.Router.actionConfig.viewUpdate != 'true')
+                    this.Page.init();
+            };
+
+            var showLoading = function(){
+                $toPage.innerHTML = '<span>loading</span>';
+                var func = this.Page.afterDomLoadFunc;
+
+                this.Page.afterDomLoadFunc = function(){
+                    $toPage.innerHTML = this.Page.rep ;
+                    this.Page.eventBind();
+                    this.Page.inViewUpdateFunc();
+                };
+            }.bind(this);
+
+            fromPageOutFunc();
+            
+            if(this.Loader.status == 'loaded' && this.Page.status == 'loaded'){
+                if(!this.isBack){
+                    $toPage.innerHTML = this.Page.rep ;
+                    this.Page.eventBind();
+                    console.log('page switched');
+                }
+                this.Page.inViewUpdateFunc();
+            }else if(this.Loader.status == 'loaded' && this.Page.status == 'loaded'){
+                this.Page.inViewUpdateFunc();
+            }else if(this.Loader.status == 'loading'){
+                this.Loader.afterAction = function(){
+                    showLoading();
+                    this.Loader.afterAction = function(){}
+                };
+            }else if(this.Page.status == 'loading'){
+                showLoading();
+            }
+
+            this.Loader.cssSwitch();
+            $toPage.classList.add('initial','noneAnimation');
+            $toPage.classList.remove('pageCache');
+
+            setTimeout(function(){
+                $toPage.classList.add('page',inAnimation);
+            }.bind(this),35);
+
+            setTimeout(function(){
+                $toPage.classList.remove(inAnimation,'initial','noneAnimation');
+            }.bind(this),370);
+        }.bind(this),345);
+    }
+});
+
+F.addComponent('Page',{
+    status:'loaded',
+    rep:'',
+    eventBind:null,
+    inViewUpdateFunc:null,
+    outViewUpdateFunc:null,
+    afterDomLoadFunc:function(){},
+    init:function(){
+        this.afterDomLoadFunc =
+        this.eventBind = 
+        this.inViewUpdateFunc = 
+        this.outViewUpdateFunc = function(){};
+    },
+    switchToDom:function(domStr){
+        this.status = 'loaded';
+        this.rep = domStr;
+    },
+    load:function(args){
+        this.status = 'loading';
+        var func = args.func;
+        
+        if(func) args.func = function (rep){
+                this.status = 'loaded';
+                this.rep = func(rep);
+                this.afterDomLoadFunc();
+                this.afterDomLoadFunc = function(){};
+             }.bind(this);
+        else args.func = function (rep){
+                this.rep = rep;
+                this.status = 'loaded'; 
+                this.afterDomLoadFunc();
+                this.afterDomLoadFunc = function(){};
+            }.bind(this);
+
+        Ajax(args);
+    }
 });
 
 function MultiAsyncLoader() {
@@ -314,7 +508,8 @@ function Ajax(args) { //method,url,arg,content,func,要么就是干脆不是get�
         arg = args['arg'] || null,
         data = args['data'] || '',
         func = args['func'] || function() {},
-        error = args['error'] || function() {};
+        error = args['error'] || function() {},
+        cache = args['cache'] || false;
 
     function arrToUrlArg(obj) {
         var arg = '?';
@@ -322,22 +517,76 @@ function Ajax(args) { //method,url,arg,content,func,要么就是干脆不是get�
             arg += p + '=' + obj[p] + '&';
         return arg.slice(0, -1);
     }
+    function toJson(arr){
+        var temp = [];
+        arr.forEach(function(value,i){
+            temp[i] = (typeof value == 'object')? JSON.stringify(value) : value;
+        });
+        return temp;
+    }
+    var ids = toJson([method,url,arg,data]);
 
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
+        function cacheFunc(){
+            if( window.AjaxCache[ids[0]] === undefined)
+                window.AjaxCache[ids[0]] = {};
+            if(window.AjaxCache[ids[0]][ids[1]] === undefined)
+                window.AjaxCache[ids[0]][ids[1]] = {};
+            if(window.AjaxCache[ids[0]][ids[1]][ids[2]] === undefined)
+                window.AjaxCache[ids[0]][ids[1]][ids[2]] = {};
+            
+            window.AjaxCache[ids[0]][ids[1]][ids[2]][ids[3]] = {
+                status: xhr.status,
+                responseText: xhr.responseText
+            };
+        }
         if (xhr.readyState == 4) {
-            if (xhr.status >= 200 && xhr.status < 300)
+            if ((xhr.status >= 200 && xhr.status <= 207)){
                 func(xhr.responseText);
-            else
+                if(cache) cacheFunc();
+            }else {
                 error(xhr.status);
+            }
+
+            //把404的拦截下来就可以了,现在只能用全部变量了,就是浏览器缓存不了的东西
+            if (method == 'get' && xhr.status == 404)
+                cacheFunc();
+
         }
     };
-    xhr.onabort = xhr.onerror = error;
-    if (!arg)
-        xhr.open(method, url, true);
-    else
-        xhr.open(method, url + arrToUrlArg(arg), true);
-    xhr.send(data);
+    //先查找缓存
+    function checkCahce(){
+        if( window.AjaxCache[ids[0]] === undefined)
+            return false;
+        if(window.AjaxCache[ids[0]][ids[1]] === undefined)
+            return false;
+        if(window.AjaxCache[ids[0]][ids[1]][ids[2]] === undefined)
+            return false;
+        if(window.AjaxCache[ids[0]][ids[1]][ids[2]][ids[3]] === undefined)
+            return false;
+        return true;
+    }
+    if (!checkCahce()) {
+        xhr.onabort = xhr.onerror = error;
+        if (!arg)
+            xhr.open(method, url, true);
+        else
+            xhr.open(method, url + arrToUrlArg(arg), true);
+        xhr.send(data);
+    } else {
+        xhr = window.AjaxCache[ids[0]][ids[1]][ids[2]][ids[3]];
+        if (xhr.status == 404) {
+            var t = setTimeout(function(){
+                error(xhr.status);
+            },0);
+        }else if(xhr.status >= 200 && 
+                xhr.status <= 207){
+            var t = setTimeout(function(){
+                func(xhr.responseText);
+            },0);
+        }
+    }
     return xhr;
 }
 
@@ -349,7 +598,7 @@ var widget = {
     }
 };
 
-//这部分是utility,
+//这部分是utility,现在大部分是之前的函数,之后慢慢重写~~~
 
 //其实这些 应该是很少的,如果是十分多的都应该是打包成一个类的其实要么就是直接挂接在
 function firstLetterUp(str) {

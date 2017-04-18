@@ -1,0 +1,16 @@
+.messageError {
+    margin: 15px 7%;
+    padding: 10px 8px;
+    font-size: 22px;
+    margin-top: 25px;
+    color: #134d77;
+}
+.messageError::before{
+    content: '';
+    width: 7px;
+    height: 22px;
+    position: absolute;
+    background: #0072c6;
+    margin-top: 5px;
+    margin-left: -15px;
+}

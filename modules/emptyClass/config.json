@@ -1,25 +1,31 @@
 {
   "name": "空课室",
-  "description": "ployfill",
+  "description": "偷偷的告诉你5号楼800兆网速, 1号楼200兆网速, 2号楼100兆网速~~亲测~~",
   "author": "DeepKolos",
   "version": {
-    "v0.3":{
-      "time":"17/3/16",
-      "updateLog":[
-        "微报大部分龙猫应用整合进去新完成的小小框架~~",
-        "并且迎来整体风格改版~"
+    "v0.4": {
+      "time": "17/4/18",
+      "updateLog": [
+        "最后的完善工作搞定~~带来了一个每日一说,还有各种常用查询~~"
       ]
     },
-    "v0.2":{
-      "time":"16/12/12",
-      "updateLog":[
+    "v0.3": {
+      "time": "17/3/16",
+      "updateLog": [
+        "微报大部分龙猫应用整合进去新完成的小小框架~~",
+        "并且准备整体风格改版~"
+      ]
+    },
+    "v0.2": {
+      "time": "16/12/12",
+      "updateLog": [
         "增加数据统计",
         "(发布的时候就有统计,现在把它显示出来)"
       ]
     },
     "v0.1": {
-      "time":"16/12/10",
-      "updateLog":[
+      "time": "16/12/10",
+      "updateLog": [
         "增加临时活动数据",
         "修复了周次的判断",
         "增加问题/建议反馈",
@@ -28,10 +34,10 @@
       ]
     }
   },
-  "component":{
-    "Schedule":{
-      "lastTriggerTime":"timestamp",
-      "interval":"2days"
+  "component": {
+    "Schedule": {
+      "lastTriggerTime": "timestamp",
+      "interval": "2days"
     }
   }
 }

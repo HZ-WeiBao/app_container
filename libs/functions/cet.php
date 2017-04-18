@@ -17,7 +17,7 @@ class cet extends __base__ {
         $trs = $table->getElementsByTagName('tr');
         $grade['name'] = $trs->item(0)->getElementsByTagName('td')->item(0)->textContent;
         $grade['school'] = $trs->item(1)->getElementsByTagName('td')->item(0)->textContent;
-        $grade['examineType'] = $trs->item(2)->getElementsByTagName('td')->item(0)->textContent;
+        $grade['examType'] = $trs->item(2)->getElementsByTagName('td')->item(0)->textContent;
         $grade['total'] = $trs->item(5)->getElementsByTagName('td')->item(0)->textContent;
         $grade['listening'] = $trs->item(6)->getElementsByTagName('td')->item(1)->textContent;
         $grade['reading'] = $trs->item(7)->getElementsByTagName('td')->item(1)->textContent;
@@ -41,8 +41,12 @@ class cet extends __base__ {
     }else{
       $this->id = $id;
       $this->name = $name;
-      $this->store();
-      return (object)$this->data;
+      
+      if(isset($this->data['total'])){
+        $this->store();
+        return (object)$this->data;
+      }else
+        return false;
     }
   }
 

@@ -1,0 +1,36 @@
+<div style="height:1px;"></div>
+<div class="display_result">
+    <div class='descriptionForForm'></div>
+    <input id='inputHidden' type="hidden" pool="<?= $pool?>" session="<?= $session ?>" verify="<?= $verify ?>">
+    <div class="inputText">
+        <div>考试时间</div>
+        <select id="examTime">
+          <? foreach($params['examTime'] as $time){?>
+          <option value="<?= $time['id']?>"><?= $time['name'] ?></option>
+          <? } ?>
+        </select>
+    </div>
+    <div class="inputText">
+        <div>考试科目</div>
+        <select id="examLevel">
+          <? foreach($params['province']['bkjbList'] as $level){?>
+          <option value="<?= $level->value?>"><?= $level->text ?></option>
+          <? } ?>
+        </select>
+    </div>
+    <div class="inputText">
+        <div>你的姓名</div>
+        <input id='studentName' type="text" name="studentName" value="">
+    </div>
+    <div class="inputText">
+        <div>证件编号</div>
+        <input id='studentIDCard' type="text" name="studentIDCard" value="">
+    </div>
+    <div class="inputText">
+        <div>验证码</div>
+        <input id='captcha' type="text" name="studentIDCard" value="">
+        <img id="captchaImg" class="captcha" src="<?= $captcha?>">
+    </div>
+</div>
+<a href="#home/query"><div class="btnOneLine">查询</div></a>
+<!--<a href="#home/save"><div class="btnOneLine btnWhite">保存</div></a>-->

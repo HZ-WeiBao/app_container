@@ -6,31 +6,29 @@ exports.deps = {
 };
 
 exports.actionIndex = function(){
-  this.Loader.cssSwitch();
-  setTimeout(function(){
-    document.querySelector('.module_body').classList.remove('noneAnimation');
-    document.querySelector('.module_body').style.opacity = 1;
-  },0);
-  console.log('首页加载成功~~send from 小小框架~~');
-  setTimeout(function(){
-      this.redHat = new RedHat;
-  }.bind(this),100);
+    this.redHat = new RedHat;
 }
 
-exports.actionUpload = function(){
+exports.viewUpdateUpload = function(){
   document.querySelector('#avatar_upload').click();
 }
 
 exports.actionNewAvatar = function(){
-  this.redHat.show_new_avatar();
+  this.redHat.generate_avatar(function(output){
+    this.Page.switchToDom('\
+        <img class="newAvatar" src="'+output+'" alt=""/>\
+        <div class="btnOneLine">长按图片保存</div>\
+        <a href="#back">\
+            <div class="btnOneLine btnWhite">返回</div>\
+        </a>\
+    ');
+  }.bind(this));
 }
 
-exports.actionAddAnother = function(){
+exports.viewUpdateAddAnother = function(){
   this.redHat.add_more();
 }
 
-
-this.redHat = null;
 function RedHat(){
   var display_result = document.querySelector('.display_result');
   var changeImg = document.querySelector('.changeImg');
@@ -58,7 +56,7 @@ function RedHat(){
               }();
           }
           start = i;
-          setTimeout(loadImg,800);
+          setTimeout(loadImg,350);
       }
       loadImg();
       this.addRandom = function (){
@@ -152,12 +150,11 @@ function RedHat(){
       }
   }
 
-  generate_avatar = function (){
+  this.generate_avatar = function (func){
       var ajusted_img = new Image();
       ajusted_img.src = avatar_editor.toImg();
-      console.log(ajusted_img.complete);
-      if(ajusted_img.complete){
-          var canvas = document.createElement('canvas');
+      ajusted_img.onload = function(){
+        var canvas = document.createElement('canvas');
           canvas.width = 600;
           canvas.height = 600;
           canvas.style.width = '200px';
@@ -165,33 +162,8 @@ function RedHat(){
           var context = canvas.getContext('2d');
           context.drawImage(document.querySelector('#avatar_orignal'),0,0,600,600);
           context.drawImage(ajusted_img,0,0,600,600);
-      }
-      return canvas.toDataURL();
-  }
-
-  this.show_new_avatar = function(){
-      document.querySelector('#output_img').setAttribute('src',generate_avatar());
-      maskOn(function(){
-          css(document.querySelector('#output'),{
-                  'opacity': '0'
-              });
-          setTimeout(function() {
-              css(document.querySelector('#output'),{
-                  'display': 'none',
-                  'z-index': '-10',
-              });
-          }, 10);
-      });
-      css(document.querySelector('#output'),{
-          'display': 'block',
-          'z-index': '100',
-      });
-      setTimeout(function() {
-          css(document.querySelector('#output'),{
-              'opacity': '1'
-          });
-      }, 10);
-    //   ajax('get','action.php',{act:'generate'},'',function(){});
+          func(canvas.toDataURL());
+      };
   }
 
   var hammertime = new Hammer(document.querySelector('#avatar_edit'));
@@ -231,7 +203,9 @@ function RedHat(){
 
 
   this.add_more = function(){
-      document.querySelector('#avatar_orignal').setAttribute('src',generate_avatar());
-      headwear.addRandom();
+      this.generate_avatar(function(output){
+        document.querySelector('#avatar_orignal').setAttribute('src',output);
+        headwear.addRandom();
+      });
   }
 }

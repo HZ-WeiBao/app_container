@@ -118,6 +118,17 @@ class test extends base {
         return ($this->getXQ())?0:1;
     }
 }
+$url = array('Home_','Index');
+$len = strlen($url[0]);
+var_dump(strpos($url[0],'_') == $len-1);
+var_dump(substr($url[0],0,$len-1));
+die();
+$str = 'g_img={url: "/az/hprichbg/rb/EuropeanRabbitGreeting_ZH-CN10625718769_1920x1080.jpg",id:\'bgDi';
+preg_match('/g_img={url: "(.+)\",/',$str,$match);
+var_dump($match);
+die();
+echo urldecode('%2FQueryMarkUpAction.do%3Fact%3DdoQueryCond%26sid%3D300%26pram%3Dresults%26ksnf%3D4723%26sf%3D%26bkjb%3D14%26sfzh%3D445381199306086030%26name%3D%E9%99%88%E4%B8%96%E6%9D%B0&ksnf=4723&bkjb=14&sfzh=445381199306086030&name=%E9%99%88%E4%B8%96%E6%9D%B0&verify=yn8n');
+die();
 $test = new test;
 echo $test->getXN().$test->getXQ()."\n";
 echo $test->lastXN().$test->lastXQ();

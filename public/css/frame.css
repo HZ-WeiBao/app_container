@@ -1,27 +1,42 @@
-.module_body {
+
+.pageContainer {
     margin-top: 50px;
     outline: none;
-    transition: all .35s ease 0s;
-    -webkit-transition: all .35s ease 0s;
-    -o-transition: all .35s ease 0s;
-    -moz-transition: all .35s ease 0s;
+    transition: all .33s ease 0s;
+    -webkit-transition: all .33s ease 0s;
+    -o-transition: all .33s ease 0s;
+    -moz-transition: all .33s ease 0s;
+}
+.pageContainer > div {
+    transition: none;
+    -webkit-transition: none;
+    -o-transition: none;
+    -moz-transition: none;
 }
 
-.module_body * {
+.pageContainer .page {
     outline: none;
-    transition: all .35s ease 0s;
-    -webkit-transition: all .35s ease 0s;
-    -o-transition: all .35s ease 0s;
-    -moz-transition: all .35s ease 0s;
+    transition: all .33s ease 0s;
+    -webkit-transition: all .33s ease 0s;
+    -o-transition: all .33s ease 0s;
+    -moz-transition: all .33s ease 0s;
+    will-change: transform;
+    will-change: opacity;
+    padding-bottom: 20px;
 }
 
-.noneAnimation * {
+.pageContainer .page *{
     outline: none;
-    transition: none!important;
-    -webkit-transition: none!important;
-    -o-transition: none!important;
-    -moz-transition: none!important;
+    transition: all .33s ease 0s;
+    -webkit-transition: all .33s ease 0s;
+    -o-transition: all .33s ease 0s;
+    -moz-transition: all .33s ease 0s;
 }
+
+.pageCache {
+    display: none;
+}
+
 
 .baner {
     height: 80px;
@@ -148,30 +163,37 @@
     transition: 0s -webkit-filter linear;
 }
 
-.display_result {
-    min-height: 260px;
-    margin-bottom: 20px;
-    padding-top: 12px;
-    text-align: center;
-    transform: translate3d(0, 0, 0);
-}
-
-.display_result * {
-    transform: translate3d(0, 0, 0);
-}
-
 .menu {
     width: 100%;
     height: 50px;
-    background: #00b5f0;
+    background: #0072C6;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
     line-height: 50px;
-    text-align: center;
     font-size: 21px;
     color: #fafafa;
+    transition: all .33s ease 0s;
+    -webkit-transition: all .33s ease 0s;
+    -o-transition: all .33s ease 0s;
+    -moz-transition: all .33s ease 0s;
+}
+
+.menu .selectedIn {
+    animation:selectedInAnimation .13s ease-out 0s forwards;
+}
+.menu .selectedOut {
+    animation:selectedOutAnimation .13s ease-out 0s forwards;
+}
+
+@keyframes selectedInAnimation{
+    0%{background: rgba(0,210,255,0);}
+    100%{background: rgba(49,151,226,1);}
+}
+@keyframes selectedOutAnimation{
+    0%{background: rgba(49,151,226,1);}
+    100%{background: rgba(0,210,255,0);}
 }
 
 .menu * {
@@ -179,8 +201,24 @@
     float: left;
 }
 
+.menu a{
+    color: white;
+}
+
 .menu span:nth-child(1) {
-    width: 45px;
+    width: 47px;
+}
+.menu span:nth-child(1) a i{
+    width: 100%;
+}
+.menu span:nth-child(1) a{
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.menu > span:nth-child(2) {
+    margin-left: 5px;
 }
 
 .menu ul {
@@ -188,9 +226,67 @@
     font-size: 15px;
 }
 
+.menu ul li *{
+    display: inline-block;
+}
+
+.menu ul li{
+    min-width: 35px;
+    text-align: left;
+    padding: 0 3px;
+    font-size: 17px;
+}
+.menu ul li:nth-last-child(1){
+    margin-right: 6px;
+}
+.menu ul li a{
+    width: 100%;
+}
+.menu ul li i{
+    font-size: 20px;
+    margin:0 5px;
+}
+
 .menu ul img {
     width: 25px;
     height: 25px;
     position: relative;
     top: 12.5px;
+    /*margin: 0 2px;*/
+}
+
+@font-face {
+  font-family: 'iconfont';  /* project id 279197 */
+  src: url('//at.alicdn.com/t/font_w63xwf2amos6pqfr.eot');
+  src: url('//at.alicdn.com/t/font_w63xwf2amos6pqfr.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_w63xwf2amos6pqfr.woff') format('woff'),
+  url('//at.alicdn.com/t/font_w63xwf2amos6pqfr.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_w63xwf2amos6pqfr.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont"!important;
+  font-size: 21px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0px;
+}
+
+.btnOneLine {
+    width: 86%;
+    margin:13.5px auto 0 auto;
+    font-size: 21px;
+    text-align: center;
+    background: #0072c6;
+    border: 1px solid #46a7ef;
+    padding: 8px 0;
+    border-radius: 5px;
+    color: #fafafa;
+}
+
+
+.btnWhite {
+    background: white;
+    color: black;
+    border:1.5px solid #b4b4b4;
 }

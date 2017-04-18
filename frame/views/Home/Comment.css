@@ -1,0 +1,98 @@
+.inputComment{
+  width: 90%;
+  margin: 10px auto;
+  height:80px;
+  background: green;
+}
+
+#inputComment{
+  width:100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  background: #f3f3f3;
+}
+
+.btnContainer{
+  height: 35px;
+  padding:0 5%;
+  line-height: 35px;
+}
+#btnSend {
+  border-radius: 5px;
+  display: block;
+  position: absolute;
+  right: 5%;
+  width: 60px;
+  height: 35px;
+  text-align: center;
+  background: #04a5de;
+  line-height: 35px;
+  color: white;
+}
+
+.success {
+  background: #00BC0A!important;
+}
+
+.boundary{
+  background: #f3f3f3;
+  width:100%;
+  height:6px;
+  margin:30px 0;
+  text-align: center;
+}
+.boundary::before{
+  content: '精选留言';
+  background: white;
+  position: relative;
+  top: -11px;
+  padding: 5px 10px;
+  font-size: 20px;
+  font-weight: 100;
+  color: #255375;
+}
+
+.commentsContainer li{
+  widows: 100%;
+  margin: 20px 0;
+}
+
+
+
+.commentsContainer li > div > div{
+  margin-right: 10%;
+  padding-left: 5%;
+}
+
+.commentsContainer li .btnLike {
+  float:right;
+  position: relative;
+  left:5%;
+  padding-left: 0;
+  color: #949494;
+}
+
+.btnLike i {
+  color: #008cc5;
+}
+
+.btnLike span {
+  margin-left:5px; 
+}
+
+
+.commentsContainer .reply{
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 6px;
+  background: #EFEFEF;
+  padding: 1px 5px;
+}
+.commentsContainer .reply > span {
+  color: #627A90;
+}
+
+.commentsContainer .time{
+  color:#919191;
+}

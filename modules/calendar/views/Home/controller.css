@@ -1,0 +1,25 @@
+.page p ,.page h2{
+  padding:2px 30px;
+}
+.page p{
+  text-align: right;
+}
+.page h2{
+  padding-top:15px;
+  padding-bottom:15px; 
+}
+
+.page h2::before{
+  content: '';
+  width: 5px;
+  height: 23px;
+  position: absolute;
+  margin-left: -12px;
+  margin-top: 5px;
+  background: #0072c6;
+}
+
+.page p > span {
+  color:#2e5c7d;
+  float: left;
+}

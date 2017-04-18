@@ -2,54 +2,61 @@
 
 class mandarin extends __base__ {
   public function getData(){
-    $posfield = "__VIEWSTATE=&txtStuID={$this->studentID}&txtName={$this->studentName}&txtIDCard={$this->studentIDCard}&btnLogin==%E6%9F%A5++%E8%AF%A2&txtCertificateNO=&txtCardNO=";
+    $posfield = "__VIEWSTATE=&txtStuID={$this->id}&txtName={$this->name}&txtIDCard={$this->cardId}&btnLogin==%E6%9F%A5++%E8%AF%A2&txtCertificateNO=&txtCardNO=";
 
     return $this->Curl->post()->direct
             ->url('http://gd.cltt.org/Web/Login/PSCP01001.aspx')
             ->data($posfield)
             ->referer('http://gd.cltt.org/Web/Login/PSCP01001.aspx')->getResponse();
-
   }
-  public function parse(){
-    if(preg_match('/border:0">.+<\/table>/isu',$this->raw,$match)){
-      //剪掉头部
-      $match[0] = str_replace('border:0">','',$match[0]);
-      $match[0] = str_replace('</table>','',$match[0]);
-      //替换url地址
-      $match[0] = str_replace('../common/','http://gd.cltt.org/Web/common/',$match[0]);
-      //拿一个证件照
-      //http://gd.cltt.org/Web/common/GeneratePhotoByStuID.ashx?stuID=
 
-      //换一种思路,瞬间结构清晰
-      preg_match_all('/<td bgcolor="#F6f6f6">.*<\/td>/isU',$match[0],$info);
-      // var_dump($info);
-      $dom = '<div class="table"><div>名字：</div><span>'.$studentName.'</span></div>';
-      for($i = 0 ; $i < count($info[0])/2; $i++){
-          $info[0][$i*2] = str_replace('<td bgcolor="#F6f6f6">','',$info[0][$i*2]);
-          $info[0][$i*2+1] = str_replace('<td bgcolor="#F6f6f6">','',$info[0][$i*2+1]);
-          $info[0][$i*2] = str_replace('</td>','',$info[0][$i*2]);
-          $info[0][$i*2+1] = str_replace('</td>','',$info[0][$i*2+1]);
-          $info[0][$i*2] = preg_replace('/\s/','',$info[0][$i*2]);
-          $info[0][$i*2+1] = preg_replace('/\s/','',$info[0][$i*2+1]);
-          $dom .= '<div class="table"><div>'.$info[0][$i*2].'</div><span>'.$info[0][$i*2+1].'</span></div>';
-      }
-      $selfieUrl = 'http://gd.cltt.org/Web/common/GeneratePhotoByStuID.ashx?stuID='.$info[0][1];
-      return [
-          'dom'=>$dom,
-          'selfieUrl'=>$selfieUrl
-      ];
+  public function parse(){
+    
+    $i = function($tds,$num){
+      return trim($tds->item($num)->textContent);
+    };
+
+    try{
+      $table = $this->dom->getElementById('LooUpSocreList_Div')
+              ->getElementsByTagName('table')->item(0);
+      $tds = $table->getElementsByTagName('td');
+
+      $imgSrc = $tds->item(5)->getElementsByTagName('img')->item(0)->getAttribute('src');
+      $imgSrc = str_replace('../','http://gd.cltt.org/Web/',$imgSrc);
+      $grade = array(
+        'id' =>     $i($tds,7),
+        'cardId'=>  $i($tds,4),
+        'name'=>    $i($tds,2),
+        'examTime'=>$i($tds,11),
+        'score'=>   $i($tds,13),
+        'grade'=>   $i($tds,15),
+        'certificateId'=>$i($tds,17),
+        'province'=>$i($tds,19),
+        'examLocation'=>$i($tds,21),
+        'selfieUrl'=>$imgSrc
+      );
+    }catch(Error $e){
+      return false;
     }
-    return false;
+    return $grade;
   }
   public function store(){
-    
+    $this->edu_mandarinModel->write($this->data);
   }
 
-  public function get($studentID='', $studentName='', $studentIDCard=''){
-    $this->studentID = $studentID;
-    $this->studentName = $studentName;
-    $this->studentIDCard = $studentIDCard;
-
+  public function get($id='', $name='', $cardId=''){
+    $entry = new edu_mandarinModel;
+    if($entry->findOne('(id = ? and name = ?) or (id = ? and cardId = ?) or (name = ? and cardId = ?)',
+    array(
+      $id,$name,$id,$cardId,$name,$cardId
+    ))->success())
+      return $entry;
+    
+    $this->id = $id;
+    $this->name = $name;
+    $this->cardId = $cardId;
+    if($this->data)
+      $this->store();
     return $this->data;
   }
 }

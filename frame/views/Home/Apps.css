@@ -1,0 +1,32 @@
+.page .type{
+  border-bottom: 1px solid #e3e3e3;
+  padding:10px;
+}
+
+.type .typeName {
+  font-size: 18px;
+  margin: 5px 0;
+  padding-left: 10px;
+}
+
+.items li {
+  width:25%;
+  height:85px;
+  display: inline-block;
+  text-align: center;
+}
+.items li .icon{
+  width:51px;
+  height:51px;
+  display:inline-block;
+  /*background: lightskyblue;*/
+  text-align: center;
+  line-height: 60px;
+}
+.items li .icon i{
+  font-size: 38px;
+}
+.items li .name{
+  text-align: center;
+  font-size: 15px;
+}

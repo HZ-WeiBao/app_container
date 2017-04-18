@@ -16,40 +16,29 @@ exports.deps = {
 };
 
 exports.actionIndex = function() {
-    //一般首页是没有东西需要执行的,但是也可以干点其他事情滴~~
-    //如果是action一般是不会去设置什么东西但是是需要有默认的切换事件的
-    this.Loader.cssSwitch();
-    setTimeout(function() {
-        document.querySelector('.module_body').classList.remove('noneAnimation');
-        document.querySelector('.module_body').style.opacity = 1;
-    }, 35);
-    console.log('首页加载成功~~send from 小小框架~~');
     week_selection.init();
     building_selection.init();
     courseStartEndSelector.init();
+    // document.querySelector('.buttom_submit').addEventListener('click',actionQuery.bind(this));
 }
 
-exports.actionQuery = function() {
-    //将会需要手动从dom里面提取数据
-    //这一部分其实可以自动化一些
+exports.viewUpdateQuery = function() {
     var $display_result = document.querySelector('.display_result');
     css($display_result, {
         'opacity': 0,
-        'transform': 'translateY(-10px)'
+        'transform': 'translateY(-10px)',
     });
 
-    //验证
-
-    //发送后台服务地址拿数据
     Ajax({
         method: 'get',
-        url: this.Router.url(),
+        url: this.Router.url('Home','Query'),
         arg: {
             ls: courseStartEndSelector.value().ls,
             le: courseStartEndSelector.value().le,
             wd: week_selection.value(),
             bd: building_selection.value()
         },
+        cache:true,
         func: function(rep) {
             var result = JSON.parse(rep);
             var $display_result = document.querySelector('.display_result');
@@ -112,13 +101,6 @@ exports.actionQuery = function() {
             }, 400);
         }
     });
-
-    //处理返回的数据包这里也是可以弄一个自动parse,xhr应该是可以会去返回的状态码之类的
-
-    //最后动画处理
-
-    //控件事件绑定
-
 }
 
 
@@ -220,13 +202,13 @@ widget.add('courseStartEndSelector', function(getDom) {
 
         $select_ls.addEventListener('change', function() {
             if (parseInt($select_le.value, 10) < parseInt($select_ls.value, 10))
-                $select_le.value = $select_ls.value;
+                $select_le.value = parseInt($select_ls.value, 10) + 1 ;
             $ls_time.innerHTML = ls_time_arr[$select_ls.value];
             $le_time.innerHTML = le_time_arr[$select_le.value];
         });
         $select_le.addEventListener('change', function() {
             if (parseInt($select_le.value, 10) < parseInt($select_ls.value, 10))
-                $select_ls.value = $select_le.value;
+                $select_ls.value = parseInt($select_le.value, 10) - 1;
             $ls_time.innerHTML = ls_time_arr[$select_ls.value];
             $le_time.innerHTML = le_time_arr[$select_le.value];
 

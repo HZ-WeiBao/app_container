@@ -5,11 +5,15 @@ class BaseCtrl extends Component {
   public function init(){}
   public function _init(){}
 
-  public function actionIndex(){
-    View::render('layoutF',[
-      'content' => View::render('Home/Index',[],true),
+  public function actionIndex($arg=array()){
+    // var_dump($this->module_statisticsModel->get(F::$R->module));
+    $this->module_statisticsModel->get(F::$R->module)->inc('useNum')->save();
+    View::render('layout_',[
+      'content' => View::render('Home/Index',$arg,true),
       'config' => $this->ConfigMgr,
-    ]);
+      'statistics' => $this->module_statisticsModel->get(F::$R->module),
+      'commentNum' => $this->module_commentModel->numOf(F::$R->module)
+    ],false);
   }
 
   public function __destruct(){

@@ -139,9 +139,11 @@ class Sql extends Component {
   public function save(){// \所以这里看出save的作用,把对象储存环境的数据转换为更容易字符串操作的array
     $edited_row = array();
     foreach((array)$this as $key=>$value){
+
       if(strpos($key,'_') === false && !is_numeric($key))
         $edited_row[$key] = $value;
     }
+
     if($this->_where != null){
       if(!$this->update($edited_row))// | $this->_lastStatment->rowCount() == 0
         $this->error();
@@ -175,7 +177,7 @@ class Sql extends Component {
 
   public function findAll(string $where='1',array $where_value=array()){
     $this->_where = $where;
-    $this->_limit = null;
+    // $this->_limit = null;
     $this->_where_value = $where_value;
     $this->_return_array = true;
     $this->_fetch();
@@ -305,5 +307,20 @@ class Sql extends Component {
   }
   public function success(){
     return $this->_lastStatment->rowCount();
+  }
+  //常用的数据方法
+  public function inc($columnName){
+    $this->{$columnName} = intval($this->{$columnName}) + 1;
+    return $this;
+  }
+
+  public function dec($columnName){
+    if($this->{$columnName} != '0'){
+      $i = intval($this->{$columnName}) - 1;
+      $this->{$columnName} = $i;
+    }else{
+      $this->{$columnName} = 0;
+    }
+    return $this;
   }
 }

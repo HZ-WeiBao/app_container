@@ -4,6 +4,7 @@ class Router extends Component {
   public $module = '';
   public $controller = '';
   public $action = '';
+  public $isFrame = false;
   public static $basePath = null;
 
   public static function globalConfig(&$config){
@@ -17,7 +18,6 @@ class Router extends Component {
     }catch(Error $e){
       $_JSON = null;
     }
-
     //解析
 
     $url = $this->analysisUrl($_SERVER['REQUEST_URI']);
@@ -30,6 +30,7 @@ class Router extends Component {
       if($this->controller[$len-1] == '_'){
         $this->controller = substr($this->controller,0,$len-1);
         $ctrlName = $this->controller.'CtrlF';
+        $this->isFrame = true;
       }else
         $ctrlName = $this->controller.'Ctrl';
       

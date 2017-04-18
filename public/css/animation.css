@@ -1,0 +1,14 @@
+.initial {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.in {
+    transform: translateY(0);
+    opacity: 1!important;
+}
+
+.out {
+    transform: translateY(10px)!important;
+    opacity: 0!important;
+}

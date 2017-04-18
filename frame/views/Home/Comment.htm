@@ -1,0 +1,24 @@
+<div style="width:100%;height:1px;"></div>
+<div class="inputComment">
+  <textarea id="inputComment" rows="" cols=""></textarea>
+</div>
+<div class="btnContainer"><span id="btnSend">发送</span>欢迎写写建议~反馈~</div>
+<div class="boundary">
+
+</div>
+<ul class="commentsContainer">
+  <? foreach($comments as $comment){ ?>
+    <li>
+      <div>
+        <div class="btnLike" commentId = "<?= $comment->id ?>"><i class="iconfont"></i><span><?= $comment->likeNum ?></span></div>
+        <div>
+          <p><?= $comment->content ?></p>
+          <p class="time"><?= date('Y-m-d',strtotime($comment->time)) ?></p>
+        </div>
+      </div>
+      <? if($comment->reply){ ?>
+      <div class="reply"><span>DeepKolos</span>:内容</div>
+      <? } ?>
+    </li>
+  <? } ?>
+</ul>

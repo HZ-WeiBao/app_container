@@ -1,0 +1,15 @@
+<div class="table">
+    <div><div>名字：</div><span><?= $data->name ?></span></div>
+    <div><div>准考证号：</div><span><?= $data->id ?></span></div>
+    <div><div>考试时间：</div><span><?= $data->examTime ?></span></div>
+    <div><div>最终分：</div><span><?= $data->score ?></span></div>
+    <div><div>等级：</div><span><?= $data->grade ?></span></div>
+    <div><div>证书编号：</div><span><?= $data->certificateId ?></span></div>
+    <div><div>省份：</div><span><?= $data->province ?></span></div>
+    <div><div>测试站点：</div><span><?= $data->examLocation ?></span></div>
+</div>
+
+<a href="#Home/Selfie?url=<?= urlencode($data->selfieUrl) ?>">
+    <div class="btnOneLine">可爱的自拍</div>
+</a>
+<a href="#back"><div class="btnOneLine btnWhite">返回</div></a>

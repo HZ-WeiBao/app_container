@@ -1,0 +1,51 @@
+.word {
+  margin: 20% 8% 0 8%;
+  text-align: center;
+  font-size: 45px;
+  font-weight: 100;
+  display: inline-block;
+  margin-bottom: 50px;
+  border-bottom: 2px solid #cacaca;
+}
+
+.word > a{
+  position: absolute;
+  right: 8%;
+  font-size: 30px!important;
+  margin-top: 15px;
+}
+.word .iconfont {
+  font-size: 30px!important;
+}
+
+.saying {
+  font-family: 宋体!important;
+  margin: 0% 8%;
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20%;
+}
+
+.saying::before{
+  content:'┌';
+  position: absolute;
+  margin-left: -28px;
+  margin-top: -24px;
+  font-weight: 100;
+}
+
+.saying::after{
+  content:'┘';
+  position: absolute;
+  margin-top: 24px;
+  font-weight: 100;
+}
+
+.bg {
+  position: absolute;
+  height: 100%;
+  width:100%;
+  top:0px;
+  left:0px;
+  z-index: -10;
+}

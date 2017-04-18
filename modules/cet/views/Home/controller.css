@@ -1,0 +1,48 @@
+.inputText {
+    margin: 10px 0;
+    padding: 2px 7%;
+}
+
+.inputText:nth-child(1) {
+    padding-top: 40px; 
+    font-size: 19px;
+}
+
+.inputText:last-of-type {
+    margin-bottom: 30px;
+}
+
+.inputText>div {
+    font-size: 19px;
+    border-left:5.5px solid #0072c6;
+    padding-left:6px;
+    margin-bottom: 6px;
+    color: #14486f;
+}
+
+.inputText>input {
+    width: 100%;
+    border: none;
+    font-size: 19px;
+    border-bottom: 2px solid #d0d0d0;
+    padding: 2px 0px;
+}
+
+
+.table > div {
+    height: 12px;
+    line-height: 12px;
+    padding: 20px;
+    width: 88%;
+    margin: 0 auto;
+    font-size: 18px;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.table > div > div {
+    display: inline-block;
+}
+
+.table  > div > span {
+    float: right;
+}

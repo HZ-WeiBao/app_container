@@ -1,0 +1,15 @@
+<p>关于模块</p>
+<p><span>名字</span> : <?= $config->name?></p>
+<p><span>作者</span> : <?= $config->author?></p>
+<p><span>描述</span> : <?= $config->description?></p>
+<div>
+  <p>更新日志 : </p>
+  <? foreach($config->version as $version => $content) { ?>
+  <p class="version"><span>版本</span> : <?= $version?> <span><?= $content->time?></span></p>
+    <ul>
+      <? foreach($content->updateLog as $updateLog){ ?>
+      <li><?= $updateLog?></li>
+      <? } ?>
+    </ul>
+  <? } ?>
+</div>

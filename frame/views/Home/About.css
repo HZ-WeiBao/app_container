@@ -1,0 +1,56 @@
+.page p {
+  padding:5px 35px 5px 45px;
+  font-size: 18px;
+}
+.page p::before{
+  content: '';
+  width: 4px;
+  height: 14px;
+  margin-left: -10px;
+  margin-top: 5px;
+  position: absolute;
+  background: #0072c6;
+}
+
+.page p:nth-child(1) {
+  font-size: 28px;
+  padding-top:25px; 
+}
+
+.page p:nth-child(1)::before{
+  content: '';
+  width: 4px;
+  height: 20px;
+  margin-left: -10px;
+  margin-top: 8px;
+  position: absolute;
+  background: none;
+}
+
+.page .version {
+  padding-top: 15px;
+  padding-bottom: 5px; 
+}
+
+.page .version > span:nth-child(2) {
+  display: inline-block;
+  position: absolute;
+  right:35px;
+}
+
+.page li {
+  margin:5px 35px;
+  padding-left:15px;
+  font-size: 18px;
+}
+.page li::before{
+  content: '♢';
+  position: absolute;
+  margin-left: -20px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.page span{
+  color:#1d4461;
+}

@@ -1,6 +1,6 @@
 .selected {
-    background: #00b5f0;
-    color: white;
+    background: #0072C6;
+    color: white!important;
 }
 
 .select_wd {
@@ -11,7 +11,7 @@
     padding: 0 5px;
     clear: both;
     text-align: center;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid #d2d2d2;
 }
 
 .select_wd>span {
@@ -36,7 +36,7 @@
     font-size: 20px;
     /*background: lightgrey;*/
     padding: 0 5px;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid #d2d2d2;
 }
 
 .select_l select {
@@ -63,7 +63,7 @@
     line-height: 50px;
     font-size: 20px;
     padding: 0 5px;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid #d2d2d2;
 }
 
 .select_bd>span {
@@ -118,12 +118,18 @@
     width: 100%;
     font-size: 30px;
     line-height: 60px;
-    position: fixed;
     bottom: 0px;
     text-align: center;
-    background: #00b5f0;
-    border-top: 1px solid grey;
+    background: #0072C6;
+    border-top: 1px solid #0072C6;
     z-index: 100;
+    color: #fafafa;
+    position: fixed;
+}
+
+.buttom_submit i{
+    margin-right: 5px;
+    font-size: 30px;
 }
 
 .buttom_submit>img {
@@ -133,6 +139,36 @@
     margin-top: -5px;
 }
 
-.buttom_submit a {
-    color: #fafafa;
+.display_result {
+    padding-top:14px;
+    min-height: 374px;
+    text-align: center;
+    margin-bottom: 70px;
+    transform: translate3d(0, 0, 0);
+}
+
+.display_result * {
+    transform: translate3d(0, 0, 0);
+}
+
+.display_result .updateLog{
+    width: 66%;
+    padding: 30px;
+    margin:0 auto;
+    text-align: center;
+}
+
+.updateLog span{
+    font-size: 19px;
+    color: #638196;
+    padding: 2px 8px;
+    display: inline-block;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #dedede;
+}
+
+.updateLog p{
+    color: #656565;
+    text-align: left;
+    font-size: 17px;
 }

@@ -15,7 +15,6 @@ class HomeCtrl extends BaseCtrl {
     
     $week = $this->Proxy->weekNumber();
     $noneWeekly = ($week%2)?2:1;
-
     //数据获取输出
     echo json_encode($this->emptyClassModel->get(
       $ls,$le,$bd,$wd,$week,$noneWeekly));
