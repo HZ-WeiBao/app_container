@@ -51,7 +51,13 @@ class nerc extends __base__ {
       ->getResponse();
   }
   public function parse(){
-    return $this->raw;
+    if(strpos($this->raw,'抱歉，验证码错误！') !== false)
+      return '抱歉，验证码错误！';
+    elseif(strpos($this->raw,'您查询的结果为空') !== false)
+      return '您查询的结果为空';
+    else {
+      return $this->raw;
+    }
   }
   public function store(){}
 
