@@ -1,5 +1,6 @@
 {
     "name": "普通话成绩",
+    "status": "normal",
     "description": "ployfill",
     "author": "DeepKolos",
     "version": {

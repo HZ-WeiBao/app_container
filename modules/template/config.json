@@ -1,5 +1,6 @@
 {
   "name": "template",
+  "status": "normal",
   "description": "ployfill",
   "author": "DeepKolos",
   "version": {
@@ -8,9 +9,9 @@
       "updateLog": ["更新~"]
     }
   },
-  "component":{
-    "Schedule":{
-      "lastTime":"timestamp"
+  "component": {
+    "Schedule": {
+      "lastTime": "timestamp"
     }
 
   }

@@ -1,5 +1,5 @@
 <?php
-include Router::$basePath.'/libs/functions/__base__.php';
+include Router::$basePath.'/libs/crawlers/__base__.php';
 
 class Proxy extends Component {
     public static $sid;
@@ -37,7 +37,7 @@ class Proxy extends Component {
                 'jpg'
             );
             if(in_array($extension,$imagesExt))
-                $this->waterMark->loadFromStr($content)
+                $this->WaterMark->loadFromStr($content)
                                 ->addText('微报',[156,156,156],'迷你简黄草',20)
                                 ->run();
         });
@@ -48,7 +48,7 @@ class Proxy extends Component {
     // }
 
     public function get__($variable){
-        $func = dirname(__FILE__).'/functions/' . $variable . '.php';
+        $func = dirname(__FILE__).'/crawlers/' . $variable . '.php';
         if(file_exists($func)){
             include $func;
             $this->{$variable} = new $variable;
@@ -56,10 +56,10 @@ class Proxy extends Component {
         }
     }
 
-    public function updateFields(array $fields, bool $newTerm){
+    public function updateFields(array $fields){
         //没有了就是这个而已
         foreach($fields as $value){
-            $this->{$fields}->store();
+            $this->{$value}->store();
             //你看折腾这么久,其实这个func只有那么这几行代码而已,压档的工作都放在store里面去了,这里只管更新
         }
     }

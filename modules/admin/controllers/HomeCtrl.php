@@ -1,169 +1,142 @@
 <?php
 
 class HomeCtrl extends BaseCtrl {
-  public function actionTestyg(){
-    set_time_limit(0);
-    // $filePath = F::$R->getDataDir().'/dsign.js';
-    // $url = exec("node {$filePath} -p");
-    // var_dump($url);
-    // $this->Proxy->youngGirl->store();
-    // $json = json_decode($this->DataMgr->get('sayings.1','json'),true);
-    // $this->char_sayingsModel->write($json);
+  public function actionIndex($arg=array()){
+    //获取module信息
+    $modules = array();
+    foreach($this->module_statisticsModel->orderBy(array('useNum'))->DESC()->findAll() as $module){
+      $module->config = new ConfigMgr($module->moduleName);
+      $module->commentNum = 0;
+      $module->unReadNum = 0;
+      $modules[$module->moduleName] = $module;
+    }
+    //未读留言还有留言总数
+    foreach($this->module_commentModel->findAll('1') as $comment){
+      $modules[$comment->moduleName]->commentNum++;
+      if($comment->isRead != '1')
+          $modules[$comment->moduleName]->unReadNum++;
+    }
+    //总数统计~
+    $total = array(
+      'likeNum' => 0,
+      'commentNum' => 0,
+      'useNum' => 0
+    );
 
-    //设置上次更新时间~~
-    // $this->Proxy->youngGirlForum->setLastUpdateTime(
-    //   $this->ConfigMgr->component->Proxy->youngGirlForum->LastUpdatTime);
-
-    // $this->Proxy->youngGirlForum->store();
-
-    // $this->ConfigMgr->component->Proxy->youngGirlForum->LastUpdatTime = $this->Proxy->youngGirlForum->getLatestTime();
-
-    // $this->ConfigMgr->save();
-  }
-  public function actionTestnercquery(){
-    
-    $this->Proxy->nerc->setSession($_COOKIE['46session'] ?? '');
-    $this->Proxy->nerc->setSession($_COOKIE['46pool'] ?? '');
-    var_dump($this->Proxy->nerc->getSession());
-  }
-
-  public function actionTestnerc(){
-    $this->Proxy->nerc->setSession($_COOKIE['46session'] ?? '');
-    $this->Proxy->nerc->setPool($_COOKIE['46pool'] ?? '');
-
-    echo 'cookies: 46session --> '.$_COOKIE['46session'];
-    echo '<br>';
-    echo 'cookies: 46pool --> '.$_COOKIE['46pool'];
-    echo '<br>';
-    $result = $this->Proxy->nerc->getParams();
-    // var_dump($result);
-    setcookie('46session',$this->Proxy->nerc->getSession(),time() + 86400);
-    setcookie('46pool',$this->Proxy->nerc->getPool(),time() + 86400);
-
-    echo 'curlcookies: 46session --> '.$this->Proxy->nerc->getSession();
-    echo '<br>';
-    echo 'curlcookies: 46pool --> '.$this->Proxy->nerc->getPool();
-    echo '<br>';
-    
-    echo '<img src="data:image/png;base64,'.base64_encode($this->Proxy->nerc->getCaptcha()).'">';
-  }
+    foreach($modules as $module)
+      foreach($total as $key => &$value)
+        $value += $module->{$key};
   
-  public function actionTestmandarin(){
-    $result = $this->Proxy->mandarin->get('test','test');
-    var_dump($result);
+    parent::actionIndex(array(
+      'modules' => $modules,
+      'total' => (object)$total
+    ));
   }
-  public function actionTestcet(){
-    $this->Proxy->cet->get('440570162211317','陈惠敏');
-  }
-  public function actionTest(){
-    $time_start = microtime(true);
 
-    $this->Proxy->setSession($_GET['id']);
-    $src = $this->Proxy->getCaptcha();
+  public function actionCommentMgr(){
+    global $_JSON;
+    //我靠现在需要存在性的检测啊,感觉这个挺好性能的我觉得还是算了
 
-    var_dump($this->Proxy->Curl->_cookies);
-    $src_base64 = base64_encode($src);
-    // echo '<pre>'.htmlspecialchars($src).'</pre>';
-    echo "<img src='data:image/png;base64,{$src_base64}'>";
-
-    
-    var_dump((microtime(true)-$time_start));
-
-  }
-  public function actionTestreferer(){
-    $time_start = microtime(true);
-    $check = $this->Proxy->autoLogin();
-    var_dump($check);
-    
-    $page = $this->Proxy->Curl->get()
-                 ->url(Proxy::$baseUrl.'znpk/Pri_StuSel.aspx')->getResponse()->convert('gb2312','utf-8')->body;
-    echo "<pre>{$page}</pre>";
-  }
-  public function actionLogin(){
-    $time_start = microtime(true);
-    set_time_limit(0);
-    $this->Proxy->setSession($_GET['id']);
-    // echo 'sessionid:';
-    // var_dump($this->Proxy->Curl->_cookies);
-    // $check = $this->Proxy->login('1514080902121','458200', $_GET['c']);
-    // var_dump($check);
-    //真的是挺烦人的,现在测试数据抓取吧
-    // $this->Proxy->classRoomInfo->store();
-    // $data = $this->Proxy->classRoomList->data;
-    // $data = $this->Proxy->majorInfo->data;
-    // var_dump($data);
-    $this->Proxy->majorInfo->store();
-    // var_dump($this->Proxy->getXNXQ());
-
-    // $this->Proxy->classRoomInfo->store();
-    
-    // $check = $this->Proxy->autoLogin();
-    var_dump((microtime(true)-$time_start));
-
-  }
-  public function actionAutoLogin(){
-    $time_start = microtime(true);
-
-    $check = $this->Proxy->autoLogin();
-    var_dump($check);
-    var_dump((microtime(true)-$time_start));
-
-  }
-  public function actionTestOtheroption(){
-    $time_start = microtime(true);
-
-    // $one = $this->testModel->findOne('foo = ?',[1]);
-    $all = $this->Sql->usetable('test')->orderBy(array('foo'))->DESC()->distinct()->findAll();
-
-    header('TTFB : '.(microtime(true)-$time_start));
-    var_dump($all);
-    var_dump((microtime(true)-$time_start));
-
-  }
-  public function actionTestinsertbind(){
-    $time_start = microtime(true);
-
-    for($i = 0; $i < 100 ;$i++){
-      $this->Sql->query('insert into test (foo,bar,time) values (?,?,?)',array(
-        1,"long string~~~~~~~~~~~~~~","2017-03-21 00:00:00"
+    if(@$_JSON->module != ''){
+      $comments = $this->module_commentModel->findAll('moduleName = ? and isRead is null',array($_JSON->module));
+      $this->module_commentModel->isRead = 1;
+      $this->module_commentModel->save();
+      if(count($comments) > 0){
+        $unReadList = View::render('Home/CommentList',array(
+          'comments' => $comments
+          ),true);
+      }else{
+        $unReadList = '<span class="message">有吗?没找到~</span>';
+      }
+      View::render('this',array(
+        'module' => $_JSON->module,
+        'config' => new ConfigMgr($_JSON->module),
+        'unReadList' => $unReadList
       ));
+    }else
+      View::render('Home_/Error',array(
+        'message' => '参数出错了'
+      ));
+  }
+  public function actionCommentList(){
+    global $_JSON;
+
+    if(@$_JSON->module != '' && @$_JSON->tab != ''){
+      switch($_JSON->tab){
+        case 'UnRead':
+          $comments = $this->module_commentModel->findAll('moduleName = ? and isRead is null',array($_JSON->module));
+        break;
+        case 'Read':
+          $comments = $this->module_commentModel->findAll('moduleName = ? and isRead = 1',array($_JSON->module));
+        break;
+        case 'All':
+          $comments = $this->module_commentModel->findAll('moduleName = ? ',array($_JSON->module));
+        break;
+        default :$comments = array();
+      }
+      if(count($comments) > 0)
+        View::render('this',array(
+          'comments' => $comments
+        ));
+      else
+        echo '<span class="message">有吗?没找到~</span>';
+    }else
+      View::render('Home_/Error',array(
+        'message' => '参数出错了'
+      ));
+  }
+
+  public function actionCommentStar(){
+    global $_JSON;
+    if(@$_JSON->id != ''){
+      $this->module_commentModel->findOne('id = ?',array($_JSON->id));
+      $this->module_commentModel->markStar = 1;
+      $this->module_commentModel->save();
+      echo 'done';
+    }else{
+      header("HTTP/1.1 404 Arguments Error");
     }
-
-    header('TTFB : '.(microtime(true)-$time_start));
-    var_dump((microtime(true)-$time_start));
-    //9.204479932785
-    //增加参数绑定之后10.130572080612
   }
-  public function actionTestinsertunbind(){
-    $time_start = microtime(true);
-
-    for($i = 0; $i < 10000 ;$i++){
-      $this->testModel->foo = 1;
-      $this->testModel->bar = 'long string~~~~~~~~~~~~~~';
-      $this->testModel->time = date('y-m-d');
-      // var_dump($this->testModel);
-      $status = $this->testModel->save();
+  public function actionCommentLike(){
+    global $_JSON;
+    if(@$_JSON->id != ''){
+      $this->module_commentModel->findOne('id = ?',array($_JSON->id));
+      $this->module_commentModel->inc('likeNum')->save();
+      echo 'done';
+    }else{
+      header("HTTP/1.1 404 Arguments Error");
     }
-
-    header('TTFB : '.(microtime(true)-$time_start));
-    var_dump((microtime(true)-$time_start));
-    //10.062386035919
   }
-  public function actionTestinsert(){
-    $this->testModel->foo = 1;
-    $this->testModel->bar = 'string';
-    $this->testModel->time = date('y-m-d');
-    // var_dump($this->testModel);
-    $status = $this->testModel->save();
-    // var_dump($status);
+  public function actionCommentUnStar(){
+    global $_JSON;
+    if(@$_JSON->id != ''){
+      $this->module_commentModel->findOne('id = ?',array($_JSON->id));
+      $this->module_commentModel->markStar = null;
+      $this->module_commentModel->save();
+      echo 'done';
+    }else{
+      header("HTTP/1.1 404 Arguments Error");
+    }
   }
-  public function actionTestqudate(){
-    $test = $this->testModel;
-    $test->findOne('foo = ?',array(20));
-    $test->foo = 20;
-    $test->bar = 'pass test';
-    if($test->save()){
-      echo 'done~';
+  public function actionCommentUnLike(){
+    global $_JSON;
+    if(@$_JSON->id != ''){
+      $this->module_commentModel->findOne('id = ?',array($_JSON->id));
+      $this->module_commentModel->dec('likeNum')->save();
+      echo 'done';
+    }else{
+      header("HTTP/1.1 404 Arguments Error");
+    }
+  }
+  public function actionReply(){
+    global $_JSON;
+    if(@$_JSON->id != ''){
+      $this->module_commentModel->findOne('id = ?',array($_JSON->id));
+      $this->module_commentModel->reply = $_JSON->content;
+      $this->module_commentModel->save();
+      echo 'done';
+    }else{
+      header("HTTP/1.1 404 Arguments Error");
     }
   }
 }

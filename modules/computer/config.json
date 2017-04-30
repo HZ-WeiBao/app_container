@@ -1,5 +1,6 @@
 {
   "name": "计算机成绩",
+  "status": "normal",
   "description": "ployfill",
   "author": "DeepKolos",
   "version": {

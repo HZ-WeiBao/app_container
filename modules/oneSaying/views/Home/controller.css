@@ -22,7 +22,7 @@
   font-family: 宋体!important;
   margin: 0% 8%;
   text-align: center;
-  font-size: 28px;
+  font-size: 1.8rem;
   margin-bottom: 20%;
 }
 
@@ -39,6 +39,7 @@
   position: absolute;
   margin-top: 24px;
   font-weight: 100;
+  right: 5px;
 }
 
 .bg {

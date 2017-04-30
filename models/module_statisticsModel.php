@@ -9,8 +9,8 @@ class module_statisticsModel extends Sql {
       $log = new $class;
       $log->moduleName = F::$R->module;
       $log->likeNum = 0;
-      $log->useNum = 0;
-      $this->_caller->{__CLASS__} = $log;
+      $log->useNum = 1;
+      @$this->_caller->{__CLASS__} = $log;
       return $log;
     }
   }

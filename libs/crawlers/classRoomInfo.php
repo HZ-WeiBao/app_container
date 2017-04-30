@@ -2,7 +2,7 @@
 
 class classRoomInfo extends __base__ {
   public function getData(){
-    set_time_limit(0);
+    set_time_limit(3600);
     $KBFB_RoomSel = $this->getDom(
       $this->Curl->get()->url(
         'ZNPK/KBFB_RoomSel.aspx')->getResponse());

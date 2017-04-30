@@ -2,9 +2,7 @@
 
 class HomeCtrlF extends BaseCtrl {
 
-  public function init(){
-    
-  }
+  public function init(){}
 
   public function actionApps(){
     View::render('this');
@@ -71,6 +69,6 @@ class HomeCtrlF extends BaseCtrl {
 
   public function actionAbout(){
     View::render('this',array(
-      'config' => $this->configMgr));
+      'config' => $this->ConfigMgr));
   }
 }

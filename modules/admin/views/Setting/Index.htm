@@ -1,0 +1,14 @@
+<div style="height:1px;"></div>
+<p><span id="module" name="<?= $module?>"><?= $config->name?></span>的设置</p>
+
+<div class="statusBar">
+  <? $normal = $maintain = $close = 'none';
+     ${$config->status} = ''; ?>
+  <a name="normal" class="blue <?= $normal?>"><span>正常</span></a><i></i>
+  <a name="maintain" class="yellow <?= $maintain?>"><span>维护</span></a><i></i>
+  <a name="close" class="red <?= $close?>"><span>关闭</span></a>
+</div>
+
+<div class="Setting">
+  <?= $setting?>
+</div>

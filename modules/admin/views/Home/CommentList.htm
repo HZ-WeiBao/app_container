@@ -1,0 +1,23 @@
+<? foreach($comments as $comment){ ?>
+  <li>
+    <div>
+      <p>
+        <div commentId="<?= $comment->id?>">
+          <? if($comment->markStar != '1'){ ?>
+          <div class="btnStar">
+              <i class="iconfont">&#xe623;</i></div>
+          <? }else{ ?>
+           <div class="btnStar" star="true">
+              <i class="iconfont">&#xe600;</i></div>
+          <? } ?>
+          <div class="btnLike">
+              <i class="iconfont"></i>
+                <span><?= $comment->likeNum?></span></div>
+        </div>
+        <span class="time"><?= date('Y-m-d',strtotime($comment->time)) ?></span>
+      </p>
+      <p><?= $comment->content ?></p>
+    </div>
+    <div class="btnReply" commentId="<?= $comment->id?>"><span>作者</span>: <input type="text" value="<?= $comment->reply ?>"><a>回复</a></div>
+  </li>
+<? } ?>

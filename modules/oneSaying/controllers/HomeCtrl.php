@@ -2,16 +2,16 @@
 
 class HomeCtrl extends BaseCtrl {
   public function actionIndex($args=array()){
-    $saying = $this->char_sayingsModel->limit(1,$this->configMgr->showingNum)->findAll();
+    $saying = $this->char_sayingsModel->limit(1,$this->ConfigMgr->showingNum)->findAll();
     
-    if(time() - strtotime($this->configMgr->showingDay) > (3600 * 24)){//3600*24
-      $this->configMgr->showingDay = date('Y-m-d',time());
+    if(time() - strtotime($this->ConfigMgr->showingDay) > (3600 * 24)){//3600*24
+      $this->ConfigMgr->showingDay = date('Y-m-d',time());
       
-      $saying = $this->char_sayingsModel->limit(1,$this->configMgr->showingNum)->findAll();
-      $this->configMgr->showingNum++;
-      $this->configMgr->save();
+      $saying = $this->char_sayingsModel->limit(1,$this->ConfigMgr->showingNum)->findAll();
+      $this->ConfigMgr->showingNum++;
+      $this->ConfigMgr->save();
     }
-    // $this->char_sayingsModel->limit(1,$this->configMgr->showingNum);
+    // $this->char_sayingsModel->limit(1,$this->ConfigMgr->showingNum);
     //现在就是需要用到moduleconfig的时候咯
     parent::actionIndex(array(
       'id' => $saying[0]->id,

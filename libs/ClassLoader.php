@@ -4,18 +4,19 @@ F::$loader = new AutoLoader;
 spl_autoload_register(array(F::$loader,'load'));
 
 class AutoLoader {
-  // private const libsPath = array(//已弃用了
-  //   'Router',
-  //   'Sql',
-  //   'BaseCtrl',
-  //   'View',
-  //   'ConfigMgr',
-  //   'DataMgr',
-  //   'Proxy',
-  //   'Hook',
-  //   'Curl',
-  //   'Component'
-  // );//这里还是很多东西可以复用的
+  private const libsPath = array(//已弃用了,又复用了,因为效率,真的这些文件检查其实不太比较,确定性是可以事先知道的
+    'BaseCtrl',
+    'Component',
+    'ConfigMgr',
+    'Curl',
+    'DataMgr',
+    'Hook',
+    'Proxy',
+    'Router',
+    'Sql',
+    'View',
+    'WaterMark'
+  );//这里还是很多东西可以复用的
   //还是不通过人工维护这个列表了优先是寻找看一下是否在这个目录就行了
   
   private $rules = array(
@@ -26,24 +27,40 @@ class AutoLoader {
   private $comonRules = array();
 
   public function addRules($name,$uri){
-    $this->$comonRules[] = array($name,$uri);
+    $this->comonRules[] = array($name,$uri);
   }
 
   public function load($class){
     $path = __DIR__.'/../'.'libs/'.$class.'.php';
-    if(file_exists($path)){
+    if(in_array($class,self::libsPath)){
       include($path);
     }else
       foreach($this->rules as $value){
         if(strlen($class) - strpos($class,$value) == strlen($value)){//如果标识符是在末尾的话
           $path = $this->{'get_'.$value.'_path'}($class).'.php';
 
-          if(file_exists($path))
+          if(is_readable($path))
             include($path);
           else
             F::end(1,$class.'类('.$value.')加载失败,文件缺失~');
         }
       }
+
+    // try{
+    //   include($path);
+    // }catch(Error $e){
+    //   foreach($this->rules as $value){
+    //     if(strlen($class) - strpos($class,$value) == strlen($value)){//如果标识符是在末尾的话
+    //       $path = $this->{'get_'.$value.'_path'}($class).'.php';
+
+    //       try{
+    //         include($path);
+    //       }catch(Error $e){
+    //         F::end(1,$class.'类('.$value.')加载失败,文件缺失~');
+    //       }
+    //     }
+    //   }
+    // }
     
     if( !class_exists($class) ){
       F::end(1,$class.'类加载失败,请查看文件名和类名是否一致~,或者检查上层的get__返回值是否漏了');

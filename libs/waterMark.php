@@ -1,6 +1,6 @@
 <?php
 
-class waterMark extends Component {
+class WaterMark extends Component {
   private $_img = null;
   private $_imgUri = null;
   private $_imgStr = null;
@@ -25,8 +25,8 @@ class waterMark extends Component {
   public function __destruct(){
     if($this->_img)
       imagedestroy($this->_img);
-    if(isset($this->_config['img']) && is_resource($this->_config['img']['waterMark']))
-      imagedestroy($this->_config['img']['waterMark']);
+    if(isset($this->_config['img']) && is_resource($this->_config['img']['WaterMark']))
+      imagedestroy($this->_config['img']['WaterMark']);
   }
   // workflow:
   // 1. 加载图片数据,要提供不同的loader
@@ -93,24 +93,24 @@ class waterMark extends Component {
     $config['height'] = ($height)? $height: $config['type'][1];
     $config['src'] = $src;
 
-    if(isset($config['waterMark']) && is_resource($config['waterMark']))
-      imagedestroy($config['waterMark']);//避免重复加载图片资源导致的内存泄漏
+    if(isset($config['WaterMark']) && is_resource($config['WaterMark']))
+      imagedestroy($config['WaterMark']);//避免重复加载图片资源导致的内存泄漏
 
     $func = "imagecreatefrom".$config['type'];
-    $config['waterMark'] =  $func($src);
+    $config['WaterMark'] =  $func($src);
 
     if($config['width'] != $width && $config['height'] != $height){
       $resized = imagecreatetruecolor($config['width'], $config['height']);
 
       imagecopyresampled(
-        $resized, $config['waterMark'],
+        $resized, $config['WaterMark'],
         0, 0, 0, 0, 
         $config['width'], $config['height'],
         $config['info'][0], $config['info'][1]
       );
 
-      imagedestroy($config['waterMark']);
-      $config['waterMark'] = $resized;
+      imagedestroy($config['WaterMark']);
+      $config['WaterMark'] = $resized;
     }
 
     return $this;
@@ -167,22 +167,22 @@ class waterMark extends Component {
     }
 
     if(isset($config['img'])){
-      $waterMark = $config['img']['waterMark'];
+      $WaterMark = $config['img']['WaterMark'];
       //处理旋转
-      $waterMark = imagerotate($config['img']['waterMark'], -$config['rorate'], 0);
+      $WaterMark = imagerotate($config['img']['WaterMark'], -$config['rorate'], 0);
 
       //处理透明度
       $opacity = floor($config['img']['opacity'] * 100);
 
       imagecopymerge(
         $this->_img,
-        $waterMark,
+        $WaterMark,
         $x_baseLeftTop,
         $y_baseLeftTop,
         0, 0, $opacity
       );
 
-      imagedestroy($waterMark);
+      imagedestroy($WaterMark);
 
     }elseif(isset($config['text'])){
       $textBox = imagettfbbox(
@@ -228,7 +228,7 @@ class waterMark extends Component {
         $color, $config['text']['font'], $config['text']['content']);
 
 
-      $waterMark = $config['text'];
+      $WaterMark = $config['text'];
     }else
       F::end(2,'请设置水印,text或者img~~~');
     

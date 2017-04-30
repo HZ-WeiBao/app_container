@@ -1,2 +1,7 @@
 config.php
 /public/data
+/test
+/log
+/.vscode
+/vendor
+/tmp

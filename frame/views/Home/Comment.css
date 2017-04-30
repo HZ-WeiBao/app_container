@@ -58,19 +58,19 @@
   margin: 20px 0;
 }
 
-
-
-.commentsContainer li > div > div{
-  margin-right: 10%;
+.commentsContainer li > div {
+  margin-right: 5%;
   padding-left: 5%;
 }
 
-.commentsContainer li .btnLike {
+.commentsContainer li > div > div {
   float:right;
   position: relative;
-  left:5%;
   padding-left: 0;
-  color: #949494;
+}
+
+.commentsContainer li > div > div > div {
+  float: left;
 }
 
 .btnLike i {
@@ -81,13 +81,13 @@
   margin-left:5px; 
 }
 
-
 .commentsContainer .reply{
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 6px;
   background: #EFEFEF;
   padding: 1px 5px;
+  padding-bottom: 3px;
 }
 .commentsContainer .reply > span {
   color: #627A90;
@@ -95,4 +95,5 @@
 
 .commentsContainer .time{
   color:#919191;
+  font-size:18px;
 }

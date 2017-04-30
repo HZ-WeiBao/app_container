@@ -25,8 +25,8 @@ class ConfigMgr extends Component {//module config manager
         return iconv('UCS-2BE', 'UTF-8', pack('H4',$match[1]));
       } , json_encode($this->_config));
       file_put_contents($this->_path, $json);
-    }catch(Exception $e){
-      F::end(3,$e->getMessage());
+    }catch(Error $e){
+      F::end(3,'写入失败~');
     }
   }
 
@@ -35,7 +35,7 @@ class ConfigMgr extends Component {//module config manager
     //还是通过入口的不同呢??,如果通过参数内容,之后分支的所有不同都是需要使用参数再次判断的,
     //但是如果通过入口作为分支,那么,公共部分处理结构就需要重复了,所以好像没有找到更加好代码复用方式
     $this->_path = Router::$basePath . ( ($module == 'frame')? '/frame': '/modules/'.$module ) . '/config.json';
-    if(file_exists($this->_path)){
+    if(is_readable($this->_path)){
       $str = file_get_contents($this->_path);
       $this->_config = json_decode($str, false);//当然是使用->方式访问啦~
 

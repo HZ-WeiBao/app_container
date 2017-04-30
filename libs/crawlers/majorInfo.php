@@ -2,7 +2,7 @@
 
 class majorInfo extends __base__ {
   public function getData(){
-    set_time_limit(0);
+    set_time_limit(3600);
     $KBFB_LessonSel = $this->Curl->get()
       ->url('ZNPK/Private/List_XNXQKC.aspx',array(
         'xnxq' => $this->getXNXQ() ))
@@ -16,6 +16,7 @@ class majorInfo extends __base__ {
       $this->getOptionsTo($majors,
         $dom->getElementsByTagName('select'),'Sel_KC');
       
+      $counting = 0;
       foreach($majors as &$major){
         $KBFB_RoomSel_rpt = $this->getDom($this->Curl->post()
           ->url('ZNPK/KBFB_LessonSel_rpt.aspx')
@@ -55,6 +56,9 @@ class majorInfo extends __base__ {
             $major['course'][] = $courseTable;
           }
         }
+        // $counting++;
+        // if($counting > 500)
+        //   break;
       }
     }
     return $majors;

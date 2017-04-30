@@ -6,18 +6,21 @@
 <div class="boundary">
 
 </div>
+
 <ul class="commentsContainer">
   <? foreach($comments as $comment){ ?>
     <li>
       <div>
-        <div class="btnLike" commentId = "<?= $comment->id ?>"><i class="iconfont"></i><span><?= $comment->likeNum ?></span></div>
-        <div>
-          <p><?= $comment->content ?></p>
-          <p class="time"><?= date('Y-m-d',strtotime($comment->time)) ?></p>
-        </div>
+        <p>
+          <div>
+            <div class="btnLike" commentId = "<?= $comment->id ?>"><i class="iconfont"></i><span><?= $comment->likeNum ?></span></div>
+          </div>
+          <span class="time"><?= date('Y-m-d',strtotime($comment->time)) ?></span>
+        </p>
+        <p><?= $comment->content ?></p>
       </div>
       <? if($comment->reply){ ?>
-      <div class="reply"><span>DeepKolos</span>:内容</div>
+      <div class="reply"><span>作者</span>: <?= $comment->reply ?></div>
       <? } ?>
     </li>
   <? } ?>

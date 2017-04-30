@@ -1,12 +1,1 @@
-{
-  "name": "蹭课",
-  "description": "ployfill",
-  "author": "DeepKolos",
-  "version": {
-    "v0.1": {
-      "time": "2017-4-17",
-      "updateLog": ["迁入我的小小框架,文档的东西有空再写~"]
-    }
-  },
-  "component": {}
-}
+{"name":"蹭课","status":"normal","description":"ployfill","author":"DeepKolos","version":{"v0.1":{"time":"2017-4-17","updateLog":["迁入我的小小框架,文档的东西有空再写~"]}},"component":{}}

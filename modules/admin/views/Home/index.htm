@@ -1,0 +1,36 @@
+<div style="height:1px;"></div>
+<div class="roughlyStatistics">
+  <div>
+    <p><?= $total->useNum?></p>
+    <p>使用量</p>
+  </div>
+  <div>
+    <p><?= $total->commentNum?></p>
+    <p>留言量</p>
+  </div>
+  <div>
+    <p><?= $total->likeNum?></p>
+    <p>点赞量</p>
+  </div>
+</div>
+
+<div class="detailStatistics">
+  <table>
+    <? foreach($modules as $module){ ?>
+    <tr>
+      <td><a href="#Setting/<?= $module->moduleName?>"><i class="iconfont">&#xe60b;</i></td>
+      <td>
+        <a href="#Home/CommentMgr?module=<?= $module->moduleName?>"><?= $module->config->name?>
+          <? if($module->unReadNum > 0) {?>
+            <span><?= $module->unReadNum?></span>
+          <? } ?>
+        </a>
+      </td>
+      <td><?= $module->useNum?></td>
+      <td><?= $module->commentNum?></td>
+      <td><?= $module->likeNum?></td>
+      <td></td>
+    </tr>
+    <? } ?>
+  </table>
+</div>

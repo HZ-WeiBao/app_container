@@ -1,6 +1,6 @@
 {
   "name": "圣诞帽",
-  "description": "ployfill",
+  "status":"normal","description": "ployfill",
   "author": "DeepKolos",
   "version": {
     "v0.1": {

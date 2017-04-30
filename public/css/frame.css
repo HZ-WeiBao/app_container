@@ -26,6 +26,7 @@
 }
 
 .pageContainer .page *{
+    font-weight: 200;
     outline: none;
     transition: all .33s ease 0s;
     -webkit-transition: all .33s ease 0s;
@@ -257,11 +258,11 @@
 
 @font-face {
   font-family: 'iconfont';  /* project id 279197 */
-  src: url('//at.alicdn.com/t/font_w63xwf2amos6pqfr.eot');
-  src: url('//at.alicdn.com/t/font_w63xwf2amos6pqfr.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_w63xwf2amos6pqfr.woff') format('woff'),
-  url('//at.alicdn.com/t/font_w63xwf2amos6pqfr.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_w63xwf2amos6pqfr.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_2z5mh7a30p1a714i.eot');
+  src: url('//at.alicdn.com/t/font_2z5mh7a30p1a714i.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_2z5mh7a30p1a714i.woff') format('woff'),
+  url('//at.alicdn.com/t/font_2z5mh7a30p1a714i.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_2z5mh7a30p1a714i.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -289,4 +290,14 @@
     background: white;
     color: black;
     border:1.5px solid #b4b4b4;
+}
+
+.loadingBox{
+    font-size: 40px;
+    color: black;
+    margin: 0 auto;
+    width: 60px;
+    text-align: center;
+    position: relative;
+    top: 20px;
 }

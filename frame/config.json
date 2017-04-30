@@ -1,6 +1,6 @@
 {
   "banner": "惠大微报",
-  "description": "我的部门",
+  "status":"normal","description": "我的部门",
   "author": "deepkolos",
   "version": {
     "v0.1": [

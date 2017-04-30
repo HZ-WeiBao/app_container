@@ -9,7 +9,7 @@ exports.actionComment = function() {
     });
 
     this.Page.eventBind = function(){
-      var $btnSend = document.querySelector('#btnSend');
+      var $btnSend = document.querySelector('.page #btnSend');
       $btnSend.addEventListener('click',function(){
         var $inputComment = document.querySelector('#inputComment');
         //等待动画
@@ -21,7 +21,7 @@ exports.actionComment = function() {
             i = 0;
           str[i] = '<span style="color:grey;">.</span>'
           $btnSend.innerHTML = '<b>' + str.join(' ') + '</b>';
-        },500);
+        },150);
         //输入数据检查
         if($inputComment.value.length > 5)
           Ajax({

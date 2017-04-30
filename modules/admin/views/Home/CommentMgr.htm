@@ -1,0 +1,12 @@
+<div style="height:1px;"></div>
+<p><span id="module" name="<?= $module?>"><?= $config->name?></span>的留言</p>
+
+<div class="navBar">
+  <a class="selected" name="UnRead"><span>未读</span></a><i></i>
+  <a name="Read"><span>已读</span></a><i></i>
+  <a name="All"><span>全部</span></a>
+</div>
+
+<ul class="commentsContainer">
+  <?= $unReadList?>
+</ul>

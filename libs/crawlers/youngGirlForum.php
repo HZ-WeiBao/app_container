@@ -93,6 +93,7 @@ class youngGirlForum extends __base__ {
     return $pages;
   }
   public function parse(){
+    set_time_limit(3600);
     return $this->get();
   }
   public function store(){
