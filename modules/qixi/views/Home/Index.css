@@ -1,0 +1,340 @@
+
+/* 配色 */
+.envelope{
+	background: #F1F1F1;
+}
+.envelope .sealTriangle{
+	background:linear-gradient(to bottom, #d4d1cc 3%,#843594 96%,#813295 98%,#9e54a3 100%);
+}
+.envelope .bottomTriangle{
+	background: #F1F1F1;
+}
+.envelope .leftTriangle{
+	background: #F9F9F9;
+}
+.envelope .rightTriangle{
+	background: #F9F9F9;
+}
+
+.envelope .bottomTriangleBorder{
+	background:-webkit-linear-gradient(50deg,rgba(159,159,159,0.38)  35% ,rgba(255,255,255,0.38) 100%);
+}
+.envelope .leftTriangleBorder{
+	background:-webkit-linear-gradient(50deg,rgba(159,159,159,0.38)  35% ,rgba(255,255,255,0.38) 100%);
+}
+.envelope .rightTriangleBorder{
+	background:-webkit-linear-gradient(-43deg,rgba(159,159,159,0.38)  0% ,rgba(255,255,255,0.38) 100%);
+}
+
+/* 布局 */
+
+body{
+	background-image: url(http://huidaweibao.applinzi.com/img/qixi-bg.jpg);
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	background-color: #6a46a6;
+}
+.envelope{
+	width: 90%;
+	height: calc(360px * 0.7);
+	margin: 0 auto;
+	/* margin-top: calc((100vh - 360px * 0.7)/1.2); */
+	/* margin-top: 305px; */
+	position: relative;
+}
+
+.envelope .sealTriangle{
+	position: absolute;
+	width: 100%;
+	height: 60%;
+	-webkit-clip-path: polygon(
+		50% 0px ,
+		10px calc(100% - 20px),
+		0 100%,
+		100% 100%,
+		calc(100% - 10px) calc(100% - 20px)
+	);
+	top:-60%;
+	transform-origin: bottom;
+	z-index: 1;
+	transition: all 0.6s cubic-bezier(0.69, 0.08, 0.38, 0.95) 0s;
+}
+
+.envelope .qixi{
+	background-image: url(http://huidaweibao.applinzi.com/img/qixi.png);
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	width: 84px;
+	height: 100px;
+	position: absolute;
+	top: 35%;
+	right: 21px;
+	z-index: 4;
+	opacity: 0.9;
+}
+
+.envelope .bottomTriangle{
+	width: calc(100% - 4px);
+	position: absolute;
+	height: 100%;
+	-webkit-clip-path: polygon(
+		50% 0px ,
+		10px calc(100% - 20px),
+		0 100%,
+		100% 100%,
+		calc(100% - 10px) calc(100% - 20px)
+	);
+	bottom: 0px;
+	left: 1px;
+}
+
+.envelope .bottomTriangleBorder{
+	width: 100%;
+	position: absolute;
+	height: 60%;
+	-webkit-clip-path: polygon(
+		50% 0px ,
+		10px calc(100% - 20px),
+		0 100%,
+		100% 100%,
+		calc(100% - 10px) calc(100% - 20px)
+	);
+	bottom: 0px;
+	z-index: 5;
+}
+
+.envelope .leftTriangle{
+	height: calc(100% - 3px);
+	width: calc(100% - 3px);
+	position: absolute;
+	-webkit-clip-path: polygon(
+		0 0 ,
+		0 100%,
+		100%  50%,
+		20px  10px
+	);
+	left: 0px;
+}
+
+.envelope .leftTriangleBorder{
+	height: 100%;
+	width: calc(50% + 3px);
+	position: absolute;
+	-webkit-clip-path: polygon(
+		0 0 ,
+		0 100%,
+		100%  calc(50% - 7px),
+		21px  8px
+	);
+	left: 0px;
+	z-index: 4;
+}
+
+.envelope .rightTriangle{
+	height: 100%;
+	width: calc(100% - 3px);
+	position: absolute;
+	-webkit-clip-path: polygon(
+		100% 0 ,
+		calc(100% - 20px)  10px,
+		0px  50%,
+		100% 100%
+	);
+	right: 0px;
+}
+
+.envelope .rightTriangleBorder{
+	height: 100%;
+	width: calc(50% + 3px);
+	position: absolute;
+	-webkit-clip-path: polygon(
+		100% 0 ,
+		calc(100% - 22px)  8px,
+		0px  calc(50% - 7px),
+		100% 100%
+	);
+	right: 0px;
+	z-index: 4;
+}
+
+.envelope .stamp{
+	width: 80px;
+	height: 80px;
+	background-image: url(http://huidaweibao.applinzi.com/img/stamp.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	top:calc(55% - 40px);
+	left:calc(50% - 40px);
+	z-index: 2;
+	opacity: 0;
+	transform: scale(8);
+}
+
+.envelope .form{
+	background-color: #ffffff;
+	position: absolute;
+	width: calc(94% - 12px);
+	height: 150%;
+	padding: 0 6px;
+	padding-top: 20px;
+  left: 3%;
+  top: -64%;
+	z-index: 7;
+	opacity: 1;
+	box-shadow:1px 1px 5px 0px #e1cebd;
+	background-image: url(http://huidaweibao.applinzi.com/img/envelope.jpg);
+	background-size: 100% auto;
+	transform-style: preserve-3d;
+	transform: translateY(0%) rotateX(0deg) translateZ(25px);
+}
+
+.envelope .form input,
+.envelope .form textarea{
+	background: none;
+	border: none;
+	width: calc(100% - 20px);
+	padding: 10px;
+	height: 20px;
+	display: block;
+	font-size: 18px;
+}
+
+.envelope .sender{
+	text-align: right;
+}
+
+.envelope .form textarea.content{
+	line-height: 1.5;
+	font-size: 15px;
+	height: calc(100% - 10px*7 - 20px * 3 - 30px);
+	
+}
+
+.envelope .btnSend{
+	margin: 0 auto;
+	margin-bottom: 10px;
+	height: 30px;
+	line-height: 30px;
+	width: 80px;
+	background: #4e1f81;
+	text-align: center;
+	color: #e6d2cc;
+}
+
+.blessing{
+	width: 100%;
+	height: 30px;
+	position: absolute;
+	color: white;
+	top: 0px;
+	text-align: center;
+	z-index: -1;
+	opacity: 0;
+	transform: translateY(40px);
+	text-shadow: 1px 1px 6px #481a7e;
+	font-size: 1.05rem;
+}
+
+.copyright{
+	width: 100%;
+	height: auto;
+	position: absolute;
+	text-align: center;
+	z-index: -1;
+	font-size: 14px;
+	color: rgba(255, 255, 255, 0.35);
+	opacity: 0;
+	top: 0px;
+	transform: translateY(133px);
+	text-shadow: 1px 1px 6px #ba76a2;
+}
+
+.copyright .btnLike{
+	width: 30%;
+	height: 30px;
+	margin: 0 auto;
+	line-height: 30px;
+	background: rgba(159,159,159,0.18);
+	margin-top: 10px;
+	color: rgba(255, 255, 255, 0.35);
+}
+
+.copyright .btnLike.clicked{
+	background: rgba(255, 0, 0, 0.38);
+	color: rgba(255, 255, 255, 0.75);
+}
+
+/* 动画 */
+.envelope.send{
+	perspective: 3000px;
+}
+.envelope.send .form{
+	animation:envelopeFile 1.6s ease forwards 0s;
+}
+
+.envelope.send .form .btnSend{
+	animation:fadeOut 0.4s ease forwards 0s;
+}
+
+.envelope.ship{
+	animation:envelopeShip 1s ease forwards 0s;
+}
+
+.envelope.send .sealTriangle{
+	animation:envelopeClose 0.8s ease forwards 1.6s;
+}
+
+.envelope.send .stamp{
+	animation:envelopeSeal 0.4s ease forwards 2.4s;
+}
+
+.blessing.show{
+	animation:slideIn 1s ease forwards 0s;
+}
+
+.copyright.show{
+	animation:slideIn2 1s ease forwards 0s;
+}
+
+@keyframes fadeOut{
+	0%{opacity: 1;}
+	100%{opacity: 0;}
+}
+
+@keyframes slideIn{
+	0%{transform: translateY(40px); opacity: 0;}
+	100%{transform: translateY(70px); opacity: 1;}
+}
+
+@keyframes slideIn2{
+	0%{transform: translateY(133px); opacity: 0;}
+	100%{transform: translateY(173px); opacity: 1;}
+}
+
+
+@keyframes envelopeFile{
+	0%{transform:translateY(0%) rotateX(0deg);}
+	65%{transform:translateY(-65%) rotateX(360deg);}
+	100%{transform:translateY(40%) rotateX(360deg) rotateZ(3deg); z-index: 2;}
+}
+
+@keyframes envelopeClose{
+	0%{	transform: rotateX(0deg);}
+	50%{z-index: 6;}
+	100%{	transform: rotateX(180deg);z-index: 6;}
+}
+
+@keyframes envelopeSeal{
+	0%{transform: scale(8);opacity: 0;z-index: 8;}
+	100%{transform: scale(1);opacity: 1;z-index: 8;}
+}
+
+@keyframes envelopeShip{
+	0%{transform: scale(1);}
+	70%{transform: scale(1.2);}
+	100%{
+		transform: translateX(35%) translateY(-122%) scale(0.01);
+		overflow: hidden;
+	}
+}

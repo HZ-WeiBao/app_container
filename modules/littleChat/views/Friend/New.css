@@ -1,0 +1,21 @@
+.no-friend {
+  padding-top: 72.3px;
+  margin-bottom: 37px;
+  display: none;
+  text-align: center;
+}
+
+.no-friend.on {
+  display: block;
+}
+
+.no-friend .title{
+  font-size: 17px;
+  color: #A9A9A9;
+  height: 34.5px;
+}
+
+.no-friend .subtitle{
+  font-size: 14px;
+  color: #A9A9A9;
+}

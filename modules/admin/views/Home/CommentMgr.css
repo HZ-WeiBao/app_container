@@ -1,124 +1,124 @@
 .page > p:nth-child(2) {
-  padding:5px 0px;
-  margin:10px 7% 10px 9%;
-  font-size: 25px;
-  color: #2c648d;
+	padding:5px 0px;
+	margin:10px 7% 10px 9%;
+	font-size: 25px;
+	color: #2c648d;
 }
 
 .page > p:nth-child(2)::before {
-  content: '';
-  width: 5.5px;
-  height: 22px;
-  position: absolute;
-  margin-left: -13px;
-  margin-top: 6px;
-  background: #0072c6;
+	content: '';
+	width: 5.5px;
+	height: 22px;
+	position: absolute;
+	margin-left: -13px;
+	margin-top: 6px;
+	background: #0072c6;
 }
 
 .page .navBar {
-  text-align: center;
-  border-top: 1px solid #e4e4e4;
-  border-bottom: 1px solid #e4e4e4;
+	text-align: center;
+	border-top: 1px solid #e4e4e4;
+	border-bottom: 1px solid #e4e4e4;
 }
 
 .page .navBar > a{
-  width: 30%;
-  height: 40px;
-  line-height: 40px;
-  display: inline-block;
-  font-size: 18px;
+	width: 30%;
+	height: 40px;
+	line-height: 40px;
+	display: inline-block;
+	font-size: 18px;
 }
 
 .page .navBar > .selected > span{
-  color: #0072c6;
-  height: 37px;
-  display: inline-block;
-  border-bottom: 4px solid #0072c6;
+	color: #0072c6;
+	height: 37px;
+	display: inline-block;
+	border-bottom: 4px solid #0072c6;
 }
 
 .page .navBar > i{
-  width: 2px;
-  height: 17px;
-  background: #d1d1d1;
-  position: relative;
-  top: 2px;
-  display: inline-block;
+	width: 2px;
+	height: 17px;
+	background: #d1d1d1;
+	position: relative;
+	top: 2px;
+	display: inline-block;
 }
 
 .commentsContainer li{
-  widows: 100%;
-  margin: 20px 0;
+	widows: 100%;
+	margin: 20px 0;
 }
 
 .commentsContainer li > div {
-  margin-right: 5%;
-  padding-left: 5%;
+	margin-right: 5%;
+	padding-left: 5%;
 }
 
 .commentsContainer li > div > div {
-  float:right;
-  position: relative;
-  padding-left: 0;
+	float:right;
+	position: relative;
+	padding-left: 0;
 }
 
 .commentsContainer li > div > div > div {
-  float: left;
+	float: left;
 }
 
 .btnStar{
-  margin-right:5px;
-  color: #FF9800;
+	margin-right:5px;
+	color: #FF9800;
 }
 
 .btnLike i {
-  color: #008cc5;
+	color: #008cc5;
 }
 
 .btnLike span {
-  margin-left:5px; 
+	margin-left:5px; 
 }
 
 .commentsContainer .btnReply{
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 6px;
-  background: #EFEFEF;
-  padding: 3px 5px;
-  font-size: 17px;
-  padding-bottom: 5px;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 6px;
+	background: #EFEFEF;
+	padding: 3px 5px;
+	font-size: 17px;
+	padding-bottom: 5px;
 }
 .commentsContainer .btnReply > span {
-  color: #627A90;
+	color: #627A90;
 }
 
 .commentsContainer .time{
-  color:#919191;
-  font-size:18px;
+	color:#919191;
+	font-size:18px;
 }
 
 .btnReply > a {
-  float: right;
-  color:#0072c6;
-  font-size: 17px;
+	float: right;
+	color:#0072c6;
+	font-size: 17px;
 }
 
 .btnReply > input {
-  border:none;
-  background: none;
-  font-size: 17px;
-  width:220px;
+	border:none;
+	background: none;
+	font-size: 17px;
+	width:220px;
 }
 
 .success {
-  color:green!important;
+	color:green!important;
 }
 
 .message {
-  position: relative;
-  top: 35px;
-  display: block;
-  margin: 0 auto;
-  font-size: 20px;
-  text-align: center;
-  color: #c3c3c3;
+	position: relative;
+	top: 35px;
+	display: block;
+	margin: 0 auto;
+	font-size: 20px;
+	text-align: center;
+	color: #c3c3c3;
 }

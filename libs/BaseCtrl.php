@@ -17,6 +17,20 @@ class BaseCtrl extends Component {
 
       exit();
     }
+
+    //openid的解析
+    if(isset($_GET['openid'])){
+      $_SESSION['openid'] = $_GET['openid'];
+    }
+  }
+
+  public function updateStatistics(){
+    $module_statisticsModel = new module_statisticsModel;
+    $module_commentModel = new module_commentModel;
+
+    $adminConfig = new ConfigMgr('admin');
+    if($adminConfig->switcher->logCount == 'on')
+      $module_statisticsModel->get(F::$R->module)->inc('useNum')->save();
   }
 
   public function actionIndex($arg=array()){

@@ -1,0 +1,15 @@
+.labCard {
+  margin:0 9px 9px 9px;
+  padding: 16px 20px;
+  background: white;
+  border-radius: 3px;
+}
+
+.labCard > img {
+  width:71px;
+  height:71px;
+}
+
+.labCard .title{
+  font-size:19px;
+}

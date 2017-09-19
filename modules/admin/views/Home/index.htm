@@ -16,9 +16,15 @@
 
 <div class="detailStatistics">
   <table>
-    <? foreach($modules as $module){ ?>
+    <? foreach($modules as $module){ 
+       switch($module->config->status){
+        case 'normal':$statusColor = ''; break;
+        case 'maintain':$statusColor = '#FF9800'; break;
+        case 'close':$statusColor = '#F44336'; break;
+       }
+    ?>
     <tr>
-      <td><a href="#Setting/<?= $module->moduleName?>"><i class="iconfont">&#xe60b;</i></td>
+      <td><a href="#Setting/<?= $module->moduleName?>"><i class="iconfont" style="color:<?= $statusColor ?>;">&#xe60b;</i></td>
       <td>
         <a href="#Home/CommentMgr?module=<?= $module->moduleName?>"><?= $module->config->name?>
           <? if($module->unReadNum > 0) {?>

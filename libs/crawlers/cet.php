@@ -2,6 +2,12 @@
 
 class cet extends __base__ {
   public function getData(){
+    // set_time_limit(40);
+    // $this->Curl->get()->direct
+    //       ->url('http://www.chsi.com.cn/cet/',array())
+    //       ->referer('http://www.chsi.com.cn/cet/')
+    // ->getResponse();
+
     return $this->Curl->get()->direct
           ->url('http://www.chsi.com.cn/cet/query',array(
             'zkzh' => $this->id ,
@@ -10,6 +16,9 @@ class cet extends __base__ {
     ->getResponse();
   }
   public function parse(){
+    if(strpos($this->raw,'数据库连接异常') !== false)
+      return '数据库连接异常';
+
     $grade = array( 'id' => $this->id );
 
     foreach($this->dom->getElementsByTagName('table') as $table){
@@ -49,5 +58,5 @@ class cet extends __base__ {
         return false;
     }
   }
-
+  
 }

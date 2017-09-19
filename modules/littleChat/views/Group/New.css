@@ -1,0 +1,64 @@
+.page .scrollBar{
+  display: block;
+  height: calc(100vh - 45px - 173px/3);
+  top:calc(45px + 173px/3);
+}
+.page .scrollBar > div{
+  width:100%;
+  height: calc((100vh - 45px - 173px/3)/29);
+  flex: 0 0 calc((100vh - 45px - 173px/3)/29);
+  font-size: calc((100vh - 65px - 173px/3)/29);
+  line-height: calc((100vh - 45px - 173px/3)/29);
+  text-align: center;
+}
+
+.page .searchBar{
+  width: calc(100vw - 22px/3*2);
+  height:calc(173px/3);
+  background: rgba(255, 255, 255, 0.9);
+  position: fixed;
+  top:45px;
+  left: 0px;
+  z-index: 1;
+  will-change: height;
+  padding: 0px calc(22px/3);
+}
+.searchBar.scrolled  {
+   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, .2);
+}
+.page .searchBar.expand{
+  height:calc(100vh - 45px);
+}
+
+.searchBar .inputContainer {
+  display: flex;
+  align-items: center;
+  width: calc(100% - 11px/3*2);
+  height: calc(118px/3);
+  border-bottom: 1px solid #dfdfdf;
+  margin-top: calc(32px/3);
+  padding: 0 calc(11px/3);
+}
+
+.searchBar .search-icon{
+  width: calc(86px/3);
+  height: calc(86px/3);
+  margin-right: calc(11px/3);
+  background-image: url(/data/littleChat/search-icon-dark.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  flex: 0 0 calc(86px/3);
+}
+
+.searchBar input {
+  height: calc(97px/3);
+  flex: auto;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 15px;
+}
+
+.main .checkbox{
+  margin:0 22px 0 9px;
+}

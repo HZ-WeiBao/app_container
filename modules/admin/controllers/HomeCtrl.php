@@ -1,6 +1,17 @@
 <?php
 
 class HomeCtrl extends BaseCtrl {
+  public function init(){
+    $code = $_GET['code'] ?? $_SESSION['checkCode'] ?? null;
+
+    if($code !== $this->ConfigMgr->code){
+      echo '找到模块(Admin)~';
+      die();
+    }
+
+    $_SESSION['checkCode'] = $this->ConfigMgr->code;
+  }
+
   public function actionIndex($arg=array()){
     //获取module信息
     $modules = array();

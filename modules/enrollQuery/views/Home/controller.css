@@ -1,0 +1,74 @@
+.descriptionForForm {
+  font-size: 22px;
+  padding: 0 5px;
+  clear: both;
+  text-align: center;
+  padding: 35px;
+}
+
+.descriptionForForm span{
+  font-size: 17px;
+  color: grey;
+  top: 15px;
+  position: relative;
+}
+
+.inputText {
+    margin: 10px 0;
+    padding: 2px 7%;
+}
+
+.inputText>div {
+    font-size: 19px;
+    border-left:5.5px solid #0072c6;
+    padding-left:6px;
+    margin-bottom: 6px;
+    color: #14486f;
+}
+
+.inputText>input {
+    width: 100%;
+    border: none;
+    font-size: 19px;
+    border-bottom: 2px solid #d0d0d0;
+    padding: 2px 0px;
+}
+
+.inputText>select {
+    width: 100%;
+    border: none;
+    font-size: 19px;
+    border-bottom: 2px solid #d0d0d0;
+    padding: 2px 0px;
+}
+
+.inputText .captcha {
+  position: absolute;
+  right:7%;
+  margin-top: -45px;
+  width: 175px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px 1px #e4e4e4;
+}
+
+.table {
+  padding-top:30px;
+}
+
+.table > div {
+    height: 12px;
+    line-height: 12px;
+    padding: 20px;
+    width: 88%;
+    margin: 0 auto;
+    font-size: 18px;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.table > div > div {
+    display: inline-block;
+}
+
+.table > div > span {
+    float: right;
+}

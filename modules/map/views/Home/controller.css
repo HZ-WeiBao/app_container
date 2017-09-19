@@ -1,0 +1,168 @@
+#container {
+    width: 100%;
+    height: calc(100vh - 45px);
+    margin: 0px;
+}
+
+.amap-marker-label {
+    font-size: 13px;
+    border: 1px solid #0a72c4;
+    background: #fff;
+    border-radius: 10px 0 0 0;
+    color: #0a72c4;
+}
+
+#container .amap-logo,
+#container .amap-copyright {
+    display: none!important;
+}
+
+#positionDisplayer {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: none;
+}
+
+#positionPicker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    transform: translateY(-100%) translateX(-50%);
+    display: none;
+}
+
+#inputPointInfo {
+    /* display: none; */
+    padding: 5px;
+    background: white;
+    width: 108px;
+    transform: translateY(-200%) translateX(calc(-54px + 8px));
+}
+
+#inputPointInfo input {
+    background: none;
+    border: none;
+    display: block;
+    width: calc(100% - 10px);
+}
+
+.amap-simple-marker-def-style .amap-simple-marker-icon {
+    transform-origin: bottom;
+    transform: scale(0.45);
+}
+
+.oldName {
+    display: none;
+}
+
+#container.showOldName .oldName {
+    display: inline-block;
+}
+
+#showOldNameSwitcher {
+    position: absolute;
+    bottom: 2.5px;
+    left: 0px;
+    padding: 0 8px;
+    height: 35px;
+    line-height: 35px;
+    color: white;
+    background: #0a72c4;
+    display: inline-flex;
+    align-items: center;
+}
+
+#showOldNameSwitcher .checker {
+    width: 14px;
+    height: 14px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 3px;
+}
+
+#showOldNameSwitcher .checker>div {
+    width: 9px;
+    height: 9px;
+    flex: 0 0 9px;
+    background: white;
+}
+
+#showOldNameSwitcher.on .checker>div {
+    background: #0a72c4;
+}
+
+#container .amap-simple-marker-label {
+    position: absolute;
+    z-index: 2;
+    background-color: #fff;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 3px;
+    font-size: 12px;
+    line-height: 14px;
+    top: 25px;
+    left: 27px;
+    right: unset;
+    height: 14px;
+    font-size: 13px;
+    border: 1px solid #0a72c4;
+    background: #fff;
+    border-radius: 10px 0 0 0;
+    color: #0a72c4;
+}
+
+#showTypeSelector {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 3px 6px;
+    color: white;
+    border: none;
+    font-size: 17px;
+    background: #0a72c4;
+}
+
+
+/* 选择显示 */
+
+#container .amap-maps .type_dormitory * {
+    /* color: blue; */
+}
+
+#container .amap-maps .type_classroom * {
+    /* color: #8EB81B; */
+}
+
+#container .amap-maps .type_live * {
+    /* color: #FF5101; */
+}
+
+#container .amap-maps .type_location * {
+    /* color: #FF00DD; */
+}
+
+#container.hiddenRest .amap-simple-marker {
+    display: none;
+}
+
+#container.show_type_dormitory .type_dormitory,
+#container.show_type_classroom .type_classroom,
+#container.show_type_live .type_live,
+#container.show_type_location .type_location {
+    display: block;
+}
+
+
+/* 所太小的时候隐藏 */
+
+#container.hiddenAll .type_dormitory,
+#container.hiddenAll .type_classroom,
+#container.hiddenAll .type_live
+{
+    display: none;
+}

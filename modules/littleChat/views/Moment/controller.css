@@ -1,0 +1,64 @@
+.topBar .btnCamera{
+  width: calc(151px/3);
+  height: 100%;
+  background: url(/data/littleChat/topbar-btn-camera-icon.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.main {
+  background: #f8f8f8;
+}
+
+.cover .bg{
+  height: calc(724px/3);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.cover .bg img{
+  flex:auto;
+  width: 100%;
+}
+
+.cover .container{
+  margin-top: calc(-139px/3);
+}
+
+.cover .oneLine{
+  display: flex;
+}
+
+.cover .name{
+  flex: auto;
+  height: calc(59px/3);
+  color: white;
+  text-shadow:0.5px 0.5px 1px #212121;
+  font-size: 15px;
+  text-align: right;
+  margin-top: calc(49px/3);
+  overflow: hidden;
+}
+
+.cover .thumbnail{
+  width: calc(217px/3);
+  height:calc(217px/3);
+  padding: calc(4px/3);
+  border: 1px solid #bfbfbf;
+    background: white;
+  flex: 0 0  calc(217px/3);
+  margin: 0 calc(32px/3);
+}
+.cover .thumbnail img{
+  width: 100%;
+  height: 100%;
+}
+
+.cover .signature{
+  text-align: right;
+  color: #7F7F7F;
+  font-size: 13px;
+  margin-right:calc(32px/3); 
+}

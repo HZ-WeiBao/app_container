@@ -26,6 +26,11 @@ class Curl extends Component {
     public function autoConvertTo(string $set){
         $this->_autoConvertTo = $set;
     }
+    
+    public function followLoaction($config = true){
+        curl_setopt($this->ch, CURLOPT_FOLLOWLOCATION, $config);
+        return $this;
+    }
 
     public function timeout($timeout) {
         curl_setopt($this->ch, CURLOPT_CONNECTTIMEOUT, $timeout);
@@ -197,8 +202,12 @@ class Curl_response {
                 if(isset($this->headers['content-type'])){
                     preg_match('/charset=([\w-]+)/',$this->headers['content-type'],$match);
                     $this->charset = $match[1] ?? false;
-                }else{
+                }else
                     $this->charset = false;
+                    
+                if($this->charset == false){
+                    preg_match('/<meta .* charset=([\w-]+).*>/i',$this->body,$match);
+                    $this->charset = $match[1] ?? false;
                 }
                 return $this->charset;
             break;

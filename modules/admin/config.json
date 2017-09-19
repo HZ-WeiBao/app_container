@@ -1,1 +1,32 @@
-{"name":"后台管理","status":"normal","description":"ployfill","author":"DeepKolos","version":{"v0.1":{"time":"2017-4-17","updateLog":["就是给自己增加自豪感的地方,或者虚荣~"]}},"switcher":{"logCount":"off"},"module":{"oneSaying":{"isUpdating":false,"lastUpdateTime":"2017-4-28 13:15"},"emptyClass":{"isUpdating":false,"lastUpdateTime":"2017-04-30 11:04"},"auditor":{"isUpdating":false,"lastUpdateTime":"2017-04-30 11:04"}}}
+{
+  "name": "后台管理",
+  "status": "normal",
+  "description": "ployfill",
+  "author": "DeepKolos",
+  "version": {
+    "v0.1": {
+      "time": "2017-4-17",
+      "updateLog": [
+        "就是给自己增加自豪感的地方,或者虚荣~"
+      ]
+    }
+  },
+  "switcher": {
+    "logCount": "off"
+  },
+  "code":"",
+  "module": {
+    "oneSaying": {
+      "isUpdating": false,
+      "lastUpdateTime": "2017-4-28 13:15"
+    },
+    "emptyClass": {
+      "isUpdating": false,
+      "lastUpdateTime": "2017-09-07 11:09"
+    },
+    "auditor": {
+      "isUpdating": false,
+      "lastUpdateTime": "2017-09-07 01:09"
+    }
+  }
+}

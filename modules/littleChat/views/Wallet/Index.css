@@ -1,0 +1,77 @@
+.mainBtnsContainer{
+  background: #676E77;
+  height: calc(427px/3);
+  display: flex;
+  text-align: center;
+}
+
+.mainBtnsContainer > div{
+  flex:auto;
+}
+
+.mainBtnsContainer > div:active{
+  background: #585D65;
+  transition: all 0.06s ease 0s;
+}
+
+.mainBtnsContainer .icon,
+.iconItemContianer .icon{
+  width: calc(95px/3);
+  height: calc(95px/3);
+  margin:calc(76px/3) auto 0 auto;
+}
+.mainBtnsContainer .icon img,
+.iconItemContianer img{
+  width: 100%;
+  height: 100%;
+}
+
+.mainBtnsContainer .name{
+  font-size: 15px;
+  color: white;
+  margin-top: calc(22px/3);
+}
+
+.mainBtnsContainer .value{
+  font-size: 14px;
+  font-weight: 500;
+  color:#C0C4CA;
+}
+
+.iconItemContianer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+   background: white;
+  text-align: center;
+}
+
+.iconItemContianer > div{
+  flex: 0 0 calc((100% - 3px)/3);
+  width: calc((100% - 3px)/3);
+  height: calc(319px/3);
+  background: white;
+  position: relative;
+  border-bottom: 1px solid #ebebeb;
+  border-right: 1px solid #ebebeb;
+}
+
+.iconItemContianer .cornerMark{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height:calc(100px/3);
+  width:calc(100px/3);
+}
+
+.iconItemContianer .name{
+  font-size: 14px;
+  color: #7e7e7e;
+  margin-top: calc(14px/3);
+}
+
+.iconItemContianer .value{
+  font-size: 13px;
+  font-weight: 500;
+  color:#C0C4CA;
+}

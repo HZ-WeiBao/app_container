@@ -1,0 +1,313 @@
+.page {
+  background: #EBEBEB;
+}
+.messages{
+  background: #EBEBEB;
+  overflow-y: auto;
+  height: calc(100vh - 90px);
+}
+
+.messages > div > .flex{
+  position: relative;
+}
+
+.messages .rightColumn{
+  display: none;
+  width: calc(108px/3);
+  flex: 0 0 calc(108px/3);
+}
+
+
+.rightColumn .checkbox{
+  margin-left:calc(5px/3);
+  margin-top:calc(33px/3);
+}
+
+.message {
+  padding: 0 8px 10px 8px;
+  display: flex;
+  flex: auto;
+}
+
+.message.send{
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}
+.message.receive {
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.message .leftOrRight{
+  flex: auto;
+}
+
+.message .icon{
+  width: 36px;
+  height:36px;
+  background: lightgreen;
+  flex: 0 0 36px;
+}
+
+.send .icon {
+  margin-left:5px;
+}
+.receive .icon {
+  margin-right:5px;
+}
+
+.send .leftOrRight{
+  text-align: right;
+}
+.send .leftOrRight  *{
+  text-align: left;
+}
+
+.messages.showName .name{
+  display: block;
+}
+
+.message .content {
+  max-width:220px;
+  background: #FFFFFF;
+  transition: all .08s ease 0s!important;
+}
+
+.message.send .content.text:active{
+  background: #9BDA5E;
+}
+.message.receive .content.text:active{
+   background:#F4F4F4;
+}
+
+.message .content.emoji:active,
+.message .content.image:active{
+  opacity: 0.75;
+}
+.message .content.text:active{
+   background:#F4F4F4;
+}
+
+.message .name{
+  display: none;
+  height:16px;
+  font-size: 12px;
+  color: #9C9C9C;
+  padding-bottom: 2px;
+}
+
+.send .content {
+  clip-path: polygon( 3px 0px , 1px 1px , 0px 3px, 0px calc(100% - 3px) , 1px calc(100% - 1px) , 3px 100% , calc(100% - 9px) 100% , calc(100% - 7px) calc(100% - 1px), calc(100% - 6px) calc(100% - 3px), calc(100% - 6px) 23px, 100% 18px, calc(100% - 6px) 13px, calc(100% - 6px) 3px , calc(100% - 7px) 1px , calc(100% - 9px) 0px );
+  float: right;
+  padding: 7.5px 13.5px 7.5px 7.5px;
+}
+.receive .content{
+  clip-path: polygon( 100% 0, 9px 0px, 7.5px 1px,6px 3px, 6px 13px, 0px 18px, 6px 23px, 6px calc(100% - 3px), 7px calc(100% - 1px), 9px 100%, calc(100% - 3px) 100%, calc(100% - 1px) calc(100% - 1px) , 100% calc(100% - 3px), 100% 3px , calc(100% - 1px) 1px , calc(100% - 3px) 0px );
+  padding: 7.5px 7.5px 7.5px 13.5px;
+}
+
+.message .content.text {
+  display: inline-block;
+  text-align: left;
+  word-wrap:break-word;
+  font-size: 14.9px;
+}
+
+.send .content.text , .send .content.voice {
+  background: #A1E75D;
+}
+
+.send .name{
+  text-align: right;
+  margin-right: 6px;
+}
+.receive .name{
+  margin-left: 6px;
+}
+
+.messages .time{
+  text-align: center;
+  padding:10px 0;
+}
+
+.time span{
+  background: #D5D4D0;
+  padding: 3px 5px;
+  font-size: 12px;
+  color: white;
+  border-radius: 2px;
+}
+.content.inital {
+  opacity: 0;
+}
+
+.content.image , .content.emoji{
+  max-height:170px;
+  max-width: 170px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.content.image img , .content.emoji img{
+  max-height:100%;
+  max-width: 100%;
+  flex: 0 0 auto;
+}
+
+.content.image.overflowHeight img , .content.emoji.overflowHeight img{
+  width: 100%;
+  max-height:unset!important;
+}
+.content.image.overflowWidth img , .content.emoji.overflowWidth img{
+  height:100%;
+  max-width:unset!important;
+}
+
+
+.content.emoji {
+  clip-path: none;
+  margin: 0 6px;
+}
+
+.content.link {
+  height:85px;
+  background: white!important;
+}
+
+.linkName{
+  margin-bottom: 4px;
+  height: 41px;
+  font-size: 15px;
+}
+.linkDescription{
+  flex: auto;
+  margin-right: 11px;
+  width: 164px;
+  height: 40px;
+  font-size: 11.6px;
+  line-height: 14px;
+  color: #c7c7c7;
+  display: inline-block;
+  word-wrap:break-word;
+  overflow: hidden;
+}
+.linkIcon{
+  width:40px;
+  height:40px;
+  background: greenyellow;
+  flex:0 0 40px;
+}
+
+.content.file > .flex{
+  height:50px;
+}
+
+.fileInfo{
+  width:172px;
+  flex:0 0 172px;
+  margin-right: 9px;
+}
+
+.fileName{
+  height: 35px;
+  font-size: 16px;
+  line-height: 16px;
+  overflow: hidden;
+}
+
+.fileSize {
+  height:13px;
+  font-size: 13px;
+  line-height: 13px;
+  color: #c7c7c7;
+}
+
+.fileIcon{
+  width:40px;
+  height: 40px;
+  flex: 0 0 40px;
+  background: greenyellow;
+}
+
+.sendFrom{
+  font-size: 12px;
+  height: 14px;
+  position: relative;
+  top:3px;
+}
+
+.sendFromIcon{
+  width:9px;
+  height: 9px;
+  background: greenyellow;
+  display: inline-block;
+  margin-right: 3.5px;
+}
+
+.voiceIcon{
+  height: 21px;
+  width: 21px;
+  background: orange;
+}
+.voiceTime{
+  font-size: 14.5px;
+  padding: 7px;
+  font-weight: 600!important;
+  color: #a8a8a8;
+}
+.send .voiceTime , .send .content.voice{
+  float:right;
+}
+.content.voice{
+  max-width:184px;
+}
+.content.voice , .voiceTime{
+  float: left;
+}
+
+.messages .checkClickMask{
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+/* 编辑状态 */
+
+
+.messages.editOn .rightColumn{
+  display: block;
+}
+
+.messages.editOn .rightColumn{
+  display: block;
+}
+
+.inputBar.editOn {
+  transform: translateY(100%);
+}
+
+.moreBar.editOn {
+  transform: translateY(0px);
+}
+
+.messages.editOn .checkClickMask{
+  display: block;
+}
+
+.zoomTextContianer{
+  height: 100vh;
+  width: calc(100vw - 18px - 18px);
+  background: white;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+}
+
+.zoomTextContianer > div{
+  font-size: 24px;
+}

@@ -18,7 +18,7 @@ exports.actionIndex = function() {
         var result = JSON.parse(rep);
         var domStr = '';
         result.bkjbList.forEach(function(option) {
-          domStr += '<option value="'+option.id+'">'+option.text+'</option>';
+          domStr += '<option value="'+option.value+'">'+option.text+'</option>';
         }, this);
         $examLevel.innerHTML = domStr;
       }

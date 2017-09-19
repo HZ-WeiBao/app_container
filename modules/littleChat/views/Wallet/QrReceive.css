@@ -1,0 +1,66 @@
+.yellowBg{
+  background: #DEB644;
+}
+
+.content .text{
+  font-size: 13px;
+  text-align: center;
+  margin-top: 27px;
+  color: #545454;
+}
+
+.content .qrcode{
+  width: calc(458px/3);
+  height: calc(458px/3);
+  margin:0 auto;
+  position: relative;
+  margin-top: 26px;
+  margin-bottom: 27px;
+}
+
+.qrcode img{
+  height: 100%;
+  width: 100%;
+}
+
+.qrcode .icon{
+  width: calc(116px/3);
+  height: calc(116px/3);
+  position: absolute;
+  top:calc((100% - 116px/3)/2);
+  left:calc((100% - 116px/3)/2);
+}
+
+.qrcode .icon > img {
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.qrcode .icon::after{
+  content: '';
+  width: calc(41px/3);
+  height: calc(41px/3);
+  background-image: url(/data/littleChat/wepay-mark.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: calc(-15px/3);
+  right: calc(-15px/3);
+}
+
+.content .btnBar{
+  text-align: center;
+  margin-bottom: 27px;
+}
+
+.btnBar span{
+  padding: 0 calc(82px/3);
+  color: #576A94;
+  font-size: 14px;
+  position: relative;
+  border-right: calc(2px/3) solid #C8C8C8;
+}
+
+.btnBar span:last-child{
+  border-right: none;
+}

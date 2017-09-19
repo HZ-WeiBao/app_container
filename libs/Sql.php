@@ -34,6 +34,18 @@ class Sql extends Component {
       PDO::ATTR_PERSISTENT => true
     ));
   }
+  public function init(){
+    $_ranges = array('*');
+    $_where = null;
+    $_where_value = null;
+    $_limit = null;
+    $_groupBy = null;
+    $_orderBy = null;
+    $_distinct = null;
+    $_resultOrder = null;
+    $_table = null;
+    $_lastStatment = null;
+  }
   public function query($queryStr, $params=array()){
     //感觉有点数据的不统一,把这个当作更加底层的接口就可以了
     //还是使用?作为参数替换符,其实这里因为没有涉及自动参数绑定,可以同时使用两种,哈哈~~
@@ -183,9 +195,9 @@ class Sql extends Component {
     $this->_where_value = $where_value;
     $this->_return_array = true;
     $this->_fetch();
-    if($this->_lastStatment->rowCount() < 0){
+    // if($this->_lastStatment->rowCount() < 0){
       
-    }
+    // }
     return $this->_rows;
   }
   public function limit(int $num,int $offset=0){
@@ -235,10 +247,10 @@ class Sql extends Component {
     if(isset($this->_rows[0]) && isset($this->_rows[0]->{$variable})){
       return $this->_rows[0]->{$variable};
     }else{
-      F::end(4,"没有找到字段{$variable}~");//没有了出错行数了,感觉这是一种失败
+      // F::end(4,"没有找到字段{$variable}~");//没有了出错行数了,感觉这是一种失败
     }
   }
-  public function _fetch(){
+  protected function _fetch(){
     if( !isset($this->_rows) ){
       //执行一次query然后查看query之后的结果集是否含有该字段,如果没有返回null
       if($this->_where != null){
@@ -254,10 +266,11 @@ class Sql extends Component {
     }
   }
   public function getTable(){
-    if(get_class($this) == __CLASS__ && !isset($this->_table))//其实这个属性会挂接在子类的实例当中去的
+    $className = get_class($this);
+    if($className == __CLASS__ && !isset($this->_table))//其实这个属性会挂接在子类的实例当中去的
       F::end(4,'单独时使用的时候请,指定表名~');
     $table = ($this->_table != null)? $this->_table: 
-                  str_replace('Model','',get_class($this));
+                  str_replace('Model','',$className);
     return $table;
   }
 
@@ -310,6 +323,9 @@ class Sql extends Component {
   }
   public function success(){
     return $this->_lastStatment->rowCount();
+  }
+  public function lastInsertId(){
+    return $this->_lastStatment->lastInsertId();
   }
   //常用的数据方法
   public function inc($columnName){

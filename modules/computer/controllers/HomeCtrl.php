@@ -37,8 +37,10 @@ class HomeCtrl extends BaseCtrl {
         $error = '验证码填错了~';
       elseif($result === '您查询的结果为空')
         $error = '查询结果为空~';
-      else {
-        echo $result;
+      else if($result){
+        View::render('Home/Result',array(
+          'data' => (object)$result)
+        );
       }
     }else
       $error = '请把数据填写完整哦~';

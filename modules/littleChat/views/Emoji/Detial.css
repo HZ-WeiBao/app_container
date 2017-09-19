@@ -1,0 +1,172 @@
+.main .banner{
+  height:calc(540px/3);
+}
+
+.main{
+  background: white;
+}
+
+.info{
+  margin: 0 calc(32px/3);
+  margin-bottom: calc(41px/3);
+}
+
+.info .flex{
+  align-items: center;
+  height: calc(145px/3);
+}
+
+.info .name {
+  flex: 0 0 auto;
+  font-size: 17px;
+}
+
+.info .type {
+  flex: 0 0 auto;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 2px 3px;
+  border: 1.5px solid #CBCBCB;
+  margin-left: calc(16px/3);
+  color: #878787;
+}
+
+.info .auto{
+  flex: auto;
+}
+
+.info .discription{
+  font-size: 14px;
+  color:#6B6B6B;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+}
+
+.separator .leftLine,
+.separator .rightLine{
+  margin: 0 9px;
+  flex: auto;
+  background: #D8D8D8;
+  height: 1px;
+  width: auto;
+}
+
+.separator .text{
+  font-size: 14px;
+  color: #C8C8C8;
+  flex:0 0 auto;
+}
+
+.emojiContianer{
+  width: 100vw;
+  overflow: hidden;
+}
+
+.emojiContianer > div{
+  padding: 9px;
+  width: calc(100%/4 - 18px);
+  float: left;
+}
+
+.author{
+  margin-top: calc(86px/3);
+  display: flex;
+  align-items: center;
+  height: calc(174px/3);
+  padding: 0 calc(32px/3);
+}
+
+.author .icon {
+  width: calc(130px/3);
+  height: calc(130px/3);
+  flex:0 0 auto;
+  margin-right: 7px;
+  border-radius: 100%;
+  overflow: hidden;
+  background: lemonchiffon;
+}
+
+.author .name{
+  font-size: 15px;
+  flex: auto;
+}
+
+.author .link{
+  color:#989898;
+  font-size: 14px;
+  flex: 0 0 auto;
+}
+
+.awardText,
+.awardNumber{
+  font-size: 14px;
+  color: #6B6B6B;
+  text-align: center;
+}
+
+.awardText{
+  margin-top: calc(56px/3);
+}
+
+.awardNumber span{
+  color: #3960C5;
+  font-weight: 500;
+}
+
+.awardBtn{
+  margin: calc(32px/3) auto;
+  height: 27px;
+  width:calc(162px/3);
+  background: #E5433F;
+  border: 1px solid #D23D39;
+  text-align: center;
+  color: white;
+  line-height: 27px;
+  border-radius: 3px;
+  font-size: 13px;
+}
+
+.awardPeople{
+  margin: 0 calc(64px);
+  padding-top: calc(32px/3);
+  padding-bottom:calc(108px/3);
+  display: flex;
+  overflow: hidden;
+}
+
+.awardPeople > div{
+  flex: 0 0 auto;
+  width: calc(97px/3);
+  height: calc(97px/3);
+  margin: 0 calc(11px/3);
+  background: lavender;
+}
+
+.copyright{
+  height: calc(79px/3);
+  line-height: calc(79px/3);
+  text-align: center;
+  font-size: 14px;
+  margin-top: calc(65px/3);
+  margin-bottom: calc(16px/3);
+  color: #8E8E8E;
+}
+
+.oneLine{
+  display: flex;
+}
+.oneLine > div{
+  flex: auto;
+  margin: 0 calc(32px/3);
+  color: #395FAD;
+  font-size: 13px;
+  margin-bottom: calc(54px/3);
+  margin-top: calc(16px/3);
+}
+
+.oneLine > div:nth-child(1){
+  text-align: right;
+}

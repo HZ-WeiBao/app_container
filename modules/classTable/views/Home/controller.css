@@ -1,0 +1,35 @@
+.btnEmbedRight {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #0072C6;
+    color: white;
+    font-size: 17px;
+    border-radius: 5px;
+    position: absolute;
+    right:15px;
+    margin-top:20px;
+}
+
+.inputKeyword{
+    margin: 20px 7%;
+    margin-right: 95px;
+    display: block;
+}
+.inputKeyword input{
+    padding: 4.5px 5px;
+    width:100%;
+    font-size: 17px;
+    outline: none;
+    border:1.5px solid #0072c6;
+    border-radius: 5px;
+}
+
+.messageEmpty {
+    margin:0 7%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.display_result .btnOneLine{
+    position: absolute;
+}

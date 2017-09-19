@@ -1,0 +1,156 @@
+.card-list {
+    margin: 0 9px;
+}
+
+.card-list>li {
+    border: 1px solid #cccccc;
+    margin: 12px 0;
+    height: 230px;
+    transform: scale(1) translateY(0%) translateZ(0px);
+    opacity: 1;
+    display: block;
+    will-change: transform, opacity;
+}
+
+.card-list .img-container {
+    height: 192px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+}
+
+.card-list .img-container>div {
+    height: 30px;
+    width: calc(100% - 10px);
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0 5px;
+    line-height: 30px;
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-list .img-container>img {
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.card-list .info-bar {
+    display: flex;
+    align-items: center;
+    height: 38px;
+    position: relative;
+    z-index: 0;
+}
+
+.card-list .info-bar .name,
+.card-list .info-bar .department {
+    flex: auto;
+    font-size: 17px;
+    color: black;
+    height: 100%;
+    line-height: 38px;
+    margin-left: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-list .info-bar .department {
+    flex: 0 0 auto;
+}
+
+.card-list .info-bar .btnVote {
+    height: 30px;
+    width: 50px;
+    background: #0072c6;
+    border: 1px solid #005492;
+    flex: 0 0 auto;
+    margin: 0 5px;
+    border-radius: 3px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+}
+
+.card-list .info-bar .btnVote:active {
+    transition-duration: 0.1s;
+    background: #005492;
+}
+
+.card-list .info-bar .vote-number {
+    flex: 0 0 auto;
+    height: 100%;
+    line-height: 38px;
+    text-align: center;
+    margin: 0 5px;
+    color: gray;
+}
+
+.card-list .info-bar .vote-number::after {
+    content: '票';
+    color: gray;
+}
+
+.card-list .inital {
+    transform: scale(0.9) translateY(30%) translateZ(0px);
+    opacity: 0;
+}
+
+.emptyMessage {
+    text-align: center;
+    font-size: 15px;
+    color: gray;
+    padding: 10px 0 20px 0;
+}
+
+.card-list .img-container .douyinLogo {
+    width: 50px;
+    height: 50px;
+    padding: 0px;
+    background-image: url(http://cache.chaoshy.cn/douyin.png);
+    background-size: 100% 100%;
+    background-color: transparent;
+}
+
+.card-list .img-container .douyinLogo.off {
+    display: none;
+}
+
+.card-list .img-container .douyinLogo.center {
+    top: calc(50% - 25px);
+    left: calc(50% - 25px);
+}
+
+.card-list .img-container .douyinLogo.on {
+    top: 10px;
+    right: 10px;
+    left: unset;
+    animation: swing 0.5s linear 2s infinite;
+    transform-origin: bottom;
+}
+
+@-webkit-keyframes swing {
+    20% {-webkit-transform: rotate(13deg);}
+    40% {-webkit-transform: rotate(-8deg);}
+    60% {-webkit-transform: rotate(4deg);}
+    80% {-webkit-transform: rotate(-4deg);}
+    100% {-webkit-transform: rotate(0);}
+}
+
+.popUp .zoomPhotoContianer .description{
+    position: fixed;
+    bottom: 0;
+    height: auto;
+    width: calc(100vw - 10px);
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+}

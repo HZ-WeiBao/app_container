@@ -18,7 +18,7 @@ class Proxy extends Component {
 
     public function init(){//一些其他component的调用初始化需要放在这里
         //这里是包括component的runtime config
-        $this->Curl->timeout(1);
+        $this->Curl->timeout(3);
         $this->Curl->autoReferer(true);
         $this->Curl->autoConvertTo('utf-8');
         $this->Curl->cookies(array('name'=>'value'));

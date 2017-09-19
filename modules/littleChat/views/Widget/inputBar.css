@@ -1,0 +1,466 @@
+.page .inputBar{
+  height:44px; 
+  background: #F3F3F3;
+  border-top:1px solid #DCDCDC;
+  overflow: hidden;
+}
+
+.inputBar img{
+  width: 100%;
+  height: 100%;
+}
+
+.inputBar > .flex{
+  padding: 0 4px;
+  align-items: flex-end;
+}
+
+.inputBar .textVoiceSwitcher ,
+.inputBar .emoji ,
+.inputBar .more ,
+.inputBar .keyboard ,
+.inputBar .send,
+.inputBar .sendDisable
+{
+  width: 44px;
+  height: 44px;
+  flex:0 0 44px;
+}
+
+.inputBar .send ,
+.inputBar .sendDisable{
+  text-align: center;
+  line-height: 41px;
+  position: absolute;
+  right: 4px;
+  display: none;
+}
+
+.inputBar .sendDisable{
+  position: unset;
+  display: block;
+  background: none;
+}
+
+.inputBar .send span,
+.inputBar .sendDisable span{
+  display: inline-grid;
+  border: 1px solid #129D1C;
+  border-radius: 3px;
+  width:calc(117px/3);
+  height:calc(84px/3);
+  margin: 0 auto;
+  background: #14AC20;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  line-height: calc(82px/3);
+}
+
+.inputBar .sendDisable span{
+  border: 1px solid #D2D2D2;
+  background:none;
+  color: #D2D2D2;
+}
+
+.inputBar .textOrVoiceInput{
+  flex:auto;
+  margin-bottom: 6.5px;
+  overflow: hidden;
+  transition: none;
+}
+
+.inputBar .send ,
+.inputBar .more {
+   transition: all .2s ease 0s; 
+}
+
+.inputBar .send.inital {
+  transform: scale(0.8);
+  opacity: 0;
+  display: block;
+}
+
+.inputBar.sendOn .more{
+  transform: scale(0.8);
+  opacity: 0;
+}
+.inputBar.sendOn .send{
+  transform: scale(1);
+  opacity: 1;
+} 
+
+.inputBar.sendOn .send{
+  transform: scale(1);
+  opacity: 1;
+} 
+
+.inputBar .textOrVoiceInput > * {
+  display: none;
+}
+
+.inputBar.textInputOn .textInput{
+  display: block;
+  border-bottom: 1px solid #d8d8d8;
+  max-height:75px;
+  overflow-y: auto;
+  font-size: 14px;
+  padding:3px 7px; 
+}
+
+.inputBar.voiceInputOn .voiceInput{
+  display: inline-flex;
+  height: calc(86px/3);
+  margin:0 11px; 
+  border-radius: 3px;
+  border: 1px solid #CECECE;
+}
+
+.textOrVoiceInput .textInput{
+  width:calc(100% - 7px*2);
+  min-height:20px;
+}
+
+.textInput.focus{
+  border-bottom: 1px solid #64C946!important;
+}
+
+.textInput .emojiInputed{
+  width: 19px;
+  height: 19px;
+  vertical-align: sub;
+  display: inline-block;
+}
+
+.textOrVoiceInput .voiceInput{
+  width:calc(100% - 11px*2);
+  height:100%;
+  text-align: center;
+  font-size: 14px;
+  display: none;
+  align-items: center;
+  color: #717171;
+}
+
+.voiceInput span{
+  flex:auto;
+}
+
+.voiceInput.pressing{
+  background: #e2e2e2;
+}
+
+.voiceInput .voiceRecord ,
+.voiceInput .recordTimeTooShort,
+.voiceInput .cancelVoiceRecord {
+  display: none;
+  background: rgba(0, 0, 0, 0.5);
+  width: calc(504px/3);
+  height: calc(504px/3);
+  position: fixed;
+  top:calc(50vh - 504px/6);
+  left:calc(50vw - 504px/6);
+  border-radius: 4px;
+  color: white;
+}
+
+.voiceInput.voiceRecordOn .voiceRecord ,
+.voiceInput.recordTimeTooShortOn .recordTimeTooShort,
+.voiceInput.cancelVoiceRecordOn .cancelVoiceRecord{
+  display: block;
+}
+
+.voiceInput .flex{
+  flex-wrap: wrap;
+}
+.voiceInput .flex-1-2{
+  height:120px;
+}
+.voiceInput .textDescription{
+  height:calc(108px/3);
+  line-height: calc(108px/3);
+  font-size: 14px;
+  width: calc(100% - 12px*2);
+  margin: 0 auto;
+}
+.voiceRecord .microphone{
+  width: calc(153px/3);
+  height: calc(257px/3);
+  position: relative;
+  display: block;
+  left: calc(79px/3);
+  top: calc(68px/3);
+}
+.voiceInput .volumeDisplayer{
+  width:calc(95px/3);
+  height:calc(270px/3);
+  position: relative;
+  top: calc(54px/3);
+  left: calc(36px/3);
+  clip-path: polygon(
+    0px 0px,
+    0px 100%,
+    calc(100% * (45/95)) 100%,
+    100% 0px
+  );
+}
+.volumeDisplayer > div {
+  height: calc(21px/3);
+  border:1px solid #DBDBDB;
+  background: white;
+  margin-bottom: calc(13px/3);
+}
+.volumeDisplayer > div:last-child {
+  margin-bottom: 0px;
+}
+
+.cancelVoiceRecord img{
+  width: calc(202px/3);
+  height: calc(261px/3);
+  position: relative;
+  top: calc(56px/3);
+  left: calc(134px/3);
+  display: block;
+}
+
+.cancelVoiceRecord .textDescription{
+  background: #923331;
+  border-radius: 3px;
+}
+
+.cancelVoiceRecord > div:nth-child(1) , .recordTimeTooShort > div:nth-child(1) {
+  height: 120px;
+}
+
+.recordTimeTooShort img{
+  width:calc(83px/3);
+  height:calc(269px/3);
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top:calc(48px/3);
+}
+
+
+.emojiPanle , .morePanle{
+  height:0px;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+.expanded.inputBar{
+  height:calc(44px + 275px);
+}
+
+.morePanle .itemContainer{
+  flex-wrap:wrap;
+  padding: 34px 15px 0 15px;
+  display: flex;
+}
+
+.morePanle .item{
+  width:73px;
+  height:81px;
+  margin:0 4.5px 17px 4.5px;
+  padding: 0px;
+  flex:0 0 73px;
+  background: none;
+  border:none;
+}
+
+.morePanle .item *{
+  margin:0 auto;
+}
+
+.morePanle .icon{
+  width: 50px;
+  height:50px;
+  border-radius: 10px;
+  background: none;
+}
+
+.morePanle .icon img{
+  width: 100%;
+  height: 100%;
+
+}
+
+.morePanle .name{
+  margin-top:3.5px;
+  font-size: 12px;
+  color: #7a846b;
+  text-align: center;
+  display: block;
+}
+
+.expanded.emojiPanle , .expanded.morePanle{
+  height:275px;
+}
+
+.emojiTypeSlider{
+  width:100%;
+  height: 243px;
+}
+
+.commonEmojiSlider , .customEmojiSlider{
+  height:225px;
+}
+
+.commonContainer , .customContainer{
+  padding-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.commonContainer .item{
+  width:42px;
+  height:42px;
+  border:none;
+  padding: 0px;
+  margin:0 4.5px 13.5px 4.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+}
+.commonContainer img{
+  width: calc(80px/3);
+  height: calc(80px/3);
+  flex:0 0 calc(80px/3);
+}
+
+.customEmojiSlider .item{
+  border:none;
+  padding: 0px;
+}
+
+.customContainer .item{
+  width: 59px;
+  height: 59px;
+  padding: 9.25px 15px;
+  background: none;
+  margin: 0 0 13px 0;
+}
+
+.preview{
+  position: absolute;
+  width: calc(290px/3);
+  height: calc(290px/3);
+  background: rgba(255,255,255,0.85);
+  top: 0px;
+  left: 0px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.preview img{
+  display: block;
+  flex:0 0 calc(230px/3);
+  width:calc(230px/3);
+  height:calc(230px/3);
+}
+
+.preview.on{
+  display: flex;
+}
+
+
+.ctrlBar{
+  height:18px;
+}
+
+.ctrlContainer{
+  display: flex;
+  justify-content:center;
+}
+
+.ctrlContainer .ctrl {
+  height:18px;
+  width:18px;
+  flex: 0 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ctrl .dot{
+  width:6px;
+  height:6px;
+  background: #e4e4e4;
+  border-radius: 100%;
+}
+
+.ctrl.on .dot{
+  width:8px;
+  height:8px;
+  background: #989898;
+  border-radius: 100%;
+}
+
+.emojiTypeCtrl{
+  height: 32px;
+  border-top: 1px solid #DFDFDF;
+}
+
+.emojiTypeCtrl .btn{
+  height: 31px;
+  width:53px;
+  border-right: 1px solid #DFDFDF;
+  float: left;
+}
+
+.emojiTypeCtrl .btn > img{
+  width: 100%;
+  height: 100%;
+}
+
+.emojiTypeCtrlContainer .btn.on{
+  background: #E1E1E1;
+}
+
+.moreBar {
+  height: 44px;
+  border-top:1px solid #d8d8d8;
+  overflow: hidden; 
+  transform: translateY(100%);
+}
+
+.moreBar img{
+  width: 100%;
+  height: 100%;
+}
+
+.moreBar .btn-share ,
+.moreBar .btn-collect ,
+.moreBar .btn-delete ,
+.moreBar .btn-mail {
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+
+.moreBar .btn-share {
+  background-image: url(/data/littleChat/moreBar-share-icon.png);
+}
+.moreBar .btn-collect {
+  background-image: url(/data/littleChat/moreBar-collect-icon.png);
+}
+.moreBar .btn-delete {
+  background-image: url(/data/littleChat/moreBar-delete-icon.png);
+}
+.moreBar .btn-mail {
+  background-image: url(/data/littleChat/moreBar-mail-icon.png);
+}
+
+.moreBar.disable .btn-share {
+  background-image: url(/data/littleChat/moreBar-disable-share-icon.png);
+}
+.moreBar.disable .btn-collect {
+  background-image: url(/data/littleChat/moreBar-disable-collect-icon.png);
+}
+.moreBar.disable .btn-delete {
+  background-image: url(/data/littleChat/moreBar-disable-delete-icon.png);
+}
+.moreBar.disable .btn-mail {
+  background-image: url(/data/littleChat/moreBar-disable-mail-icon.png);
+}

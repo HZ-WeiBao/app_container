@@ -1,0 +1,13 @@
+{
+  "name": "录取查询",
+  "status": "normal",
+  "description": "ployfill",
+  "author": "DeepKolos",
+  "version": {
+    "v0.1": {
+      "time": "2017-7-11",
+      "updateLog": ["迁入我的小小框架,文档的东西有空再写~"]
+    }
+  },
+  "component": {}
+}

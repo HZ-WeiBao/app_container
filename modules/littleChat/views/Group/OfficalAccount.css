@@ -1,0 +1,13 @@
+.page .scrollBar{
+  display: block;
+  height: calc(100vh - 45px);
+  top:calc(45px);
+}
+.page .scrollBar > div{
+  width:100%;
+  height: calc((100vh - 45px)/27);
+  flex: 0 0 calc((100vh - 45px)/27);
+  font-size: calc((100vh - 130px)/27);
+  line-height: calc((100vh - 45px)/27);
+  text-align: center;
+}

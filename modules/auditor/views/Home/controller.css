@@ -1,80 +1,88 @@
 .btnEmbedRight {
     display: inline-block;
     padding: 6px 12px;
-    background: #04a5de;
+    background: #0072c6;
     color: white;
     font-size: 17px;
     border-radius: 5px;
     position: absolute;
-    right:15px;
-    margin-top:20px;
+    right: 15px;
+    margin-top: 20px;
 }
 
-.inputKeyword{
+.inputKeyword {
     margin: 20px 7%;
     margin-right: 95px;
     display: block;
 }
-.inputKeyword input{
+
+.inputKeyword input {
     padding: 4.5px 5px;
-    width:100%;
+    width: 100%;
     font-size: 17px;
     outline: none;
-    border:1.5px solid #0072c6;
+    border: 1.5px solid #0072c6;
     border-radius: 5px;
 }
 
-
-.display_result{
+.display_result {
     display: block;
-    margin:0 7%;
+    margin: 0 5%;
 }
+
 .display_result li {
-    padding:5px;
+    padding: 5px;
     font-size: 22px;
-    margin-bottom:5px;
+    margin-bottom: 5px;
     will-change: transform;
 }
-.display_result li a{
+
+.display_result li a {
     color: #14486f;
 }
-.display_result li:before{
-    content:'';
-    width:5px;
-    height:16px;
+
+.display_result li:before {
+    content: '';
+    width: 5px;
+    height: 16px;
     margin-top: 8px;
     margin-left: -12px;
     display: block;
     position: absolute;
-    background: #0072c6 ;
+    background: #0072c6;
 }
+
 .display_result table {
     margin: 0 auto;
-    min-width: 90%;
+    width: 100%;
     position: relative;
-    top:20px;
+    top: 20px;
     margin-bottom: 40px;
 }
-.display_result table tr{
+
+.display_result table tr {
     transition: all 0.34s ease 0s!important;
     will-change: transform;
 }
-.display_result table tr td:first-child{
-    max-width:65px;
+
+.display_result table tr td:first-child {
+    max-width: 65px;
 }
-.display_result table tr td:nth-of-type(2){
-    max-width:70px;
+
+.display_result table tr td:nth-of-type(2) {
+    max-width: 70px;
 }
+
 .display_result td {
     padding: 3px;
 }
 
 .messageEmpty {
-    margin:0 7%;
+    margin: 0 7%;
     text-align: center;
     margin-top: 20px;
 }
 
-.display_result .btnOneLine{
+.display_result .btnOneLine {
     position: absolute;
 }

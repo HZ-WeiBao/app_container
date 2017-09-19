@@ -1,0 +1,34 @@
+.slider {
+  width:100%;
+  overflow: hidden;
+}
+.slider > ul{
+  height: 100%;
+  overflow-y: hidden;
+  will-change: transform;
+  transition: all 0.2s ease 0s;
+}
+
+/*和slider的相同*/
+.slider > ul > li {
+  position: relative;
+  height: 100%;
+  width:100vw;
+  display: block;
+  float: left;
+  overflow-y: scroll;
+}
+
+
+.slider.loop > ul {
+  will-change: none;
+  transition: none;
+  position: relative;
+}
+
+
+.slider.loop > ul > li {
+  will-change: transform;
+  transition: all 0.2s ease 0s;
+  position: absolute
+}

@@ -1,0 +1,378 @@
+.main{
+  background: black;
+  will-change: unset!important;
+}
+.slideContainer{
+  background: #f8f8f8;
+}
+
+.cardContainer .card{
+  padding: calc(32px/3);
+  padding-bottom: 7px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #d3d3d3;
+  display: flex;
+}
+
+.card .icon{
+  width: calc(117px/3);
+  height: calc(117px/3);
+  margin-right: calc(22px/3);
+  background: greenyellow;
+  flex: 0 0 calc(117px/3);
+  position: relative;
+}
+
+.card .icon img{
+  width: 100%;
+  height: 100%;
+}
+
+.card .icon .btnPlay{
+  position: absolute;
+}
+
+.card .right{
+  flex:auto;
+}
+
+.card .name{
+  font-size: 15px;
+  color: #576b95;
+  height: calc(56px/3);
+  line-height: calc(56px/3);
+}
+
+.card .content{
+  margin-top:4px;
+  font-size: 15.5px;
+}
+
+.card .content.pressing span,
+.card .content span:active{
+  background: #E3E3E3;
+  transition: all 0.05s ease 0s;
+}
+
+.card .attachments{
+  padding-top: 3px;
+  padding-bottom: 2px;
+}
+
+.card .attachments.multiple{
+  display: flex;
+  flex-wrap: wrap;
+  padding-right:calc((61px - 8px)/3);
+}
+
+.attachments.multiple > div{
+  flex:0 0 calc((100% - 8px)/3);
+  width: calc((100% - 8px)/3);
+  height:calc(261px/3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-right: calc(8px/3);
+}
+.attachments.multiple > div img{
+  flex:auto;
+  max-width: 100%;
+}
+
+.attachments.multiple.four > div:nth-child(2){
+  margin-right: calc((100% - 8px)/3);
+}
+
+.attachments.single {
+  display: block;
+  padding-right:calc(61px/3);
+}
+
+.attachments.single > div{
+  max-width: calc(540px/3);
+  max-height: calc(540px/3);
+}
+
+.attachments.single > div img{
+  max-width: calc(540px/3);
+  max-height: calc(540px/3);
+  display: block;
+}
+
+/* .attachments > div.pressing img{
+  -webkit-filter: blur(1.2px);
+  filter: blur(1.2px);
+} */
+
+.attachments.link > div,
+.attachments.music > div{
+  padding: calc(11px/3);
+  display: flex;
+  background: #ececec;
+  align-items: center;
+}
+
+.attachments.link .icon,
+.attachments.music .icon{
+  width:calc(113px/3);
+  height: calc(113px/3);
+  overflow: hidden;
+  flex: 0 0 calc(113px/3);
+  background: navajowhite;
+}
+
+.attachments.link .icon img,
+.attachments.music .icon img
+{
+  height: 100%;
+  widows: 100%;
+}
+
+.attachments.link .title,
+.attachments.music .right{
+  flex: auto;
+  font-size: 15px;
+  overflow: hidden;
+}
+
+.attachments.music .songName{
+  color: #576b95;
+  font-size: 13px;
+}
+
+.attachments.music .singer{
+  color: #818181;
+  font-size: 13px;
+}
+
+.card .location{
+    color:#576b95;
+  font-size: 13px;
+  line-height: calc(75px/3);
+}
+
+.card .controllBar{
+  height:calc(75px/3);
+  display: flex;
+  position: relative;
+}
+
+.controllBar .left{
+  flex:auto;
+  color:#818181;
+  font-size: 13px;
+}
+
+.controllBar .left > *{
+  float: left;
+  margin-right:9px;
+  height: 100%;
+  line-height: calc(75px/3);
+}
+
+.controllBar .limitIcon{
+  width: calc(13.5px*43/38);
+  height: 13.5px;
+  background-image: url(/data/littleChat/limit-people-to-view-icon.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: -7%;
+}
+
+.controllBar .btnDel{
+  color:#576b95;
+}
+
+.controllBar .btnExpand{
+  flex:0 0 calc(126px/3);
+  width:calc(126px/3);
+  height:100%;
+  background-image: url(/data/LittleChat/controllBar-btn-expand.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.btnExpand.focus + .expandContainer ,
+.controllBar .expandContainer.focus{
+  animation: expandContainerOn 0.3s ease 0s forwards;
+}
+
+@keyframes expandContainerOn {
+  0%{transform: scale(0.01,1);opacity: 1;}
+  100%{transform: scale(1,1);opacity: 1;}
+}
+
+.controllBar .expandContainer{
+  height: calc(108px/3);
+  display: flex;
+  border-radius: 2.5px;
+  background: #393a3f;
+  overflow: hidden;
+  position: absolute;
+  right: calc(91px/3);
+  top:-4px;
+  opacity: 0;
+  transform: scale(0.01,1);
+  will-change: transform, opacity;
+  transform-origin: right;
+}
+
+.expandContainer > div{
+  width: calc(259px/3);
+  border-right: 1px solid rgba(0, 0, 0, 0);
+  position: relative;
+  line-height: calc(108px/3);
+  text-align: center;
+  color: white;
+  font-size: 13.5px;
+}
+.expandContainer > div::after{
+  position: absolute;
+  content: '';
+  width: 1px;
+  height: calc(65px/3);
+  right:-1px;
+  top:7px;
+  background: #2e2e32;
+}
+
+.expandContainer > div:last-child::after{
+  content: none;
+}
+
+.expandContainer img{
+  width:calc(57px/3);
+  height: calc(51px/3);
+  display: inline-block;
+  vertical-align: sub;
+}
+
+.expandContainer .btnLike::before,
+.expandContainer .btnComment::before{
+  content: '';
+  width:calc(57px/3);
+  height: calc(51px/3);
+  display: inline-block;
+  vertical-align: sub;
+  margin-right: 3px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.expandContainer .btnLike.liked::before{
+  animation: btnLikeTempZoom 0.8s ease 0s forwards;
+}
+
+@keyframes btnLikeTempZoom {
+  0%{transform: scale(1);}
+  50%{transform: scale(1.2);}
+  100%{transform: scale(1);}
+}
+
+.expandContainer .btnLike::before{
+  background-image: url(/data/littleChat/controllBar-like-icon.png);
+}
+
+.expandContainer .btnComment::before{
+  background-image: url(/data/littleChat/controllBar-comment-icon.png);
+}
+
+.expandContainer .btnComment img{
+  width:calc(54px/3);
+}
+
+.card .interaction{
+  margin-bottom: 4px;
+}
+
+.card .triangle{
+  height: calc(17px/3);
+}
+
+.card .triangle::before{
+  content: '';
+  border-bottom: calc(17px/3) solid #eeeeee;
+  border-left: calc(37px/3/2) solid #00000000;
+  border-right: calc(37px/3/2) solid #00000000;
+  height: 0px;
+  width: 0px;
+  display: block;
+  margin-left: 7.5px;
+}
+
+.interaction .likesContainer,
+.interaction .commentsContainer {
+  background: #eeeeee;
+  padding: 7px;
+  font-size: 14px;
+}
+
+.interaction .likesContainer{
+  border-bottom: 1px solid #d6d6d6;
+  color:#576b95;
+}
+
+.loadingCircle{
+  width: 24px;
+  height: 24px;
+  background-image: url(/data/littleChat/color-circle.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: calc(45px - 28px);
+  left: 25px;
+  z-index: 0;
+  will-change: transform;
+}
+
+.loadingCircle.loading{
+  animation: loading 1.7s linear infinite 0s;
+}
+
+@keyframes loading {
+  0%{transform: translate3d(0,calc(141px/3),0) rotateZ(0deg);}
+  100%{transform: translate3d(0,calc(141px/3),0) rotateZ(720deg);}
+}
+
+.page .inputBar{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  transform: translateY(0%);
+}
+
+.page .inputBar.disable{
+  opacity: 1;
+  transform: translateY(100%);
+}
+
+.zoomPhotoContianer.in-full-screen .ctrlContainer{
+  position: absolute;
+  bottom: 10px;
+  width: 100vw;
+}
+
+.zoomPhotoContianer .ctrlContainer .dot{
+  background: #444444;
+  width: calc(16px/3);
+  height: calc(16px/3);
+}
+
+.zoomPhotoContianer .ctrlContainer .ctrl.on .dot{
+  background: #BABABA;
+  width: calc(16px/3);
+  height: calc(16px/3);
+  margin: calc((18px - 8px) / 2);
+}
+
+/* 长按样式 */
+.attachments > div.pressing,
+.card .icon.pressing,
+.attachments > div:active,
+.card .icon:active
+{
+  opacity: 0.8;
+  transition: all 0.05s ease 0s;
+}

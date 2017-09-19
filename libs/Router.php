@@ -21,6 +21,7 @@ class Router extends Component {
     //解析
     // sleep(1);
     $url = $this->analysisUrl($_SERVER['REQUEST_URI']);
+    //主页跳转至列表
     if(isset($url['module'])){
       $this->module     = $url['module'];
       $this->controller = $url['controller'];
@@ -63,7 +64,8 @@ class Router extends Component {
         F::end(5,"找不到到对应的Action({$this->action})~或者视图有语法错误");
       }
     }else{
-      echo '小小的应用框架~';
+      header('Location: /emptyClass#Home_/Apps');
+      // echo '小小的应用框架~';
     }
     F::end();
   }
@@ -74,7 +76,7 @@ class Router extends Component {
   }
 
   public function analysisUrl($url){
-    preg_match('/([a-zA-Z-_]+)\/?([a-zA-Z-_]+)?\/?([a-zA-Z-_]+)?/iu',$url,$params);
+    preg_match('/([a-zA-Z0-9-_]+)\/?([a-zA-Z0-9-_]+)?\/?([a-zA-Z0-9-_]+)?/iu',$url,$params);
     if(isset($params[1])){
       $module = ($params[1]);
 

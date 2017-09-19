@@ -1,0 +1,40 @@
+
+.plusMenu {
+	width: 180px;
+	transition: all 0.15s ease 0s!important;
+	box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
+}
+
+.plusMenu li{
+	color: white;
+	padding: 7px 0;
+	display: flex;
+	align-items: center;
+	background: #393a3f;
+	border-bottom: calc(2px/3) solid #191b1c
+}
+.plusMenu li:last-child{
+	border-bottom: none;
+}
+
+.plusMenu .icon{
+	width:30px;
+	height:30px;
+	margin:0 12px;
+	background-size: 30px!important;
+	flex: 0 0 30px;
+}
+.plusMenu .name{
+	flex: auto;
+}
+
+.contactList::-webkit-scrollbar {
+	display:none;
+}
+
+.contactList >div,
+.addonList >div,
+.myList >div,
+.main >div{
+	will-change: transform;
+}

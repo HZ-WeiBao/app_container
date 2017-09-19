@@ -1,0 +1,44 @@
+.main{
+  background: white;
+}
+
+.main .coin{
+  margin-top:27px;
+}
+
+.main .coin img{
+  width: 90px;
+  height: 90px;
+  display: block;
+  margin: 0 auto;
+}
+
+.main .text{
+  font-size: 14px;
+  margin-top:calc(22px/3);
+  text-align: center;
+}
+
+.main .value{
+  font-size: 25px;
+  text-align: center;
+}
+
+.main .btnCharge{
+  margin-top:27px;
+}
+
+.main .notificationOfManageMoney{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #5171AF;
+}
+
+.main .notificationOfManageMoney img{
+  width: calc(43px/3);
+  height: calc(43px/3);
+  flex: 0 0 calc(43px/3);
+  margin-right: calc(8px/3);
+}

@@ -56,6 +56,32 @@ class nerc extends __base__ {
     elseif(strpos($this->raw,'您查询的结果为空') !== false)
       return '您查询的结果为空';
     else {
+      $i = function($tds,$num){
+        return trim($tds->item($num)->textContent);
+      };
+
+      foreach ($this->dom->getElementsByTagName('table') as $table) {
+        if($table->getAttribute('class') == 'imgtab'){
+          
+          $imgSrc = 'http://cjcx.neea.edu.cn/';
+          $imgSrc .= $table->getElementsByTagName('img')->item(0)->getAttribute('src');
+          $tds = $table->getElementsByTagName('td');
+
+          $grade = array(
+            'id' =>     $i($tds,4),
+            'cardId'=>  $i($tds,6),
+            'name'=>    $i($tds,2),
+            'examTime'=>$i($tds,10).'年'.$i($tds,14).'月',
+            'score'=>   $i($tds,8),
+            'grade'=>   $i($tds,12),
+            'certificateId'=>$i($tds,6),
+            'selfieUrl'=>$imgSrc
+          );
+
+          return $grade;
+        }
+      }
+
       return $this->raw;
     }
   }

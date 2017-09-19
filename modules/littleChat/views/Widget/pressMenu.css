@@ -1,0 +1,14 @@
+/* 但是感觉这样分割粒度太小了,唉,已经合并到module级了 */
+.pressMenu {
+  box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
+}
+
+.pressMenu li{
+  height: 43px;
+  line-height: 43px;
+  padding: 0 15px;
+  font-size: 15px;
+  display: block;
+  background: white;
+  min-width: calc(111px - 30px);
+}

@@ -1,0 +1,19 @@
+<div style="height:1px;"></div>
+<div class="display_result">
+    <div class='descriptionForForm'></div>
+    <input id='inputHidden' type="hidden" serverId="<?= $serverId?>" session="<?= $session ?>" aliyungftc="<?= $aliyungf_tc ?>">
+    <div class="inputText">
+        <div>准考证号</div>
+        <input id='studentId' type="text" name="studentId" value="">
+    </div>
+    <div class="inputText">
+        <div>出生年月</div>
+        <input id='studentBrithday' type="text" name="studentBrithday" value="">
+    </div>
+    <div class="inputText">
+        <div>验证码</div>
+        <input id='captcha' type="text" name="captcha" value="">
+        <img id="captchaImg" class="captcha" src="<?= $captcha?>">
+    </div>
+</div>
+<a href="#home/query"><div class="btnOneLine">查询</div></a>

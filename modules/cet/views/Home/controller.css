@@ -28,6 +28,15 @@
     padding: 2px 0px;
 }
 
+.inputText .captcha {
+  position: absolute;
+  right:7%;
+  margin-top: -55px;
+  height: 55px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px 1px #e4e4e4;
+}
+
 
 .table > div {
     height: 12px;

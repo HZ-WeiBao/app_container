@@ -167,3 +167,17 @@
 .switcher > .off > span {
   transform: translateX(0px);
 }
+
+.btnOneLineContainer {
+  text-align: center;
+  padding: 0 3.5%;
+}
+.btnOneLineContainer > div {
+  width: 50%;
+  display: inline-block;
+}
+
+.saying {
+  margin: 0 7%;
+  font-size: 18px;
+}

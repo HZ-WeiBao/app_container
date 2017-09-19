@@ -1,0 +1,19 @@
+
+.btnDownload{
+  flex: 0 0 calc(162px/3);
+  width:calc(162px/3);
+  height: 27px;
+  margin: 0 calc(5px/3);
+  background-color: #14AC20;
+  border-radius: 3px;
+  color: white;
+  line-height: 27px;
+  text-align: center;
+  font-size: 13px;
+  border: 1px  sool #129D1D;
+}
+
+img{
+  width: 100%;
+  display: block;
+}

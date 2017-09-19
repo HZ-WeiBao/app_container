@@ -1,0 +1,129 @@
+.main {
+  background: white;
+}
+
+.main .tabBar{
+  height: calc(102px/3);
+  border-bottom: calc(2px/3) solid #D8D8D8;
+  display: flex;
+}
+
+.tabBar > div{
+  height: 100%;
+  line-height: calc(102px/3);
+  width: auto;
+  flex:auto;
+  text-align: center;
+  font-size: 15px;
+  transition: none!important;
+}
+
+.tabBar > div:active{
+  color:lightgrey;
+}
+
+.tabBar > .on{
+  color: #14AC20!important;
+}
+
+.indicator{
+  height: calc(8px/3);
+  background-color: #14AC20;
+  margin-top: calc(-8px/3);
+  will-change: transform;
+}
+
+.slider.tab,
+.slider.tab > ul > li{
+  height: calc(100vh - 104px/3 - 45px);
+  background: white!important;
+}
+
+.slider li:nth-child(1){
+  background: thistle;
+}
+.slider li:nth-child(2){
+  background: teal;
+}
+.slider li:nth-child(3){
+  background: tan;
+}
+
+.slider.handpick,
+.slider.handpick li,
+.slider.more,
+.slider.more li{
+  height: calc(403px/3);
+  overflow: hidden!important;
+}
+
+.label{
+  font-size: 15px;
+  padding: calc(54px/3) 0 9px 0;
+  margin:0 calc(32px/3);
+  display: flex;
+  align-items: center;
+}
+
+.label span{
+  color: #989898;
+  font-size: 13px;
+  text-align: right;
+  flex: auto;
+}
+
+.list{
+  padding: 4px calc(32px/3);
+}
+.list > div{
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #D8D8D8;
+}
+.list > div:last-child{
+  border-bottom: 1px solid #D8D8D8;
+}
+
+.list .icon{
+  width:calc(203px/3);
+  height:calc(203px/3);
+  flex: 0 0 calc(203px/3);
+}
+
+.list .center{
+  flex:auto;
+}
+
+.list .title{
+  font-size: 15.5px;
+}
+.list .description{
+  font-size: 14px;
+  color: #989898;
+  margin-top:8px;
+}
+
+.listIcon{
+  background: lightblue;
+}
+
+.listIcon > div{
+  float: left;
+  margin-left:calc(67px/3);
+  margin-bottom: calc(32px/3);
+}
+
+.listIcon .icon{
+  height: 88px;
+  width: 88px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #D8D8D8;
+}
+
+.listIcon .name{
+  height: 27px;
+  line-height: 27px;
+  font-size: 13px;
+  text-align: center;
+}

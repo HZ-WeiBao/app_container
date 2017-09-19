@@ -1,0 +1,20 @@
+{
+  "name": "班级课表",
+  "status": "normal",
+  "description": "和个人课表的主要区别是,之后你的选课信息也是可以在个人课表显示,班级课表只是显示班级总体的来说要上的课",
+  "author": "DeepKolos",
+  "version": {
+    "v0.1": {
+      "time": "17/9/7",
+      "updateLog": [
+        "之前弄过,但是感觉数据不太准确,这次匆忙迁移到新框架,先凑合用吧~"
+      ]
+    }
+  },
+  "component": {
+    "Schedule": {
+      "lastTriggerTime": "timestamp",
+      "interval": "2days"
+    }
+  }
+}

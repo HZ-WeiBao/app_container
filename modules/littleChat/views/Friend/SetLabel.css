@@ -1,0 +1,33 @@
+.main{
+  background: white;
+}
+
+.main .description , .main .value{
+  width: calc(100vw - 14.5px*2);
+  margin: 0 auto;
+}
+.main .description{
+  height:20px;
+  font-size: 15px;
+  line-height: 20px;
+  color: #989898;
+  margin-top:22px;
+  margin-bottom:11px;
+}
+
+.main .value{
+  height: 32px;
+  line-height: 32px;
+  font-size: 15px;
+  border-bottom: 1px solid #D8D8D8;
+}
+
+.value input{
+  border: none;
+  outline: none;
+  padding: 0 5px;
+  width:calc(100% - 10px);
+  height: 100%;
+  display: block;
+  font-size: 15px;
+}

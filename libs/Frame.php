@@ -15,17 +15,18 @@ class F {
     self::$componentConfig = $config['components'];
     self::$params = $config['params'];
 
-    // foreach($config['components'] as $key => $value)
-    //   if(method_exists($key,'globalConfig'))
-    //     $key::globalConfig($value);
+    session_start();
 
-    if(self::$params['debug'] && false){
-      $debug = json_encode($_SERVER);
-      echo '<script>var $debug=';
-      echo $debug.';</script>';
-    }
-    //参数预处理 todo
+    // if(self::$params['debug'] && false){
+    //   $debug = json_encode($_SERVER);
+    //   echo '<script>var $_SERVER=';
+    //   echo $debug.';</script>';
 
+    //   $debug = json_encode($_SESSION);
+    //   echo '<script>var $_SESSION=';
+    //   echo $debug.';</script>';
+    // }
+    
     return self::$R = new Router;
   }
 

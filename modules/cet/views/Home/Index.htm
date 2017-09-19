@@ -1,15 +1,25 @@
+<script src="/js/hm.js"></script>
 <div class="inputText">
     <div>温馨提示</div>
     准考证的组成有: 440570(地区号)+162(年度)+1(四级,2是六级)+考场号(3位)+座位号(2位)
 </div>
 <div class="inputText">
     <div>准考证号</div>
-    <input id='studentID' type="text" value="">
+    <input id='studentID' type="text" value="<? if(isset($id)) echo $id; ?>">
 </div>
 <div class="inputText">
     <div>你的姓名</div>
-    <input id='studentName' type="text" value="">
+    <input id='studentName' type="text" value="<? if(isset($name)) echo $name; ?>">
+</div>
+<div class="inputText">
+    <div>验证码</div>
+    <input id='captcha' type="text" name="studentIDCard" value="">
+    <img id="captchaImg" class="captcha" src="">
 </div>
 
+<div class="inputText">
+    可以用~可以吃午饭了~过了的点赞吧~<br>
+    可能还有些未知错误,<a href="http://cet.neea.edu.cn/cet/">可以改到这里查~</a>
+</div>
 <a href="#home/query"><div class="btnOneLine">查询</div></a>
-<!--<a href="#home/save"><div class="btnOneLine btnWhite">保存</div></a>-->
+<a href="#Home/Backup"><div class="btnOneLine btnWhite">准考证备份</div></a>

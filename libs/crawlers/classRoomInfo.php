@@ -143,5 +143,6 @@ class classRoomInfo extends __base__ {
     $this->edu_classroom_listModel->write($this->data);
     $this->edu_classroom_courseModel->write($this->data);
     $this->edu_classroom_activityModel->write($this->data);
+    $this->edu_classroom_list_availableModel->write();
   }
 }

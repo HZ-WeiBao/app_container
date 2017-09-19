@@ -1,0 +1,59 @@
+
+.list {
+  height: calc(173px/3);
+  padding: 0 13px;
+  background: white;
+  border-bottom: 1px solid #DEDEDE; 
+  align-items: center;
+}
+
+.list .right {
+  flex: 0 0 55px;
+}
+
+.list .left {
+  flex: auto;
+  padding: 10px 0;
+}
+
+.list .icon {
+  width: calc(108px/3);
+  height: calc(108px/3);
+  margin-right: 12px;
+  background: green;
+  position: relative;
+}
+
+.list .name {
+  height: 20px;
+  font-size: 17px;
+  color: #1B1A1F;
+}
+
+.list .wechat {
+  height: 18px;
+  margin-top: 2.5px;
+  font-size: 14px;
+  color: #9F9F9F;
+  line-height: 18px;
+  overflow: hidden;
+}
+
+.list .btnAdd{
+  width:calc((203px - 2px) /3);
+  height:calc(81px/3);
+  flex:0 0 calc(203px/3);
+  border: 1px solid #179e16;
+  background: #1aad19;
+  color: white;
+  font-size: 13.5px;
+  border-radius: 3px;
+  text-align: center;
+  line-height: calc(81px/3);
+}
+
+.list .btnAdd.disable{
+  background: none;
+  border: none;
+  color:#737373;
+}

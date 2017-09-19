@@ -1,7 +1,7 @@
 <?php
 
 class HomeCtrl extends BaseCtrl {
-  public function actionTest(){
-    echo 'hello world~~';
+  public function action2017(){
+    View::render('this');
   }
 }

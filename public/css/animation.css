@@ -1,14 +1,114 @@
 .initial {
-    opacity: 0;
-    transform: translateY(-10px);
+  opacity: 0;
+  transform: scale(0.95) translateY(-10px) skew(-1deg, -1deg);
 }
 
 .in {
-    transform: translateY(0);
-    opacity: 1!important;
+  transform: scale(1) translateY(0) skew(0deg, 0deg);
+  opacity: 1!important;
 }
 
 .out {
-    transform: translateY(10px)!important;
-    opacity: 0!important;
+  transform: scale(1.05) translateY(10px) skew(1deg, 1deg)!important;
+  opacity: 0!important;
+}
+
+.popUp-initial {
+  opacity: 0;
+  transform: scale(0.80) translate3d(0,-10px,0);
+}
+
+.popUp-in {
+  transform: scale(1) translate3d(0,0,0);
+  opacity: 1!important;
+}
+
+.popUp-out {
+  transform: scale(0.80) translate3d(0,0,0)!important;
+  opacity: 0!important;
+}
+
+/*以后的动画命名*/
+
+/* zoom */
+.initial-zoom {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.in-zoom {
+  opacity: 1;
+  transform: scale(1);
+}
+.out-zoom {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+/* slide-left */
+.initial-slide-left {
+  opacity: 0;
+  transform: translateX(100vw) translateZ(0);
+}
+.in-slide-left {
+  opacity: 1;
+  transform: translateX(0px) translateZ(0);
+}
+.out-slide-left {
+  opacity: 0;
+  transform: translateX(100vw) translateZ(0);
+}
+.initial-slide-left-1-of-10 {
+  transform: translateX(-10vw) translateZ(0)!important;
+  opacity: 0!important;
+}
+
+/* slide-right */
+.initial-slide-right {
+  opacity: 0;
+  transform: translateX(-100vw) translateZ(0);
+}
+.in-slide-right {
+  opacity: 1;
+  transform:translateX(0px) translateZ(0);
+}
+.out-slide-right {
+  opacity: 0;
+  transform: translateX(-100vw) translateZ(0);
+}
+
+/* slide-bottom */
+.initial-slide-bottom {
+  opacity: 0;
+  transform: translateY(100%) translateZ(0);
+  transition: all 0.2s ease 0s;
+}
+.in-slide-bottom {
+  opacity: 1;
+  transform:translateY(0px) translateZ(0);
+  transition: all 0.25s ease 0s;
+}
+.out-slide-bottom {
+  opacity: 0;
+  transform: translateY(100%) translateZ(0);
+  transition: all 0.2s ease 0s;
+}
+
+/* fade */
+.initial-fade {
+  opacity: 0;
+}
+.in-fade {
+  opacity: 1!important;
+}
+.out-fade {
+  opacity: 0!important;
+}
+
+.in-full-screen {
+  top:0px!important;
+  left:0px!important;
+  bottom:0px!important;
+  opacity: 1!important;
+  transform: scale(1) translateZ(0)!important;
 }

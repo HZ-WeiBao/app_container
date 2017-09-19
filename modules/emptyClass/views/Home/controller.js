@@ -19,15 +19,46 @@ exports.actionIndex = function() {
   week_selection.init();
   building_selection.init();
   courseStartEndSelector.init();
-  // document.querySelector('.buttom_submit').addEventListener('click',actionQuery.bind(this));
+  document.querySelector('.buttom_submit').addEventListener('click', Query.bind(this));
 }
 
-exports.viewUpdateQuery = function() {
+var Query = function() {
   var $display_result = document.querySelector('.display_result');
+
   css($display_result, {
     'opacity': 0,
     'transform': 'translateY(-10px)',
   });
+
+  var genrateFloor = function(list) {
+    var floor = [];
+
+    for (var i = 0; i < list.length; i++) {
+      var match = list[i]['room'].match(/\d+-\w+/);
+      if (!match || match[0] !== list[i]['room']) {
+        list.splice(i, 1);
+        i--;
+      } else {
+        list[i]['floor'] = list[i]['room'].match(/-\w*?(\d)/i)[1];
+      }
+    }
+
+    for (var i = 0; i < list.length; i++)
+      if (!checkIn(list[i]['floor'], floor))
+        floor.push(list[i]['floor']);
+
+    var floor_group = {};
+    //填充数据
+    for (i = 0; i < floor.length; i++) {
+      floor_group[floor[i]] = Array();
+      for (var j = 0; j < list.length; j++) {
+        if (list[j]['floor'] == floor[i]) {
+          floor_group[floor[i]].push(list[j]['room']);
+        }
+      }
+    }
+    return floor_group;
+  }
 
   Ajax({
     method: 'get',
@@ -40,57 +71,58 @@ exports.viewUpdateQuery = function() {
     },
     cache: true,
     func: function(rep) {
-      var result = JSON.parse(rep);
-      var $display_result = document.querySelector('.display_result');
-      var floor = [];
-      //因为没有提取出floor所以需要在这里提取出来
-      for (var i = 0; i < result.length; i++) {
-        var match = result[i]['room'].match(/\d-\w+/);
-        if (!match || match[0] !== result[i]['room']) {
-          result.splice(i, 1);
-          i--;
-        } else {
-          result[i]['floor'] = result[i]['room'].match(/-\w*?(\d)/i)[1];
+      var result = JSON.parse(rep),
+        floor_group, lineCounter = 0,
+        $display_result = document.querySelector('.display_result');
+
+      floor_group = genrateFloor(result);
+
+      var getDom_column = function() {
+        var dom = document.createElement('div');
+        dom.setAttribute('class', 'column');
+        return dom;
+      };
+      var getDom_line = function(column, arr) {
+        for (var i = 0; i < arr.length; i++) {
+          var item = document.createElement('div');
+          item.setAttribute('class', 'animation_list');
+          if (arr[i] !== undefined)
+            item.innerHTML = arr[i];
+          item.style['transform'] = 'translateY(60px)';
+          item.style['transition-delay'] = (lineCounter / 27) + 's';
+          column.appendChild(item);
         }
-      }
-      // console.log(result);
-      for (var i = 0; i < result.length; i++) {
-        if (!checkIn(result[i]['floor'], floor)) {
-          floor.push(result[i]['floor']);
+      };
+
+      var columns = [];
+      for (var index in floor_group) {
+        var columnn = getDom_column(),
+          rooms = floor_group[index],
+          len = rooms.length / 3;
+
+        for (var i = 0; i < len; i++) {
+          var line = getDom_line(
+            columnn, [
+              rooms.pop(),
+              rooms.pop(),
+              rooms.pop()
+            ]);
+          lineCounter++;
         }
-      }
-      var floor_group = {};
-      //填充数据
-      for (i = 0; i < floor.length; i++) {
-        floor_group[floor[i]] = Array();
-        for (var j = 0; j < result.length; j++) {
-          if (result[j]['floor'] == floor[i]) {
-            floor_group[floor[i]].push(result[j]['room']);
-          }
-        }
-      }
-      //用恶心的拼接大法
-      var result_dom = '<div class="chunk">';
-      for (i = 0; i < floor.length; i++) {
-        result_dom += '<div class="column animation_list" style="transform:translateY(50px);transition-delay:' + (i / 26) + 's">';
-        for (j = 0; j < floor_group[floor[i]].length; j++) {
-          result_dom += '<div>' + floor_group[floor[i]][j] + '</div>';
-        }
-        result_dom += '</div>';
-        if ((i + 1) % 3 == 0) {
-          result_dom += '</div><div class="chunk">';
-        }
+        columns.push(columnn);
       }
 
-      result_dom += '</div>';
       setTimeout(function() {
-        $display_result.innerHTML = result_dom;
+        $display_result.innerHTML = '';
+        columns.forEach(function(column) {
+          $display_result.appendChild(column);
+        });
+        $display_result.scrollTop = 0;
         css($display_result, {
           'opacity': 1,
           'transform': 'translateY(0px)'
         });
         setTimeout(function() {
-          //tr animation
           var div = $display_result.getElementsByClassName('animation_list');
           for (var i = 0; i < div.length; i++) {
             css(div[i], {
@@ -173,7 +205,7 @@ widget.add('courseStartEndSelector', function(getDom) {
   ls_time_arr = {
       '1': '8:00',
       '2': '8:50',
-      '3': '9:50',
+      '3': '9:55',
       '4': '10:45',
       '5': '14:30',
       '6': '15:20',
@@ -193,7 +225,7 @@ widget.add('courseStartEndSelector', function(getDom) {
       '7': '17:00',
       '8': '17:50', //
       '9': '20:15',
-      '10': '20:15',
+      '10': '21:05',
       '11': '21:55'
     };
 

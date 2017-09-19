@@ -1,0 +1,96 @@
+.main {
+  background: #2C3031;
+}
+
+.container .btnAddCard{
+  color: #A8A8A8;
+  height: calc(133px/3);
+  margin: 0 calc(43px/3);
+  margin-top :calc(43px/3);
+  font-size: 15px;
+  display: flex;
+  border-bottom:2px solid #25292A;
+  align-items: center;
+}
+
+.btnAddCard .icon{
+  width: calc(86px/3);
+  height: calc(86px/3);
+  margin-left:calc(11px/3);
+  margin-right: calc(22px/3);
+  background-image: url(/data/littleChat/wallet/add-card-icon.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  flex: 0 0 calc(86px/3);
+}
+
+.btnAddCard:active{
+  background: #25292A;
+}
+
+.main .bankCard{
+  margin:0 calc(22px/3);
+  border-radius: 3px;
+  overflow: hidden;
+  height: calc((286px - 35px)/3);
+  display: flex;
+  padding-top: calc(35px/3);
+  background: #1C65A2;
+  margin-top: calc(16px/3);
+}
+
+.bankCard .icon{
+  width:calc(95px/3);
+  height:calc(95px/3);
+  flex:0 0 calc(95px/3);
+  margin-left:calc(35px/3);
+  margin-right: calc(16px/3);
+}
+
+.bankCard .icon img{
+  width: 100%;
+  height: 100%;
+}
+
+.bankCard .right{
+  flex: auto;
+}
+
+.bankCard .bankName{
+  margin-left:1px;
+  color: white;
+  font-size: 15px;
+  height: calc(52px/3);
+  line-height: calc(52px/3);
+}
+
+.bankCard .cardType{
+  color: white;
+  opacity: 0.5;
+  height:calc(40px/3);
+  font-size: 13px;
+}
+
+.bankCard .cardNumber{
+  height:31px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.cardNumber .star{
+  height:calc(40px/3);
+  margin-right:9px;
+}
+
+.cardNumber .number{
+  font-size: 18px;
+}
+
+.bankCard.jianshe{
+  background: #1C65A2;
+}
+
+.bankCard.gongshang{
+  background: #C54F54;
+}

@@ -1,0 +1,32 @@
+.main{
+  background: white;
+}
+
+.container .icon{
+  height: calc(151px/3);
+  width: calc(128px/3);
+  background-image: url(/data/littleChat/wallet/gourp-receive-icon.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  margin-top: calc(155px/3);
+}
+
+.container .title{
+  margin-top: 27px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.container .text{
+  font-size: 13px;
+  color: #878787;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: calc(54px/3);
+  width: calc(862px/3);
+}
+
+.container .btnRequest{
+  margin-top:36px;
+}

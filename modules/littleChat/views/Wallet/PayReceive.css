@@ -1,0 +1,78 @@
+.greenBg{
+  background: #418F57;
+}
+
+.list{
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  margin:calc(32px/3);
+}
+
+.list > div{
+  display: flex;
+  height: calc(149px/3);
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.list > div:last-child{
+   border-bottom: none;
+}
+
+.list .icon{
+  flex:0 0 22px;
+  width: 22px;
+  height: 22px;
+  margin-left: 18px;
+  margin-right:calc(19px/3);
+}
+
+.list .icon img{
+  height: 100%;
+  width: 100%;
+}
+
+.list .name{
+  color: white;
+  font-size: 16px;
+}
+
+
+.content img{
+  display: block;
+  margin: 0 auto;
+  height: calc(148px/3);
+  width:calc(148px/3);
+}
+
+.content .text{
+  margin-top: calc(54px/3);
+  color: black;
+  text-align: center;
+  font-size: 15px;
+}
+
+.content .btnEnable{
+  margin: 0 auto;
+  height: calc(86px/3);
+  width:calc(388px/3);
+  border-radius: 3px;
+  background: white;
+  border: 1px solid #18AD23;
+  color: #00BB15;
+  line-height: calc(86px/3);
+  margin-top:calc(65px/3);
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: calc(262px/3);
+}
+
+.content .centerIcon{
+  margin-top: calc(163px/3);
+}
+
+.content .btn:active{
+  background: #F0F0F0;
+  border: 1px solid #1CA526;
+}

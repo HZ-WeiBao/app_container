@@ -1,0 +1,76 @@
+
+.main .container{
+  min-height:calc(100vh - 45px - 130px/3 - 11px);
+  padding-top:11px; 
+}
+
+.main .bottomBtn{
+  font-size: 13px;
+  color: #576A94;
+  text-align: center;
+}
+
+.main .note{
+  font-size: 13px;
+  color: #C1C1C1;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.tile{
+  margin: calc(32px/3);
+  margin-top:calc(19px/3);
+  border-radius: 3px;
+  background: white;
+  overflow: hidden;
+}
+
+.tile .bar {
+  display: flex;
+  height: calc(130px/3);
+  background: #FAFAFA;
+  align-items: center;
+}
+
+.tile .bar .title{
+  font-size: 14px;
+  flex: auto;
+}
+
+.main.greenBg .tile .bar .title{
+  color: #418F57;
+}
+
+.main.yellowBg .tile .bar .title{
+  color: #DEB644;
+}
+
+.tile .bar .icon{
+  flex: 0 0 auto;
+  margin-right: calc(19px/3);
+  margin-left:calc(54px/3);
+  height: calc(62px/3);
+  width: calc(62px/3);
+}
+
+.tile .icon img{
+  width: 100%;
+  height:100%;
+}
+
+.tile .content{
+  padding: 0 calc(65px/3);
+}
+
+.tile .btnMenu{
+  width:calc(130px/3);
+  height: calc(130px/3);
+  flex:0 0 calc(130px/3);
+  background-image: url(/data/littleChat/3dot-icon.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.tile .btnMenu:active{
+  background-color: rgba(0, 0, 0, 0.1);
+}

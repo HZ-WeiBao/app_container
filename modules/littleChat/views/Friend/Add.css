@@ -1,0 +1,18 @@
+.item.center{
+  padding-top:7px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100vw - 26px);
+}
+.item.center img{
+  width:16px;
+  height: 16px;
+  margin-left: 8px;
+}
+
+.item.higher {
+  height:58px;
+  
+}

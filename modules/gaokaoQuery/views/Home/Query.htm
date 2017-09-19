@@ -1,0 +1,9 @@
+<div class="table">
+    <div><div>姓名:</div><span><?= $data->xm ?></span></div>
+    <div><div>准考证:</div><span><?= $data->ksh ?></span></div>
+    <? foreach($data->cj_vo as $subject){ ?>
+      <div><div><?= $subject->km_mc ?></div><span><?= $subject->km_cj ?></span></div>
+    <? } ?>
+</div>
+
+<a click="#back"><div class="btnOneLine">返回</div></a>

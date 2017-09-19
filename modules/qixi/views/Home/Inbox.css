@@ -1,0 +1,410 @@
+
+/* 配色 */
+.envelope{
+	background: #F1F1F1;
+}
+.envelope .sealTriangle{
+	background:linear-gradient(to bottom, #d4d1cc 3%,#843594 96%,#813295 98%,#9e54a3 100%);
+}
+.envelope .bottomTriangle{
+	background: #F1F1F1;
+}
+.envelope .leftTriangle{
+	background: #F9F9F9;
+}
+.envelope .rightTriangle{
+	background: #F9F9F9;
+}
+
+.envelope .bottomTriangleBorder{
+	background:-webkit-linear-gradient(50deg,rgba(159,159,159,0.38)  35% ,rgba(255,255,255,0.38) 100%);
+}
+.envelope .leftTriangleBorder{
+	background:-webkit-linear-gradient(50deg,rgba(159,159,159,0.38)  35% ,rgba(255,255,255,0.38) 100%);
+}
+.envelope .rightTriangleBorder{
+	background:-webkit-linear-gradient(-43deg,rgba(159,159,159,0.38)  0% ,rgba(255,255,255,0.38) 100%);
+}
+
+/* 布局 */
+
+body{
+	background-image: url(http://huidaweibao.applinzi.com/img/qixi-bg.jpg);
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	background-color: #6a46a6;
+}
+.envelope{
+	width: 90%;
+	height: calc(360px * 0.7);
+	margin: 0 auto;
+	/* margin-top: calc((100vh - 360px * 0.7)/1.2); */
+	/* margin-top: 305px; */
+	position: relative;
+	opacity: 0;
+}
+
+.envelope .sealTriangle{
+	position: absolute;
+	width: 100%;
+	height: 60%;
+	-webkit-clip-path: polygon(
+		50% 0px ,
+		10px calc(100% - 20px),
+		0 100%,
+		100% 100%,
+		calc(100% - 10px) calc(100% - 20px)
+	);
+	top:-60%;
+	transform-origin: bottom;
+	z-index: 1;
+	transition: all 0.6s cubic-bezier(0.69, 0.08, 0.38, 0.95) 0s;
+}
+
+.envelope .qixi{
+	background-image: url(http://huidaweibao.applinzi.com/img/qixi.png);
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	width: 84px;
+	height: 100px;
+	position: absolute;
+	top: 35%;
+	right: 21px;
+	z-index: 4;
+	opacity: 0.9;
+}
+
+.envelope .bottomTriangle{
+	width: calc(100% - 4px);
+	position: absolute;
+	height: 100%;
+	-webkit-clip-path: polygon(
+		50% 0px ,
+		10px calc(100% - 20px),
+		0 100%,
+		100% 100%,
+		calc(100% - 10px) calc(100% - 20px)
+	);
+	bottom: 0px;
+	left: 1px;
+}
+
+.envelope .bottomTriangleBorder{
+	width: 100%;
+	position: absolute;
+	height: 60%;
+	-webkit-clip-path: polygon(
+		50% 0px ,
+		10px calc(100% - 20px),
+		0 100%,
+		100% 100%,
+		calc(100% - 10px) calc(100% - 20px)
+	);
+	bottom: 0px;
+	z-index: 5;
+}
+
+.envelope .leftTriangle{
+	height: calc(100% - 3px);
+	width: calc(100% - 3px);
+	position: absolute;
+	-webkit-clip-path: polygon(
+		0 0 ,
+		0 100%,
+		100%  50%,
+		20px  10px
+	);
+	left: 0px;
+}
+
+.envelope .leftTriangleBorder{
+	height: 100%;
+	width: calc(50% + 3px);
+	position: absolute;
+	-webkit-clip-path: polygon(
+		0 0 ,
+		0 100%,
+		100%  calc(50% - 7px),
+		21px  8px
+	);
+	left: 0px;
+	z-index: 4;
+}
+
+.envelope .rightTriangle{
+	height: 100%;
+	width: calc(100% - 3px);
+	position: absolute;
+	-webkit-clip-path: polygon(
+		100% 0 ,
+		calc(100% - 20px)  10px,
+		0px  50%,
+		100% 100%
+	);
+	right: 0px;
+}
+
+.envelope .rightTriangleBorder{
+	height: 100%;
+	width: calc(50% + 3px);
+	position: absolute;
+	-webkit-clip-path: polygon(
+		100% 0 ,
+		calc(100% - 22px)  8px,
+		0px  calc(50% - 7px),
+		100% 100%
+	);
+	right: 0px;
+	z-index: 4;
+}
+
+.envelope .stamp{
+	width: 80px;
+	height: 80px;
+	background-image: url(http://huidaweibao.applinzi.com/img/stamp.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	top:calc(55% - 40px);
+	left:calc(50% - 40px);
+	z-index: 2;
+	opacity: 0;
+	transform: scale(8);
+}
+
+.envelope .form{
+	background-color: #ffffff;
+	position: absolute;
+	width: 94%;
+	height:145%;
+	left: 3%;
+	top: -50%;
+	z-index: 7;
+	opacity: 0.86;
+	box-shadow:1px 1px 5px 0px #e1cebd;
+	background-image: url(http://huidaweibao.applinzi.com/img/envelope.jpg);
+	background-size: 100% auto;
+	transform-style: preserve-3d;
+	transform: translateY(0%) rotateX(0deg) translateZ(25px);
+	overflow: auto;
+}
+
+.envelope .form input,
+.envelope .form textarea{
+	background: none;
+	border: none;
+	width: calc(100% - 20px);
+	padding: 10px;
+	height: 20px;
+	display: block;
+	font-size: 16px;
+}
+
+.envelope .sender{
+	text-align: right;
+}
+
+.envelope .form textarea.content{
+	line-height: 1.5;
+	font-size: 15px;
+	height: calc(100% - 10px*7 - 20px * 2 - 30px);
+	
+}
+
+.envelope .btnSend{
+	margin: 0 auto;
+	margin-bottom: 10px;
+	height: 30px;
+	line-height: 30px;
+	width: 80px;
+	background: #4e1f81;
+	text-align: center;
+	color: #e6d2cc;
+}
+
+.envelope .form .separator{
+	display: flex;
+	align-items: center;
+
+}
+.envelope .form .separator .line{
+	background: #823993;
+	height: 1px;
+	margin-top: -0.5px;
+	margin: 0 13px;
+	flex: auto;
+}
+.envelope .form .separator .text{
+	color: #8E8E8E;
+	flex: 0 0 auto;
+}
+
+.envelope .form .object,
+.envelope .form .standbyTyre{
+	margin: 10px 13px;
+}
+
+.envelope .form .object .flex,
+.envelope .form .standbyTyre .flex{
+	display: flex;
+	align-items: center;
+}
+
+.envelope .form .object .name
+{
+	flex: auto;
+	color: #295598;
+}
+
+.envelope .form .standbyTyre .name{
+	flex: auto;
+	color: #636b78;
+}
+
+.envelope .form .object .time,
+.envelope .form .standbyTyre .time
+{
+	flex: 0 0 auto;
+	color: grey;
+	font-size: 14px;
+}
+
+.envelope .form .object .loveLetter,
+.envelope .form .standbyTyre .loveLetter
+{
+	min-height: 23px;
+}
+
+.blessing{
+	width: 100%;
+	height: 30px;
+	position: absolute;
+	color: white;
+	top: 0px;
+	text-align: center;
+	z-index: -1;
+	transform: translateY(70px);
+	text-shadow: 1px 1px 6px #481a7e;
+	font-size: 1.05rem;
+}
+
+.copyright{
+	width: 100%;
+	height: auto;
+	position: absolute;
+	text-align: center;
+	z-index: -1;
+	font-size: 14px;
+	color: rgba(255, 255, 255, 0.35);
+	top: 0px;
+	transform: translateY(173px);
+	text-shadow: 1px 1px 6px #ba76a2;
+}
+
+.copyright .btnLike{
+	width: 30%;
+	height: 30px;
+	margin: 0 auto;
+	line-height: 30px;
+	background: rgba(159,159,159,0.18);
+	margin-top: 10px;
+	color: rgba(255, 255, 255, 0.35);
+}
+
+.copyright .btnLike.clicked{
+	background: rgba(255, 0, 0, 0.38);
+	color: rgba(255, 255, 255, 0.75);
+}
+
+/* 动画 */
+.envelope.send{
+	perspective: 3000px;
+}
+.envelope.send .form .btnSend{
+	opacity: 0;
+	animation:fadeOut 0.4s ease forwards 1.4s;
+}
+.envelope.send .form{
+	animation:envelopeFile 1.6s ease forwards 1.4s;
+}
+.envelope.send .sealTriangle{
+	animation:envelopeClose 0.8s ease forwards 0.5s;
+}
+.envelope.send .stamp{
+	animation:envelopeSeal 0.4s ease forwards 0s;
+}
+.envelope.ship{
+	animation:envelopeShip 1s ease forwards 0s;
+}
+.envelope.swing{
+	animation:envelopeSwing 2s ease infinite 0s;
+}
+
+/* 重置.TMD不是一般麻烦..可能姿势不对 */
+
+.envelope .form .btnSend{
+	opacity: 0;
+}
+.envelope .form{
+	transform:translateY(40%) rotateX(360deg) rotateZ(3deg); z-index: 2;
+}
+.envelope .form .btnSend{
+	opacity: 0;
+}
+.envelope .sealTriangle{
+	transform: rotateX(180deg);z-index: 6;
+}
+.envelope .stamp{
+	transform: scale(1); opacity: 1; z-index: 8;
+}
+/* .envelope{
+	transform: translateX(35%) translateY(-122%) translateZ(0px) scale(0.01);
+} */
+
+@keyframes fadeOut{
+	100%{opacity: 1;}
+	0%{opacity: 0;}
+}
+
+@keyframes slideIn{
+	100%{transform: translateY(40px); opacity: 0;}
+	0%{transform: translateY(70px); opacity: 1;}
+}
+
+@keyframes slideIn2{
+	100%{transform: translateY(133px); opacity: 0;}
+	0%{transform: translateY(173px); opacity: 1;}
+}
+
+@keyframes envelopeFile{
+	100%{transform:translateY(0%) rotateX(0deg);z-index: 7;}
+	65%{transform:translateY(-65%) rotateX(30deg);z-index: 2;}
+	0%{transform:translateY(40%) rotateX(0deg) rotateZ(3deg); z-index: 2;}
+}
+
+@keyframes envelopeClose{
+	100%{	transform: rotateX(0deg);z-index: 2;}
+	50%{z-index: 2;}
+	0%{	transform: rotateX(180deg);z-index: 6;}
+}
+
+@keyframes envelopeSeal{
+	100%{transform: scale(8);opacity: 0;z-index: 2;}
+	99%{z-index: 8;}
+	0%{transform: scale(1);opacity: 1;z-index: 8;}
+}
+
+@keyframes envelopeShip{
+	100%{transform: translateZ(0px) scale(1);}
+	70%{transform: translateZ(0px) scale(1.2);overflow: hidden;}
+	0%{
+		transform: translateX(35%) translateY(-122%) translateZ(0px) scale(0.01);
+		overflow: hidden;
+	}
+}
+
+@keyframes envelopeSwing{
+	100%{transform: translateZ(0px) scale(1);}
+	50%{transform: translateZ(0px) scale(1.05);}
+	0%{transform: translateZ(0px) scale(1);}
+}

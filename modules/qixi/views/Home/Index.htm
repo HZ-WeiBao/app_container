@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <title>七夕情人节</title>
+  <meta name="viewport" content="width=360,user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+  <!--dns缓存-->
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="dns-prefetch" href="//weibao.deepkolos.cn">
+  <style>
+    .noneAnimation,
+    .subNoneAnimation * {
+      transition: none!important;
+      -webkit-transition: none!important;
+      -o-transition: none!important;
+      -moz-transition: none!important;
+    }
+    .pageContainer.fix { margin-top: 0px; overflow: hidden; }
+    .pageContainer.fix .page{ padding-bottom: 0px;}
+    .pageContainer.fix .page *{font-weight: 500;}
+  </style>
+</head>
+
+<body>
+  <!--css loader-->
+  <div id="_cssContainer_" style="display: none">
+    <div class="_frame_">
+      <link href="css/basic.css" rel='stylesheet' type='text/css'>
+      <link href="css/frame.css" rel='stylesheet' type='text/css'>
+      <link href="css/animation.css" rel='stylesheet' type='text/css'>
+    </div>
+    <div class="_module_">
+      <link href="littleChat/views/module.css" rel='stylesheet' type='text/css'>
+    </div>
+    <div class="_custom_"></div>
+    <div class="_controller_"></div>
+    <div class="_action_"></div>
+  </div>
+  <!--js loader-->
+  <script src="frame/views/Frame.js" type="text/javascript"></script>
+  <!--body start-->
+  <div class="pageContainer subNoneAnimation fix" style="opacity: 0;">
+    <div class="page" status="loaded">
+      <div class="envelope">
+        <div class="sealTriangle"></div>
+        <div class="faceObverse">
+          <div class="bottomTriangleBorder">
+            <div class="bottomTriangle"></div>
+          </div>
+          <div class="leftTriangleBorder">
+            <div class="leftTriangle"></div>
+          </div>
+          <div class="rightTriangleBorder">
+            <div class="rightTriangle"></div>
+          </div>
+          <div class="stamp"></div>
+          <div class="qixi"></div>
+        </div>
+        <div class="form">
+          <input type="hidden" class="openid" value="<?php echo $openid;?>">
+          <input type="text" class="receiver" placeholder="To: TA可爱的名字">
+          <textarea class="content" cols="30" rows="10" placeholder="这里输入最能打动TA的文字"></textarea>
+          <input type="text" class="sender" placeholder="From: 这里输入自己的名字">
+          <div class="btnSend">发送</div>
+        </div>
+      </div>
+      <div class="blessing">
+        祝天下所有的情侣都是失散多年的兄妹
+      </div>
+      <div class="copyright">
+        前端: DeepKolos<br>
+        后端: 小鲜肉
+        <div class="btnLike">喜欢的点赞</div>
+      </div>
+    </div>
+  </div>
+  <div class="popUpContainer off noneAnimation">
+  </div>
+</body>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=60429420" charset="UTF-8"></script>
+</html>

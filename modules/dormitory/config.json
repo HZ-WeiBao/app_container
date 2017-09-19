@@ -1,0 +1,20 @@
+{
+  "name": "宿舍奇妙创意",
+  "status": "normal",
+  "description": "其实是一个美食活动来的,这个只是借口而已",
+  "author": "DeepKolos",
+  "version": {
+    "v0.1": {
+      "time": "17/9/15",
+      "updateLog": [
+        "~"
+      ]
+    }
+  },
+  "component": {
+    "Schedule": {
+      "lastTriggerTime": "timestamp",
+      "interval": "2days"
+    }
+  }
+}

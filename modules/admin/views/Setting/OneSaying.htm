@@ -1,1 +1,13 @@
+<!--显示现在的saying-->
+<div class="saying">
+  <?= $saying->category.': '.$saying->content?>
+</div>
+
+<div class="btnOneLineContainer">
+  <div>
+    <div class="btnOneLine" id="btnBack">上一个</div></div><div>
+    <div class="btnOneLine" id="btnNext">下一个</div>
+  </div>
+</div>
+
 <div class="btnOneLine" id="btnUpdate">更新 ( <?= $config->lastUpdateTime?> )</div>

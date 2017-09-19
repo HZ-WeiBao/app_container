@@ -2,16 +2,16 @@
     <div class='descriptionForForm'>输入其中两项就可以了</div>
     <div class="inputText">
         <div>准考证号</div>
-        <input id='studentID' type="text" name="studentID" value="">
+        <input id='studentID' type="text" name="studentID" value="<? if(isset($id)) echo $id; ?>">
     </div>
     <div class="inputText">
         <div>你的姓名</div>
-        <input id='studentName' type="text" name="studentName" value="">
+        <input id='studentName' type="text" name="studentName" value="<? if(isset($name)) echo $name; ?>">
     </div>
     <div class="inputText">
         <div>证件编号</div>
-        <input id='studentIDCard' type="text" name="studentIDCard" value="">
+        <input id='studentIDCard' type="text" name="studentIDCard" value="<? if(isset($cardId)) echo $cardId; ?>">
     </div>
 </div>
 <a href="#home/query"><div class="btnOneLine">查询</div></a>
-<!--<a href="#home/save"><div class="btnOneLine btnWhite">保存</div></a>-->
+<a href="#Home/Backup"><div class="btnOneLine btnWhite">准考证备份</div></a>

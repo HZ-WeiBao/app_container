@@ -1,0 +1,39 @@
+<div class="display_result">
+  <div class='descriptionForForm'></div>
+  <div class="inputText">
+    <div>宿舍群名</div>
+    <input id='name' type="text" value="">
+  </div>
+  <div class="inputText">
+    <div>班级</div>
+    <input id='department' type="text" value="">
+  </div>
+  <div class="inputText">
+    <div>宿舍号</div>
+    <input id='dormnum' type="text" value="">
+  </div>
+  <div class="inputText">
+    <div>手机号</div>
+    <input id='phone' type="text" value="">
+  </div>
+  <div class="inputText">
+    <div>用一句话描述你们宿舍</div>
+    <input id='description' type="text" value="">
+  </div>
+  <div class="inputText">
+    <div>如果你喜欢炫酷点的话,来段抖音呗</div>
+    <input id='douyin' type="text" value="" placeholder="点击查看上传指引~">
+  </div>
+  <div class="inputImage">
+    <div>一张最有亮点的宿舍照</div>
+    <span><img src="" alt="" id="showUploadImage"></span>
+    <input type="file" value="img" accept="image/*" id="imageUpload" style="display:none;" ime-mode="disabled">
+  </div>
+  <label class="btnOneLine" for="imageUpload">上传宿舍照</label>
+  <div class="btnOneLine btnWhite" id="btnSubmit" status="ready">提交</div>
+</div>
+<input type="hidden" id="openid" value="<?= $openid?>">
+
+<link rel="dns-prefetch" href="//cache.chaoshy.cn/">
+<link rel="dns-prefetch" href="//chaoshy.cn/">
+<link rel="dns-prefetch" href="//dorm.chaoshy.cn">

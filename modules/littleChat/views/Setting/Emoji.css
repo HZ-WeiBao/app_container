@@ -1,0 +1,9 @@
+.main ,
+.item,
+.item.segment{
+  background: white;
+}
+
+.item:last-child::after{
+  content: none;
+}

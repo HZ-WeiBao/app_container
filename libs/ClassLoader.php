@@ -4,7 +4,7 @@ F::$loader = new AutoLoader;
 spl_autoload_register(array(F::$loader,'load'));
 
 class AutoLoader {
-  private const libsPath = array(//已弃用了,又复用了,因为效率,真的这些文件检查其实不太比较,确定性是可以事先知道的
+  private const libsPath = array(//已弃用了,又复用了,因为性能效率,真的这些文件检查其实不太比较,确定性是可以事先知道的
     'BaseCtrl',
     'Component',
     'ConfigMgr',

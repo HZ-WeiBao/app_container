@@ -1,6 +1,15 @@
 <?php
 
 class SettingCtrl extends BaseCtrl {
+  public function init(){
+    $code =  $_SESSION['checkCode'] ?? null;
+
+    if($code !== $this->ConfigMgr->code){
+      echo '找到模块(Admin)~';
+      die();
+    }
+  }
+
   public $updateFiled = array(
     'emptyClass' => array('classRoomInfo'),
     'auditor' => array('majorInfo'),
@@ -40,9 +49,25 @@ class SettingCtrl extends BaseCtrl {
     ),true));
   }
   public function actionOneSaying(){
+    $SayingConfig = new ConfigMgr('oneSaying');
     $this->page(View::render('this',array(
-      'config' => $this->ConfigMgr->module->{lcfirst(F::$R->action)}
+      'config' => $this->ConfigMgr->module->{lcfirst(F::$R->action)},
+      'saying' => $this->char_sayingsModel->limit(1,$SayingConfig->showingNum)->findAll()[0]
     ),true));
+  }
+
+  public function actionSayingNext(){
+    $SayingConfig = new ConfigMgr('oneSaying');
+    $SayingConfig->showingNum++;
+    $SayingConfig->save();
+  }
+
+  public function actionSayingBack(){
+    $SayingConfig = new ConfigMgr('oneSaying');
+
+    if(--$SayingConfig->showingNum < 0) 
+      $SayingConfig->showingNum = 0;
+    $SayingConfig->save();
   }
   
   public function actionStatusSwitch(){

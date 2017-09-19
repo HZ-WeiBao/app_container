@@ -1,0 +1,826 @@
+.page {
+  background: #EBEBEB;
+}
+.messages{
+  background: #EBEBEB;
+  overflow-y: auto;
+  height: calc(100vh - 90px);
+}
+
+.messages > div > .flex{
+  position: relative;
+}
+
+.messages .rightColumn{
+  display: none;
+  width: calc(108px/3);
+  flex: 0 0 calc(108px/3);
+}
+
+
+.rightColumn .checkbox{
+  margin-left:calc(5px/3);
+  margin-top:calc(33px/3);
+}
+
+.message {
+  padding: 0 8px 10px 8px;
+  display: flex;
+  flex: auto;
+}
+
+.message.send{
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}
+.message.receive {
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.message .leftOrRight{
+  flex: auto;
+}
+
+.message .icon{
+  width: 36px;
+  height:36px;
+  background: lightgreen;
+  flex: 0 0 36px;
+}
+
+.send .icon {
+  margin-left:5px;
+}
+.receive .icon {
+  margin-right:5px;
+}
+
+.send .leftOrRight{
+  text-align: right;
+}
+.send .leftOrRight  *{
+  text-align: left;
+}
+
+.messages.showName .name{
+  display: block;
+}
+
+.message .content {
+  max-width:220px;
+  background: #FFFFFF;
+  transition: all .08s ease 0s!important;
+}
+
+.message.send .content.text:active{
+  background: #9BDA5E;
+}
+.message.receive .content.text:active{
+   background:#F4F4F4;
+}
+
+.message .content.emoji:active,
+.message .content.image:active{
+  opacity: 0.75;
+}
+.message .content.text:active{
+   background:#F4F4F4;
+}
+
+.message .name{
+  display: none;
+  height:16px;
+  font-size: 12px;
+  color: #9C9C9C;
+  padding-bottom: 2px;
+}
+
+.send .content {
+  clip-path: polygon( 3px 0px , 1px 1px , 0px 3px, 0px calc(100% - 3px) , 1px calc(100% - 1px) , 3px 100% , calc(100% - 9px) 100% , calc(100% - 7px) calc(100% - 1px), calc(100% - 6px) calc(100% - 3px), calc(100% - 6px) 23px, 100% 18px, calc(100% - 6px) 13px, calc(100% - 6px) 3px , calc(100% - 7px) 1px , calc(100% - 9px) 0px );
+  float: right;
+  padding: 7.5px 13.5px 7.5px 7.5px;
+}
+.receive .content{
+  clip-path: polygon( 100% 0, 9px 0px, 7.5px 1px,6px 3px, 6px 13px, 0px 18px, 6px 23px, 6px calc(100% - 3px), 7px calc(100% - 1px), 9px 100%, calc(100% - 3px) 100%, calc(100% - 1px) calc(100% - 1px) , 100% calc(100% - 3px), 100% 3px , calc(100% - 1px) 1px , calc(100% - 3px) 0px );
+  padding: 7.5px 7.5px 7.5px 13.5px;
+}
+
+.message .content.text {
+  display: inline-block;
+  text-align: left;
+  word-wrap:break-word;
+  font-size: 14.9px;
+}
+
+.send .content.text , .send .content.voice {
+  background: #A1E75D;
+}
+
+.send .name{
+  text-align: right;
+  margin-right: 6px;
+}
+.receive .name{
+  margin-left: 6px;
+}
+
+.messages .time{
+  text-align: center;
+  padding:10px 0;
+}
+
+.time span{
+  background: #D5D4D0;
+  padding: 3px 5px;
+  font-size: 12px;
+  color: white;
+  border-radius: 2px;
+}
+.content.inital {
+  opacity: 0;
+}
+
+.content.image , .content.emoji{
+  max-height:170px;
+  max-width: 170px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.content.image img , .content.emoji img{
+  max-height:100%;
+  max-width: 100%;
+  flex: 0 0 auto;
+}
+
+.content.image.overflowHeight img , .content.emoji.overflowHeight img{
+  width: 100%;
+  max-height:unset!important;
+}
+.content.image.overflowWidth img , .content.emoji.overflowWidth img{
+  height:100%;
+  max-width:unset!important;
+}
+
+
+.content.emoji {
+  clip-path: none;
+  margin: 0 6px;
+}
+
+.content.link {
+  height:85px;
+  background: white!important;
+}
+
+.linkName{
+  margin-bottom: 4px;
+  height: 41px;
+  font-size: 15px;
+}
+.linkDescription{
+  flex: auto;
+  margin-right: 11px;
+  width: 164px;
+  height: 40px;
+  font-size: 11.6px;
+  line-height: 14px;
+  color: #c7c7c7;
+  display: inline-block;
+  word-wrap:break-word;
+  overflow: hidden;
+}
+.linkIcon{
+  width:40px;
+  height:40px;
+  background: greenyellow;
+  flex:0 0 40px;
+}
+
+.content.file > .flex{
+  height:50px;
+}
+
+.fileInfo{
+  width:172px;
+  flex:0 0 172px;
+  margin-right: 9px;
+}
+
+.fileName{
+  height: 35px;
+  font-size: 16px;
+  line-height: 16px;
+  overflow: hidden;
+}
+
+.fileSize {
+  height:13px;
+  font-size: 13px;
+  line-height: 13px;
+  color: #c7c7c7;
+}
+
+.fileIcon{
+  width:40px;
+  height: 40px;
+  flex: 0 0 40px;
+  background: greenyellow;
+}
+
+.sendFrom{
+  font-size: 12px;
+  height: 14px;
+  position: relative;
+  top:3px;
+}
+
+.sendFromIcon{
+  width:9px;
+  height: 9px;
+  background: greenyellow;
+  display: inline-block;
+  margin-right: 3.5px;
+}
+
+.voiceIcon{
+  height: 21px;
+  width: 21px;
+  background: orange;
+}
+.voiceTime{
+  font-size: 14.5px;
+  padding: 7px;
+  font-weight: 600!important;
+  color: #a8a8a8;
+}
+.send .voiceTime , .send .content.voice{
+  float:right;
+}
+.content.voice{
+  max-width:184px;
+}
+.content.voice , .voiceTime{
+  float: left;
+}
+
+.page .inputBar{
+  height:44px; 
+  background: #F3F3F3;
+  border-top:1px solid #DCDCDC;
+  overflow: hidden;
+}
+
+.inputBar img{
+  width: 100%;
+  height: 100%;
+}
+
+.inputBar > .flex{
+  padding: 0 4px;
+  align-items: flex-end;
+}
+
+.inputBar .textVoiceSwitcher ,
+.inputBar .emoji ,
+.inputBar .more ,
+.inputBar .keyboard ,
+.inputBar .send
+{
+  width: 44px;
+  height: 44px;
+  flex:0 0 44px;
+}
+
+.inputBar .send {
+  text-align: center;
+  line-height: 41px;
+  position: absolute;
+  right: 4px;
+  display: none;
+}
+
+.inputBar .send span{
+  display: inline-grid;
+  border: 1px solid #129D1C;
+  border-radius: 3px;
+  width:calc(117px/3);
+  height:calc(84px/3);
+  margin: 0 auto;
+  background: #14AC20;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  line-height: calc(82px/3);
+}
+
+.inputBar .textOrVoiceInput{
+  flex:auto;
+  margin-bottom: 6.5px;
+  overflow: hidden;
+  transition: none;
+}
+
+.inputBar .send ,
+.inputBar .more {
+   transition: all .2s ease 0s; 
+}
+
+.inputBar .send.inital {
+  transform: scale(0.8);
+  opacity: 0;
+  display: block;
+}
+
+ .inputBar.sendOn .more{
+  transform: scale(0.8);
+  opacity: 0;
+}
+.inputBar.sendOn .send{
+  transform: scale(1);
+  opacity: 1;
+} 
+
+.inputBar.sendOn .send{
+  transform: scale(1);
+  opacity: 1;
+} 
+
+.inputBar .textOrVoiceInput > * {
+  display: none;
+}
+
+.inputBar.textInputOn .textInput{
+  display: block;
+  border-bottom: 1px solid #d8d8d8;
+  max-height:75px;
+  overflow-y: auto;
+  font-size: 14px;
+  padding:3px 7px; 
+}
+
+.inputBar.voiceInputOn .voiceInput{
+  display: inline-flex;
+  height: calc(86px/3);
+  margin:0 11px; 
+  border-radius: 3px;
+  border: 1px solid #CECECE;
+}
+
+.textOrVoiceInput .textInput{
+  width:calc(100% - 7px*2);
+  min-height:20px;
+}
+
+.textInput.focus{
+  border-bottom: 1px solid #64C946!important;
+}
+
+.textInput .emojiInputed{
+  width: 19px;
+  height: 19px;
+  vertical-align: sub;
+  display: inline-block;
+}
+
+.textOrVoiceInput .voiceInput{
+  width:calc(100% - 11px*2);
+  height:100%;
+  text-align: center;
+  font-size: 14px;
+  display: none;
+  align-items: center;
+  color: #717171;
+}
+
+.voiceInput span{
+  flex:auto;
+}
+
+.voiceInput.pressing{
+  background: #e2e2e2;
+}
+
+.voiceInput .voiceRecord ,
+.voiceInput .recordTimeTooShort,
+.voiceInput .cancelVoiceRecord {
+  display: none;
+  background: rgba(0, 0, 0, 0.5);
+  width: calc(504px/3);
+  height: calc(504px/3);
+  position: fixed;
+  top:calc(50vh - 504px/6);
+  left:calc(50vw - 504px/6);
+  border-radius: 4px;
+  color: white;
+}
+
+.voiceInput.voiceRecordOn .voiceRecord ,
+.voiceInput.recordTimeTooShortOn .recordTimeTooShort,
+.voiceInput.cancelVoiceRecordOn .cancelVoiceRecord{
+  display: block;
+}
+
+.voiceInput .flex{
+  flex-wrap: wrap;
+}
+.voiceInput .flex-1-2{
+  height:120px;
+}
+.voiceInput .textDescription{
+  height:calc(108px/3);
+  line-height: calc(108px/3);
+  font-size: 14px;
+  width: calc(100% - 12px*2);
+  margin: 0 auto;
+}
+.voiceRecord .microphone{
+  width: calc(153px/3);
+  height: calc(257px/3);
+  position: relative;
+  display: block;
+  left: calc(79px/3);
+  top: calc(68px/3);
+}
+.voiceInput .volumeDisplayer{
+  width:calc(95px/3);
+  height:calc(270px/3);
+  position: relative;
+  top: calc(54px/3);
+  left: calc(36px/3);
+  clip-path: polygon(
+    0px 0px,
+    0px 100%,
+    calc(100% * (45/95)) 100%,
+    100% 0px
+  );
+}
+.volumeDisplayer > div {
+  height: calc(21px/3);
+  border:1px solid #DBDBDB;
+  background: white;
+  margin-bottom: calc(13px/3);
+}
+.volumeDisplayer > div:last-child {
+  margin-bottom: 0px;
+}
+
+.cancelVoiceRecord img{
+  width: calc(202px/3);
+  height: calc(261px/3);
+  position: relative;
+  top: calc(56px/3);
+  left: calc(134px/3);
+  display: block;
+}
+
+.cancelVoiceRecord .textDescription{
+  background: #923331;
+  border-radius: 3px;
+}
+
+.cancelVoiceRecord > div:nth-child(1) , .recordTimeTooShort > div:nth-child(1) {
+  height: 120px;
+}
+
+.recordTimeTooShort img{
+  width:calc(83px/3);
+  height:calc(269px/3);
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top:calc(48px/3);
+}
+
+
+.emojiPanle , .morePanle{
+  height:0px;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+.expanded.inputBar{
+  height:calc(44px + 275px);
+}
+
+.morePanle .itemContainer{
+  flex-wrap:wrap;
+  padding: 34px 15px 0 15px;
+  display: flex;
+}
+
+.morePanle .item{
+  width:73px;
+  height:81px;
+  margin:0 4.5px 17px 4.5px;
+  padding: 0px;
+  flex:0 0 73px;
+  background: none;
+  border:none;
+}
+
+.morePanle .item *{
+  margin:0 auto;
+}
+
+.morePanle .icon{
+  width: 50px;
+  height:50px;
+  border-radius: 10px;
+  background: none;
+}
+
+.morePanle .icon img{
+  width: 100%;
+  height: 100%;
+
+}
+
+.morePanle .name{
+  margin-top:3.5px;
+  font-size: 12px;
+  color: #7a846b;
+  text-align: center;
+  display: block;
+}
+
+.expanded.emojiPanle , .expanded.morePanle{
+  height:275px;
+}
+
+.emojiTypeSlider{
+  width:100%;
+  height: 243px;
+}
+
+.commonEmojiSlider , .customEmojiSlider{
+  height:225px;
+}
+
+.commonContainer , .customContainer{
+  padding-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.commonContainer .item{
+  width:42px;
+  height:42px;
+  border:none;
+  padding: 0px;
+  margin:0 4.5px 13.5px 4.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+}
+.commonContainer img{
+  width: calc(80px/3);
+  height: calc(80px/3);
+  flex:0 0 calc(80px/3);
+}
+
+.customEmojiSlider .item{
+  border:none;
+  padding: 0px;
+}
+
+.customContainer .item{
+  width: 59px;
+  height: 59px;
+  padding: 9.25px 15px;
+  background: none;
+  margin: 0 0 13px 0;
+}
+
+.preview{
+  position: absolute;
+  width: calc(290px/3);
+  height: calc(290px/3);
+  background: rgba(255,255,255,0.85);
+  top: 0px;
+  left: 0px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.preview img{
+  display: block;
+  flex:0 0 calc(230px/3);
+  width:calc(230px/3);
+  height:calc(230px/3);
+}
+
+.preview.on{
+  display: flex;
+}
+
+
+.ctrlBar{
+  height:18px;
+}
+
+.ctrlContainer{
+  display: flex;
+  justify-content:center;
+}
+
+.ctrlContainer .ctrl {
+  height:18px;
+  width:18px;
+  flex: 0 0 18px;
+}
+
+.ctrl .dot{
+  width:6px;
+  height:6px;
+  margin:calc((18px - 6px) / 2);
+  background: #e4e4e4;
+  border-radius: 6px;
+}
+
+.ctrl.on .dot{
+  width:8px;
+  height:8px;
+  margin:calc((18px - 8px) / 2);
+  background: #989898;
+  border-radius: 8px;
+}
+
+.emojiTypeCtrl{
+  height: 32px;
+  border-top: 1px solid #DFDFDF;
+}
+
+.emojiTypeCtrl .btn{
+  height: 31px;
+  width:53px;
+  border-right: 1px solid #DFDFDF;
+  float: left;
+}
+
+.emojiTypeCtrl .btn > img{
+  width: 100%;
+  height: 100%;
+}
+
+.emojiTypeCtrlContainer .btn.on{
+  background: #E1E1E1;
+}
+
+.moreBar {
+  height: 44px;
+  border-top:1px solid #d8d8d8;
+  overflow: hidden; 
+  transform: translateY(100%);
+}
+
+.moreBar img{
+  width: 100%;
+  height: 100%;
+}
+
+.moreBar .btn-share ,
+.moreBar .btn-collect ,
+.moreBar .btn-delete ,
+.moreBar .btn-mail {
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+
+.moreBar .btn-share {
+  background-image: url(/data/littleChat/moreBar-share-icon.png);
+}
+.moreBar .btn-collect {
+  background-image: url(/data/littleChat/moreBar-collect-icon.png);
+}
+.moreBar .btn-delete {
+  background-image: url(/data/littleChat/moreBar-delete-icon.png);
+}
+.moreBar .btn-mail {
+  background-image: url(/data/littleChat/moreBar-mail-icon.png);
+}
+
+.moreBar.disable .btn-share {
+  background-image: url(/data/littleChat/moreBar-disable-share-icon.png);
+}
+.moreBar.disable .btn-collect {
+  background-image: url(/data/littleChat/moreBar-disable-collect-icon.png);
+}
+.moreBar.disable .btn-delete {
+  background-image: url(/data/littleChat/moreBar-disable-delete-icon.png);
+}
+.moreBar.disable .btn-mail {
+  background-image: url(/data/littleChat/moreBar-disable-mail-icon.png);
+}
+
+.messages .checkClickMask{
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+/* 编辑状态 */
+
+
+.messages.editOn .rightColumn{
+  display: block;
+}
+
+.messages.editOn .rightColumn{
+  display: block;
+}
+
+.inputBar.editOn {
+  transform: translateY(100%);
+}
+
+.moreBar.editOn {
+  transform: translateY(0px);
+}
+
+.messages.editOn .checkClickMask{
+  display: block;
+}
+
+.zoomTextContianer{
+  height: 100vh;
+  width: calc(100vw - 18px - 18px);
+  background: white;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+}
+
+.zoomTextContianer > div{
+  font-size: 24px;
+}
+
+.zoomPhotoContianer {
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0);
+}
+
+.zoomPhotoContianer.in-full-screen {
+  background: black;
+}
+
+.zoomPhotoContianer.in-full-screen .showing img{
+  top:0px!important;
+  left:0px!important;
+  bottom:0px!important;
+  opacity: 1!important;
+  transform: scale(1)!important;
+}
+
+.zoomPhotoContianer .slider li{
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.zoomPhotoContianer .slider img {
+  width: 100vw;
+  height: auto!important;
+  flex: 0 0 auto;
+  transform-origin:0 0;
+  will-change: transform;
+}
+
+.zoomPhotoContianer .displayOverflowHeight{
+  align-items: flex-start!important;
+}
+
+.zoomPhotoContianer .btnContainer *{
+  position: fixed;
+  background: rgba(60, 60, 60, 0.46);
+  width:calc(86px/3);
+  height: calc(86px/3);
+  border-radius: 3px;
+  left:calc(100vw - 48px/3 - 86px/3);
+  opacity: 0;
+}
+
+.zoomPhotoContianer.showBtns .btnContainer *{
+  opacity: 1!important;
+}
+
+.zoomPhotoContianer .btnContainer img{
+  width:calc(86px/3);
+  height: calc(86px/3);
+}
+
+.zoomPhotoContianer .btnAll{
+  top:calc(59px/3);
+}
+
+.zoomPhotoContianer .btnSave{
+  bottom: calc(65px/3);
+}

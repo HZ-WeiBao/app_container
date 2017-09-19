@@ -9,11 +9,11 @@ class View extends Component {
     if($_uri_ == 'this'){
       $_uri_ = F::$R->controller.'/'.F::$R->action;
     }
-
+    
     $_viewFile_ = self::src($_uri_,'.htm');
     $_styleFile_ = self::src($_uri_,'.css');
     $_data_ = is_object($_data_)? (array)$_data_ : $_data_;
-    
+
     if(is_array($_data_))
       extract($_data_,EXTR_PREFIX_SAME,'data');
     else

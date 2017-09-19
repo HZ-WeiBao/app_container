@@ -1,0 +1,24 @@
+{
+  "name": "学校地图",
+  "status": "normal",
+  "description": "ployfill",
+  "author": "DeepKolos",
+  "version": {
+    "v0.1": {
+      "time": "2017-9-7",
+      "updateLog": ["录入新的命名~"]
+    },
+    "v0.2": {
+      "time": "2017-9-8",
+      "updateLog": [
+        "添加分类显示,优化地图缩放移动性能~"
+      ]
+    }
+  },
+  "component": {
+    "Schedule": {
+      "lastTime": "timestamp"
+    }
+
+  }
+}

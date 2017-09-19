@@ -1,0 +1,52 @@
+.scrollBar{
+  width:22px;
+  position: fixed;
+  right:0px;
+  top:45px;
+  background: none;
+  display: none;
+  height:calc(100vh - 96px);
+  flex-direction: column;
+  color: #5C5C5C;
+  will-change: unset!important;
+}
+.scrollBar.on{
+  opacity: 1;
+}
+.scrollBar.off{
+  opacity: 0;
+}
+
+.scrollBar.pressing{
+  background: rgba(0,0,0,.15);
+}
+
+.scrollBar > div{
+  width:100%;
+  height: calc((100vh - 96px)/29);
+  flex: 0 0 calc((100vh - 96px)/29);
+  font-size: calc((100vh - 96px)/29);
+  line-height: calc((100vh - 96px)/29);
+  text-align: center;
+}
+
+.scrollBar .showing-letter{
+  position: fixed;
+  height:71px!important;
+  width:71px!important;
+  font-size: 42px!important;
+  font-weight: 400!important;
+  color: white!important;
+  top:calc(100vh/2 - 35.5px);
+  left:calc(100vw/2 - 35.5px);
+  background: rgba(0,0,0,.5);
+  line-height: 71px!important;
+  text-align: center;
+  display: none;
+  border-radius: 3px;
+  will-change: contents;
+}
+
+.showing-letter.on{
+  display: block;
+}

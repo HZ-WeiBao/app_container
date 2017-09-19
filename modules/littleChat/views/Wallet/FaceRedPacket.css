@@ -1,0 +1,41 @@
+.redBg{
+  background: #D75840;
+}
+
+.main .container{
+  height: calc(100% - 11px);
+  background: white;
+  margin:0 9px;
+  position: relative;
+}
+
+.container .qrcode{
+  margin: 0 auto;
+  margin-top:calc(133px/3) ;
+  height: calc(505px/3);
+  width:calc(505px/3);
+}
+
+.container .qrcode img{
+  height: 100%;
+  width: 100%;
+}
+
+.container .btnContainer{
+  position: absolute;
+  text-align: center;
+  bottom: calc(189px/3);
+  width: 100%;
+}
+
+.container .btnPackOne{
+  width: calc(440px/3);
+  height:calc(86px/3);
+  background: #E95E39;
+  color: white;
+  text-align: center;
+  line-height: calc(86px/3);
+  border-radius: 3px;
+  font-size: 14px;
+  display: inline-block;
+}

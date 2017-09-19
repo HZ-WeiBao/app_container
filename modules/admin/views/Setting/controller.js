@@ -73,7 +73,9 @@ exports.actionOneSaying = function(){
   this.Page.eventBind = function(){
     var $as = document.querySelectorAll('.page .statusBar a'),
         $btnUpdate = document.querySelector('.page #btnUpdate'),
-        $module = document.querySelector('.page #module');
+        $module = document.querySelector('.page #module'),
+        $btnNext = document.querySelector('.page #btnNext'),
+        $btnBack = document.querySelector('.page #btnBack');
 
     $btnUpdate.addEventListener('click',function(){
       //是否正在更新也设置一个状态吧
@@ -100,6 +102,27 @@ exports.actionOneSaying = function(){
         }
       });
     }.bind(this));
+
+    $btnNext.addEventListener('click',function(){
+      Ajax({
+        method:'get',
+        url:this.Router.url('Setting','SayingNext'),
+        func:function(){
+          this.Router.reload();
+        }.bind(this)
+      });
+    }.bind(this));
+
+    $btnBack.addEventListener('click',function(){
+      Ajax({
+        method:'get',
+        url:this.Router.url('Setting','SayingBack'),
+        func:function(){
+          this.Router.reload();
+        }.bind(this)
+      });
+    }.bind(this));
+
   }.bind(this);
 }
 

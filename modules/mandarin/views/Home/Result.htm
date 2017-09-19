@@ -2,7 +2,7 @@
     <div><div>名字：</div><span><?= $data->name ?></span></div>
     <div><div>准考证号：</div><span><?= $data->id ?></span></div>
     <div><div>考试时间：</div><span><?= $data->examTime ?></span></div>
-    <div><div>最终分：</div><span><?= $data->score ?></span></div>
+    <div><div>最终分：</div><span style="color:<?= ($data->score >= 60 )?'green':'black'?>;"><?= $data->score ?></span></div>
     <div><div>等级：</div><span><?= $data->grade ?></span></div>
     <div><div>证书编号：</div><span><?= $data->certificateId ?></span></div>
     <div><div>省份：</div><span><?= $data->province ?></span></div>

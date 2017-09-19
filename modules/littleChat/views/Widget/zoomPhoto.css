@@ -1,0 +1,74 @@
+.zoomPhotoContianer {
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0);
+}
+
+.zoomPhotoContianer.in-full-screen .showing img {
+    top: 0px!important;
+    left: 0px!important;
+    bottom: 0px!important;
+    opacity: 1!important;
+    transform: scale(1)!important;
+}
+
+.zoomPhotoContianer .slider li {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.zoomPhotoContianer .slider img {
+    width: 100vw;
+    height: auto!important;
+    flex: 0 0 auto;
+    transform-origin: 0 0;
+    will-change: transform, opacity!important;
+    opacity: 0;
+}
+
+.zoomPhotoContianer .displayOverflowHeight {
+    align-items: flex-start!important;
+}
+
+.zoomPhotoContianer .btnContainer * {
+    position: fixed;
+    background: rgba(60, 60, 60, 0.46);
+    width: calc(86px/3);
+    height: calc(86px/3);
+    border-radius: 3px;
+    left: calc(100vw - 48px/3 - 86px/3);
+    opacity: 0;
+}
+
+.zoomPhotoContianer.showBtns .btnContainer * {
+    opacity: 1!important;
+}
+
+.zoomPhotoContianer .btnContainer img {
+    width: calc(86px/3);
+    height: calc(86px/3);
+}
+
+.zoomPhotoContianer .btnAll {
+    top: calc(59px/3);
+}
+
+.zoomPhotoContianer .btnSave {
+    bottom: calc(65px/3);
+}
+
+.zoomPhotoContianer .blackBg {
+    background-color: black;
+    opacity: 0;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    will-change: opacity;
+}
+
+.zoomPhotoContianer.in-full-screen .blackBg {
+    opacity: 1;
+}

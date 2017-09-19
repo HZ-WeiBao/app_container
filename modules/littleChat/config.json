@@ -1,0 +1,18 @@
+{
+  "name": "微信高仿",
+  "status": "normal",
+  "description": "ployfill",
+  "author": "DeepKolos",
+  "version": {
+    "v0.1": {
+      "time": "2017-5-29",
+      "updateLog": ["开干~"]
+    }
+  },
+  "component": {
+    "Schedule": {
+      "lastTime": "timestamp"
+    }
+
+  }
+}
