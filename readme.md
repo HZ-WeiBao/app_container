@@ -10,7 +10,7 @@ end  : 2017/4/18
 
 ### 主要特性
 
-#### 前端部分(主文件在
+#### 前端部分(主文件在./frame/views/Frame.js
 > 0. 支持返回键
 > 1. 有一个全局的事件组件, 支持的事件有:slide, doubleclick, pressStart, pressEnd, press, focus, blur, over, enter, leave, 弥补了原生事件, 事件的拓展支持, 比如popupclick, browserclick, 对click的定制, 增加了一些特殊判断和行为, 好处在于dsl~
 > 2. 集成[Emmet模版引擎](https://github.com/deepkolos/emmet-template-engine), 拥有了强大的数据导入能力
