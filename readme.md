@@ -1,9 +1,9 @@
 # 小小的框架~
 
-start: 2017/2/6
+start: 2017/2/6<br>
 end  : 2017/4/18
 
-> nginx配置:nginx.conf
+> nginx配置:nginx.conf<br>
 > 配置: config.sample.php
 
 [微报应用框架](http://weibao.deepkolos.cn)<br>
