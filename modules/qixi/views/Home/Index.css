@@ -316,7 +316,7 @@ body{
 @keyframes envelopeFile{
 	0%{transform:translateY(0%) rotateX(0deg);}
 	65%{transform:translateY(-65%) rotateX(360deg);}
-	100%{transform:translateY(40%) rotateX(360deg) rotateZ(3deg); z-index: 2;}
+	100%{transform:translateY(43%) rotateX(360deg) rotateZ(3deg); z-index: 2;}
 }
 
 @keyframes envelopeClose{
