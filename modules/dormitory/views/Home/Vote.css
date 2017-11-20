@@ -154,3 +154,11 @@
     background: rgba(0, 0, 0, 0.6);
     color: white;
 }
+
+.popUp .zoomPhotoContianer .slider img{
+    will-change: unset!important;
+}
+
+body {
+    -webkit-overflow-scrolling: touch;
+}

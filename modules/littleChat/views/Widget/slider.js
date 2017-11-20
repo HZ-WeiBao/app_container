@@ -53,6 +53,8 @@ var parse = function ($slider,config) {
             onLeave[page]();
           if (onLeave[fromPage])
             onLeave[fromPage]();
+
+          setCtrl();
         });
       });
     }
@@ -129,7 +131,7 @@ var parse = function ($slider,config) {
         Array.prototype.forEach.call($lis,function($li,i){
           $li.currentPosition = i * slideWidth ;
           $li.index = i;
-          $li.style.transform = 'translate3d(' + $li.currentPosition + 'px,0,0)';
+          $li.style.webkitTransform = 'translate3d(' + $li.currentPosition + 'px,0,0)';
         });
         requestAnimationFrame(function(){
           $slider.classList.remove('subNoneAnimation');
@@ -194,12 +196,12 @@ var parse = function ($slider,config) {
               onLeave[status.page]();
           }
           if(!config.loop){
-            $ul.style.transform = 'translate3d(' + -status.offsetSlide + 'px,0,0)';
-            // $ul.style.transform = 'translateX(' + -status.offsetSlide + 'px) translateY(0) translateZ(0)';
+            $ul.style.webkitTransform = 'translate3d(' + -status.offsetSlide + 'px,0,0)';
+            // $ul.style.webkitTransform = 'translateX(' + -status.offsetSlide + 'px) translateY(0) translateZ(0)';
           }
           else{
             Array.prototype.forEach.call($lis,function($li){
-              $li.style.transform = 'translate3d(' + ($li.currentPosition + info.offset) + 'px,0,0)';
+              $li.style.webkitTransform = 'translate3d(' + ($li.currentPosition + info.offset) + 'px,0,0)';
             });
           }
 
@@ -309,7 +311,7 @@ var parse = function ($slider,config) {
             Array.prototype.forEach.call($lis, function ($li,i) {
               $li.classList.add('noneAnimation');
               $li.currentPosition = ($li.index - status.page) * slideWidth;
-              $li.style.transform = 'translate3d(' + $li.currentPosition + 'px,0,0)';
+              $li.style.webkitTransform = 'translate3d(' + $li.currentPosition + 'px,0,0)';
 
               if(i == i_to || i == i_from)
                 $li.classList.remove('noneAnimation');
@@ -320,14 +322,14 @@ var parse = function ($slider,config) {
             if (status.page == 0) {
               $lis[$lis.length - 1].classList.add('noneAnimation');
               $lis[$lis.length - 1].currentPosition = (-1 - status.page) * slideWidth;
-              $lis[$lis.length - 1].style.transform = 'translate3d(' + $lis[$lis.length - 1].currentPosition + 'px,0,0)';
+              $lis[$lis.length - 1].style.webkitTransform = 'translate3d(' + $lis[$lis.length - 1].currentPosition + 'px,0,0)';
               requestAnimationFrame(function(){
                 $lis[$lis.length - 1].classList.remove('noneAnimation');
               });
             } else if (status.page == $lis.length - 1) {
               $lis[0].classList.add('noneAnimation');
               $lis[0].currentPosition = ($lis.length - status.page) * slideWidth;
-              $lis[0].style.transform = 'translate3d(' + $lis[0].currentPosition + 'px,0,0)';
+              $lis[0].style.webkitTransform = 'translate3d(' + $lis[0].currentPosition + 'px,0,0)';
               requestAnimationFrame(function () {
                 $lis[0].classList.remove('noneAnimation');
               });
@@ -349,7 +351,7 @@ var parse = function ($slider,config) {
 
                 Array.prototype.forEach.call($lis, function ($li) {
                   $li.currentPosition = ($li.index - status.page) * slideWidth;
-                  $li.style.transform = 'translate3d(' + $li.currentPosition + 'px,0,0)';
+                  $li.style.webkitTransform = 'translate3d(' + $li.currentPosition + 'px,0,0)';
                 });
 
                 _loop(true);
@@ -364,13 +366,13 @@ var parse = function ($slider,config) {
               //需要维持位置一会儿
               $lis[0].classList.remove('noneAnimation');
               $lis[0].currentPosition = ($lis.length - status.page) * slideWidth;
-              $lis[0].style.transform = 'translate3d(' + $lis[0].currentPosition + 'px,0,0)';
+              $lis[0].style.webkitTransform = 'translate3d(' + $lis[0].currentPosition + 'px,0,0)';
 
             } else if (status.page < 0) {
               $lis[$lis.length - 1].classList.remove('noneAnimation');
               $lis[$lis.length - 1].addEventListener('transitionend', animationEnd.bind(null, info));
               $lis[$lis.length - 1].currentPosition = (-1 - status.page) * slideWidth;
-              $lis[$lis.length - 1].style.transform = 'translate3d(' + $lis[$lis.length - 1].currentPosition + 'px,0,0)';
+              $lis[$lis.length - 1].style.webkitTransform = 'translate3d(' + $lis[$lis.length - 1].currentPosition + 'px,0,0)';
             }
           }
 

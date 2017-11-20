@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="author" content="deepkolos"/>
+  <title>惠大微报2017招新</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+  <!--dns缓存-->
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="dns-prefetch" href="//weibao.deepkolos.cn">
+  <style>
+    .noneAnimation,
+    .subNoneAnimation * {
+      transition: none!important;
+      -webkit-transition: none!important;
+      -o-transition: none!important;
+      -moz-transition: none!important;
+    }
+    .pageContainer.fix { margin-top: 0px; overflow: hidden; }
+    .pageContainer.fix .page{ padding-bottom: 0px;}
+    .pageContainer.fix .page *{font-weight: 500;}
+    body{
+      background: #0F1812;
+    }
+  </style>
+</head>
+
+<body>
+  <!--css loader-->
+  <div id="_cssContainer_" style="display: none">
+    <div class="_frame_">
+      <link href="css/basic.css" rel='stylesheet' type='text/css'>
+      <link href="css/frame.css" rel='stylesheet' type='text/css'>
+      <link href="css/animation.css" rel='stylesheet' type='text/css'>
+    </div>
+    <div class="_module_">
+      <link href="littleChat/views/module.css" rel='stylesheet' type='text/css'>
+    </div>
+    <div class="_custom_"></div>
+    <div class="_controller_"></div>
+    <div class="_action_"></div>
+  </div>
+  <!--js loader-->
+  <script src="frame/views/Frame.js?t=<?= time()?>" type="text/javascript"></script>
+  <!--body start-->
+  <div class="pageContainer subNoneAnimation fix" style="opacity: 0;">
+    <div class="page" status="loaded">
+      <?= $home?>
+    </div>
+  </div>
+  <div class="popUpContainer off noneAnimation">
+  </div>
+</body>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=60429420" charset="UTF-8"></script>
+</html>

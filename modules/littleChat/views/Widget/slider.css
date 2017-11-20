@@ -30,5 +30,5 @@
 .slider.loop > ul > li {
   will-change: transform;
   transition: all 0.2s ease 0s;
-  position: absolute
+  position: absolute;
 }

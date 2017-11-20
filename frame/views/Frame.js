@@ -828,14 +828,14 @@ F.addComponent('Router', {
         
         var hash = location.hash,check;
 
-        hash = hash.replace(/[\?\&]viewPopUp=[^&]*&?/,'');
-        hash = hash.replace(/[\?\&]viewStatus=[^&]*&?/,'');
+        hash = hash.replace(/(viewPopUp=[^&]*&)/,'');
+        hash = hash.replace(/(viewStatus=[^&]*&)/,'');
         check = hash.match(/\?(.*)/);
 
         if(check && check[1] == '')
           hash = hash.replace('?','');
         this.refreshFrom = location.hash;
-        history.replaceState({},'',hash);
+        history.replaceState({},'',this.refreshFrom);
         this.hashProcesser();
 
         if(this.actionConfig.viewPopUp || this.actionConfig.viewStatus)
@@ -1140,8 +1140,8 @@ F.addComponent('Router', {
     var params = {};
     if (url.indexOf("?") != -1) {
       url = url.slice(url.indexOf("?"));
-      var str = url.substr(1);
-      strs = str.split("&");
+      var str = url.substr(1),
+          strs = str.split("&");
       for (var i = 0; i < strs.length; i++) {
         params[strs[i].split("=")[0]] = (strs[i].split("=")[1]);
       }

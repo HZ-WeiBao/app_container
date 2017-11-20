@@ -2,17 +2,22 @@
 function factory(config){
   var $ul = config.listConatiner,
     $lisInital, $lisNeedToShow ,$liLastOne
-    delay = config.delayToShow,//ms
+    delay = config.delayToShow || 80,//ms
     initalClass = config.initalClass,
     startIndex = config.startIndex,
     displayIndex = config.startIndex,
     noMore = false,
     showDone = false,
+    inital = true;
     status = 'done',
+    animating = false,
+    appendQueen = [],
     orginalLoadFunc = config.loadArgs.func;
   
   this.init = function(){
-    setTimeout(loadMore,17);
+    loadMore(function(){
+      setTimeout(scroll,50);
+    })
   };
 
   if(displayIndex === undefined)
@@ -25,19 +30,15 @@ function factory(config){
     var result = orginalLoadFunc(rep);
     
     if(result.status == 0){
-      requestAnimationFrame(function(){
-        //append
+      if(animating)
+        appendQueen.push(result.dom);
+      else
         result.dom.forEach(function($li){
           $ul.appendChild($li);
         });
-        
-        requestAnimationFrame(function(){
-          //show
-          status = 'done';
-          if(displayIndex == startIndex)
-            scroll();
-        });
-      });
+      
+      //show
+      status = 'done';
     }else if(result.status == 1){
       noMore = true;
       
@@ -54,10 +55,7 @@ function factory(config){
   };
 
   function scroll(){
-    console.log('接受到scroll事件了');
-    if(showDone) return ;
-
-    //querySelectot不可以在语义上是所有子元素,包括孙元素
+    //querySelector不可以在语义上是所有子元素,包括孙元素
     //性能更好的方式是在内部维护这个lisInital列表,而不是每次都去获取
     $lisInital = [];
     $lisNeedToShow = [];
@@ -79,21 +77,36 @@ function factory(config){
     //检查是否需要加载更多
     if(isOnShow($liLastOne) && status == 'done' && !noMore)
       loadMore();
-    else if(noMore)
-      showDone = true;
   }
 
   window.addEventListener('scroll',scroll);
 
   function showLis($lis){
+    var animateDone = 0;
+    animating = true;
     Array.prototype.forEach.call($lis,function($li,index){
       $li.addEventListener('transitionend',function(){
-        $li.style['transition-delay'] = null;
-        $li.style['will-change'] = null;
+        requestAnimationFrame(function(){
+          $li.style['transition-delay'] = null;
+          $li.style['will-change'] = null;
+        });
+        
+        if(++animateDone == $lis.length){
+          animating = false;
+          if(appendQueen.length !== 0){
+            appendQueen.forEach(function($lisTobenAppend){
+              $lisTobenAppend.forEach(function($li){
+                $ul.appendChild($li);
+              });
+            });
+          }
+        }
+
         $li.removeEventListener('transitionend',arguments.callee);
       });
 
       $li.style['transition-delay'] = delay*index + 'ms';
+      $li.style['transition-duration'] = (delay*index + 380) + 'ms';
       $li.style['will-change'] = 'transform, opacity';
       $li.classList.remove(initalClass);
     });
@@ -128,10 +141,18 @@ function factory(config){
     }
   }
 
-  function loadMore(){
+  function loadMore(callback){
     var backupData = config.loadArgs.data;
     status = 'loading';
 
+    if(callback instanceof Function){
+      var backupFunc = config.loadArgs.func;
+      config.loadArgs.func = function(rep){
+        backupFunc(rep);
+        callback();
+        config.loadArgs.func = backupFunc;
+      }
+    }
     backupData[config.pageKey] = ++displayIndex;
     config.loadArgs.data = JSON.stringify(backupData);
 
@@ -140,30 +161,10 @@ function factory(config){
     config.loadArgs.data = backupData;
   }
 
-  function getOffsetFormBody($li){
-    if($li instanceof HTMLElement && $li.offsetFromBody === undefined)
-      $li.offsetFromBody = getRecursivelySumFrom($li, document.body, 'offsetTop');
-    return $li.offsetFromBody;
-  }
-
   function isOnShow($li){
-    return getOffsetFormBody($li) - window.scrollY < window.innerHeight
+    return $li && $li.getBoundingClientRect().top < window.innerHeight;
   }
 };
-
-//依赖的小工具
-
-//获取从startNode到endNode的属性的sum
-function getRecursivelySumFrom($startNode,$endNode,type){
-  var sum = 0;
-
-  while($startNode != $endNode && $startNode != document){
-    sum += $startNode[type];
-    $startNode = $startNode.parentElement;
-  }
-
-  return sum;
-}
 
 exports.getInstance = function(config){
   return new factory(config);

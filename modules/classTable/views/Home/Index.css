@@ -3,6 +3,7 @@
   width: 900px;
   padding: 5px 20px 20px 20px;
   min-height: calc(100vh - 45px - 75px - 30px);
+  font-size: 16px;
 }
 
 .display_result td,

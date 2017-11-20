@@ -33,11 +33,12 @@ exports.actionComment = function() {
             func:function(){
               clearInterval(t);
               $btnSend.innerHTML = '成功';
+              alert('发送成功~');
               $btnSend.classList.add('success');
               var t1 = setTimeout(function(){
                 $btnSend.classList.remove('success');
                 $btnSend.innerHTML = '发送';
-              },2000);
+              }, 2500);
             }
           });
         else{

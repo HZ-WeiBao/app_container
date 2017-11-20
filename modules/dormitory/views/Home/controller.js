@@ -118,7 +118,7 @@ exports.actionVote = function () {
       //这里做一些数据格式化的工作
       lis.forEach(function(li){
         li.isShow = 'off';
-
+        
         if(li.douyin != '' && li.imgUrl != null){
           li.isShow = 'on';
         }else if(li.imgUrl == null && li.douyin != ''){
@@ -138,7 +138,7 @@ exports.actionVote = function () {
               div.department{$department} +
               div.name{$dormnum} +
               div.vote-number{$voteNum} +
-              div.btnVote[playerId=>$id onclick=>@voteFunc]{投票}
+              div.btnVote[playerId=>$id ontouchstart=>@voteFunc]{投票}
           )
         ) * @lis
       `,{
@@ -190,17 +190,18 @@ exports.actionVote = function () {
 
     var slideDownToLoadMore = loadMore.getInstance({
       listConatiner: $cardList,
-      delayToShow: 60,
+      delayToShow: 80,
       initalClass: 'inital',
       pageKey: 'page',
       startIndex: 1,
       loadArgs:{
         method:'post',
-        url:'http://dorm.chaoshy.cn/action.php',
+        // url:'http://dorm.chaoshy.cn/action.php',
+        url: _this.Router.url('Home','LoadMore'),
         data:{
           openid: $openid.value,
           action: 'show',
-          page_size: 3,
+          page_size: 4,
         },
         func:function(rep){
           var json = JSON.parse(rep);
@@ -222,7 +223,7 @@ exports.actionVote = function () {
     });
 
     slideDownToLoadMore.init();
-  
+    
   };
 }
 
@@ -233,10 +234,15 @@ function checkAjaxMessage(data){
     '-22': '你刚访问了一个不存在的地方~~'
   };
 
+  if(data.status == -1){
+    location.href = 'http://mp.weixin.qq.com/s?__biz=MjM5OTM0MDYwMg==&mid=502991225&idx=1&sn=c98b0e08f2a0e9d34bf27c5c21687323&chksm=3f33562c0844df3ac0314339d2b75decf0b61be2782f4e68d7178533dc2e781a381db39433b7#rd'; 
+    return false;
+  }
+
   if(data.status != 0){
     setTimeout(function(){
       alert(codeToMessage[data.status] || data.message);
-    });
+    },0);
     return false;
   }
 
@@ -397,164 +403,6 @@ exports.viewPopUpZoomPhoto = function (config) {
 
       });
     };
-
-    //设置下滑关闭
-    $lis = $slider.querySelectorAll('li');
-
-    $lis.forEach(function ($li) {
-      var $img = $li.querySelector('img');
-
-      $li.onSlide = function (info) {
-        var scale, x, y,
-          scrollLeft = $li.scrollLeft,
-          imgClientWidth = $img.clientWidth * $img.zoomScale,
-          liClientWidth = $li.clientWidth,
-          transformOrgin = 'center 25%';
-
-        if ($img.zoomed) {
-          //边缘支持滑动
-          if (
-            (scrollLeft == 0 && info.direction == 'right') ||
-            (parseInt(scrollLeft) == parseInt(imgClientWidth - liClientWidth)
-              && info.direction == 'left')
-          ) {
-            $img.scrolledToRightLeftEdge = true;
-            return 'pass';
-          } else
-            return;
-        }
-
-        if (info.directionLock == 'vertical' && $li.scrollTop == 0) {
-          if (info.direction == 'down')
-            scale = 1 - ((-info.offset) / screenHeight);
-          else
-            scale = 1;
-
-          y = info.offsetY;
-          x = info.offsetX;
-
-          if ($li.classList.contains('displayOverflowHeight'))
-            transformOrgin = 'center 10%';
-
-          requestAnimationFrame(function () {
-            if(!status.initLock){
-              status.initLock = true;
-              $img.classList.add('noneAnimation');
-              $bg.classList.add('noneAnimation');
-              $img.style['transform-origin'] = transformOrgin;
-              $li.style['overflow'] = 'hidden';
-            }
-
-            $img.style.setProperty(
-              'transform',
-              'translate3d(' + x + 'px,' + y + 'px,0) scale(' + scale + ')',
-              'important'
-            );
-            $bg.style.opacity = scale;
-          });
-        } else
-          return 'pass';
-      };
-
-      $li.onSlideDone = function (info) {
-        status.rafLock = false;
-        status.initLock = false;
-
-        if ($img.zoomed) {
-          if ($img.scrolledToRightLeftEdge) {
-            $img.scrolledToRightLeftEdge = false;
-            return 'pass';
-          } else
-            return;
-        }
-
-        requestAnimationFrame(function () {
-          $img.classList.remove('noneAnimation');
-          $bg.classList.remove('noneAnimation');
-          $img.style['transform-origin'] = null;
-          $img.style.transform = null;
-          $bg.style.opacity = null;
-        });
-
-        if (info.direction == 'down' && -info.offset >= 284 / 3 && $li.scrollTop == 0){
-          var $bgMask = document.querySelector('.popUp.on .bgMask');
-
-          $bgMask && ($bgMask.onClickOnce = null);
-          $slider.removeAttribute('clickOnce');
-          $li.onSlide = null;
-          $li.onSlideDone = null;
-          history.back();
-        }else{
-          $li.style.overflow = null;
-          return 'pass';
-        }
-      };
-      //双击放大
-      $img.onDoubleClick = function () {
-        var clickX = this.Event.x_start,
-          clickY = this.Event.y_start,
-          imgClientHeight = $img.clientHeight;
-
-        if (!$img.zoomed) {
-          //长图的放大
-          if ($img.parentElement.classList.contains('displayOverflowHeight')) {
-            $img.zoomScale = 1.5;
-            $img.zoomY = clickY * (1 - $img.zoomScale);
-          } else {
-            $img.zoomScale = screenHeight / imgClientHeight;
-            $img.zoomY = -(screenHeight - imgClientHeight) / 2;
-          }
-          $img.zoomX = clickX * (1 - $img.zoomScale);
-
-          var changeToPositionByScroll = function () {
-            $img.removeEventListener('transitionend', changeToPositionByScroll);
-
-            requestAnimationFrame(function () {
-              $img.classList.add('noneAnimation');
-              $img.style.setProperty(
-                'transform',
-                'translate3d(0px,' + $img.zoomY + 'px,0) scale(' + $img.zoomScale + ')',
-                'important'
-              );
-              $li.scrollLeft = -$img.zoomX;
-
-              requestAnimationFrame(function () {
-                $img.classList.remove('noneAnimation');
-              });
-            });
-          };
-
-          $img.addEventListener('transitionend', changeToPositionByScroll);
-
-          requestAnimationFrame(function () {
-            $img.style.setProperty(
-              'transform',
-              'translate3d(' + $img.zoomX + 'px,' + $img.zoomY + 'px,0) scale(' + $img.zoomScale + ')',
-              'important'
-            );
-          });
-          $img.zoomed = true;
-        } else {
-          requestAnimationFrame(function () {
-            $img.classList.add('noneAnimation');
-            $img.style.setProperty(
-              'transform',
-              'translate3d(' + -$li.scrollLeft + 'px,' + $img.zoomY + 'px,0) scale(' + $img.zoomScale + ')',
-              'important'
-            );
-            $li.scrollLeft = 0;
-
-            requestAnimationFrame(function () {
-              $img.classList.remove('noneAnimation');
-              $img.style['transform-origin'] = null;
-              $img.style.transform = null;
-            });
-          });
-
-          $img.zoomed = false;
-        }
-      }.bind(this);
-    }, this);
   }.bind(this);
 
   this.PopUp.outViewUpdateFunc = function ($div) {

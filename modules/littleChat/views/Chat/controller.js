@@ -24,6 +24,7 @@ var emojis = [
 
 
 exports.actionWindow = function () {
+  var _this = this
   this.Page.load({
     method: 'get',
     url: this.Router.url(),
@@ -204,10 +205,12 @@ exports.actionWindow = function () {
         $item.onPress = function(){
           $customEmojiSlider.statusPressing = true;
           $item.onEnter.call($item);
+          _this.Event.locker.checkOverElement = true
         }
         $item.addEventListener('touchend',function(){
           if ( $customEmojiSlider.statusPressing ){
             $customEmojiSlider.statusPressing = false;
+            _this.Event.locker.checkOverElement = false
           }
         });
         $item.onEnter = function(){

@@ -115,3 +115,12 @@ body .popUp{
     width: 100%;
     height: auto;
 }
+
+body .menu{
+    font-size: 15px;
+}
+
+body .menu ul li i {
+    font-size: 15px;
+    margin: 0 5px;
+}

@@ -5,7 +5,71 @@ exports.deps = {
 };
 
 exports.actionIndex = function() {
+  var $inputKeyword = document.querySelector('.inputKeyword input');
+  var valid_input = new RegExp(/\d+\D+\d+班/g);
   
+  if($inputKeyword.value.match(valid_input))
+    exports.viewUpdateMatchList();
+
+  //缩放
+  var $displayer = document.querySelector('.display_result'),
+    startTouches, movingTouhces, 
+    startLen, movingLen,
+    originStartX, originStartY,
+    originMobingX, originMobingY,
+    centerStartX, centerStartY,
+    centerMovingX, centerMovingY;
+
+  function getLenOf2Point(pointA, pointB){
+    return Math.sqrt(
+      Math.pow((pointA.clientX - pointB.clientX), 2) + 
+      Math.pow((pointA.clientY - pointB.clientY), 2)
+    )
+  }
+
+  $displayer.addEventListener('touchstart', function(e){
+    var rect;
+
+    if(e.touches.length === 2){
+      startTouches[0] = e.touches[0];
+      startTouches[1] = e.touches[1];
+
+      centerStartX = (startTouches[0].clientX + startTouches[1].clientX) / 2;
+      centerStartY = (startTouches[0].clientY + startTouches[1].clientY) / 2;
+      
+      rect = $displayer.getBoundingClientRect();
+      originStartX = centerStartX - rect.x;
+      originStartY = centerStartY - rect.y;
+      startLen = getLenOf2Point(startTouches[0], startTouches[1]);
+
+    }
+  });
+
+  $displayer.addEventListener('touchmove', function(e){
+    var offsetX, offsetY, scale;
+
+    if(e.touches.length === 2){
+      movingTouhces[0] = e.touches[0];
+      movingTouhces[1] = e.touches[1];
+
+      centerMovingX = (movingTouches[0].clientX + movingTouches[1].clientX) / 2;
+      centerMovingY = (movingTouches[0].clientY + movingTouches[1].clientY) / 2;
+      
+      rect = $displayer.getBoundingClientRect();
+      originMovingX = centerMovingX - rect.x;
+      originMovingY = centerMovingY - rect.y;
+      movingLen = getLenOf2Point(movingTouches[0], movingTouches[1]);
+
+      offsetX = originMovingX - originStartX;
+      offsetY = originMovingY - originStartY;
+      scale = (movingLen - startLen) / 1.5;
+
+      requestAnimationFrame(function(){
+        $displayer.style.transform = 
+          'translate3d('+offsetX+'px,'+offsetY+'px,0) scale('+scale+')';
+      });
+    }
+  });
 }
 
 exports.viewUpdateMatchList = function() {

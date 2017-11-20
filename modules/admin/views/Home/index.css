@@ -33,6 +33,7 @@
 
 .page .detailStatistics {
   padding: 0 15px;
+  padding-bottom: 23px;
   font-size: 19px; 
   line-height: 40px;
 }

@@ -594,7 +594,7 @@ img.ear{
   width: calc(100vw - 21px*2);
   color: #5e5e5e;
   min-height: 42px; 
-  display: inline-flex;
+  display: flex;
   align-items: center;
 }
 

@@ -88,8 +88,9 @@ var Query = function() {
           item.setAttribute('class', 'animation_list');
           if (arr[i] !== undefined)
             item.innerHTML = arr[i];
-          item.style['transform'] = 'translateY(60px)';
+          item.style['transform'] = 'translateY(60px) scale3d(0.7,0.7,0.7)';
           item.style['transition-delay'] = (lineCounter / 27) + 's';
+          item.style['transition-duration'] = (lineCounter+1)* 40 + 300 + 'ms';
           column.appendChild(item);
         }
       };
@@ -120,7 +121,7 @@ var Query = function() {
         $display_result.scrollTop = 0;
         css($display_result, {
           'opacity': 1,
-          'transform': 'translateY(0px)'
+          'transform': 'translateY(0px) scale3d(1,1,1)'
         });
         setTimeout(function() {
           var div = $display_result.getElementsByClassName('animation_list');

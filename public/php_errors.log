@@ -1,3 +1,0 @@
-[27-Mar-2017 21:36:46 Asia/Shanghai] PHP Warning:  DOMDocument::loadHTML(): Misplaced DOCTYPE declaration in Entity, line: 5 in D:\DEV\Github\weibao\app_container\libs\functions\__base__.php on line 45
-[27-Mar-2017 21:36:46 Asia/Shanghai] PHP Warning:  DOMDocument::loadHTML(): htmlParseStartTag: misplaced &lt;html&gt; tag in Entity, line: 6 in D:\DEV\Github\weibao\app_container\libs\functions\__base__.php on line 45
-[27-Mar-2017 21:36:46 Asia/Shanghai] PHP Warning:  DOMDocument::loadHTML(): htmlParseStartTag: misplaced &lt;head&gt; tag in Entity, line: 7 in D:\DEV\Github\weibao\app_container\libs\functions\__base__.php on line 45
