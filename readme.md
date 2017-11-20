@@ -48,9 +48,9 @@ end  : 2017/4/18
 ### 一些活动页面效果
 
 <div>
-  <img src="https://raw.githubusercontent.com/deepkolos/app_container/master/assets/show-qixi.jpg" width = "250" alt="" style="display:inline-block;"/>
-  <img src="https://raw.githubusercontent.com/deepkolos/app_container/master/assets/show-zhaoxin.jpg" width = "250" alt="" style="display:inline-block;"/>
-  <img src="https://raw.githubusercontent.com/deepkolos/app_container/master/assets/show-list.jpg" width = "250" alt="" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/app_container/master/assets/show-qixi.gif" width = "250" alt="" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/app_container/master/assets/show-zhaoxin.gif" width = "250" alt="" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/app_container/master/assets/show-list.gif" width = "250" alt="" style="display:inline-block;"/>
 </div>
 
 
