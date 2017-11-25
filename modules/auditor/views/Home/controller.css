@@ -1,33 +1,39 @@
-.btnEmbedRight {
-    display: inline-block;
+.inputContainer{
+    display: flex;
+    padding: 20px 15px;
+}
+
+.btnContainer{
+    display: flex;
+    flex: 0 0 auto;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.btnContainer > a{
     padding: 6px 12px;
     background: #0072c6;
     color: white;
     font-size: 17px;
-    border-radius: 5px;
-    position: absolute;
-    right: 15px;
-    margin-top: 20px;
+}
+
+.btnContainer > a:not(:last-child){
+    border-right: 1px solid #4f90b8;;
 }
 
 .inputKeyword {
-    margin: 20px 7%;
-    margin-right: 95px;
-    display: block;
-}
-
-.inputKeyword input {
     padding: 4.5px 5px;
     width: 100%;
     font-size: 17px;
     outline: none;
     border: 1.5px solid #0072c6;
     border-radius: 5px;
+    margin-right: 10px;
 }
 
 .display_result {
     display: block;
-    margin: 0 5%;
+    margin: 0 2.3%;
 }
 
 .display_result li {
@@ -85,4 +91,8 @@
 
 .display_result .btnOneLine {
     position: absolute;
+}
+
+.possible_options{
+    margin-left: 18px;
 }
