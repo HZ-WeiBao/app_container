@@ -96,3 +96,19 @@
 .possible_options{
     margin-left: 18px;
 }
+
+.display_result .updateLog {
+    width: 66%;
+    padding: 30px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.updateLog span {
+    font-size: 19px;
+    color: #638196;
+    padding: 2px 8px;
+    display: inline-block;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #dedede;
+}
