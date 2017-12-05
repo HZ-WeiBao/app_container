@@ -45,6 +45,7 @@ end  : 2017/4/18
   <img src="http://upload-images.jianshu.io/upload_images/252050-56764d175bce1a6f.gif?imageMogr2/auto-orient/strip" width = "250" alt="" style="display:inline-block;"/>
   <img src="http://upload-images.jianshu.io/upload_images/252050-1ca769aee48f9f5d.gif?imageMogr2/auto-orient/strip" width = "250" alt="" style="display:inline-block;"/>
   <img src="http://upload-images.jianshu.io/upload_images/252050-51281edff619ccf7.gif?imageMogr2/auto-orient/strip" width = "250" alt="" style="display:inline-block;"/>
+  <img src="http://upload-images.jianshu.io/upload_images/252050-3f8745d397b7b0a9.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/451" width = "250" alt="" style="display:inline-block;"/>
 </div>
 
 ### 一些活动页面效果
