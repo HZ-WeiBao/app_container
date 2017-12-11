@@ -22,7 +22,8 @@
     display: inline-block;
     margin:0 auto;
     z-index: -100!important;
-    margin-top: 20px;
+    top: 20px;
+    left: calc((100vw - 250px)/2);
     box-shadow: 0 0 10px 0px #cfcfcf;
 }
 
