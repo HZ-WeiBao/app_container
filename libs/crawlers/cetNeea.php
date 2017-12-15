@@ -17,7 +17,7 @@ class cetNeea extends __base__ {
   public function getCaptcha($id){
     $this->transferCookies();
     $url = $this->Curl->get()->direct
-      ->url('http://cache.neea.edu.cn/Imgs.do?ik='.$id.'&t=0.'.time())
+      ->url('http://cache.neea.edu.cn/Imgs.do?c=CET&ik='.$id.'&t=0.'.time())
       ->headers(array(
         'Accept' => 'image/*'
       ))
