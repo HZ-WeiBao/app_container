@@ -30,8 +30,13 @@ exports.viewUpdateIndex = function () {
 		}),
 		func: function (rep) {
 			var result = JSON.parse(rep);
-			$captchaImg.setAttribute('src', result.src);
-			$studentID.setAttribute('pool',result.pool);
+			if(result.src == 'data:image/*;base64,'){
+				$captchaImg.style.display = 'none';
+			}else{
+				$captchaImg.setAttribute('src', result.src);
+				$studentID.setAttribute('pool',result.pool);
+				$captchaImg.style.display = '';
+			}
 		}
 	});
 };
