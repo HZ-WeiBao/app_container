@@ -9,10 +9,6 @@ exports.actionIndex = function(){
     this.redHat = new RedHat;
 }
 
-exports.viewUpdateUpload = function(){
-  document.querySelector('#avatar_upload').click();
-}
-
 exports.actionNewAvatar = function(){
   this.redHat.generate_avatar(function(output){
     this.Page.switchToDom('\
@@ -56,7 +52,7 @@ function RedHat(){
               }();
           }
           start = i;
-          setTimeout(loadImg, 100);
+          setTimeout(loadImg, 50);
       }
       loadImg();
       this.addRandom = function (){
