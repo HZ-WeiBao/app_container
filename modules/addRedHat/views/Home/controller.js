@@ -40,14 +40,14 @@ function RedHat(){
       changeImg.appendChild(ul);
 
       //定时加载一批,算了现在还是不改这东西了
-      var step = 5;//每次加载10个
+      var step = 6;//每次加载6个
       var start = 1;
       function loadImg(){
           for(var i = start; i <= start + step && i <= len; i++){
               !function(){
                   var li = document.createElement('li');
                   var img = document.createElement('img');
-                  img.setAttribute('src','./img/redhat/'+i+'.png');
+                  img.setAttribute('src','http://cache.chaoshy.cn/redhat/'+i+'.png');
                   li.onclick = function(){
                       avatar_editor.changeImg(img);
                   }
@@ -56,7 +56,7 @@ function RedHat(){
               }();
           }
           start = i;
-          setTimeout(loadImg,350);
+          setTimeout(loadImg, 100);
       }
       loadImg();
       this.addRandom = function (){
@@ -138,7 +138,7 @@ function RedHat(){
           avatar_editor.show()
           clearInterval(timer);
       }
-  }, 100);
+  }, 50);
 
   document.querySelector('#avatar_upload').onchange = function(){
       if(this.files.length == 1){
