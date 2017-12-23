@@ -47,12 +47,13 @@ function RedHat(){
                   li.onclick = function(){
                       avatar_editor.changeImg(img);
                   }
+                  img.crossOrigin = "*";
                   li.appendChild(img);
                   ul.appendChild(li);
               }();
           }
           start = i;
-          setTimeout(loadImg, 50);
+          setTimeout(loadImg, 30);
       }
       loadImg();
       this.addRandom = function (){
