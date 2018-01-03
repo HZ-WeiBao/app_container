@@ -23,7 +23,7 @@
     margin:0 auto;
     z-index: -100!important;
     top: 21px;
-    /* left: calc((100vw - 250px)/2); */
+    left: calc((100vw - 250px)/2);
     box-shadow: 0 0 10px 0px #cfcfcf;
 }
 
