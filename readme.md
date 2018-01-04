@@ -37,16 +37,19 @@ end  : 2017/4/18
   <img src="https://raw.githubusercontent.com/deepkolos/app_container/master/assets/show-admin.gif" width = "250" alt="" style="display:inline-block;"/>
 </div>
 
-#### [微信高仿(半成品,手机截图250多张)](http://weibao.deepkolos.cn/littleChat#Main/Index)
-
-[表情切图的repo](https://github.com/deepkolos/wechat-emoji)
+#### [微信高仿(半成品,手机截图250多张)] (http://weibao.deepkolos.cn/littleChat#Main/Index)[表情切图在这里](https://github.com/deepkolos/wechat-emoji)
 
 <div>
   <img src="http://upload-images.jianshu.io/upload_images/252050-56764d175bce1a6f.gif?imageMogr2/auto-orient/strip" width = "250" alt="" style="display:inline-block;"/>
   <img src="http://upload-images.jianshu.io/upload_images/252050-1ca769aee48f9f5d.gif?imageMogr2/auto-orient/strip" width = "250" alt="" style="display:inline-block;"/>
   <img src="http://upload-images.jianshu.io/upload_images/252050-51281edff619ccf7.gif?imageMogr2/auto-orient/strip" width = "250" alt="" style="display:inline-block;"/>
-  <img src="http://upload-images.jianshu.io/upload_images/252050-3f8745d397b7b0a9.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/451" width = "250" alt="" style="display:inline-block;"/>
 </div>
+
+> model部分也开干了, 设计在/database/wechat.mwb(使用mysql workbench打开)
+
+![](https://raw.githubusercontent.com/deepkolos/app_container/master/assets/littleChatModel.png)
+![](https://raw.githubusercontent.com/deepkolos/app_container/master/assets/models.png)
+
 
 ### 一些活动页面效果
 
