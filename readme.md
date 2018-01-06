@@ -49,6 +49,8 @@ end  : 2017/4/18
 
 #### model部分也开干了, 设计在/database/wechat.mwb(使用mysql workbench打开)
 
+但是发现如果走常驻的方式感觉会有问题
+
 ![](https://raw.githubusercontent.com/deepkolos/app_container/master/assets/littleChatModel.png)
 ![](https://raw.githubusercontent.com/deepkolos/app_container/master/assets/models.png)
 
