@@ -27,6 +27,7 @@ end  : 2017/4/18
 > 3. component内支持所有方法的hook~
 > 4. 内置个小型的爬虫框架~
 > 5. 调优的记录在test文件夹里
+> 6. 加水印组件[workflow](https://github.com/HZ-WeiBao/app_container/blob/master/libs/waterMark.php#L31)
 
 ### 效果演示
 
